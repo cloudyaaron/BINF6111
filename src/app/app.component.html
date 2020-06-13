@@ -1,4 +1,9 @@
 <hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<div style="text-align:center">
+  <h1> HPO TERMS </h1>
+</div>
+<ul *ngFor="let item of hpoList.features">
+  <li><p> <b>{{item["id"]}}</b> - {{item["label"]}}
+  <p> 
+  </p>  
+</ul>
