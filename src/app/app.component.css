@@ -1,3 +1,7 @@
 p {
   font-family: Lato;
 }
+
+table {
+  border-spacing: 5px;
+}
