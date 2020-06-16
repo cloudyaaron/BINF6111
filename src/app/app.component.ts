@@ -13,11 +13,4 @@ export class AppComponent  {
   hpoList = data[0];
   patients = data;
   
-  //hpoList = this.hpoTerms;
-
-  constructor() {
-    this.hpoTerms = new HashTable<string, any>();
-    this.hpoTerms.put('HP:0000118', 'Phenotypic abnormality');
-  }
-  terms = this.hpoTerms
 }
