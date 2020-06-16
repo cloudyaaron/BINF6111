@@ -6,9 +6,9 @@
     <button (click)='onClickSearch()'>search</button>
 </div>
 
-<ul *ngFor="let item of hpoList.features">
+<ul *ngFor="let item of hpoList">
 	<li>
 		<p> 
-      <b>{{item["id"]}}</b> - {{item["label"]}}
+      <b>{{item["report_id"]}}</b> Gender - {{item["sex"]}}
 		</p>
 </ul>

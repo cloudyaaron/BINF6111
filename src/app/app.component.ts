@@ -9,7 +9,7 @@ import data from './phenotips_2020-06-09_18-16_with_external_id.json';
 export class AppComponent  {
   name = 'Angular ' ;
   title = 'BINF6111 HPO FILTER'
-  hpoList = data[0];
+  hpoList = data;
   values = ''
   onClickSearch(){
     alert("not implemented");
