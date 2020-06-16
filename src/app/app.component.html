@@ -1,9 +1,14 @@
-<hello name="{{ name }}"></hello>
 <div style="text-align:center">
-  <h1> HPO TERMS </h1>
+	<h1> {{title}}</h1>
+    
+    <input (keyup)="onKeyUp($event)">
+    <p>{{values}}</p>
+    <button (click)='onClickSearch()'>search</button>
 </div>
+
 <ul *ngFor="let item of hpoList.features">
-  <li><p> <b>{{item["id"]}}</b> - {{item["label"]}}
-  <p> 
-  </p>  
+	<li>
+		<p> 
+      <b>{{item["id"]}}</b> - {{item["label"]}}
+		</p>
 </ul>
