@@ -1,5 +1,10 @@
 <div style="text-align:center">
   <h1> PATIENTS </h1>
+  <h2> Total patients number: {{patientsLenth}}</h2>
+  <p>
+    <input (keyup)="onKeyUp($event)">
+    {{values}}
+  </p>
 </div>
 <ul *ngFor="let patient of patients">
   <li> <p> <b> {{patient.report_id}} </b> &nbsp; &nbsp; Sex: {{patient.sex}} 
@@ -12,13 +17,5 @@
     </ul>
   </tr></table>
   <p> &nbsp;
-  </p>  
-</ul>
-<div style="text-align:center">
-<h1> HPO TERMS </h1>
-</div>
-<ul *ngFor="let item of hpoList.features">
-  <li><p> <b>{{item["id"]}}</b> - {{item["label"]}}  
-  <p> 
   </p>  
 </ul>
