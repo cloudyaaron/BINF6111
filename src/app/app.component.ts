@@ -1,5 +1,6 @@
 import { Component, Input} from '@angular/core';
 import data from './phenotips_2020-06-09_18-16_with_external_id.json';
+import { HashTable } from './classes/hashtable';
 
 @Component({
   selector: 'my-app',
@@ -7,15 +8,9 @@ import data from './phenotips_2020-06-09_18-16_with_external_id.json';
   styleUrls: [ './app.component.css' ]
 })
 export class AppComponent  {
-  name = 'Angular ' ;
-  title = 'BINF6111 HPO FILTER'
-  hpoList = data;
-  values = ''
-  onClickSearch(){
-    alert("not implemented");
-  }
-
-  onKeyUp(event:any){
-    this.values = event.target.value;
-  }
+  name = 'Angular ' + VERSION.major;
+  hpoTerms: HashTable<string, any>;
+  hpoList = data[0];
+  patients = data;
+  
 }

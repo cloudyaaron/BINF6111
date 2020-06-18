@@ -1,14 +1,24 @@
 <div style="text-align:center">
-	<h1> {{title}}</h1>
-    
-    <input (keyup)="onKeyUp($event)">
-    <p>{{values}}</p>
-    <button (click)='onClickSearch()'>search</button>
+  <h1> PATIENTS </h1>
 </div>
-
-<ul *ngFor="let item of hpoList">
-	<li>
-		<p> 
-      <b>{{item["report_id"]}}</b> Gender - {{item["sex"]}}
-		</p>
+<ul *ngFor="let patient of patients">
+  <li> <p> <b> {{patient.report_id}} </b> &nbsp; &nbsp; Sex: {{patient.sex}} 
+  <table> <th> Non-standard Features  </th> 
+  <tr>
+    <td> Categories </td>
+    <ul *ngFor="let features of patient.nonstandard_features"> 
+      <td> {{features["label"]}}
+    </td>
+    </ul>
+  </tr></table>
+  <p> &nbsp;
+  </p>  
+</ul>
+<div style="text-align:center">
+<h1> HPO TERMS </h1>
+</div>
+<ul *ngFor="let item of hpoList.features">
+  <li><p> <b>{{item["id"]}}</b> - {{item["label"]}}  
+  <p> 
+  </p>  
 </ul>
