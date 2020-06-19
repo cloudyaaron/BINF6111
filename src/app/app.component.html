@@ -1,12 +1,27 @@
 <div style="text-align:center">
   <h1> PATIENTS </h1>
   <h2> Total patients number: {{patientsLenth}}</h2>
-  <p>
+      <mat-progress-spinner
+        class="example-margin"
+        [value]="100">
+    </mat-progress-spinner>
+  <div>
+
+    
     <input (keyup)="onKeyUp($event)">
+    
     {{values}}
-  </p>
+    <br>
+    {{suggest_text}}
+    <br>
+    <ul *ngFor="let p of search_result">
+      {{p}}
+      <br>
+    </ul>
+  </div>
 </div>
-<ul *ngFor="let patient of patients">
+
+<ul *ngFor="let patient of patients" >
   <li> <p> <b> {{patient.report_id}} </b> &nbsp; &nbsp; Sex: {{patient.sex}} 
   <table> <th> Non-standard Features  </th> 
   <tr>
