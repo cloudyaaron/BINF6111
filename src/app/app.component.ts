@@ -18,7 +18,7 @@ export class AppComponent  {
   onKeyUp(event:any){
     
     for(let i=0; i<this.patientsLenth;i++){
-      if(this.patients[i]['report_id'] == event.target.value){
+      if(this.patients[i]['report_id'] == event.target.value.trim()){
         this.values=this.patients[i]['sex']
         break
       }else{
