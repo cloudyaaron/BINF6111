@@ -3,6 +3,7 @@ import data from './phenotips_2020-06-09_18-16_with_external_id.json';
 import { HashTable } from './classes/hashtable';
 import {MatChipsModule,MatChipInputEvent} from '@angular/material/chips'
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+//https://bootswatch.com/litera/?
 
 @Component({
   selector: 'my-app',
