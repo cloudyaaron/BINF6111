@@ -48,7 +48,7 @@ export class AppComponent  {
 
 
 
-  //single searching function
+  //single searching function will be integret into multiple seaching function 
   onKeyUp(event:any){
     this.values=''
     this.search_result=[]
