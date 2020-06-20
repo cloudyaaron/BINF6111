@@ -5,3 +5,12 @@ p {
 table {
   border-spacing: 5px;
 }
+
+textarea, input 
+{ 
+ background:none; 
+ outline: none; 
+ -webkit-appearance: none; 
+ box-shadow: Yes !important; 
+ border: Yes; 
+}

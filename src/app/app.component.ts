@@ -1,15 +1,13 @@
 import { Component, Input} from '@angular/core';
 import data from './phenotips_2020-06-09_18-16_with_external_id.json';
 import { HashTable } from './classes/hashtable';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatTableModule} from '@angular/material/table';
-import {MatTreeModule} from '@angular/material/tree';
+import {MatChipsModule,MatChipInputEvent} from '@angular/material/chips'
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: [ './bootstrap.min.css' ]
 })
 export class AppComponent  {
   name = 'Angular ' ;
@@ -22,8 +20,35 @@ export class AppComponent  {
   patientsLenth = Object.keys(this.patients).length
 
 
-  
+  //multiple seaching function + ui
+  removable = true;
+  readonly separatorKeysCodes: number[] = [ENTER];
+  search_list = [];
 
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+    console.log(this.search_list)
+    // Add our fruit
+    if ((value || '').trim()) {
+      this.search_list.push({detail: value.trim()});
+    }
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+  remove(term: any): void {
+    const index = this.search_list.indexOf(term);
+    if (index >= 0) {
+      this.search_list.splice(index, 1);
+    }
+  }
+
+
+
+
+  //single searching function
   onKeyUp(event:any){
     this.values=''
     this.search_result=[]
