@@ -28,8 +28,18 @@
         <a class="nav-link" href="#">Features</a>
       </li>
     </ul>
+
     <form class="form-inline my-2 my-lg-0">
-      <input placeholder="Searching" class="form-control mr-sm-4"
+
+      <div class="form-group">
+        <select class="custom-select">
+          <option selected="">OR</option>
+          <option disabled >AND</option>
+        </select>
+      </div>
+
+
+    <input placeholder="Searching"          class="form-control mr-sm-4"
         [matChipInputFor]="searchList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         (matChipInputTokenEnd)="add($event)"

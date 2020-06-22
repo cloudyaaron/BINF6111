@@ -19,7 +19,8 @@ export class AppComponent  {
   suggest_text=''
   search_result = [];
   patientsLenth = Object.keys(this.patients).length
-
+  
+  
 
   //multiple seaching function + ui
   removable = true;
@@ -44,6 +45,7 @@ export class AppComponent  {
   }
 
   refreshPage(){
+    console.log(this.search_result)
     if (this.search_list.length!= 0){
       for (var search_term of this.search_list){
         this.search_result.push(this.search(search_term))
