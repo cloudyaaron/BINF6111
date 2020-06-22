@@ -45,25 +45,31 @@ export class AppComponent  {
   }
 
   refreshPage(){
+    this.values=""
+    this.search_result=[]
     console.log(this.search_result)
     if (this.search_list.length!= 0){
       for (var search_term of this.search_list){
-        this.search_result.push(this.search(search_term))
+        this.search(search_term)
       }
     }else if(this.search_list.length == 0){
       this.search_result=[]
     }
+    if(this.search_list.length != 0 && this.search_result.length == 0){
+      this.values="Sorry but nothing has been found"
+    }
+  
   }
 
   search(search_term: string):any{
-    console.log("searching"+search_term['detail']+this.search_result)
+
     if(search_term['detail'][0]=="P"){
       
       for(let i=0; i<this.patientsLenth;i++){
         console.log(this.patients[i]['report_id'])
         if(this.patients[i]['report_id'] == search_term['detail']){
           
-          return (this.patients[i]['sex'])
+          this.search_result.push(this.patients[i]['sex'])
           break
         }
       }
@@ -78,8 +84,8 @@ export class AppComponent  {
           }
         }
       }
-      if(search_term['detail'].length==10 && this.search_result.length==0){
-        this.search_result=['No patients with this phenotype has been found in data']
+      if(search_term['detail'].length==10 &&            this.search_result.length==0){
+        this.search_result=[]
       }
       if(search_term['detail'].length>=11 ){
         this.search_result=['HPO term should be 7 digits']
@@ -97,8 +103,9 @@ export class AppComponent  {
 
 
   //single searching function will be integret into multiple seaching function 
+  // suggest from here!!!
   onKeyUp(event:any){
-    this.values=''
+    
     
     var user_input = event.target.value.trim();
     console.log(user_input)
