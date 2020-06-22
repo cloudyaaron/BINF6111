@@ -1,4 +1,49 @@
-<hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<div style="text-align:center">
+	<h1> PATIENTS </h1>
+	<h2> Total patients number: {{patientsLenth}}</h2>
+
+	<div>
+
+		<mat-form-field >
+			<mat-chip-list #searchList>
+				<mat-chip *ngFor="let search_term of search_list" [removable]="removable"
+					(removed)="remove(search_term)" class="btn btn-primary">
+					{{search_term.detail}}
+					<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+				</mat-chip>
+				<input placeholder="Searching"
+           [matChipInputFor]="searchList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           (matChipInputTokenEnd)="add($event)"
+           (keyup)="onKeyUp($event)"
+           class="col-form-label col-form-label-lg">
+      </mat-chip-list>
+  	</mat-form-field>
+
+    {{values}}
+		<br>
+    {{suggest_text}}
+		<br>
+		<ul *ngFor="let p of search_result">
+			{{p}}
+			<br>
+    </ul>
+	</div>
+</div>
+
+<ul *ngFor="let patient of patients">
+	<li>
+		<p> <b> {{patient.report_id}} </b> &nbsp; &nbsp; Sex: {{patient.sex}}
+			<table>
+				<th> Non-standard Features </th>
+				<tr>
+					<td> Categories </td>
+					<ul *ngFor="let features of patient.nonstandard_features">
+						<td> {{features["label"]}}
+						</td>
+					</ul>
+				</tr>
+			</table>
+			<p> &nbsp;
+			</p>
+</ul>
