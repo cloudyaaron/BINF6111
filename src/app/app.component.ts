@@ -66,6 +66,22 @@ export class AppComponent  {
         }
       }
       return(null)
+    }else if(search_term['detail'].slice(0,3)=="HP:"){
+      for(let i=0; i<this.patientsLenth;i++){
+        var pp = this.patients[i]['features']
+        for (var phenotype of pp){
+          if(phenotype['id'] == search_term['detail']){
+            this.search_result.push(this.patients[i]['report_id'])
+            break
+          }
+        }
+      }
+      if(search_term['detail'].length==10 && this.search_result.length==0){
+        this.search_result=['No patients with this phenotype has been found in data']
+      }
+      if(search_term['detail'].length>=11 ){
+        this.search_result=['HPO term should be 7 digits']
+      }
     }
   }
 
@@ -88,21 +104,7 @@ export class AppComponent  {
           this.suggest_text='Currently search patients id'
     }else if(user_input.slice(0,3)=="HP:"){
       this.suggest_text='Currently search HPO terms'
-      for(let i=0; i<this.patientsLenth;i++){
-        var pp = this.patients[i]['features']
-        for (var phenotype of pp){
-          if(phenotype['id'] == user_input){
-            this.search_result.push(this.patients[i]['report_id'])
-            break
-          }
-        }
-      }
-      if(user_input.length==10 && this.search_result.length==0){
-        this.search_result=['No patients with this phenotype has been found in data']
-      }
-      if(user_input.length>=11 ){
-        this.search_result=['HPO term should be 7 digits']
-      }
+      
     }else if(user_input.length==0){
       this.suggest_text=''
       
