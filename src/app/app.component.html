@@ -86,8 +86,8 @@ Search Results
         <td>
           <div class="form-group">
             <select class="custom-select"> 
-              <ng-container *ngFor="let features of patient.nonstandard_features">
-						  <option> {{features["label"]}}</option>
+              <ng-container *ngFor="let features of patient.features">
+						  <option> {{features["id"]}}</option>
               </ng-container>
             </select>
           </div>
@@ -95,12 +95,13 @@ Search Results
         <td>
           <div class="form-group">
             <select class="custom-select"> 
-              <ng-container *ngFor="let features of patient.features">
-						  <option> {{features["id"]}}</option>
+              <ng-container *ngFor="let features of patient.nonstandard_features">
+						  <option> {{features["label"]}}</option>
               </ng-container>
             </select>
           </div>
         </td>
+
       
       </tr>
     </ng-container>
