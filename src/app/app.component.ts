@@ -27,9 +27,10 @@ export class AppComponent  {
   search_list = [];
 
   add(event: MatChipInputEvent): void {
+    this.search_result=[]
     const input = event.input;
     const value = event.value;
-    console.log(this.search_list)
+
     // Add our fruit
     if ((value || '').trim()) {
       this.search_list.push({detail: value.trim()});
@@ -38,33 +39,53 @@ export class AppComponent  {
     if (input) {
       input.value = '';
     }
+    this.refreshPage()
+    console.log(this.search_list)
   }
+
+  refreshPage(){
+    if (this.search_list.length!= 0){
+      for (var search_term of this.search_list){
+        this.search_result.push(this.search(search_term))
+      }
+    }else if(this.search_list.length == 0){
+      this.search_result=[]
+    }
+  }
+
+  search(search_term: string):any{
+    console.log("searching"+search_term['detail']+this.search_result)
+    if(search_term['detail'][0]=="P"){
+      
+      for(let i=0; i<this.patientsLenth;i++){
+        console.log(this.patients[i]['report_id'])
+        if(this.patients[i]['report_id'] == search_term['detail']){
+          
+          return (this.patients[i]['sex'])
+          break
+        }
+      }
+      return(null)
+    }
+  }
+
   remove(term: any): void {
     const index = this.search_list.indexOf(term);
     if (index >= 0) {
       this.search_list.splice(index, 1);
     }
+    this.refreshPage()
   }
-
-
 
 
   //single searching function will be integret into multiple seaching function 
   onKeyUp(event:any){
     this.values=''
-    this.search_result=[]
+    
     var user_input = event.target.value.trim();
     console.log(user_input)
     if(user_input[0]=="P"){
-      this.suggest_text='Currently search patients id'
-      for(let i=0; i<this.patientsLenth;i++){
-      if(this.patients[i]['report_id'] == user_input){
-        this.values=this.patients[i]['sex']
-        break
-      }else{
-        this.values=event.target.value
-      }
-    }
+          this.suggest_text='Currently search patients id'
     }else if(user_input.slice(0,3)=="HP:"){
       this.suggest_text='Currently search HPO terms'
       for(let i=0; i<this.patientsLenth;i++){
@@ -84,7 +105,7 @@ export class AppComponent  {
       }
     }else if(user_input.length==0){
       this.suggest_text=''
-      this.search_result=[]
+      
     }else{
       this.suggest_text='Searching text is unexpected'
     }

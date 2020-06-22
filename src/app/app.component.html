@@ -11,14 +11,15 @@
 
       </mat-chip-list> 
   	</mat-form-field>
-
+	</div>
+</div>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">PATIENTS:{{patientsLenth}}</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarColor01">
+  </button> -->
+ <!-- <div class="collapse navbar-collapse" id="navbarColor01"> -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
@@ -35,22 +36,31 @@
         (keyup)="onKeyUp($event)"
       >
     </form>
-  </div>
+  <!--</div>-->
 </nav>
-    {{values}}
-		<br>
-    {{suggest_text}}
-		<br>
-		<ul *ngFor="let p of search_result">
-			{{p}}
-			<br>
-    </ul>
-	</div>
-</div>
+{{values}}
+<br>
+{{suggest_text}}
+<br>
+<li class="list-group-item d-flex justify-content-between align-items-center">
+Search Results
+<span class="badge badge-primary badge-pill">{{search_result.length}}</span>
+</li>
+
+
+
+
+
+<ul *ngFor="let p of search_result">
+  {{p}}
+  <br>
+</ul>
+
+
 
 <ul *ngFor="let patient of patients">
 	<li>
-		<p> <b> {{patient.report_id}} </b> &nbsp; &nbsp; Sex: {{patient.sex}}
+		<b> {{patient.report_id}} </b> &nbsp; &nbsp; Sex: {{patient.sex}}
 			<table>
 				<th> Non-standard Features </th>
 				<tr>
@@ -63,4 +73,5 @@
 			</table>
 			<p> &nbsp;
 			</p>
+  </li>
 </ul>
