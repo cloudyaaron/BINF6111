@@ -10,6 +10,8 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
   templateUrl: './app.component.html',
   styleUrls: [ './bootstrap.min.css' ]
 })
+
+
 export class AppComponent  {
   name = 'Angular ' ;
   hpoTerms: HashTable<string, any>;
@@ -32,7 +34,7 @@ export class AppComponent  {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
+    // Add label
     if ((value || '').trim()) {
       this.search_list.push({detail: value.trim()});
     }
@@ -78,7 +80,7 @@ export class AppComponent  {
       for(let i=0; i<this.patientsLenth;i++){
         var pp = this.patients[i]['features']
         for (var phenotype of pp){
-          if(phenotype['id'] == search_term['detail']){
+          if(phenotype['id'] == search_term['detail']&&phenotype['observed']=='yes'){
             this.search_result.push(this.patients[i]['report_id'])
             break
           }

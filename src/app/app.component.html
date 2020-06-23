@@ -87,7 +87,9 @@ Search Results
           <div class="form-group">
             <select class="custom-select"> 
               <ng-container *ngFor="let features of patient.features">
-						  <option> {{features["id"]}}</option>
+              <ng-container *ngIf="features['observed'] == 'yes'">
+						    <option> {{features["id"]}}</option>
+                </ng-container>
               </ng-container>
             </select>
           </div>
