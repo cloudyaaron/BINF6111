@@ -13,7 +13,10 @@
     "@angular/platform-browser": "^9.1.11",
     "@angular/platform-browser-dynamic": "^9.1.11",
     "@angular/router": "^9.1.11",
+    "@types/echarts": "^4.6.2",
+    "echarts": "^4.8.0",
     "ng-busy": "^9.0.0",
+    "ngx-echarts": "^5.0.0",
     "rxjs": "^6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.3"

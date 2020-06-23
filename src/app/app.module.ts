@@ -11,8 +11,14 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NgxEchartsModule } from 'ngx-echarts';
+import * as echarts from 'echarts';
+
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule],
+  imports:      
+  [ 
+    BrowserModule, FormsModule, NgBusyModule, MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule,  NgxEchartsModule.forRoot({echarts}),
+  ],
   declarations: [ AppComponent, HelloComponent ],
   bootstrap:    [ AppComponent ]
 })

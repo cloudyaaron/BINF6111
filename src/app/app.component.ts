@@ -3,6 +3,8 @@ import data from './phenotips_2020-06-09_18-16_with_external_id.json';
 import { HashTable } from './classes/hashtable';
 import {MatChipsModule,MatChipInputEvent} from '@angular/material/chips'
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { EChartOption } from 'echarts';
+ 
 //https://bootswatch.com/litera/?
 
 @Component({
@@ -18,9 +20,7 @@ export class AppComponent  {
   values = ''
   suggest_text=''
   search_result = [];
-  patientsLenth = Object.keys(this.patients).length
-  
-  
+  patientsLenth = Object.keys(this.patients).length;
 
   //multiple seaching function + ui
   removable = true;
@@ -58,7 +58,6 @@ export class AppComponent  {
     if(this.search_list.length != 0 && this.search_result.length == 0){
       this.values="Sorry but nothing has been found"
     }
-  
   }
 
   search(search_term: string):any{
@@ -122,4 +121,22 @@ export class AppComponent  {
     }
 
   }
-}
+
+  //Useful urls: https://www.freakyjolly.com/angular-e-charts-using-ngx-echarts-tutorial/#.XvFQAGgzY2w
+  //https://www.npmjs.com/package/ngx-echarts
+  chartOption: EChartOption = {
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [{
+        data: [820, 932, 901, 934, 1290, 1430, 1550, 1200, 1650.1450, 1680.1890],
+        type: 'line',
+        areaStyle: {}
+      }]
+    }
+  }
