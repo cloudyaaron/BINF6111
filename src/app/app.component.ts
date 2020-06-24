@@ -56,7 +56,21 @@ export class AppComponent  {
       this.search_result=[]
     }
     if(this.search_list.length != 0 && this.search_result.length == 0){
-      this.values="Sorry but nothing has been found"
+      
+      //Search several terms for 
+
+      if(search_term['detail'][0]=="P"){
+        for(let i=0; i<this.patientsLenth;i++){
+        
+        }
+      }
+      }else if(search_term['detail'].slice(0,3)=="HP:"){
+
+
+      }else{
+        this.values="Sorry but nothing has been found"
+
+      }
     }
   
   }
