@@ -59,8 +59,10 @@ export class AppComponent  {
       if(search_term['detail'][0]=="P"){
         console.log(search_term['detail'].length)
         //Extract the number from the search and try to find any patients with the number
-        zeros_index = '000'.split(/0/i)
-        console.log(zeros_index)
+        let zeroesRegex = new RegExp('.*0.*');
+        if (zeroesRegex.test(search_term['detail'])){
+          console.log('worked')
+        }
         if (search_term['detail'].length == 8){
           for(let i=0; i<this.patientsLenth;i++){
             //console.log(this.patients[i]['report_id'])
