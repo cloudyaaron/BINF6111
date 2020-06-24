@@ -6,7 +6,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 //https://bootswatch.com/litera/?
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [ './bootstrap.min.css' ]
 })
@@ -19,7 +19,7 @@ export class AppComponent  {
   suggest_text=''
   search_result = [];
   patientsLenth = Object.keys(this.patients).length
-  
+  showConfig = true;
   
 
   //multiple seaching function + ui
@@ -121,5 +121,7 @@ export class AppComponent  {
       this.suggest_text='Searching text is unexpected'
     }
 
+
   }
+      toggleConfig() { this.showConfig = !this.showConfig; }
 }
