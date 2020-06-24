@@ -19,7 +19,7 @@ export class AppComponent  {
   suggest_text=''
   search_result = [];
   patientsLenth = Object.keys(this.patients).length
-  
+  suggested_queries = [];
   
 
   //multiple seaching function + ui
@@ -47,7 +47,7 @@ export class AppComponent  {
   refreshPage(){
     this.values=""
     this.search_result=[]
-    console.log(this.search_result)
+    //console.log(this.search_result)
     if (this.search_list.length!= 0){
       for (var search_term of this.search_list){
         this.search(search_term)
@@ -56,20 +56,28 @@ export class AppComponent  {
       this.search_result=[]
     }
     if(this.search_list.length != 0 && this.search_result.length == 0){
-      
-      //Search several terms for 
-
       if(search_term['detail'][0]=="P"){
-        for(let i=0; i<this.patientsLenth;i++){
-        
+        console.log(search_term['detail'].length)
+        //Extract the number from the search and try to find any patients with the number
+        zeros_index = '000'.split(/0/i)
+        console.log(zeros_index)
+        if (search_term['detail'].length == 8){
+          for(let i=0; i<this.patientsLenth;i++){
+            //console.log(this.patients[i]['report_id'])
+
+          }
+        }else{
+          this.values='Input length too short. Correct input of format PXXXXXXX'
         }
-      }
       }else if(search_term['detail'].slice(0,3)=="HP:"){
-
-
+        for(let i=0; i<this.patientsLenth;i++){
+          var pp = this.patients[i]['features']
+          for (var phenotype of pp){
+            //console.log(phenotype['id'])
+          }
+        }
       }else{
         this.values="Sorry but nothing has been found"
-
       }
     }
   
@@ -80,7 +88,7 @@ export class AppComponent  {
     if(search_term['detail'][0]=="P"){
       
       for(let i=0; i<this.patientsLenth;i++){
-        console.log(this.patients[i]['report_id'])
+        //console.log(this.patients[i]['report_id'])
         if(this.patients[i]['report_id'] == search_term['detail']){
           
           this.search_result.push(this.patients[i]['sex'])
