@@ -1,9 +1,109 @@
-<hello name="{{ name }}"></hello>
 <div style="text-align:center">
-  <h1> HPO TERMS </h1>
+	<h1> Patients filter </h1>
+	<div>
+		<mat-form-field >
+			<mat-chip-list #searchList >
+				<mat-chip *ngFor="let search_term of search_list" [removable]="removable"
+					(removed)="remove(search_term)" class="btn btn-primary" >
+					{{search_term.detail}}
+					<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+				</mat-chip>
+
+      </mat-chip-list> 
+  	</mat-form-field>
+	</div>
 </div>
-<ul *ngFor="let item of hpoList.features">
-  <li><p> <b>{{item["id"]}}</b> - {{item["label"]}}
-  <p> 
-  </p>  
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">PATIENTS:{{patientsLenth}}</a>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button> -->
+ <!-- <div class="collapse navbar-collapse" id="navbarColor01"> -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0">
+
+      <div class="form-group">
+        <select class="custom-select">
+          <option selected="">OR</option>
+          <option disabled >AND</option>
+        </select>
+      </div>
+
+
+    <input placeholder="Searching"          class="form-control mr-sm-4"
+        [matChipInputFor]="searchList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+        (keyup)="onKeyUp($event)"
+      >
+    </form>
+  <!--</div>-->
+</nav>
+
+
+
+{{values}}
+<br>
+{{suggest_text}}
+<br>
+<li class="list-group-item d-flex justify-content-between align-items-center">
+Search Results
+<span class="badge badge-primary badge-pill">{{search_result.length}}</span>
+</li>
+
+
+
+
+
+<ul *ngFor="let p of search_result">
+  {{p}}
+  <br>
 </ul>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Patient</th>
+      <th scope="col">Sex</th>
+      <th scope="col">Features</th>
+      <th scope="col">Non-standard Features</th>
+    </tr>
+  </thead>
+  <tbody>   
+    <ng-container *ngFor="let patient of patients">
+      <tr >
+        <th scope="row">{{patient.report_id}}</th>
+        <td>{{patient.sex}}</td>
+        <td>
+          <div class="form-group">
+            <select class="custom-select"> 
+              <ng-container *ngFor="let features of patient.features">
+						  <option> {{features["id"]}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <select class="custom-select"> 
+              <ng-container *ngFor="let features of patient.nonstandard_features">
+						  <option> {{features["label"]}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </td>
+
+      
+      </tr>
+    </ng-container>
+  </tbody>
+</table> 
