@@ -13,6 +13,7 @@ export class ConfigComponent {
   error: any;
   headers: string[];
   config: Config;
+  input_term: string; 
 
   constructor(private configService: ConfigService) {}
 
@@ -20,22 +21,19 @@ export class ConfigComponent {
     this.config = undefined;
     this.error = undefined;
     this.headers = undefined;
+    this.input_term = undefined; 
   }
 
-  showConfig() {
-    this.configService.getConfig_2()
+  showConfig(term:string) {
+    this.input_term = term; 
+    this.configService.getConfig_1(this.input_term)
       .subscribe(
-        (data: Config) => this.config = { ...data }, // success path
-        error => this.error = error // error path
+        (data: Config) => {this.config = { ...data },
+                          console.log('data', data);}, // success path
+                          error => this.error = error // error path
       );
   }
 
-
-  showConfig_v2() {
-    this.configService.getConfig()
-      // clone the data object, using its known Config shape
-      .subscribe((data: Config) => this.config = { ...data });
-  }
 
   showConfigResponse() {
     this.configService.getConfigResponse()

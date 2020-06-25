@@ -11,32 +11,30 @@ export interface Config {
 
 @Injectable()
 export class ConfigService {
-  configUrl = 'https://jsonplaceholder.typicode.com/todos/1';
-
+  configUrl = 'https://hpo.jax.org/api/hpo/term/'; 
   constructor(private http: HttpClient) { }
+  search_term: string; 
 
-  getConfig() {
-    return this.http.get<Config>(this.configUrl)
+  transferTerm(term:string) {
+      this.search_term = term.replace(' ', '%'); 
+  }
+  getConfig(term:string) {
+    this.configUrl = this.configUrl + term;
+    console.log(this.configUrl); 
+    return this.http.get(this.configUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
       );
   }
 
-  getConfig_1() {
+  getConfig_1(term:string) {
     return this.http.get(this.configUrl);
   }
 
   getConfig_2() {
     // now returns an Observable of Config
     return this.http.get<Config>(this.configUrl);
-  }
-
-  getConfig_3() {
-    return this.http.get<Config>(this.configUrl)
-      .pipe(
-        catchError(this.handleError)
-      );
   }
 
   getConfigResponse(): Observable<HttpResponse<Config>> {

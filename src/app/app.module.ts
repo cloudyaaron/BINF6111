@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ConfigComponent }      from './service/config.component';
+import { ConfigService } from './service/config.service';
+
 import { MessageService }       from './message.service';
 
 
@@ -20,6 +22,6 @@ import { MessageService }       from './message.service';
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule],
   declarations: [ AppComponent, HelloComponent, ConfigComponent],
   bootstrap:    [ AppComponent ],
-  providers:    [MessageService]
+  providers:    [MessageService, ConfigService]
 })
 export class AppModule { }
