@@ -5,7 +5,7 @@
   <button (click)="clear()">clear</button>
   <button (click)="clear(); makeError()">error</button>
   <span *ngIf="config">
-    <p>Heroes API URL is "{{config.baseUrl}}"</p>
+    <p>HPO API URL is "{{config.baseUrl}}"</p>
     <div *ngIf="headers">
       Response headers:
       <ul>

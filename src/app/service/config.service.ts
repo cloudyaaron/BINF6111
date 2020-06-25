@@ -11,7 +11,7 @@ export interface Config {
 
 @Injectable()
 export class ConfigService {
-  configUrl = 'app/config.json';
+  configUrl = 'https://jsonplaceholder.typicode.com/todos/1';
 
   constructor(private http: HttpClient) { }
 

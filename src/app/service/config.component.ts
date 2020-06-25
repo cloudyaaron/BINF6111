@@ -23,19 +23,13 @@ export class ConfigComponent {
   }
 
   showConfig() {
-    this.configService.getConfig()
+    this.configService.getConfig_2()
       .subscribe(
         (data: Config) => this.config = { ...data }, // success path
         error => this.error = error // error path
       );
   }
 
-  showConfig_v1() {
-    this.configService.getConfig_1()
-      .subscribe((data: Config) => this.config = {
-          baseUrl: data['baseUrl'],
-      });
-  }
 
   showConfig_v2() {
     this.configService.getConfig()

@@ -18,7 +18,8 @@ import { MessageService }       from './message.service';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule],
-  declarations: [ AppComponent, HelloComponent ],
-  bootstrap:    [ AppComponent ]
+  declarations: [ AppComponent, HelloComponent, ConfigComponent],
+  bootstrap:    [ AppComponent ],
+  providers:    [MessageService]
 })
 export class AppModule { }
