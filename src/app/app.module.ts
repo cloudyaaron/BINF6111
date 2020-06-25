@@ -12,8 +12,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-//import { ConfigComponent }      from './service/config.component';
-import { ConfigService } from './HPOapi/api.service';
+import { ApiComponent }      from './HPOapi/api.component';
+import { ApiService } from './HPOapi/api.service';
 
 import { MessageService }       from './message.service';
 import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
@@ -22,6 +22,6 @@ import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule],
   declarations: [ AppComponent, HelloComponent],
   bootstrap:    [ AppComponent ],
-  providers:    [MessageService, ConfigService]
+  providers:    [MessageService, ApiService]
 })
 export class AppModule { }

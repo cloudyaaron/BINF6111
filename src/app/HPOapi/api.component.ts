@@ -5,7 +5,7 @@ import { MessageService } from '../message.service';
 
 @Component({
   selector: 'HPOapi',
-  templateUrl: './config.component.html',
+  templateUrl: './api.component.html',
   providers: [ ApiService ],
   styles: ['.error {color: red;}']
 })

@@ -22,7 +22,7 @@ export class AppComponent  {
   patientsLenth = Object.keys(this.patients).length
   showConfig = true;
   
-  constructor(private configService: ConfigService) {}
+  constructor(private apiService: ApiService) {}
   //multiple seaching function + ui
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER];
@@ -78,7 +78,7 @@ export class AppComponent  {
     }else if(search_term['detail'].slice(0,3)=="HP:"){
       console.log('searching for a hpo term')
       //tried to get the searching terms 
-      this.configService.storeConfig(search_term['detail']) 
+      this.apiService.storeConfig(search_term['detail']) 
       for(let i=0; i<this.patientsLenth;i++){
         var pp = this.patients[i]['features']
         for (var phenotype of pp){
