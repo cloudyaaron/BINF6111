@@ -1,21 +1,21 @@
-/*
+
 import { Component } from '@angular/core';
-import { Config, ConfigService } from './config.service';
+import { Config, ApiService } from './api.service';
 import { MessageService } from '../message.service';
 
 @Component({
-  selector: 'app-config',
+  selector: 'HPOapi',
   templateUrl: './config.component.html',
-  providers: [ ConfigService ],
+  providers: [ ApiService ],
   styles: ['.error {color: red;}']
 })
-export class ConfigComponent {
+export class ApiComponent {
   error: any;
   headers: string[];
   result: Config;
   input_term: string; 
 
-  constructor(private configService: ConfigService) {}
+  constructor(private apiService: ApiService) {}
 
   clear() {
     this.result = undefined;
@@ -26,7 +26,7 @@ export class ConfigComponent {
 
   showConfig(term:string) {
     this.input_term = term; 
-    this.configService.getConfig(this.input_term)
+    this.apiService.getConfig(this.input_term)
       .subscribe(
         (data: Config) => {this.result = { ...data },
                           console.log('data', data);}, // success path
@@ -34,24 +34,8 @@ export class ConfigComponent {
       );
   }
 
-  showConfigResponse() {
-    this.configService.getConfigResponse()
-      // resp is of type `HttpResponse<Config>`
-      .subscribe(resp => {
-        // display its headers
-        const keys = resp.headers.keys();
-        this.headers = keys.map(key =>
-          `${key}: ${resp.headers.get(key)}`);
-
-        // access the body directly, which is typed as `Config`.
-        this.result = { ... resp.body };
-      });
-  }
-  makeError() {
-    this.configService.makeIntentionalError().subscribe(null, error => this.error = error );
-  }
 }
-*/
+
 
 /*
 Copyright Google LLC. All Rights Reserved.

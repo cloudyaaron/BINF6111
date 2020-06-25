@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 //import { ConfigComponent }      from './service/config.component';
-import { ConfigService } from './service/config.service';
+import { ConfigService } from './HPOapi/api.service';
 
 import { MessageService }       from './message.service';
 import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';

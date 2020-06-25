@@ -10,7 +10,7 @@ export interface Config {
 }
 
 @Injectable()
-export class ConfigService {
+export class ApiService {
   configUrl = 'https://hpo.jax.org/api/hpo/term/'; 
   details: Details; 
   constructor(private http: HttpClient) { }
