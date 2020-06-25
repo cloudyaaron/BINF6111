@@ -1,7 +1,7 @@
+/*
 import { Component } from '@angular/core';
 import { Config, ConfigService } from './config.service';
 import { MessageService } from '../message.service';
-
 
 @Component({
   selector: 'app-config',
@@ -12,13 +12,13 @@ import { MessageService } from '../message.service';
 export class ConfigComponent {
   error: any;
   headers: string[];
-  config: Config;
+  result: Config;
   input_term: string; 
 
   constructor(private configService: ConfigService) {}
 
   clear() {
-    this.config = undefined;
+    this.result = undefined;
     this.error = undefined;
     this.headers = undefined;
     this.input_term = undefined; 
@@ -26,14 +26,13 @@ export class ConfigComponent {
 
   showConfig(term:string) {
     this.input_term = term; 
-    this.configService.getConfig_1(this.input_term)
+    this.configService.getConfig(this.input_term)
       .subscribe(
-        (data: Config) => {this.config = { ...data },
+        (data: Config) => {this.result = { ...data },
                           console.log('data', data);}, // success path
                           error => this.error = error // error path
       );
   }
-
 
   showConfigResponse() {
     this.configService.getConfigResponse()
@@ -45,14 +44,14 @@ export class ConfigComponent {
           `${key}: ${resp.headers.get(key)}`);
 
         // access the body directly, which is typed as `Config`.
-        this.config = { ... resp.body };
+        this.result = { ... resp.body };
       });
   }
   makeError() {
     this.configService.makeIntentionalError().subscribe(null, error => this.error = error );
   }
 }
-
+*/
 
 /*
 Copyright Google LLC. All Rights Reserved.

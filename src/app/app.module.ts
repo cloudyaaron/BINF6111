@@ -12,15 +12,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { ConfigComponent }      from './service/config.component';
+//import { ConfigComponent }      from './service/config.component';
 import { ConfigService } from './service/config.service';
 
 import { MessageService }       from './message.service';
-
+import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule],
-  declarations: [ AppComponent, HelloComponent, ConfigComponent],
+  declarations: [ AppComponent, HelloComponent],
   bootstrap:    [ AppComponent ],
   providers:    [MessageService, ConfigService]
 })

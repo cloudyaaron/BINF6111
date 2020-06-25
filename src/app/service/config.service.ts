@@ -4,7 +4,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-
+import { HPOTerm, Details } from '../classes/HPOTerm'; 
 export interface Config {
   baseUrl: string;
 }
@@ -12,36 +12,31 @@ export interface Config {
 @Injectable()
 export class ConfigService {
   configUrl = 'https://hpo.jax.org/api/hpo/term/'; 
+  details: Details; 
   constructor(private http: HttpClient) { }
-  search_term: string; 
-
-  transferTerm(term:string) {
-      this.search_term = term.replace(' ', '%'); 
-  }
+  
   getConfig(term:string) {
-    this.configUrl = this.configUrl + term;
-    console.log(this.configUrl); 
-    return this.http.get(this.configUrl)
+    let searchUrl = this.configUrl + term;
+   return this.http.get(searchUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
       );
   }
 
-  getConfig_1(term:string) {
-    return this.http.get(this.configUrl);
+  storeConfig(term:string) {
+    this.getConfig(term).subscribe(
+        (data) => {
+                    console.log('details', data['details']);}, 
+      );
   }
-
-  getConfig_2() {
-    // now returns an Observable of Config
-    return this.http.get<Config>(this.configUrl);
-  }
-
-  getConfigResponse(): Observable<HttpResponse<Config>> {
-    return this.http.get<Config>(
+/*
+//This is from the example file, can delete
+  getConfigResponse(): Observable<HttpResponse<HPOTerm>> {
+    return this.http.get<HPOTerm>(
       this.configUrl, { observe: 'response' });
   }
-
+*/
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
