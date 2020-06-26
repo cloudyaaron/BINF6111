@@ -53,13 +53,6 @@ export class ApiService {
       'Something bad happened; please try again later.');
   };
 
-  makeIntentionalError() {
-    return this.http.get('not/a/real/url')
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
-
 }
 
 
