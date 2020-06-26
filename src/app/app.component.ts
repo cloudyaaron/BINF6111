@@ -1,5 +1,6 @@
 import { Component, Input} from '@angular/core';
 import data from './phenotips_2020-06-09_18-16_with_external_id.json';
+import { Config, ApiService } from './HPOapi/api.service';
 import { HashTable } from './classes/hashtable';
 import {MatChipsModule,MatChipInputEvent} from '@angular/material/chips'
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
@@ -19,9 +20,9 @@ export class AppComponent  {
   suggest_text=''
   search_result = [];
   patientsLenth = Object.keys(this.patients).length
+  showConfig = true;
   
-  
-
+  constructor(private apiService: ApiService) {}
   //multiple seaching function + ui
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER];
@@ -75,6 +76,9 @@ export class AppComponent  {
       }
       return(null)
     }else if(search_term['detail'].slice(0,3)=="HP:"){
+      console.log('searching for a hpo term')
+      //tried to get the searching terms 
+      this.apiService.storeConfig(search_term['detail']) 
       for(let i=0; i<this.patientsLenth;i++){
         var pp = this.patients[i]['features']
         for (var phenotype of pp){
@@ -91,6 +95,7 @@ export class AppComponent  {
         this.search_result=['HPO term should be 7 digits']
       }
     }
+    
   }
 
   remove(term: any): void {
@@ -121,5 +126,9 @@ export class AppComponent  {
       this.suggest_text='Searching text is unexpected'
     }
 
+
   }
+      toggleConfig() { this.showConfig = !this.showConfig; }
+
+      
 }
