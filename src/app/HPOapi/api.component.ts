@@ -17,13 +17,6 @@ export class ApiComponent {
 
   constructor(private apiService: ApiService) {}
 
-  clear() {
-    this.result = undefined;
-    this.error = undefined;
-    this.headers = undefined;
-    this.input_term = undefined; 
-  }
-
   showConfig(term:string) {
     this.input_term = term; 
     this.apiService.getConfig(this.input_term)
