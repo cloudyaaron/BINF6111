@@ -20,7 +20,7 @@ import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule],
-  declarations: [ AppComponent, HelloComponent],
+  declarations: [ AppComponent, HelloComponent,ApiComponent],
   bootstrap:    [ AppComponent ],
   providers:    [MessageService, ApiService]
 })
