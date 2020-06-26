@@ -24,6 +24,8 @@ export class AppComponent  {
   patientsLenth = Object.keys(this.patients).length
   showConfig = true;
   
+  typeR='R'
+
   constructor(private apiService: ApiService) {}
   //multiple seaching function + ui
   removable = true;
@@ -44,7 +46,7 @@ export class AppComponent  {
       input.value = '';
     }
     this.refreshPage()
-    console.log(this.search_list)
+    
   }
 
   refreshPage(){
@@ -69,10 +71,10 @@ export class AppComponent  {
     if(search_term['detail'][0]=="P"){
       
       for(let i=0; i<this.patientsLenth;i++){
-        console.log(this.patients[i]['report_id'])
+        
         if(this.patients[i]['report_id'] == search_term['detail']){
           
-          this.search_result.push(this.patients[i]['sex'])
+          this.search_result.push(this.patients[i])
           break
         }
       }
@@ -85,7 +87,7 @@ export class AppComponent  {
         var pp = this.patients[i]['features']
         for (var phenotype of pp){
           if(phenotype['id'] == search_term['detail']&&phenotype['observed']=='yes'){
-            this.search_result.push(this.patients[i]['report_id'])
+            this.search_result.push(this.patients[i])
             break
           }
         }

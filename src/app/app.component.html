@@ -62,14 +62,7 @@ Search Results
 </li>
 
 
+<patient-list [patients]='search_result' [type]=typeR></patient-list>
 
-
-
-<ul *ngFor="let p of search_result">
-  {{p}}
-  <br>
-</ul>
-
-
-<patient-list></patient-list>
+<patient-list [patients]='patients'[type]=''></patient-list>
 

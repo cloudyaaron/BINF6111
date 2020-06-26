@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import data from '../phenotips_2020-06-09_18-16_with_external_id.json';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'patient-list',
@@ -7,5 +6,7 @@ import data from '../phenotips_2020-06-09_18-16_with_external_id.json';
   styleUrls: [ '../bootstrap.min.css' ]
 })
 export class PatientsList {
-  patients = data;
+  @Input() patients: Array<any>;
+  @Input() type: String;
+
 }
