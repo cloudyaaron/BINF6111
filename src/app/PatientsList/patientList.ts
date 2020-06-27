@@ -22,6 +22,6 @@ export function initializePatients(patients) {
 
     list.push(patient)
   }
-  console.log(list)
+  //console.log(list)
   return list;
 }
