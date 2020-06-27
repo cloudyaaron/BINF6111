@@ -134,7 +134,27 @@ export class AppComponent  {
     var user_input = event.target.value.trim();
     console.log(user_input)
     if(user_input[0]=="P"){
-          this.suggest_text='Currently search patients id'
+      this.suggest_text='Currently search patients id'
+      if(user_input.length >= 1){
+        var w_card = '.*';
+        var regex = user_input.concat(w_card);
+        var patient_regex = new RegExp(regex);
+        var suggestion_array = [];
+        var add_suggestion = 0;
+        for(let i=0; i<this.patientsLenth;i++){
+          //console.log(this.patients[i]['report_id'])
+          if (add_suggestion == 10){
+            break;
+          }
+          if (patient_regex.test(this.patients[i]['report_id'])){
+            add_suggestion += 1;
+            //console.log('worked')
+            suggestion_array.push(this.patients[i]['report_id'])
+          }
+        }
+        console.log(suggestion_array)
+        this.suggested_queries = suggestion_array
+      }
     }else if(user_input.slice(0,3)=="HP:"){
       this.suggest_text='Currently search HPO terms'
       
