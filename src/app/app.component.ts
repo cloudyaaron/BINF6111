@@ -23,8 +23,8 @@ export class AppComponent  {
   search_result = [];
   patientsLenth = Object.keys(this.patients).length
   showConfig = true;
-  
   typeR='R'
+  intersection_check = false
 
   constructor(private apiService: ApiService) {}
   //multiple seaching function + ui
@@ -67,7 +67,6 @@ export class AppComponent  {
   }
 
   search(search_term: string):any{
-
     if(search_term['detail'][0]=="P"){
       
       for(let i=0; i<this.patientsLenth;i++){
@@ -78,7 +77,7 @@ export class AppComponent  {
           break
         }
       }
-      return(null)
+      
     }else if(search_term['detail'].slice(0,3)=="HP:"){
       console.log('searching for a hpo term')
       //tried to get the searching terms 
@@ -87,7 +86,17 @@ export class AppComponent  {
         var pp = this.patients[i]['features']
         for (var phenotype of pp){
           if(phenotype['id'] == search_term['detail']&&phenotype['observed']=='yes'){
-            this.search_result.push(this.patients[i])
+            //if(this.check_result(this.patients[i])== true){
+              if(this.intersection_check==true){
+                if(this.check_result(this.patients[i])== false){
+                  this.search_result.push(this.patients[i])
+                }
+              }else{
+                this.search_result.push(this.patients[i])
+              }
+              
+              
+            //}
             break
           }
         }
@@ -99,8 +108,22 @@ export class AppComponent  {
         this.search_result=['HPO term should be 7 digits']
       }
     }
+
     
   }
+
+  check_result(p:any):Boolean{
+    if (this.search_result.length==0){
+      return true
+    }
+    for(var term of this.search_result){
+      if(p['report_id']==term['report_id']){
+        return false
+      }
+    }
+    return true;
+  }
+
 
   remove(term: any): void {
     const index = this.search_list.indexOf(term);
