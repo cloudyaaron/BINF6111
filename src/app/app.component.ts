@@ -135,7 +135,7 @@ export class AppComponent  {
     console.log(user_input)
     if(user_input[0]=="P"){
       this.suggest_text='Currently search patients id'
-      if(user_input.length >= 1){
+      if(user_input.length >= 2){
         var w_card = '.*';
         var regex = user_input.concat(w_card);
         var patient_regex = new RegExp(regex);
@@ -143,7 +143,7 @@ export class AppComponent  {
         var add_suggestion = 0;
         for(let i=0; i<this.patientsLenth;i++){
           //console.log(this.patients[i]['report_id'])
-          if (add_suggestion == 10){
+          if (add_suggestion == 5){
             break;
           }
           if (patient_regex.test(this.patients[i]['report_id'])){
@@ -154,9 +154,52 @@ export class AppComponent  {
         }
         console.log(suggestion_array)
         this.suggested_queries = suggestion_array
+        /*
+        for (let i=0; i<suggestion_array.length;i++)
+        {
+          this.suggested_queries[i] = suggestion_array[i].concat('<br />');
+        }
+        */
       }
     }else if(user_input.slice(0,3)=="HP:"){
       this.suggest_text='Currently search HPO terms'
+      if(user_input.length >= 2){
+        var w_card = '.*';
+        var regex = user_input.concat(w_card);
+        var hpo_regex = new RegExp(regex);
+        var suggestion_array = [];
+        var add_suggestion = 0;
+        for(let i=0; i<this.patientsLenth;i++){
+          //console.log(this.patients[i]['report_id'])
+          
+          var pp = this.patients[i]['features']
+          for (var phenotype of pp){
+            //if(phenotype['id'] == search_term['detail']){
+            if (add_suggestion == 5){
+              break;
+            }
+            if (hpo_regex.test(phenotype['id'])){
+              if(suggestion_array.lastIndexOf(phenotype['id'])>= 0){
+                continue;
+              }
+              add_suggestion += 1;
+              //console.log('worked')
+              suggestion_array.push(phenotype['id'])
+            }
+          }
+          if (add_suggestion == 5){
+            break;
+          }
+        }
+        console.log(suggestion_array)
+        this.suggested_queries = suggestion_array
+        /*
+        for (let i=0; i<suggestion_array.length;i++)
+        {
+          this.suggested_queries[i] = suggestion_array[i].concat('<br />');
+        }
+        */
+      }
       
     }else if(user_input.length==0){
       this.suggest_text=''
