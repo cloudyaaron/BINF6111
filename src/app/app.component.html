@@ -58,11 +58,15 @@ Search Results
   <label class="custom-control-label" for="customSwitch1">Show intersection</label>
 </div>
 
-<span class="badge badge-primary badge-pill">{{search_result.length}}</span>
+<span class="badge badge-primary badge-pill">{{getResultNum()}}</span>
 </li>
 
-
-<patient-list [patients]='search_result' [type]=typeR></patient-list>
-
-<patient-list [patients]='patients'[type]=''></patient-list>
+<ng-container *ngFor="let eachsearch of search_result">
+  <h3>
+  {{eachsearch['query']}}
+  <small class="text-muted"> Results : {{eachsearch['answer'].length}}</small>
+  </h3>
+  <patient-list [patients]= "eachsearch['answer']" [type]=typeR></patient-list>
+</ng-container>
+<patient-list [patients]='patients' [type]=''></patient-list>
 

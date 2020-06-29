@@ -40,6 +40,7 @@ export class AppComponent  {
     // Add label
     if ((value || '').trim()) {
       this.search_list.push({detail: value.trim()});
+      this.search_result.push({query:value.trim(),answer:[]});
     }
     // Reset the input value
     if (input) {
@@ -52,9 +53,11 @@ export class AppComponent  {
   refreshPage(){
     this.values=""
     this.search_result=[]
+    console.log(this.search_list)
     console.log(this.search_result)
     if (this.search_list.length!= 0){
       for (var search_term of this.search_list){
+        this.search_result.push({query:search_term['detail'],answer:[]});
         this.search(search_term)
       }
     }else if(this.search_list.length == 0){
@@ -67,6 +70,13 @@ export class AppComponent  {
   }
 
   search(search_term: string):any{
+    var index = 0
+    for(index;index<this.search_result.length;index++){
+      if(search_term['detail']==this.search_result[index]['query']){
+        
+        break
+      }
+    }
     if(search_term['detail'][0]=="P"){
       
       for(let i=0; i<this.patientsLenth;i++){
@@ -81,19 +91,13 @@ export class AppComponent  {
     }else if(search_term['detail'].slice(0,3)=="HP:"){
       console.log('searching for a hpo term')
       //tried to get the searching terms 
-      this.apiService.storeConfig(search_term['detail']) 
+      //this.apiService.storeConfig(search_term['detail']) 
       for(let i=0; i<this.patientsLenth;i++){
         var pp = this.patients[i]['features']
         for (var phenotype of pp){
           if(phenotype['id'] == search_term['detail']&&phenotype['observed']=='yes'){
             //if(this.check_result(this.patients[i])== true){
-              if(this.intersection_check==true){
-                if(this.check_result(this.patients[i])== false){
-                  this.search_result.push(this.patients[i])
-                }
-              }else{
-                this.search_result.push(this.patients[i])
-              }
+              this.search_result[index]['answer'].push(this.patients[i])
               
               
             //}
@@ -105,18 +109,30 @@ export class AppComponent  {
         this.search_result=[]
       }
       if(search_term['detail'].length>=11 ){
-        this.search_result=['HPO term should be 7 digits']
+        this.values = "HPO term format incorrect"
+        this.search_list.pop()
+        
       }
     }
 
     
   }
 
-  check_result(p:any):Boolean{
-    if (this.search_result.length==0){
+  getResultNum(){
+    var r=0
+    for(var search_term of this.search_result){
+      r = search_term['answer'].length + r
+    }
+    return r
+  }
+ 
+  //return false when already have patient
+  check_result(p:any,plist:Array<any>):Boolean{
+    
+    if (plist.length==0){
       return true
     }
-    for(var term of this.search_result){
+    for(var term of plist){
       if(p['report_id']==term['report_id']){
         return false
       }
@@ -126,6 +142,7 @@ export class AppComponent  {
 
 
   remove(term: any): void {
+    console.log('removing'+term)
     const index = this.search_list.indexOf(term);
     if (index >= 0) {
       this.search_list.splice(index, 1);
