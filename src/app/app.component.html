@@ -54,12 +54,13 @@
 Search Results
 
 <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]='intersection_check'(change)="refreshPage()">
+  <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]='intersection_check'(change)="onFindIntersection()">
   <label class="custom-control-label" for="customSwitch1">Show intersection</label>
 </div>
 
 <span class="badge badge-primary badge-pill">{{getResultNum()}}</span>
 </li>
+
 
 <ng-container *ngFor="let eachsearch of search_result">
   <h3>

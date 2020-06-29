@@ -150,6 +150,9 @@ export class AppComponent  {
     this.refreshPage()
   }
 
+  onFindIntersection(){
+    
+  }
 
   //single searching function will be integret into multiple seaching function 
   // suggest from here!!!
