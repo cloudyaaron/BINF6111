@@ -50,7 +50,9 @@ export class AppComponent  {
     //console.log(this.search_result)
     if (this.search_list.length!= 0){
       for (var search_term of this.search_list){
-        this.search(search_term)
+        console.log('refresh then search')
+        console.log(search_term["detail"])
+        this.search(search_term["detail"])
       }
     }else if(this.search_list.length == 0){
       this.search_result=[]
@@ -82,36 +84,47 @@ export class AppComponent  {
         this.values="Sorry but nothing has been found"
       }
     }
-  
   }
-
   search(search_term: string):any{
+    console.log('search')
+    console.log(search_term)
+    if (search_term[0] == "P"){
+      console.log('if works')
+    }else{
+      console.log('if works')
 
-    if(search_term['detail'][0]=="P"){
+    }
+    //if(search_term['detail'][0]=="P"){
+    if(search_term[0]=="P"){
       
       for(let i=0; i<this.patientsLenth;i++){
         //console.log(this.patients[i]['report_id'])
-        if(this.patients[i]['report_id'] == search_term['detail']){
+        //if(this.patients[i]['report_id'] == search_term['detail']){
+        if(this.patients[i]['report_id'] == search_term){
           
           this.search_result.push(this.patients[i]['sex'])
           break
         }
       }
       return(null)
-    }else if(search_term['detail'].slice(0,3)=="HP:"){
+   // }else if(search_term['detail'].slice(0,3)=="HP:"){
+    }else if(search_term.slice(0,3)=="HP:"){
       for(let i=0; i<this.patientsLenth;i++){
         var pp = this.patients[i]['features']
         for (var phenotype of pp){
-          if(phenotype['id'] == search_term['detail']){
+          //if(phenotype['id'] == search_term['detail']){
+          if(phenotype['id'] == search_term){
             this.search_result.push(this.patients[i]['report_id'])
             break
           }
         }
       }
-      if(search_term['detail'].length==10 &&            this.search_result.length==0){
+      //if(search_term['detail'].length==10 &&            this.search_result.length==0){
+      if(search_term.length==10 &&            this.search_result.length==0){
         this.search_result=[]
       }
-      if(search_term['detail'].length>=11 ){
+      //if(search_term['detail'].length>=11 ){
+      if(search_term.length>=11 ){
         this.search_result=['HPO term should be 7 digits']
       }
     }
@@ -128,9 +141,7 @@ export class AppComponent  {
 
   //single searching function will be integret into multiple seaching function 
   // suggest from here!!!
-  onKeyUp(event:any){
-    
-    
+  onKeyUp(event:any){    
     var user_input = event.target.value.trim();
     console.log(user_input)
     if(user_input[0]=="P"){
@@ -191,7 +202,7 @@ export class AppComponent  {
             break;
           }
         }
-        console.log(suggestion_array)
+        //console.log(suggestion_array)
         this.suggested_queries = suggestion_array
         /*
         for (let i=0; i<suggestion_array.length;i++)
@@ -207,6 +218,17 @@ export class AppComponent  {
     }else{
       this.suggest_text='Searching text is unexpected'
     }
+  }
+
+  public clickSuggestButton(event:string){
+    console.log('clicked')
+    //console.log(this.suggested_queries[0])
+    //var st['detail'] = this.suggested_queries[0]
+    console.log(event)
+    //event["detail"] = event
+    console.log(event)
+    this.search(event)
 
   }
+
 }

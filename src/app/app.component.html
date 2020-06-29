@@ -54,7 +54,7 @@
 {{suggest_text}}
 <br>
 <p *ngFor="let sq of suggested_queries">
-  <button ng-click="">
+  <button (click)="clickSuggestButton(sq)">
     {{sq}}
   </button>
   <br>
