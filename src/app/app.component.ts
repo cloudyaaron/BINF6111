@@ -83,7 +83,7 @@ export class AppComponent  {
         
         if(this.patients[i]['report_id'] == search_term['detail']){
           
-          this.search_result.push(this.patients[i])
+          this.search_result[index]['answer'].push(this.patients[i])
           break
         }
       }
@@ -120,6 +120,9 @@ export class AppComponent  {
 
   getResultNum(){
     var r=0
+    if(this.search_result.length==0){
+      return 0
+    }
     for(var search_term of this.search_result){
       r = search_term['answer'].length + r
     }
