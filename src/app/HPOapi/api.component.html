@@ -6,7 +6,11 @@
   <p> Name is {{name}}, HPO id is {{hpoid}}</p>
   <div *ngIf="haveChildren">
     <p> Childrens are: </p>
-    <HPOapi *ngFor="let c of firstLevelChildren"> {{c['name']}}, {{c['ontologyId']}}</HPOapi>
+    <p *ngFor="let c of firstLevelChildren" > 
+      {{c['name']}}, {{c['ontologyId']}}
+      <button> Search Patient</button>
+      <button (click)="showConfig(c['ontologyId'])">Find Term</button>
+      </p>
   </div>
   
 
