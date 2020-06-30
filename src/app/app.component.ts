@@ -61,11 +61,37 @@ export class AppComponent  {
       if(search_term['detail'][0]=="P"){
         console.log(search_term['detail'].length)
         //Extract the number from the search and try to find any patients with the number
-        console.log(search_term['detail'].split('0'))
-        let zeroesRegex = new RegExp('.*0.*');
-        if (zeroesRegex.test(search_term['detail'])){
-          console.log('worked')
+        var key_chars = search_term['detail'].split('0');
+        var len_kc = 0;
+        console.log('printing key chars')
+
+        var suggest_regex = '.*';
+        for(let k = 0; k<key_chars.length;k++){
+          if(key_chars[k] == 'P'){
+            continue;
+          }
+          else{
+            suggest_regex = suggest_regex.concat(key_chars[k]);
+            suggest_regex = suggest_regex.concat('.*');
+
+          }
         }
+        console.log(suggest_regex)
+        let sugReg = new RegExp(suggest_regex);
+        var suggestion_array = [];
+        var suggest_count = 0;
+        for(let i=0; i<this.patientsLenth;i++){
+          if(suggest_count == 5){
+            break;
+          }
+          if(sugReg.test(this.patients[i]['report_id'])){
+            console.log(this.patients[i]['report_id'])
+            suggestion_array.push(this.patients[i]['report_id']);
+            suggest_count += 1;
+          }
+        }
+        this.suggested_queries = suggestion_array
+
         if (search_term['detail'].length == 8){
           for(let i=0; i<this.patientsLenth;i++){
             //console.log(this.patients[i]['report_id'])
@@ -75,6 +101,42 @@ export class AppComponent  {
           this.values='Input length too short. Correct input of format PXXXXXXX'
         }
       }else if(search_term['detail'].slice(0,3)=="HP:"){
+        var key_chars = search_term['detail'].split('0');
+        var len_kc = 0;
+        console.log('printing key chars')
+
+        var suggest_regex = '.*';
+        for(let k = 0; k<key_chars.length;k++){
+          if(key_chars[k] == 'HP:'){
+            continue;
+          }
+          else{
+            suggest_regex = suggest_regex.concat(key_chars[k]);
+            suggest_regex = suggest_regex.concat('.*');
+
+          }
+        }
+        console.log(suggest_regex)
+        let sugReg = new RegExp(suggest_regex);
+        var suggestion_array = [];
+        var suggest_count = 0;
+        for(let i=0; i<this.patientsLenth;i++){
+          
+          var pp = this.patients[i]['features']
+          for (var phenotype of pp){
+            if(suggest_count == 5){
+            break;
+          }
+            if(sugReg.test(phenotype['id'])){
+              console.log(phenotype['id'])
+              suggestion_array.push(phenotype['id']);
+              suggest_count += 1;
+            }
+          }
+        }
+        this.suggested_queries = suggestion_array
+
+
         for(let i=0; i<this.patientsLenth;i++){
           var pp = this.patients[i]['features']
           for (var phenotype of pp){
