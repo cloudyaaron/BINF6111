@@ -10,7 +10,7 @@
     </thead>
     <tbody>   
       <ng-container *ngFor="let patient of patients">
-        <tr [ngClass]="{'table-secondary':type=='R'}">
+        <tr [ngClass]="{'table-secondary':type=='R'}" onclick="console.log('yo')">
           <th scope="row">{{patient.report_id}}</th>
           <td>{{patient.sex}}</td>
           <td>

@@ -54,12 +54,16 @@
 Search Results
 
 <div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]='intersection_check'(change)="refreshPage()">
-  <label class="custom-control-label" for="customSwitch1">Show intersection</label>
+  <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]='intersection_check'(change)="onIntersection($event)">
+  <label class="custom-control-label" for="customSwitch1" >Show intersection</label>
 </div>
 
 <span class="badge badge-primary badge-pill">{{getResultNum()}}</span>
 </li>
+
+<!--<ng-container *ngIf="intersection_check">
+  <patient-list [patients]= 'patients' [type]=typeR></patient-list>
+</ng-container>-->
 
 <ng-container *ngFor="let eachsearch of search_result">
   <h3>
@@ -68,6 +72,7 @@ Search Results
   </h3>
   <patient-list [patients]= "eachsearch['answer']" [type]=typeR></patient-list>
 </ng-container>
+
 <patient-list [patients]='patients' [type]=''></patient-list>
 
 <HPOapi>loading</HPOapi>
