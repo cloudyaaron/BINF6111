@@ -157,11 +157,11 @@ export class AppComponent  {
     }
   }
   search(search_term: string):any{
-
+    console.log('search')
     var index = 0
     for(index;index<this.search_result.length;index++){
       if(search_term==this.search_result[index]['query']){
-        
+        console.log(index)
         break
       }
     }
@@ -170,8 +170,9 @@ export class AppComponent  {
       for(let i=0; i<this.patientsLenth;i++){
         
         if(this.patients[i]['report_id'] == search_term){
-          
+          console.log(this.patients[i]['report_id'])
           this.search_result[index]['answer'].push(this.patients[i])
+          console.log(this.search_result[index]['answer'])
           break
         }
       }
@@ -331,6 +332,7 @@ export class AppComponent  {
     console.log(event)
     //event["detail"] = event
     console.log(event)
+    this.search_result.push({query:event,answer:[]});
     this.search(event)
 
 
