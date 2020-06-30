@@ -12,7 +12,7 @@ import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
 })
 
 export class ApiComponent {
-  @Input('search_result') search_result: string[];
+  @Input('search_result') input_term: string[];
   error: any;
   headers: string[];
   hpoid: string;
@@ -26,7 +26,7 @@ export class ApiComponent {
 
   showConfig(term:string) {
 
-    this.apiService.getConfig(this.search_result['details'])
+    this.apiService.getConfig(this.input_term['details'])
       .subscribe(
         (data) => {
                     console.log('details are:', data['details']);
@@ -37,7 +37,9 @@ export class ApiComponent {
                
       );
   }
-
+  showSearchResult(){
+    return this.input_term; 
+  }
 }
 
 
