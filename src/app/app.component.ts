@@ -61,6 +61,7 @@ export class AppComponent  {
       if(search_term['detail'][0]=="P"){
         console.log(search_term['detail'].length)
         //Extract the number from the search and try to find any patients with the number
+        console.log(search_term['detail'].split('0'))
         let zeroesRegex = new RegExp('.*0.*');
         if (zeroesRegex.test(search_term['detail'])){
           console.log('worked')
@@ -88,12 +89,6 @@ export class AppComponent  {
   search(search_term: string):any{
     console.log('search')
     console.log(search_term)
-    if (search_term[0] == "P"){
-      console.log('if works')
-    }else{
-      console.log('if works')
-
-    }
     //if(search_term['detail'][0]=="P"){
     if(search_term[0]=="P"){
       

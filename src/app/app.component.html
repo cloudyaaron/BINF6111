@@ -65,9 +65,6 @@ Search Results
 </li>
 
 
-
-
-
 <ul *ngFor="let p of search_result">
   {{p}}
   <br>
@@ -82,7 +79,7 @@ Search Results
       <th scope="col">Non-standard Features</th>
     </tr>
   </thead>
-  <tbody>   
+  <tbody>  
     <ng-container *ngFor="let patient of patients">
       <tr >
         <th scope="row">{{patient.report_id}}</th>
