@@ -3,14 +3,14 @@
 
 <div>
   <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
-  <p> Name is {{name}}, HPO id is {{hpoid}}</p>
+  <ul> Name is {{name}}, HPO id is {{hpoid}}</ul>
   <div *ngIf="haveChildren">
-    <p> Childrens are: </p>
-    <p *ngFor="let c of firstLevelChildren" > 
+    <ul> Childrens are: </ul>
+    <ul *ngFor="let c of firstLevelChildren" > 
       {{c['name']}}, {{c['ontologyId']}}
       <button> Search Patient</button>
       <button (click)="showConfig(c['ontologyId'])">Find Term</button>
-      </p>
+      </ul>
   </div>
   
 
