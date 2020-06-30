@@ -24,7 +24,7 @@ export class ApiService {
   storeConfig(term:string) {
     this.getConfig(term).subscribe(
         (data) => {
-                    console.log('details', data['detail']);}, 
+                    console.log('details', data['details']['name']);}, 
       );
   }
 /*
