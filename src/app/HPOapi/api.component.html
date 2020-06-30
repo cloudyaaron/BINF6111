@@ -2,7 +2,7 @@
 <h3>Get Information from HPO Term</h3>
 
 <div>
-  <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
+
   <p> Name is {{name}}, HPO id is {{hpoid}}</p>
   
 </div>
@@ -13,4 +13,5 @@ Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 <HPOapi *ngFor="let s of input_term" > {{s}} </HPOapi>
+<HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
 -->

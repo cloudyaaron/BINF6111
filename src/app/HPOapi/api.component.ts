@@ -39,14 +39,19 @@ export class ApiComponent {
   }
 
   extractInput() {
-    if (this.input_term != null && this.toggle == true) {
+    if (this.input_term != null) {
+        console.log(this.input_term);
+    }
+    /*
+    if (this.input_term != null) {
       console.log("not null");
       for (let s of this.input_term) {
         console.log(s["detail"]);
         //this.showConfig(s['detail']); 
       }
-    }
-    this.toggle = false; 
+      this.toggle = false; 
+    } else return; 
+    */
   }
 }
 
