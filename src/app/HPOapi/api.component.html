@@ -6,7 +6,7 @@
   <p> Name is {{name}}, HPO id is {{hpoid}}</p>
   <div *ngIf="haveChildren">
     <p> Childrens are: </p>
-    <p *ngFor="let c of firstLevelChildren">{{c['name']}}, {{c['ontologyId']}}</p>
+    <HPOapi *ngFor="let c of firstLevelChildren"> {{c['name']}}, {{c['ontologyId']}}</HPOapi>
   </div>
   
 
@@ -18,5 +18,6 @@ Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 <HPOapi *ngFor="let s of input_term" > {{s}} </HPOapi>
+(click)="showConfig(c['ontologyId'])"
 <HPOapi *ngFor="let child of firstLevelChildren" > {{child}} </HPOapi>
 -->
