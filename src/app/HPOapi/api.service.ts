@@ -27,13 +27,7 @@ export class ApiService {
                     console.log('details', data['details']['name']);}, 
       );
   }
-/*
-//This is from the example file, can delete
-  getConfigResponse(): Observable<HttpResponse<HPOTerm>> {
-    return this.http.get<HPOTerm>(
-      this.configUrl, { observe: 'response' });
-  }
-*/
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

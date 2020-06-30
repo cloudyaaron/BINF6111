@@ -12,7 +12,7 @@ import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
 })
 
 export class ApiComponent {
-  @Input('search_result') input_term: string[];
+  @Input('input') input_term: string;
   error: any;
   headers: string[];
   hpoid: string;
@@ -38,6 +38,9 @@ export class ApiComponent {
       );
   }
   showSearchResult(){
+    console.log('showing the input term'); 
+    console.log(this.input_term); 
+ 
     return this.input_term; 
   }
 }

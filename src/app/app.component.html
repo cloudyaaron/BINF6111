@@ -41,16 +41,19 @@
 
 
     <input placeholder="Searching"          class="form-control mr-sm-4"
+    
         [matChipInputFor]="searchList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         (matChipInputTokenEnd)="add($event)"
         (keyup)="onKeyUp($event)"
       >
+      
     </form>
   <!--</div>-->
 </nav>
 
 
+<HPOapi *ngFor="let search of search_list" [input] = "search"></HPOapi>
 
 {{values}}
 <br>
@@ -72,5 +75,3 @@ Search Results
 
 
 <patient-list></patient-list>
-
-<HPOapi [input_term] = "search_result"></HPOapi>
