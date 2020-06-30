@@ -22,8 +22,11 @@ export class AppComponent  {
   suggest_text=''
   search_result = [];
   patientsLenth = Object.keys(this.patients).length
+  suggested_queries = [];
   showConfig = true;
-  
+  typeR='R'
+  intersection_check = false
+
   constructor(private apiService: ApiService) {}
   //multiple seaching function + ui
   removable = true;
@@ -38,69 +41,201 @@ export class AppComponent  {
     // Add label
     if ((value || '').trim()) {
       this.search_list.push({detail: value.trim()});
+      this.search_result.push({query:value.trim(),answer:[]});
     }
     // Reset the input value
     if (input) {
       input.value = '';
     }
     this.refreshPage()
-    console.log(this.search_list)
+    
   }
 
   refreshPage(){
     this.values=""
     this.search_result=[]
+
+    console.log(this.search_list)
     console.log(this.search_result)
     if (this.search_list.length!= 0){
       for (var search_term of this.search_list){
-        this.search(search_term)
+        this.search_result.push({query:search_term['detail'],answer:[]});
+        this.search(search_term['detail'])
       }
     }else if(this.search_list.length == 0){
       this.search_result=[]
     }
     if(this.search_list.length != 0 && this.search_result.length == 0){
-      this.values="Sorry but nothing has been found"
+      if(search_term['detail'][0]=="P"){
+        console.log(search_term['detail'].length)
+        //Extract the number from the search and try to find any patients with the number
+        var key_chars = search_term['detail'].split('0');
+        var len_kc = 0;
+        console.log('printing key chars')
+
+        var suggest_regex = '.*';
+        for(let k = 0; k<key_chars.length;k++){
+          if(key_chars[k] == 'P'){
+            continue;
+          }
+          else{
+            suggest_regex = suggest_regex.concat(key_chars[k]);
+            suggest_regex = suggest_regex.concat('.*');
+
+          }
+        }
+        console.log(suggest_regex)
+        let sugReg = new RegExp(suggest_regex);
+        var suggestion_array = [];
+        var suggest_count = 0;
+        for(let i=0; i<this.patientsLenth;i++){
+          if(suggest_count == 5){
+            break;
+          }
+          if(sugReg.test(this.patients[i]['report_id'])){
+            console.log(this.patients[i]['report_id'])
+            suggestion_array.push(this.patients[i]['report_id']);
+            suggest_count += 1;
+          }
+        }
+        this.suggested_queries = suggestion_array
+
+        if (search_term['detail'].length == 8){
+          for(let i=0; i<this.patientsLenth;i++){
+            //console.log(this.patients[i]['report_id'])
+
+          }
+        }else{
+          this.values='Input length too short. Correct input of format PXXXXXXX'
+        }
+      }else if(search_term['detail'].slice(0,3)=="HP:"){
+        var key_chars = search_term['detail'].split('0');
+        var len_kc = 0;
+        console.log('printing key chars')
+
+        var suggest_regex = '.*';
+        for(let k = 0; k<key_chars.length;k++){
+          if(key_chars[k] == 'HP:'){
+            continue;
+          }
+          else{
+            suggest_regex = suggest_regex.concat(key_chars[k]);
+            suggest_regex = suggest_regex.concat('.*');
+
+          }
+        }
+        console.log(suggest_regex)
+        let sugReg = new RegExp(suggest_regex);
+        var suggestion_array = [];
+        var suggest_count = 0;
+        for(let i=0; i<this.patientsLenth;i++){
+          
+          var pp = this.patients[i]['features']
+          for (var phenotype of pp){
+            if(suggest_count == 5){
+            break;
+          }
+            if(sugReg.test(phenotype['id'])){
+              console.log(phenotype['id'])
+              suggestion_array.push(phenotype['id']);
+              suggest_count += 1;
+            }
+          }
+        }
+        this.suggested_queries = suggestion_array
+
+
+        for(let i=0; i<this.patientsLenth;i++){
+          var pp = this.patients[i]['features']
+          for (var phenotype of pp){
+            //console.log(phenotype['id'])
+          }
+        }
+      }else{
+        this.values="Sorry but nothing has been found"
+      }
     }
-  
   }
-
   search(search_term: string):any{
-
-    if(search_term['detail'][0]=="P"){
+    console.log('search')
+    var index = 0
+    for(index;index<this.search_result.length;index++){
+      if(search_term==this.search_result[index]['query']){
+        console.log(index)
+        break
+      }
+    }
+    if(search_term[0]=="P"){
       
       for(let i=0; i<this.patientsLenth;i++){
-        console.log(this.patients[i]['report_id'])
-        if(this.patients[i]['report_id'] == search_term['detail']){
-          
-          this.search_result.push(this.patients[i]['sex'])
+        
+        if(this.patients[i]['report_id'] == search_term){
+          console.log(this.patients[i]['report_id'])
+          this.search_result[index]['answer'].push(this.patients[i])
+          console.log(this.search_result[index]['answer'])
           break
         }
       }
-      return(null)
-    }else if(search_term['detail'].slice(0,3)=="HP:"){
+      
+    }else if(search_term.slice(0,3)=="HP:"){
       console.log('searching for a hpo term')
       //tried to get the searching terms 
       //this.apiService.storeConfig(search_term['detail']) 
       for(let i=0; i<this.patientsLenth;i++){
         var pp = this.patients[i]['features']
         for (var phenotype of pp){
-          if(phenotype['id'] == search_term['detail']&&phenotype['observed']=='yes'){
-            this.search_result.push(this.patients[i]['report_id'])
+          if(phenotype['id'] == search_term&&phenotype['observed']=='yes'){
+            //if(this.check_result(this.patients[i])== true){
+              this.search_result[index]['answer'].push(this.patients[i])
+              
+              
+            //}
             break
           }
         }
       }
-      if(search_term['detail'].length==10 &&            this.search_result.length==0){
+      //if(search_term['detail'].length==10 &&            this.search_result.length==0){
+      if(search_term.length==10 &&            this.search_result.length==0){
         this.search_result=[]
       }
-      if(search_term['detail'].length>=11 ){
-        this.search_result=['HPO term should be 7 digits']
+      if(search_term.length>=11 ){
+        this.values = "HPO term format incorrect"
+        this.search_list.pop()
+        
       }
     }
+
     
   }
 
+  getResultNum(){
+    var r=0
+    if(this.search_result.length==0){
+      return 0
+    }
+    for(var search_term of this.search_result){
+      r = search_term['answer'].length + r
+    }
+    return r
+  }
+ 
+  //return false when already have patient
+  check_result(p:any,plist:Array<any>):Boolean{
+    
+    if (plist.length==0){
+      return true
+    }
+    for(var term of plist){
+      if(p['report_id']==term['report_id']){
+        return false
+      }
+    }
+    return true;
+  }
+
+
   remove(term: any): void {
+    console.log('removing'+term)
     const index = this.search_list.indexOf(term);
     if (index >= 0) {
       this.search_list.splice(index, 1);
@@ -111,15 +246,76 @@ export class AppComponent  {
 
   //single searching function will be integret into multiple seaching function 
   // suggest from here!!!
-  onKeyUp(event:any){
-    
-    
+  onKeyUp(event:any){    
     var user_input = event.target.value.trim();
     console.log(user_input)
     if(user_input[0]=="P"){
-          this.suggest_text='Currently search patients id'
+      this.suggest_text='Currently search patients id'
+      if(user_input.length >= 2){
+        var w_card = '.*';
+        var regex = user_input.concat(w_card);
+        var patient_regex = new RegExp(regex);
+        var suggestion_array = [];
+        var add_suggestion = 0;
+        for(let i=0; i<this.patientsLenth;i++){
+          //console.log(this.patients[i]['report_id'])
+          if (add_suggestion == 5){
+            break;
+          }
+          if (patient_regex.test(this.patients[i]['report_id'])){
+            add_suggestion += 1;
+            //console.log('worked')
+            suggestion_array.push(this.patients[i]['report_id'])
+          }
+        }
+        console.log(suggestion_array)
+        this.suggested_queries = suggestion_array
+        /*
+        for (let i=0; i<suggestion_array.length;i++)
+        {
+          this.suggested_queries[i] = suggestion_array[i].concat('<br />');
+        }
+        */
+      }
     }else if(user_input.slice(0,3)=="HP:"){
       this.suggest_text='Currently search HPO terms'
+      if(user_input.length >= 2){
+        var w_card = '.*';
+        var regex = user_input.concat(w_card);
+        var hpo_regex = new RegExp(regex);
+        var suggestion_array = [];
+        var add_suggestion = 0;
+        for(let i=0; i<this.patientsLenth;i++){
+          //console.log(this.patients[i]['report_id'])
+          
+          var pp = this.patients[i]['features']
+          for (var phenotype of pp){
+            //if(phenotype['id'] == search_term['detail']){
+            if (add_suggestion == 5){
+              break;
+            }
+            if (hpo_regex.test(phenotype['id'])){
+              if(suggestion_array.lastIndexOf(phenotype['id'])>= 0){
+                continue;
+              }
+              add_suggestion += 1;
+              //console.log('worked')
+              suggestion_array.push(phenotype['id'])
+            }
+          }
+          if (add_suggestion == 5){
+            break;
+          }
+        }
+        //console.log(suggestion_array)
+        this.suggested_queries = suggestion_array
+        /*
+        for (let i=0; i<suggestion_array.length;i++)
+        {
+          this.suggested_queries[i] = suggestion_array[i].concat('<br />');
+        }
+        */
+      }
       
     }else if(user_input.length==0){
       this.suggest_text=''
@@ -127,10 +323,20 @@ export class AppComponent  {
     }else{
       this.suggest_text='Searching text is unexpected'
     }
+  }
+
+  public clickSuggestButton(event:string){
+    console.log('clicked')
+    //console.log(this.suggested_queries[0])
+    //var st['detail'] = this.suggested_queries[0]
+    console.log(event)
+    //event["detail"] = event
+    console.log(event)
+    this.search_result.push({query:event,answer:[]});
+    this.search(event)
 
 
   }
       toggleConfig() { this.showConfig = !this.showConfig; }
 
-      
 }

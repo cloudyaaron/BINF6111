@@ -32,12 +32,6 @@
 
     <form class="form-inline my-2 my-lg-0">
 
-      <div class="form-group">
-        <select class="custom-select">
-          <option selected="">OR</option>
-          <option disabled >AND</option>
-        </select>
-      </div>
 
 
     <input placeholder="Searching"          class="form-control mr-sm-4"
@@ -52,20 +46,22 @@
   <!--</div>-->
 </nav>
 
-
 <HPOapi *ngFor= "let s of search_list" [input]="s"> </HPOapi>
 
 {{values}}
 <br>
 {{suggest_text}}
 <br>
+<p *ngFor="let sq of suggested_queries">
+  <button (click)="clickSuggestButton(sq)">
+    {{sq}}
+  </button>
+  <br>
+</p>
 <li class="list-group-item d-flex justify-content-between align-items-center">
 Search Results
 <span class="badge badge-primary badge-pill">{{search_result.length}}</span>
 </li>
-
-
-
 
 
 <ul *ngFor="let p of search_result">
@@ -73,5 +69,52 @@ Search Results
   <br>
 </ul>
 
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Patient</th>
+      <th scope="col">Sex</th>
+      <th scope="col">Features</th>
+      <th scope="col">Non-standard Features</th>
+    </tr>
+  </thead>
+  <tbody>  
+    <ng-container *ngFor="let patient of patients">
+      <tr >
+        <th scope="row">{{patient.report_id}}</th>
+        <td>{{patient.sex}}</td>
+        <td>
+          <div class="form-group">
+            <select class="custom-select"> 
+              <ng-container *ngFor="let features of patient.features">
+						  <option> {{features["id"]}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="form-group">
+            <select class="custom-select"> 
+              <ng-container *ngFor="let features of patient.nonstandard_features">
+						  <option> {{features["label"]}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </td>
 
-<patient-list></patient-list>
+<div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]='intersection_check'(change)="refreshPage()">
+  <label class="custom-control-label" for="customSwitch1">Show intersection</label>
+</div>
+
+<span class="badge badge-primary badge-pill">{{getResultNum()}}</span>
+
+
+<ng-container *ngFor="let eachsearch of search_result">
+  <h3>
+  {{eachsearch['query']}}
+  <small class="text-muted"> Results : {{eachsearch['answer'].length}}</small>
+  </h3>
+  <patient-list [patients]= "eachsearch['answer']" [type]=typeR></patient-list>
+</ng-container>
+<patient-list [patients]='patients' [type]=''></patient-list>
