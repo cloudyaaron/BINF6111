@@ -49,11 +49,13 @@ export class ApiComponent {
   }
 
   extractInput() {
-    if (this.input_term != null) {
+    if (this.input_term) {
         this.showConfig(this.input_term['detail']);
         this.toggleLoad(); 
+    } else {
+      console.log("It's null!"); 
+      return; 
     }
-    
   }
   toggleLoad(){this.toggle = !this.toggle};
   toggleChildren(){this.haveChildren = !this.haveChildren}; 
