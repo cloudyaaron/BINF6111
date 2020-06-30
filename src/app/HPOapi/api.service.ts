@@ -5,9 +5,6 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { HPOTerm, Details } from '../classes/HPOTerm'; 
-export interface Config {
-  baseUrl: string;
-}
 
 @Injectable()
 export class ApiService {
@@ -27,7 +24,7 @@ export class ApiService {
   storeConfig(term:string) {
     this.getConfig(term).subscribe(
         (data) => {
-                    console.log('details', data['details']);}, 
+                    console.log('details', data['detail']);}, 
       );
   }
 /*

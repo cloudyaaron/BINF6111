@@ -80,7 +80,7 @@ export class AppComponent  {
     }else if(search_term['detail'].slice(0,3)=="HP:"){
       console.log('searching for a hpo term')
       //tried to get the searching terms 
-      this.apiService.storeConfig(search_term['detail']) 
+      //this.apiService.storeConfig(search_term['detail']) 
       for(let i=0; i<this.patientsLenth;i++){
         var pp = this.patients[i]['features']
         for (var phenotype of pp){

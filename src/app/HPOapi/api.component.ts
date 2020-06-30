@@ -1,6 +1,6 @@
 
-import { Component } from '@angular/core';
-import { Config, ApiService } from './api.service';
+import { Component, Input } from '@angular/core';
+import { ApiService } from './api.service';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -9,21 +9,25 @@ import { MessageService } from '../message.service';
   providers: [ ApiService ],
   styles: ['.error {color: red;}']
 })
+
 export class ApiComponent {
+  @Input('search_result') search_result: string[];
   error: any;
   headers: string[];
-  result: Config;
-  input_term: string; 
-
+  hpoid: string;
+  name: string; 
+  
   constructor(private apiService: ApiService) {}
 
   showConfig(term:string) {
-    this.input_term = term; 
-    this.apiService.getConfig(this.input_term)
+
+    this.apiService.getConfig(this.search_result['details'])
       .subscribe(
-        (data: Config) => {this.result = { ...data },
-                          console.log('data', data);}, // success path
-                          error => this.error = error // error path
+        (data) => {
+                    console.log('details', data['details']);
+                    this.hpoid = data['detail']['id'];
+                    this.name = data['detail']['name']}, 
+               
       );
   }
 
