@@ -12,7 +12,7 @@ import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
 })
 
 export class ApiComponent {
-  @Input('input') input_term: string;
+  @Input('input') input_term: string[];
   error: any;
   headers: string[];
   hpoid: string;
@@ -21,12 +21,12 @@ export class ApiComponent {
   relation_object: Relations;
   relationterm: RelationTerm;
   result_object: HPOTerm; 
+  toggle = true; 
   
   constructor(private apiService: ApiService) {}
 
   showConfig(term:string) {
-
-    this.apiService.getConfig(this.input_term['details'])
+    this.apiService.getConfig(term)
       .subscribe(
         (data) => {
                     console.log('details are:', data['details']);
@@ -37,11 +37,16 @@ export class ApiComponent {
                
       );
   }
-  showSearchResult(){
-    console.log('showing the input term'); 
-    console.log(this.input_term); 
- 
-    return this.input_term; 
+
+  extractInput() {
+    if (this.input_term != null && this.toggle == true) {
+      console.log("not null");
+      for (let s of this.input_term) {
+        console.log(s["detail"]);
+        //this.showConfig(s['detail']); 
+      }
+    }
+    this.toggle = false; 
   }
 }
 
