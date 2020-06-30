@@ -1,32 +1,62 @@
 
-import { Component } from '@angular/core';
-import { Config, ApiService } from './api.service';
+import { Component, Input } from '@angular/core';
+import { ApiService } from './api.service';
 import { MessageService } from '../message.service';
+import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
 
 @Component({
   selector: 'HPOapi',
   templateUrl: './api.component.html',
   providers: [ ApiService ],
-  styles: ['.error {color: red;}']
+  styleUrls: [ '../bootstrap.min.css' ]
 })
+
 export class ApiComponent {
+  @Input('input') input_term: string[];
   error: any;
   headers: string[];
-  result: Config;
-  input_term: string; 
-
+  hpoid: string;
+  name: string; 
+  /*
+  detail_object: Details; 
+  relation_object: Relations;
+  relationterm: RelationTerm;
+  result_object: HPOTerm; 
+  */
+  haveChildren = true; 
+  firstLevelChildren: []; 
+  toggle = true; 
+  
   constructor(private apiService: ApiService) {}
 
   showConfig(term:string) {
-    this.input_term = term; 
-    this.apiService.getConfig(this.input_term)
+    this.apiService.getConfig(term)
       .subscribe(
-        (data: Config) => {this.result = { ...data },
-                          console.log('data', data);}, // success path
-                          error => this.error = error // error path
+        (data) => {
+                    console.log('childrens are:', data['relations']['children']);
+                    //let detail = {}
+                    //this.result_object = new HPOTerm() 
+ 
+                    this.hpoid = data['details']['id'];
+                    
+                    if (data['relations']['children'].length == 0) {
+                        this.toggleChildren(); 
+                    }
+                    this.firstLevelChildren = data['relations']['children'];                    
+                    this.name = data['details']['name']},
+               
       );
   }
 
+  extractInput() {
+    if (this.input_term != null) {
+        this.showConfig(this.input_term['detail']);
+        this.toggleLoad(); 
+    }
+    
+  }
+  toggleLoad(){this.toggle = !this.toggle};
+  toggleChildren(){this.haveChildren = !this.haveChildren}; 
 }
 
 

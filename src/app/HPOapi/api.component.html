@@ -1,20 +1,27 @@
 
-<h3>Get Information from HPO Term</h3>
-<!--
+<h3>Get Information for HPO Term {{input_term['detail']}}</h3>
+
 <div>
-  <span *ngIf="result">
-    <div *ngIf="headers">
-      Response headers:
-      <ul>
-        <li *ngFor="let header of headers">{{header}}</li>
+  <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
+  <ul> Name is {{name}}, HPO id is {{hpoid}}</ul>
+  <div *ngIf="haveChildren">
+    <ul> Childrens are: </ul>
+    <ul *ngFor="let c of firstLevelChildren" > 
+      {{c['name']}}, {{c['ontologyId']}}
+      <button> Search Patient</button>
+      <button (click)="showConfig(c['ontologyId'])">Find Term</button>
       </ul>
-    </div>
-  </span>
+  </div>
+  
+
 </div>
--->
+
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
+<HPOapi *ngFor="let s of input_term" > {{s}} </HPOapi>
+(click)="showConfig(c['ontologyId'])"
+<HPOapi *ngFor="let child of firstLevelChildren" > {{child}} </HPOapi>
 -->
