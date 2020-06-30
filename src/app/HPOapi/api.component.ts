@@ -17,10 +17,14 @@ export class ApiComponent {
   headers: string[];
   hpoid: string;
   name: string; 
+  /*
   detail_object: Details; 
   relation_object: Relations;
   relationterm: RelationTerm;
   result_object: HPOTerm; 
+  */
+  haveChildren = true; 
+  firstLevelChildren: []; 
   toggle = true; 
   
   constructor(private apiService: ApiService) {}
@@ -29,30 +33,30 @@ export class ApiComponent {
     this.apiService.getConfig(term)
       .subscribe(
         (data) => {
-                    console.log('details are:', data['details']);
+                    console.log('childrens are:', data['relations']['children']);
                     //let detail = {}
                     //this.result_object = new HPOTerm() 
+ 
                     this.hpoid = data['details']['id'];
-                    this.name = data['details']['name']}, 
+                    
+                    if (data['relations']['children'].length == 0) {
+                        this.toggleChildren(); 
+                    }
+                    this.firstLevelChildren = data['relations']['children'];                    
+                    this.name = data['details']['name']},
                
       );
   }
 
   extractInput() {
     if (this.input_term != null) {
-        console.log(this.input_term);
+        this.showConfig(this.input_term['detail']);
+        this.toggleLoad(); 
     }
-    /*
-    if (this.input_term != null) {
-      console.log("not null");
-      for (let s of this.input_term) {
-        console.log(s["detail"]);
-        //this.showConfig(s['detail']); 
-      }
-      this.toggle = false; 
-    } else return; 
-    */
+    
   }
+  toggleLoad(){this.toggle = !this.toggle};
+  toggleChildren(){this.haveChildren = !this.haveChildren}; 
 }
 
 
