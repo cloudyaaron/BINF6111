@@ -14,6 +14,7 @@ export class PatientsList {
 
   // for JSON input
   plist = initializePatients(this.patients);
+  //can use plist as substitute for "patients = data"
 
 }
 
