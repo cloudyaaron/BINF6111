@@ -60,54 +60,17 @@
 </p>
 <li class="list-group-item d-flex justify-content-between align-items-center">
 Search Results
-<span class="badge badge-primary badge-pill">{{search_result.length}}</span>
-</li>
-
-
-<ul *ngFor="let p of search_result">
-  {{p}}
-  <br>
-</ul>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Patient</th>
-      <th scope="col">Sex</th>
-      <th scope="col">Features</th>
-      <th scope="col">Non-standard Features</th>
-    </tr>
-  </thead>
-  <tbody>  
-    <ng-container *ngFor="let patient of patients">
-      <tr >
-        <th scope="row">{{patient.report_id}}</th>
-        <td>{{patient.sex}}</td>
-        <td>
-          <div class="form-group">
-            <select class="custom-select"> 
-              <ng-container *ngFor="let features of patient.features">
-						  <option> {{features["id"]}}</option>
-              </ng-container>
-            </select>
-          </div>
-        </td>
-        <td>
-          <div class="form-group">
-            <select class="custom-select"> 
-              <ng-container *ngFor="let features of patient.nonstandard_features">
-						  <option> {{features["label"]}}</option>
-              </ng-container>
-            </select>
-          </div>
-        </td>
-
 <div class="custom-control custom-switch">
   <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]='intersection_check'(change)="onIntersection($event)">
   <label class="custom-control-label" for="customSwitch1" >Show intersection</label>
 </div>
 
-<span class="badge badge-primary badge-pill">{{getResultNum()}}</span>
+<span class="badge badge-primary badge-pill">{{search_result.length}}</span>
+</li>
+
+
+
+
 
 
 <!--<ng-container *ngIf="intersection_check">
