@@ -33,7 +33,6 @@ export class ApiComponent {
     this.apiService.getConfig(term)
       .subscribe(
         (data) => {
-                    console.log('childrens are:', data['relations']['children']);
                     //let detail = {}
                     //this.result_object = new HPOTerm() 
  
@@ -49,6 +48,7 @@ export class ApiComponent {
   }
 
   extractInput() {
+
     if (this.input_term) {
         this.showConfig(this.input_term['detail']);
         this.toggleLoad(); 
