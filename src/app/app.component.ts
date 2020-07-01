@@ -346,8 +346,8 @@ export class AppComponent  {
     //var st['detail'] = this.suggested_queries[0]
     console.log(event)
     //event["detail"] = event
-    console.log(event)
     this.search_result.push({query:event,answer:[]});
+    this.search_list.push({detail:event}); 
     this.search(event)
 
 

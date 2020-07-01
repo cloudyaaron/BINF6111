@@ -46,8 +46,6 @@
   <!--</div>-->
 </nav>
 
-<HPOapi *ngFor= "let s of search_list" [input]="s"> </HPOapi>
-
 {{values}}
 <br>
 {{suggest_text}}
@@ -58,6 +56,9 @@
   </button>
   <br>
 </p>
+
+<HPOapi *ngFor= "let s of search_list" [input]="s"> </HPOapi>
+
 <li class="list-group-item d-flex justify-content-between align-items-center">
 Search Results
 <div class="custom-control custom-switch">
@@ -86,3 +87,4 @@ Search Results
 </ng-container>
 
 <patient-list [patients]='patients' [type]=''></patient-list>
+
