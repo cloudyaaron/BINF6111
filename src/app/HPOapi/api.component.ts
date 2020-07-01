@@ -26,6 +26,7 @@ export class ApiComponent {
   haveChildren = true; 
   firstLevelChildren: []; 
   toggle = true; 
+  toggleTerm = true;
   
   constructor(private apiService: ApiService) {}
 
@@ -48,17 +49,18 @@ export class ApiComponent {
   }
 
   extractInput() {
-
-    if (this.input_term) {
+    if (this.input_term && this.input_term['detail'][0] == 'H') {
         this.showConfig(this.input_term['detail']);
         this.toggleLoad(); 
     } else {
       console.log("It's null!"); 
+      this.toggleTermType();
       return; 
     }
   }
   toggleLoad(){this.toggle = !this.toggle};
   toggleChildren(){this.haveChildren = !this.haveChildren}; 
+  toggleTermType() {this.toggleTerm = !this.toggleTerm}; 
 }
 
 
