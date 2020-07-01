@@ -54,6 +54,7 @@ export class AppComponent  {
   refreshPage(){
     this.values=""
     this.search_result=[]
+    this.suggested_queries=[]
 
     console.log(this.search_list)
     console.log(this.search_result)
@@ -380,7 +381,7 @@ onIntersection(toggle:Event){
     //event["detail"] = event
     this.search_result.push({query:event,answer:[]});
     this.search_list.push({detail:event}); 
-    this.search(event)
+    this.refreshPage()
 
 
   }
