@@ -243,6 +243,21 @@ export class AppComponent  {
     this.refreshPage()
   }
 
+  onIntersection(toggle:Event){
+    if (this.intersection_check==false){
+      this.refreshPage()
+      return 
+    }
+    if(this.getResultNum()==0 || this.search_result.length==0){
+      this.values="can not find intersection"
+      //toggle.
+      this.intersection_check=false
+    } else {
+      var search = 'combined'
+      this.search_result.push({query:search.trim(),answer:[]});
+
+    }
+  }
 
   //single searching function will be integret into multiple seaching function 
   // suggest from here!!!
