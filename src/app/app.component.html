@@ -50,12 +50,15 @@
 <br>
 {{suggest_text}}
 <br>
+
+<div class="btn-group-vertical">
 <p *ngFor="let sq of suggested_queries">
-  <button (click)="clickSuggestButton(sq)">
+  <button class="btn btn-primary" (click)="clickSuggestButton(sq)">
     {{sq}}
   </button>
   <br>
 </p>
+</div>
 
 <HPOapi *ngFor= "let s of search_list" [input]="s"> </HPOapi>
 
