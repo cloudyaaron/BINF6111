@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { ApiService } from './api.service';
 import { MessageService } from '../message.service';
 import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
+import { SearchService } from '../search.service';
 
 @Component({
   selector: 'HPOapi',
@@ -27,7 +28,7 @@ export class ApiComponent {
   firstLevelChildren: []; 
   toggle = true; 
   
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, searchService: SearchService) {}
 
   showConfig(term:string) {
     this.apiService.getConfig(term)
@@ -48,7 +49,6 @@ export class ApiComponent {
   }
 
   extractInput() {
-
     if (this.input_term) {
         this.showConfig(this.input_term['detail']);
         this.toggleLoad(); 
