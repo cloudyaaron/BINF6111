@@ -8,7 +8,7 @@ import { SearchService } from '../search.service';
 @Component({
   selector: 'HPOapi',
   templateUrl: './api.component.html',
-  providers: [ ApiService ],
+  providers: [ ApiService, SearchService ],
   styleUrls: [ '../bootstrap.min.css' ]
 })
 
