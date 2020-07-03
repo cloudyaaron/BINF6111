@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import data from './phenotips_2020-06-09_18-16_with_external_id.json';
 import { SearchService } from './search.service';
 import { HashTable } from './classes/hashtable';
@@ -61,7 +61,7 @@ export class AppComponent  {
     if (this.search_list.length!= 0){
       for (var search_term of this.search_list){
         this.search_result.push({query:search_term['detail'],answer:[]});
-        this.searchService.search(search_term['detail'])
+        this.search(search_term['detail'])
       }
     }else if(this.search_list.length == 0){
       this.search_result=[]
@@ -157,7 +157,55 @@ export class AppComponent  {
       }
     }
   }
-
+search(search_term: string):any{
+    console.log('search')
+    var index = 0
+    for(index;index<this.search_result.length;index++){
+      if(search_term==this.search_result[index]['query']){
+        console.log(index)
+        break
+      }
+    }
+    if(search_term[0]=="P"){
+      
+      for(let i=0; i<this.patientsLenth;i++){
+        
+        if(this.patients[i]['report_id'] == search_term){
+          console.log(this.patients[i]['report_id'])
+          this.search_result[index]['answer'].push(this.patients[i])
+          console.log(this.search_result[index]['answer'])
+          break
+        }
+      }
+      
+    }else if(search_term.slice(0,3)=="HP:"){
+      console.log('searching for a hpo term')
+      //tried to get the searching terms 
+      //this.apiService.storeConfig(search_term['detail']) 
+      for(let i=0; i<this.patientsLenth;i++){
+        var pp = this.patients[i]['features']
+        for (var phenotype of pp){
+          if(phenotype['id'] == search_term&&phenotype['observed']=='yes'){
+            //if(this.check_result(this.patients[i])== true){
+              this.search_result[index]['answer'].push(this.patients[i])
+              
+              
+            //}
+            break
+          }
+        }
+      }
+      //if(search_term['detail'].length==10 &&            this.search_result.length==0){
+      if(search_term.length==10 && this.search_result.length==0){
+        this.search_result=[]
+      }
+      if(search_term.length>=11 ){
+        this.values = "HPO term format incorrect"
+        this.search_list.pop(); 
+        }; 
+        
+      }
+    }
   getResultNum(){
     var r=0
     if(this.search_result.length==0){
@@ -298,9 +346,13 @@ export class AppComponent  {
     //event["detail"] = event
     this.search_result.push({query:event,answer:[]});
     this.search_list.push({detail:event}); 
-    this.searchService.search(event)
+    this.search(event)
 
 
+  }
+
+  public receive(term){
+    this.add(term);
   }
       toggleConfig() { this.showConfig = !this.showConfig; }
 

@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from './api.service';
 import { MessageService } from '../message.service';
 import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
@@ -14,6 +14,8 @@ import { SearchService } from '../search.service';
 
 export class ApiComponent {
   @Input('input') input_term: string[];
+  @Output() deliever = new EventEmitter();
+
   error: any;
   headers: string[];
   hpoid: string;
@@ -28,7 +30,7 @@ export class ApiComponent {
   firstLevelChildren: []; 
   toggle = true; 
   
-  constructor(private apiService: ApiService, searchService: SearchService) {}
+  constructor(private apiService: ApiService) {}
 
   showConfig(term:string) {
     this.apiService.getConfig(term)
@@ -57,6 +59,11 @@ export class ApiComponent {
       return; 
     }
   }
+
+  emit() {
+    this.deliever.emit(this.firstLevelChildren)
+  }
+
   toggleLoad(){this.toggle = !this.toggle};
   toggleChildren(){this.haveChildren = !this.haveChildren}; 
 }
