@@ -1,6 +1,6 @@
 import { Component, Input} from '@angular/core';
 import data from './phenotips_2020-06-09_18-16_with_external_id.json';
-import { Config, ApiService } from './HPOapi/api.service';
+import { ApiService } from './HPOapi/api.service';
 import { HashTable } from './classes/hashtable';
 import {MatChipsModule,MatChipInputEvent} from '@angular/material/chips'
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
@@ -54,6 +54,7 @@ export class AppComponent  {
   refreshPage(){
     this.values=""
     this.search_result=[]
+    this.suggested_queries=[]
 
     console.log(this.search_list)
     console.log(this.search_result)
@@ -157,11 +158,11 @@ export class AppComponent  {
     }
   }
   search(search_term: string):any{
-
+    console.log('search')
     var index = 0
     for(index;index<this.search_result.length;index++){
       if(search_term==this.search_result[index]['query']){
-        
+        console.log(index)
         break
       }
     }
@@ -170,8 +171,9 @@ export class AppComponent  {
       for(let i=0; i<this.patientsLenth;i++){
         
         if(this.patients[i]['report_id'] == search_term){
-          
+          console.log(this.patients[i]['report_id'])
           this.search_result[index]['answer'].push(this.patients[i])
+          console.log(this.search_result[index]['answer'])
           break
         }
       }
@@ -242,6 +244,53 @@ export class AppComponent  {
     this.refreshPage()
   }
 
+onIntersection(toggle:Event){
+    let easyexit = 0
+    if (this.intersection_check==false){
+      this.refreshPage()
+      return 
+    }
+    if(this.getResultNum()==0 || this.search_result.length==0){
+      this.values="can not find intersection"
+      //toggle.
+      this.intersection_check=false
+    } else {
+      var search = 'Combined of'
+      var target = this.search_result
+      this.search_result=[]
+      var temp=[]
+      for(var term of target){
+        search = search+" , "+term['query']
+
+        if(term['answer'].length==0){
+          easyexit=1          
+        }
+        for (var a of term['answer']){
+          temp.push(a)
+        }
+      }
+      this.search_result.push({query:search.trim(),answer:[]});
+      if(easyexit==1){
+        console.log('easyexit')
+        return
+      }
+      
+      console.log(temp)
+      let threshold = this.search_list.length
+      for(var term of temp){
+        let n = 0
+        for(var t of temp){
+          if(t['report_id']==term['report_id']){
+            n = n+1
+          }
+        }
+        if(n>=threshold && this.check_result(term,this.search_result[0]['answer'])==true){
+          this.search_result[0]['answer'].push(term)
+        }
+      }
+     
+    }
+  }
 
   //single searching function will be integret into multiple seaching function 
   // suggest from here!!!
@@ -330,8 +379,9 @@ export class AppComponent  {
     //var st['detail'] = this.suggested_queries[0]
     console.log(event)
     //event["detail"] = event
-    console.log(event)
-    this.search(event)
+    this.search_result.push({query:event,answer:[]});
+    this.search_list.push({detail:event}); 
+    this.refreshPage()
 
 
   }
