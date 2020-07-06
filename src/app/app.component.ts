@@ -6,6 +6,8 @@ import {MatChipsModule,MatChipInputEvent} from '@angular/material/chips'
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 //https://bootswatch.com/litera/?
 
+import { EChartOption } from 'echarts';
+
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
