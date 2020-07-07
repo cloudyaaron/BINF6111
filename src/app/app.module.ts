@@ -18,7 +18,7 @@ import { ApiService } from './HPOapi/api.service';
 
 import {PatientsList} from './PatientsList/patients.component';
 
-import {graphComponennt} from './Charts/graph.component'
+import {graphComponent} from './Charts/graph.component'
 
 import { MessageService }       from './message.service';
 import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
@@ -29,7 +29,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, NgBusyModule,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule],
-  declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList],
+  declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList,graphComponent],
   bootstrap:    [ AppComponent ],
   providers:    [MessageService, ApiService]
 })
