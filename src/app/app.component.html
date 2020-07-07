@@ -7,7 +7,7 @@
 				<mat-chip *ngFor="let search_term of search_list" [removable]="removable"
 					(removed)="remove(search_term)" class="btn btn-primary" >
 					{{search_term.detail}}
-					<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+					<mat-icon matChipRemove *ngIf="removable"> X </mat-icon>
 				</mat-chip>
 
       </mat-chip-list> 
@@ -50,12 +50,14 @@
 <br>
 {{suggest_text}}
 <br>
-<p *ngFor="let sq of suggested_queries">
-  <button (click)="clickSuggestButton(sq)">
+
+<div class="btn-group-vertical">
+<ng-container *ngFor="let sq of suggested_queries">
+  <button class="btn btn-primary" (click)="clickSuggestButton(sq)">
     {{sq}}
   </button>
-  <br>
-</p>
+</ng-container>
+</div>
 
 <HPOapi *ngFor= "let s of search_list" [input]="s" (deliever) = add($event)> </HPOapi>
 
@@ -66,7 +68,7 @@ Search Results
   <label class="custom-control-label" for="customSwitch1" >Show intersection</label>
 </div>
 
-<span class="badge badge-primary badge-pill">{{search_result.length}}</span>
+<span class="badge badge-primary badge-pill">{{getResultNum()}}</span>
 </li>
 
 

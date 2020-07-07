@@ -3,18 +3,16 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from './api.service';
 import { MessageService } from '../message.service';
 import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
-import { SearchService } from '../search.service';
 
 @Component({
   selector: 'HPOapi',
   templateUrl: './api.component.html',
-  providers: [ ApiService, SearchService ],
+  providers: [ ApiService ],
   styleUrls: [ '../bootstrap.min.css' ]
 })
 
 export class ApiComponent {
   @Input('input') input_term: string[];
-  @Output() deliever = new EventEmitter();
 
   error: any;
   headers: string[];
@@ -29,6 +27,8 @@ export class ApiComponent {
   haveChildren = true; 
   firstLevelChildren: []; 
   toggle = true; 
+  toggleTerm = true;
+
   
   constructor(private apiService: ApiService) {}
 
@@ -51,21 +51,20 @@ export class ApiComponent {
   }
 
   extractInput() {
-    if (this.input_term) {
+
+    if (this.input_term && this.input_term['detail'][0] == 'H') {
         this.showConfig(this.input_term['detail']);
         this.toggleLoad(); 
     } else {
       console.log("It's null!"); 
+
+      this.toggleTermType();
       return; 
     }
   }
-
-  emit() {
-    this.deliever.emit(this.firstLevelChildren)
-  }
-
   toggleLoad(){this.toggle = !this.toggle};
   toggleChildren(){this.haveChildren = !this.haveChildren}; 
+  toggleTermType() {this.toggleTerm = !this.toggleTerm}; 
 }
 
 

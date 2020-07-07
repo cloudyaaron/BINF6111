@@ -55,6 +55,7 @@ export class AppComponent  {
   refreshPage(){
     this.values=""
     this.search_result=[]
+    this.suggested_queries=[]
 
     console.log(this.search_list)
     console.log(this.search_result)
@@ -241,7 +242,8 @@ search(search_term: string):any{
     this.refreshPage()
   }
 
-  onIntersection(toggle:Event){
+onIntersection(toggle:Event){
+    let easyexit = 0
     if (this.intersection_check==false){
       this.refreshPage()
       return 
@@ -251,9 +253,40 @@ search(search_term: string):any{
       //toggle.
       this.intersection_check=false
     } else {
-      var search = 'combined'
-      this.search_result.push({query:search.trim(),answer:[]});
+      var search = 'Combined of'
+      var target = this.search_result
+      this.search_result=[]
+      var temp=[]
+      for(var term of target){
+        search = search+" , "+term['query']
 
+        if(term['answer'].length==0){
+          easyexit=1          
+        }
+        for (var a of term['answer']){
+          temp.push(a)
+        }
+      }
+      this.search_result.push({query:search.trim(),answer:[]});
+      if(easyexit==1){
+        console.log('easyexit')
+        return
+      }
+      
+      console.log(temp)
+      let threshold = this.search_list.length
+      for(var term of temp){
+        let n = 0
+        for(var t of temp){
+          if(t['report_id']==term['report_id']){
+            n = n+1
+          }
+        }
+        if(n>=threshold && this.check_result(term,this.search_result[0]['answer'])==true){
+          this.search_result[0]['answer'].push(term)
+        }
+      }
+     
     }
   }
 
@@ -346,7 +379,7 @@ search(search_term: string):any{
     //event["detail"] = event
     this.search_result.push({query:event,answer:[]});
     this.search_list.push({detail:event}); 
-    this.search(event)
+    this.refreshPage()
 
 
   }
