@@ -1,5 +1,7 @@
-<div *ngIf="toggleTerm">
-  <h3>Get Information for HPO Term {{input_term['detail']}}</h3>
+
+<h3>Get Information for HPO Term {{input_term['detail']}}</h3>
+
+<div>
   <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
 
   <Strong> Name : {{name}}, HPO id is {{hpoid}}</Strong>
@@ -18,6 +20,8 @@
       </ng-container>
     </ul>
   </div>
+  
+
 </div>
 
 
