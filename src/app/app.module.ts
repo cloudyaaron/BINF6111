@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ApiComponent }      from './HPOapi/api.component';
 import { ApiService } from './HPOapi/api.service';
+import { SearchService } from './search.service';
 
 import {PatientsList} from './PatientsList/patients.component';
 
@@ -25,6 +26,6 @@ import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule],
   declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList],
   bootstrap:    [ AppComponent ],
-  providers:    [MessageService, ApiService]
+  providers:    [MessageService, ApiService, SearchService]
 })
 export class AppModule { }

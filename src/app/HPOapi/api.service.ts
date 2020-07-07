@@ -21,13 +21,6 @@ export class ApiService {
       );
   }
 
-  storeConfig(term:string) {
-    this.getConfig(term).subscribe(
-        (data) => {
-                    console.log('details', data['details']['name']);}, 
-      );
-  }
-
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

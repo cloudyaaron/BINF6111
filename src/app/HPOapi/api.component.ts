@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from './api.service';
 import { MessageService } from '../message.service';
 import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
@@ -13,6 +13,7 @@ import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
 
 export class ApiComponent {
   @Input('input') input_term: string[];
+
   error: any;
   headers: string[];
   hpoid: string;
@@ -27,6 +28,7 @@ export class ApiComponent {
   firstLevelChildren: []; 
   toggle = true; 
   toggleTerm = true;
+
   
   constructor(private apiService: ApiService) {}
 
@@ -49,11 +51,13 @@ export class ApiComponent {
   }
 
   extractInput() {
+
     if (this.input_term && this.input_term['detail'][0] == 'H') {
         this.showConfig(this.input_term['detail']);
         this.toggleLoad(); 
     } else {
       console.log("It's null!"); 
+
       this.toggleTermType();
       return; 
     }

@@ -1,6 +1,6 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import data from './phenotips_2020-06-09_18-16_with_external_id.json';
-import { ApiService } from './HPOapi/api.service';
+import { SearchService } from './search.service';
 import { HashTable } from './classes/hashtable';
 import {MatChipsModule,MatChipInputEvent} from '@angular/material/chips'
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
@@ -27,11 +27,12 @@ export class AppComponent  {
   typeR='R'
   intersection_check = false
 
-  constructor(private apiService: ApiService) {}
   //multiple seaching function + ui
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
+
+  constructor(private searchService: SearchService) {}
 
   add(event: MatChipInputEvent): void {
     this.search_result=[]
@@ -157,7 +158,7 @@ export class AppComponent  {
       }
     }
   }
-  search(search_term: string):any{
+search(search_term: string):any{
     console.log('search')
     var index = 0
     for(index;index<this.search_result.length;index++){
@@ -196,19 +197,16 @@ export class AppComponent  {
         }
       }
       //if(search_term['detail'].length==10 &&            this.search_result.length==0){
-      if(search_term.length==10 &&            this.search_result.length==0){
+      if(search_term.length==10 && this.search_result.length==0){
         this.search_result=[]
       }
       if(search_term.length>=11 ){
         this.values = "HPO term format incorrect"
-        this.search_list.pop()
+        this.search_list.pop(); 
+        }; 
         
       }
     }
-
-    
-  }
-
   getResultNum(){
     var r=0
     if(this.search_result.length==0){
@@ -384,6 +382,10 @@ onIntersection(toggle:Event){
     this.refreshPage()
 
 
+  }
+
+  public receive(term){
+    this.add(term);
   }
       toggleConfig() { this.showConfig = !this.showConfig; }
 
