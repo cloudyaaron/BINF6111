@@ -367,9 +367,9 @@ export class AppComponent {
       children: [
         {
           name: "Uncle Leo",
-          value: 15,
+          
           children: [
-            { name: "Cousin Jack", value: 2 },
+            { name: "Cousin Jack", value: 5 },
             {
               name: "Cousin Mary",
               value: 5,

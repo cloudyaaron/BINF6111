@@ -18,6 +18,8 @@ import { ApiService } from './HPOapi/api.service';
 
 import {PatientsList} from './PatientsList/patients.component';
 
+import {graphComponennt} from './Charts/graph.component'
+
 import { MessageService }       from './message.service';
 import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
 
