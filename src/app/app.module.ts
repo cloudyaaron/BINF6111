@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+import { InputComponent } from './input.component';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { NgBusyModule } from 'ng-busy';
@@ -22,8 +23,8 @@ import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule],
-  declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList],
-  bootstrap:    [ AppComponent ],
+  declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList, InputComponent],
+  bootstrap:    [ InputComponent ],
   providers:    [MessageService, ApiService]
 })
 export class AppModule { }

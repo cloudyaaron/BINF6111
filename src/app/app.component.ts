@@ -7,7 +7,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 //https://bootswatch.com/litera/?
 
 @Component({
-  selector: 'my-app',
+  selector: 'app',
   templateUrl: './app.component.html',
   styleUrls: [ './bootstrap.min.css' ]
 })

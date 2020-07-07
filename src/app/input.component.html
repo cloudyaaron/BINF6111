@@ -1,0 +1,12 @@
+<div style="text-align:center">
+	<h1> Patients filter </h1>
+	<div>
+    <br><br>
+		<p> Accepted Input File Types: Excel (.xlsx), JSON (.json), CSV (.csv) </p>
+    <form (submit)="onSubmit()">
+      <label for="myfile">Select a file:</label>
+      <input type="file" id="myfile" name="myfile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/JSON" [(ngModel)]="file" observeFiles> <br><br>
+      <input type="submit" name="submit">
+    </form>
+	</div>
+</div>
