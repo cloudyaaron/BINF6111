@@ -8,21 +8,27 @@ import { EChartOption } from "echarts";
 })
 
 export class graphComponent {
+  @Input() patients: Array<any>;
   chart_data = [
     {
       name: "Grandpa",
       children: [
         {
           name: "Uncle Leo",
-
+          value:3,
           children: [
-            { name: "Cousin Jack", value: 5 },
+            { name: "Cousin Jack", value: 1 },
             {
               name: "Cousin Mary",
-              value: 5,
-              children: [{ name: "Jackson", value: 2 }]
+              value: 2,
+              children: [{ name: "Jackson", value: 1 }]
             }
           ]
+        },
+        {
+          name:"Dad Lee",
+          value:1,
+          children:[]
         }
       ]
     }

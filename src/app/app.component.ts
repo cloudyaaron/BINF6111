@@ -40,8 +40,7 @@ export class AppComponent {
 
     // Add label
     if ((value || "").trim()) {
-      this.search_list.push({ detail: value.trim() });
-      this.search_result.push({ query: value.trim(), answer: [] });
+      this.AddtoSearch(value)
     }
     // Reset the input value
     if (input) {
@@ -50,6 +49,11 @@ export class AppComponent {
     this.refreshPage();
   }
 
+  AddtoSearch(t:string):void{
+    t = t.trim()
+    this.search_list.push({ detail: t.trim() });
+    this.search_result.push({ query: t.trim(), answer: [] });
+  }
   refreshPage() {
     this.values = "";
     this.search_result = [];
@@ -369,8 +373,7 @@ export class AppComponent {
     //var st['detail'] = this.suggested_queries[0]
     console.log(event);
     //event["detail"] = event
-    this.search_result.push({ query: event, answer: [] });
-    this.search_list.push({ detail: event });
+    this.AddtoSearch(event)
     this.refreshPage();
   }
   toggleConfig() {
