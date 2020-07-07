@@ -384,7 +384,22 @@ export class AppComponent  {
         highlightPolicy: 'ancestor',
         nodeClick: 'link',
         label: {
-            rotate: 'radial'
+            rotate: 'radial',
+            align: 'right',
+            colour: 'auto'
+        },
+        itemStyle: {
+            color: {
+            type: 'radial',
+            x: 0.5,
+            y: 0.5,
+            r: 0.5,
+            colorStops: [
+              { offset: 0, color: 'orange'}, 
+              {offset: 1, color: 'red'}
+            ],
+            global: false
+          }
         }
     }]
   }
