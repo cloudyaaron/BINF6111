@@ -88,5 +88,7 @@ Search Results
   <patient-list [patients]= "eachsearch['answer']" [type]=typeR></patient-list>
 </ng-container>
 
+<div echarts [options]="chartOption" class="sunburst"></div>
+
 <patient-list [patients]='patients' [type]=''></patient-list>
 

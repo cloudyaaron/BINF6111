@@ -25,7 +25,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import * as echarts from 'echarts';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule],
+  imports:      [ BrowserModule, FormsModule, NgBusyModule,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, NgxEchartsModule.forRoot({echarts})],
   declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList],
   bootstrap:    [ AppComponent ],
   providers:    [MessageService, ApiService]
