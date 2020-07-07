@@ -4,9 +4,8 @@ import { ApiService } from './HPOapi/api.service';
 import { HashTable } from './classes/hashtable';
 import {MatChipsModule,MatChipInputEvent} from '@angular/material/chips'
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-//https://bootswatch.com/litera/?
-
 import { EChartOption } from 'echarts';
+//https://bootswatch.com/litera/?
 
 @Component({
   selector: 'my-app',
@@ -23,7 +22,6 @@ export class AppComponent  {
   values = ''
   suggest_text=''
   search_result = [];
-  chart_data = [];
   patientsLenth = Object.keys(this.patients).length
   suggested_queries = [];
   showConfig = true;
@@ -55,6 +53,7 @@ export class AppComponent  {
   }
 
   refreshPage(){
+    
     this.values=""
     this.search_result=[]
     this.suggested_queries=[]
@@ -238,27 +237,6 @@ export class AppComponent  {
     return true;
   }
 
-  // Sunburst graph code
-  chartOption: EChartOption = {
-     visualMap: [{
-        type: 'continuous',
-        min: 0,
-        max: this.getResultNum(),
-        inRange: {
-            color: ['#2D5F73', '#538EA6', '#F2D1B3', '#F2B8A2', '#F28C8C']
-        }
-    }],
-    series: [{
-        type: 'sunburst',
-        data: this.chart_data,
-        radius: [0, '90%'],
-        label: {
-            rotate: 'radial'
-        }
-    }]
-  }
-
-
   remove(term: any): void {
     console.log('removing'+term)
     const index = this.search_list.indexOf(term);
@@ -268,7 +246,7 @@ export class AppComponent  {
     this.refreshPage()
   }
 
-onIntersection(toggle:Event){
+  onIntersection(toggle:Event){
     let easyexit = 0
     if (this.intersection_check==false){
       this.refreshPage()
@@ -395,6 +373,20 @@ onIntersection(toggle:Event){
     }else{
       this.suggest_text='Searching text is unexpected'
     }
+  }
+
+  chart_data = [{ name: 'Grandpa', children: [{ name: 'Uncle Leo', value: 15, children: [{ name: 'Cousin Jack', value: 2}, { name: 'Cousin Mary', value: 5, children: [{ name: 'Jackson', value: 2}]}]}]}];
+  chartOption: EChartOption = {
+    series: [{
+        type: 'sunburst',
+        data:this.chart_data,
+        radius: [0, '90%'],
+        highlightPolicy: 'ancestor',
+        nodeClick: 'link',
+        label: {
+            rotate: 'radial'
+        }
+    }]
   }
 
   public clickSuggestButton(event:string){
