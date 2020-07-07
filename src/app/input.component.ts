@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'my-app',
@@ -10,7 +10,17 @@ export class InputComponent {
   title = 'Input File Page';
   file: File | null;
 
-  constructor(private router:Router){}
+  constructor(private router:Router, private route:ActivatedRoute){}
+  
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.file = params['file'];
+    });
+  }
+
+  fileChanged(e) {
+    this.file = e.target.files[0];
+  }
 
   public onSubmit(): void {
     console.group( "Form View-Model" );
@@ -23,7 +33,10 @@ export class InputComponent {
       console.log('file null')
     } else {
       let reader = new FileReader();
-      reader.readAsArrayBuffer(this.file);
+      reader.onload = (e) => {
+        console.log(reader.result);
+      }
+      reader.readAsText(this.file);
     }
   }
 }
