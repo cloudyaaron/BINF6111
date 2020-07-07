@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { InputComponent } from './input.component';
 import { AppComponent } from './app.component';
+
+import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from './hello.component';
 import { NgBusyModule } from 'ng-busy';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -22,7 +24,7 @@ import { MessageService }       from './message.service';
 import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule],
+  imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, AppRoutingModule],
   declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList, InputComponent],
   bootstrap:    [ InputComponent ],
   providers:    [MessageService, ApiService]

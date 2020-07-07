@@ -10,13 +10,20 @@ export class InputComponent {
   title = 'Input File Page';
   file: File | null;
 
+  constructor(private router:Router){}
+
   public onSubmit(): void {
     console.group( "Form View-Model" );
     console.log('submitted2');
     console.log(this.file);
     console.groupEnd();
 
-    let reader = new FileReader();
-    reader.readAsArrayBuffer(this.file);
+    this.router.navigate(['main']);
+    if (this.file == null) {
+      console.log('file null')
+    } else {
+      let reader = new FileReader();
+      reader.readAsArrayBuffer(this.file);
+    }
   }
 }
