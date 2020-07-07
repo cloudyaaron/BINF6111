@@ -4,6 +4,8 @@ import { ApiService } from './HPOapi/api.service';
 import { HashTable } from './classes/hashtable';
 import {MatChipsModule,MatChipInputEvent} from '@angular/material/chips'
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { EChartOption } from 'echarts';
+ 
 //https://bootswatch.com/litera/?
 
 @Component({
@@ -388,3 +390,22 @@ onIntersection(toggle:Event){
       toggleConfig() { this.showConfig = !this.showConfig; }
 
 }
+
+  //Useful urls: https://www.freakyjolly.com/angular-e-charts-using-ngx-echarts-tutorial/#.XvFQAGgzY2w
+  //https://www.npmjs.com/package/ngx-echarts
+  chartOption: EChartOption = {
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+      },
+      yAxis: {
+        type: 'value'
+      },
+      series: [{
+        data: [820, 932, 901, 934, 1290, 1430, 1550, 1200, 1650.1450, 1680.1890],
+        type: 'line',
+        areaStyle: {}
+      }]
+    }
+  }

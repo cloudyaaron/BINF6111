@@ -21,10 +21,19 @@ import {PatientsList} from './PatientsList/patients.component';
 import { MessageService }       from './message.service';
 import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
 
+import { NgxEchartsModule } from 'ngx-echarts';
+import * as echarts from 'echarts';
+
 @NgModule({
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule],
   declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList],
   bootstrap:    [ AppComponent ],
   providers:    [MessageService, ApiService]
+  imports:      
+  [ 
+    BrowserModule, FormsModule, NgBusyModule, MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule,  NgxEchartsModule.forRoot({echarts}),
+  ],
+  declarations: [ AppComponent, HelloComponent ],
+  bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
