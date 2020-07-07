@@ -23,17 +23,12 @@ import {HPOTerm, Details, Relations, RelationTerm} from './classes/HPOTerm';
 
 import { NgxEchartsModule } from 'ngx-echarts';
 import * as echarts from 'echarts';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, NgBusyModule,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, NgxEchartsModule.forRoot({echarts})],
+  imports:      [ BrowserModule, FormsModule, NgBusyModule,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule],
   declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList],
   bootstrap:    [ AppComponent ],
   providers:    [MessageService, ApiService]
-  imports:      
-  [ 
-    BrowserModule, FormsModule, NgBusyModule, MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule,  NgxEchartsModule.forRoot({echarts}),
-  ],
-  declarations: [ AppComponent, HelloComponent ],
-  bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

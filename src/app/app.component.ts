@@ -4,6 +4,7 @@ import { ApiService } from "./HPOapi/api.service";
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
+import {MatTabsModule} from '@angular/material/tabs';
 import { EChartOption } from "echarts";
 //https://bootswatch.com/litera/?
 

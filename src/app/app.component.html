@@ -1,49 +1,50 @@
-
 <div style="text-align:center">
 	<h1> Patients filter </h1>
 	<div>
-		<mat-form-field >
-			<mat-chip-list #searchList >
+		<mat-form-field>
+			<mat-chip-list #searchList>
 				<mat-chip *ngFor="let search_term of search_list" [removable]="removable"
-					(removed)="remove(search_term)" class="btn btn-primary" >
+					(removed)="remove(search_term)" class="btn btn-primary">
 					{{search_term.detail}}
 					<mat-icon matChipRemove *ngIf="removable"> X </mat-icon>
 				</mat-chip>
 
-      </mat-chip-list> 
-  	</mat-form-field>
+			</mat-chip-list>
+		</mat-form-field>
 	</div>
 </div>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">PATIENTS:{{patientsLenth}}</a>
-  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<a class="navbar-brand" href="#">PATIENTS:{{patientsLenth}}</a>
+	<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button> -->
- <!-- <div class="collapse navbar-collapse" id="navbarColor01"> -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-    </ul>
+	<!-- <div class="collapse navbar-collapse" id="navbarColor01"> -->
 
-    <form class="form-inline my-2 my-lg-0">
+	<ul class="navbar-nav mr-auto">
+
+		<li class="nav-item ">
+			<a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Features</a>
+		</li>
+	</ul>
+
+	<form class="form-inline my-2 my-lg-0">
 
 
 
-    <input placeholder="Searching"          class="form-control mr-sm-4"
-    
+		<input placeholder="Searching"          class="form-control mr-sm-4"
+
         [matChipInputFor]="searchList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         (matChipInputTokenEnd)="add($event)"
         (keyup)="onKeyUp($event)"
       >
-      
+
     </form>
-  <!--</div>-->
+		<!--</div>-->
 </nav>
 
 {{values}}
@@ -52,27 +53,24 @@
 <br>
 
 <div class="btn-group-vertical">
-<ng-container *ngFor="let sq of suggested_queries">
-  <button class="btn btn-primary" (click)="clickSuggestButton(sq)">
+	<ng-container *ngFor="let sq of suggested_queries">
+		<button class="btn btn-primary" (click)="clickSuggestButton(sq)">
     {{sq}}
   </button>
-</ng-container>
+	</ng-container>
 </div>
 
-<HPOapi *ngFor= "let s of search_list" [input]="s"> </HPOapi>
+<HPOapi *ngFor="let s of search_list" [input]="s"> </HPOapi>
 
 <li class="list-group-item d-flex justify-content-between align-items-center">
-Search Results
-<div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]='intersection_check'(change)="onIntersection($event)">
-  <label class="custom-control-label" for="customSwitch1" >Show intersection</label>
-</div>
+	Search Results
+	<div class="custom-control custom-switch">
+		<input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]='intersection_check'(change)="onIntersection($event)">
+		<label class="custom-control-label" for="customSwitch1" >Show intersection</label>
+	</div>
 
-<span class="badge badge-primary badge-pill">{{getResultNum()}}</span>
+	<span class="badge badge-primary badge-pill">{{getResultNum()}}</span>
 </li>
-
-
-<div echarts [options]="chartOption" class="sunburst-chart"></div>
 
 
 
@@ -81,12 +79,16 @@ Search Results
 </ng-container>-->
 
 <ng-container *ngFor="let eachsearch of search_result">
-  <h3>
-  {{eachsearch['query']}}
-  <small class="text-muted"> Results : {{eachsearch['answer'].length}}</small>
-  </h3>
-  <patient-list [patients]= "eachsearch['answer']" [type]=typeR></patient-list>
+	<h3>
+		{{eachsearch['query']}}
+		<small class="text-muted"> Results : {{eachsearch['answer'].length}}</small>
+	</h3>
+	<patient-list [patients]="eachsearch['answer']" [type]=typeR></patient-list>
 </ng-container>
 
-<patient-list [patients]='patients' [type]=''></patient-list>
 
+<mat-tab-group>
+	<mat-tab label="All Patients Data"> <patient-list [patients]='patients' [type]=''></patient-list></mat-tab>
+	<mat-tab label="Graph(testing)"> <div echarts [options]="chartOption" class="sunburst-chart"></div>
+ </mat-tab>
+</mat-tab-group>
