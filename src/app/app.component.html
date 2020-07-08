@@ -60,38 +60,53 @@
 	</ng-container>
 </div>
 
-<HPOapi *ngFor="let s of search_list" [input]="s"> </HPOapi>
-
-<li class="list-group-item d-flex justify-content-between align-items-center">
-	Search Results
-	<div class="custom-control custom-switch">
-		<input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]='intersection_check'(change)="onIntersection($event)">
-		<label class="custom-control-label" for="customSwitch1" >Show intersection</label>
-	</div>
-
-	<span class="badge badge-primary badge-pill">{{getResultNum()}}</span>
-</li>
-
+<mat-drawer-container autosize >
+	<mat-drawer #drawer mode="side" >
+		<HPOapi *ngFor="let s of search_list" [input]="s"> </HPOapi>
+	</mat-drawer>
+	<mat-drawer-content>
+  <div >
+    <button type="button"class="btn btn-info btn-sm" mat-button (click)="drawer.toggle()">
+      HPO api
+    </button>
+  </div>
 
 
-<!--<ng-container *ngIf="intersection_check">
+
+		<li class="list-group-item d-flex justify-content-between align-items-center">
+			Search Results
+			<div class="custom-control custom-switch">
+				<input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]='intersection_check'(change)="onIntersection($event)">
+				<label class="custom-control-label" for="customSwitch1" >Show intersection</label>
+			</div>
+
+			<span class="badge badge-primary badge-pill">{{getResultNum()}}</span>
+		</li>
+
+
+
+		<!--<ng-container *ngIf="intersection_check">
   <patient-list [patients]= 'patients' [type]=typeR></patient-list>
 </ng-container>-->
 
-<ng-container *ngFor="let eachsearch of search_result">
-	<h3>
-		{{eachsearch['query']}}
-		<small class="text-muted"> Results : {{eachsearch['answer'].length}}</small>
-	</h3>
-	<patient-list [patients]="eachsearch['answer']" [type]=typeR></patient-list>
-</ng-container>
+		<ng-container *ngFor="let eachsearch of search_result">
+			<h3>
+				{{eachsearch['query']}}
+				<small class="text-muted"> Results : {{eachsearch['answer'].length}}</small>
+			</h3>
+			<patient-list [patients]="eachsearch['answer']" [type]=typeR></patient-list>
+		</ng-container>
 
 
-<mat-tab-group>
-	<mat-tab label="All Patients Data">
-		<patient-list [patients]='patients' [type]=''></patient-list>
-	</mat-tab>
-	<mat-tab label="Graph(testing)">
-		<graph-echart [patients]='search_result'></graph-echart>
-	</mat-tab>
-</mat-tab-group>
+		<mat-tab-group>
+			<mat-tab label="All Patients Data">
+				<patient-list [patients]='patients' [type]=''></patient-list>
+			</mat-tab>
+			<mat-tab label="Graph(testing)">
+				<graph-echart [patients]='search_result'></graph-echart>
+			</mat-tab>
+		</mat-tab-group>
+
+
+	</mat-drawer-content>
+</mat-drawer-container>

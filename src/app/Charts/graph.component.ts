@@ -86,7 +86,7 @@ export class graphComponent {
         
       }
     }
-    console.log(this.phenoPool)
+    //console.log(this.phenoPool)
     return [];
   }
 }
