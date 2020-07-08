@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { EChartOption } from "echarts";
 
 @Component({
@@ -6,18 +6,22 @@ import { EChartOption } from "echarts";
   templateUrl: "graph.component.html",
   styleUrls: ["../bootstrap.min.css"]
 })
-export class graphComponent {
+export class graphComponent implements OnInit {
   @Input() patients: Array<any>;
   @Input() chartType: String;
 
   phenoPool = [];
-  terms = [];
   freq = [];
+  terms = [];
+
+  ngOnInit() {
+    this.ngOnChanges()
+  }
 
   ngOnChanges(){
+    this.freq = []
+    this.terms = []
     this.phenoPool=[]
-    this.terms=[]
-    this.freq=[]
     this.getPhenotypePool()
   }
 
@@ -32,12 +36,12 @@ export class graphComponent {
     series: [
       {
         type: "bar",
-        data: this.freq,
+        data: this.freq
       }
     ]
   };
 
-  public getPhenotypePool() :Array<any>{
+  public getPhenotypePool(): Array<any>{
     for (var q of this.patients) {
       for(var p of q['answer']){
         for(var pheno of p['features']){
@@ -54,13 +58,9 @@ export class graphComponent {
     }
 
     for (var item of this.phenoPool) {
-      this.freq.push(item['count']);
       this.terms.push(item['id'])
+      this.freq.push(item['count'])
     }
-    
-    console.log(this.phenoPool)
-    console.log(this.freq)
-    console.log(this.terms)
 
     return [];
   }
