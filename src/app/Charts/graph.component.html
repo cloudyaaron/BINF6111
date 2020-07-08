@@ -1,5 +1,12 @@
 <h3>Chart
   <small class="text-muted" (click)="getPhenotypePool()">In testing</small >
 </h3>
-<div echarts [options]="options" class="bar-chart">
+<div nz-row>
+  <h4> Frequency of HPO Terms in Filtered Patients </h4>
+  <div nz-col nzSpan="8">
+    <div id="barChart" echarts [options]="bar" theme="macarons" class="demo-chart"></div>
+  </div>
+  <div nz-col nzSpan="8">
+    <div id="pieChart" echarts [options]="pie" theme="macarons" class="demo-chart"></div>
+  </div>
 </div>

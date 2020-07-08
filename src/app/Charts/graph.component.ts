@@ -1,29 +1,28 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, AfterViewInit} from "@angular/core";
+import { getInstanceByDom, connect } from 'echarts';
 
 @Component({
   selector: "graph-echart",
   templateUrl: "graph.component.html",
   styleUrls: ["../bootstrap.min.css"]
 })
-export class graphComponent {
+export class graphComponent implements AfterViewInit {
   @Input() patients: Array<any>;
   @Input() chartType: String;
-  options: any;
+  bar: any;
+  pie: any;
 
   phenoPool = [];
   freq = [];
   terms = [];
+  pieData = [];
 
   ngOnChanges(){
     this.freq = []
     this.terms = []
     this.phenoPool=[]
     this.getPhenotypePool()
-    this.options = {
-      title: {
-        text: "Frequency of HPO Terms for Filtered Patients",
-        show: true
-      },
+    this.bar = {
       tooltip: {
         trigger: "axis",
         axisPointer: {
@@ -33,14 +32,12 @@ export class graphComponent {
       xAxis: {
         type: 'category',
         data: this.terms,
-        name: 'HPO Terms',
-        nameLocation: 'center',
         axisTick: {
           alignWithLabel: true
         },
         axisLabel: {
          rotate: 45
-       }
+       },
       },
       yAxis: {
           type: 'value',
@@ -58,6 +55,36 @@ export class graphComponent {
       animationEasing: 'elasticOut',
       animationDelayUpdate: (idx) => idx * 5,
     }
+    this.pie = {
+      tooltip: {
+        trigger: "item"
+      },
+      series: [{
+        name: "Patient(s) with Term",
+        type: "pie",
+        data: this.pieData,
+        roseType: 'radius',
+        label: {
+            color: 'rgba(255, 255, 255, 0.3)'
+        },
+        labelLine: {
+            lineStyle: {
+                color: 'rgba(255, 255, 255, 0.3)'
+            },
+            smooth: 0.2,
+            length: 10,
+            length2: 20
+        },
+      }],
+    }
+
+    setTimeout(() => {
+      const barElement = document.getElementById('barChart') as HTMLDivElement;
+      const pieElement = document.getElementById('pieChart') as HTMLDivElement;
+      const barChart = getInstanceByDom(barElement);
+      const pieChart = getInstanceByDom(pieElement);
+      connect([barChart, pieChart]);
+    });
   }
 
   public getPhenotypePool(): Array<any>{
@@ -80,8 +107,19 @@ export class graphComponent {
     for (var item of this.phenoPool) {
       this.terms.push(item['id'])
       this.freq.push(item['count'])
+      this.pieData.push({'value': item['count'], 'name':item['id']})
     }
 
     return [];
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      const barElement = document.getElementById('barChart') as HTMLDivElement;
+      const pieElement = document.getElementById('pieChart') as HTMLDivElement;
+      const barChart = getInstanceByDom(barElement);
+      const pieChart = getInstanceByDom(pieElement);
+      connect([barChart, pieChart]);
+    });
   }
 }
