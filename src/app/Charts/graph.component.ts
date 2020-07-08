@@ -9,6 +9,16 @@ import { EChartOption } from "echarts";
 
 export class graphComponent {
   @Input() patients: Array<any>;
+  @Input() chartType:String;
+
+  phenoPool = []
+
+  getPhenotypePool(){
+    for(var p of this.patients){
+      console.log(p['report_id'])
+    }
+  }
+
   chart_data = [
     {
       name: "Grandpa",
