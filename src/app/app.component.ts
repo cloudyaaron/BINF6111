@@ -5,7 +5,8 @@ import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import {MatTabsModule} from '@angular/material/tabs';
-import { EChartOption } from "echarts";
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 //https://bootswatch.com/litera/?
 
 @Component({
@@ -40,8 +41,7 @@ export class AppComponent {
 
     // Add label
     if ((value || "").trim()) {
-      this.search_list.push({ detail: value.trim() });
-      this.search_result.push({ query: value.trim(), answer: [] });
+      this.AddtoSearch(value)
     }
     // Reset the input value
     if (input) {
@@ -50,6 +50,11 @@ export class AppComponent {
     this.refreshPage();
   }
 
+  AddtoSearch(t:string):void{
+    t = t.trim()
+    this.search_list.push({ detail: t.trim() });
+    this.search_result.push({ query: t.trim(), answer: [] });
+  }
   refreshPage() {
     this.values = "";
     this.search_result = [];
@@ -361,54 +366,7 @@ export class AppComponent {
     }
   }
 
-  chart_data = [
-    {
-      name: "Grandpa",
-      children: [
-        {
-          name: "Uncle Leo",
-          value: 15,
-          children: [
-            { name: "Cousin Jack", value: 2 },
-            {
-              name: "Cousin Mary",
-              value: 5,
-              children: [{ name: "Jackson", value: 2 }]
-            }
-          ]
-        }
-      ]
-    }
-  ];
-  chartOption: EChartOption = {
-    series: [
-      {
-        type: "sunburst",
-        data: this.chart_data,
-        radius: [0, "90%"],
-        highlightPolicy: "ancestor",
-        nodeClick: "link",
-        label: {
-            rotate: 'radial',
-            align: 'right',
-            colour: 'auto'
-        },
-        itemStyle: {
-            color: {
-            type: 'radial',
-            x: 0.5,
-            y: 0.5,
-            r: 0.5,
-            colorStops: [
-              { offset: 0, color: 'orange'}, 
-              {offset: 1, color: 'red'}
-            ],
-            global: false
-          }
-        }
-      }
-    ]
-  };
+
 
   public clickSuggestButton(event: string) {
     console.log("clicked");
@@ -416,8 +374,7 @@ export class AppComponent {
     //var st['detail'] = this.suggested_queries[0]
     console.log(event);
     //event["detail"] = event
-    this.search_result.push({ query: event, answer: [] });
-    this.search_list.push({ detail: event });
+    this.AddtoSearch(event)
     this.refreshPage();
   }
   toggleConfig() {
