@@ -9,13 +9,49 @@ import { EChartOption } from "echarts";
 export class graphComponent implements OnInit {
   @Input() patients: Array<any>;
   @Input() chartType: String;
+  options: any;
 
   phenoPool = [];
   freq = [];
   terms = [];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.ngOnChanges()
+    this.options = {
+      tooltip: {
+        trigger: "axis",
+        axisPointer: {
+          type: "shadow"
+        }
+      },
+      xAxis: {
+        type: 'category',
+        data: this.terms,
+        name: 'HPO Terms',
+        nameLocation: 'center',
+        axisTick: {
+          alignWithLabel: true
+        },
+        axisLabel: {
+         rotate: 45
+       }
+      },
+      yAxis: {
+          type: 'value',
+          name: 'Frequency of Term',
+          nameLocation: 'center',
+      },
+      series: [
+        {
+          name: "patient(s) with term",
+          type: "bar",
+          data: this.freq,
+          animationDelay: (idx) => idx * 10,
+        }
+      ],
+      animationEasing: 'elasticOut',
+      animationDelayUpdate: (idx) => idx * 5,
+    };
   }
 
   ngOnChanges(){
@@ -24,22 +60,6 @@ export class graphComponent implements OnInit {
     this.phenoPool=[]
     this.getPhenotypePool()
   }
-
-  chartOption: EChartOption = {
-    xAxis: {
-        type: 'category',
-        data: this.terms
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [
-      {
-        type: "bar",
-        data: this.freq
-      }
-    ]
-  };
 
   public getPhenotypePool(): Array<any>{
     for (var q of this.patients) {
@@ -57,6 +77,7 @@ export class graphComponent implements OnInit {
       }
     }
 
+    // Load data for bar graph
     for (var item of this.phenoPool) {
       this.terms.push(item['id'])
       this.freq.push(item['count'])
