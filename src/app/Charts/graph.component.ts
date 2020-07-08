@@ -1,12 +1,11 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { EChartOption } from "echarts";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "graph-echart",
   templateUrl: "graph.component.html",
   styleUrls: ["../bootstrap.min.css"]
 })
-export class graphComponent implements OnInit {
+export class graphComponent {
   @Input() patients: Array<any>;
   @Input() chartType: String;
   options: any;
@@ -15,9 +14,16 @@ export class graphComponent implements OnInit {
   freq = [];
   terms = [];
 
-  ngOnInit(): void {
-    this.ngOnChanges()
+  ngOnChanges(){
+    this.freq = []
+    this.terms = []
+    this.phenoPool=[]
+    this.getPhenotypePool()
     this.options = {
+      title: {
+        text: "Frequency of HPO Terms for Filtered Patients",
+        show: true
+      },
       tooltip: {
         trigger: "axis",
         axisPointer: {
@@ -43,7 +49,7 @@ export class graphComponent implements OnInit {
       },
       series: [
         {
-          name: "patient(s) with term",
+          name: "Patient(s) with Term",
           type: "bar",
           data: this.freq,
           animationDelay: (idx) => idx * 10,
@@ -51,14 +57,7 @@ export class graphComponent implements OnInit {
       ],
       animationEasing: 'elasticOut',
       animationDelayUpdate: (idx) => idx * 5,
-    };
-  }
-
-  ngOnChanges(){
-    this.freq = []
-    this.terms = []
-    this.phenoPool=[]
-    this.getPhenotypePool()
+    }
   }
 
   public getPhenotypePool(): Array<any>{
