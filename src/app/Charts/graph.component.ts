@@ -11,61 +11,28 @@ export class graphComponent {
   @Input() chartType: String;
 
   phenoPool = [];
+  terms = [];
+  freq = [];
+
   ngOnChanges(){
     this.phenoPool=[]
+    this.terms=[]
+    this.freq=[]
     this.getPhenotypePool()
   }
 
-  chart_data = [
-    {
-      name: "Grandpa",
-      children: [
-        {
-          name: "Uncle Leo",
-          value: 3,
-          children: [
-            { name: "Cousin Jack", value: 1 },
-            {
-              name: "Cousin Mary",
-              value: 2,
-              children: [{ name: "Jackson", value: 1 }]
-            }
-          ]
-        },
-        {
-          name: "Dad Lee",
-          value: 1,
-          children: []
-        }
-      ]
-    }
-  ];
   chartOption: EChartOption = {
+    xAxis: {
+        type: 'category',
+        data: this.terms
+    },
+    yAxis: {
+        type: 'value'
+    },
     series: [
       {
-        type: "sunburst",
-        data: this.chart_data,
-        radius: [0, "90%"],
-        highlightPolicy: "ancestor",
-        nodeClick: "link",
-        label: {
-          rotate: "radial",
-          align: "right",
-          colour: "auto"
-        },
-        itemStyle: {
-          color: {
-            type: "radial",
-            x: 0.5,
-            y: 0.5,
-            r: 0.5,
-            colorStops: [
-              { offset: 0, color: "orange" },
-              { offset: 1, color: "red" }
-            ],
-            global: false
-          }
-        }
+        type: "bar",
+        data: this.freq,
       }
     ]
   };
@@ -83,10 +50,18 @@ export class graphComponent {
             t['count'] = t['count']+1
           }
         }
-        
       }
     }
-    //console.log(this.phenoPool)
+
+    for (var item of this.phenoPool) {
+      this.freq.push(item['count']);
+      this.terms.push(item['id'])
+    }
+    
+    console.log(this.phenoPool)
+    console.log(this.freq)
+    console.log(this.terms)
+
     return [];
   }
 }
