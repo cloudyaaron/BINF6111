@@ -1,4 +1,6 @@
 import { Component, Input } from "@angular/core";
+import data from '../phenotips_2020-06-09_18-16_with_external_id.json';
+import { query } from "@angular/animations";
 
 @Component({
   selector: "graph-echart",
@@ -13,12 +15,23 @@ export class graphComponent {
   phenoPool = [];
   freq = [];
   terms = [];
+  temp = [];
+  
+  constructor(){
+ 
+    this.temp.push({query:"all",answer:data})
+
+    this.getPhenotypePool(this.temp)
+  }
+
+  
+
 
   ngOnChanges(){
+
     this.freq = []
     this.terms = []
     this.phenoPool=[]
-    this.getPhenotypePool()
     this.options = {
       title: {
         text: "Frequency of HPO Terms for Filtered Patients",
@@ -58,10 +71,20 @@ export class graphComponent {
       animationEasing: 'elasticOut',
       animationDelayUpdate: (idx) => idx * 5,
     }
+    
+    if (this.patients.length==0){
+      this.patients=data
+      this.getPhenotypePool(this.temp)
+    }else{
+      this.getPhenotypePool(this.patients)
+
+    }
+    //console.log(this.patients)
   }
 
-  public getPhenotypePool(): Array<any>{
-    for (var q of this.patients) {
+  public getPhenotypePool(plist:Array<any>): Array<any>{
+    console.log(plist)
+    for (var q of plist) {
       for(var p of q['answer']){
         for(var pheno of p['features']){
           if(pheno['observed']=="yes" && this.phenoPool.find(phenotype=> pheno['id']===phenotype['id'])== undefined){

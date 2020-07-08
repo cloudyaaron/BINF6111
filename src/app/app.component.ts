@@ -60,8 +60,8 @@ export class AppComponent {
     this.search_result = [];
     this.suggested_queries = [];
 
-    console.log(this.search_list);
-    console.log(this.search_result);
+    console.log("search_list",this.search_list);
+    console.log("resultlust",this.search_result);
     if (this.search_list.length != 0) {
       for (var search_term of this.search_list) {
         this.search_result.push({ query: search_term["detail"], answer: [] });
