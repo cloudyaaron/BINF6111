@@ -11,6 +11,10 @@ export class graphComponent {
   @Input() chartType: String;
 
   phenoPool = [];
+  ngOnChanges(){
+    this.phenoPool=[]
+    this.getPhenotypePool()
+  }
 
   chart_data = [
     {
@@ -74,7 +78,7 @@ export class graphComponent {
             pheno.count = 1
             this.phenoPool.push(pheno)
 
-          }else if(this.phenoPool.find(phenotype=> pheno['id']===phenotype['id'])!= undefined){
+          }else if(pheno['observed']=="yes" && this.phenoPool.find(phenotype=> pheno['id']===phenotype['id'])!= undefined){
             var t = this.phenoPool.find(phenotype=> pheno['id']===phenotype['id'])
             t['count'] = t['count']+1
           }
