@@ -6,18 +6,11 @@ import { EChartOption } from "echarts";
   templateUrl: "graph.component.html",
   styleUrls: ["../bootstrap.min.css"]
 })
-
 export class graphComponent {
   @Input() patients: Array<any>;
-  @Input() chartType:String;
+  @Input() chartType: String;
 
-  phenoPool = []
-
-  getPhenotypePool(){
-    for(var p of this.patients){
-      console.log(p['report_id'])
-    }
-  }
+  phenoPool = [];
 
   chart_data = [
     {
@@ -25,7 +18,7 @@ export class graphComponent {
       children: [
         {
           name: "Uncle Leo",
-          value:3,
+          value: 3,
           children: [
             { name: "Cousin Jack", value: 1 },
             {
@@ -36,9 +29,9 @@ export class graphComponent {
           ]
         },
         {
-          name:"Dad Lee",
-          value:1,
-          children:[]
+          name: "Dad Lee",
+          value: 1,
+          children: []
         }
       ]
     }
@@ -72,4 +65,24 @@ export class graphComponent {
       }
     ]
   };
+
+  public getPhenotypePool() :Array<any>{
+    for (var q of this.patients) {
+      for(var p of q['answer']){
+        for(var pheno of p['features']){
+          if(pheno['observed']=="yes" && this.phenoPool.find(phenotype=> pheno['id']===phenotype['id'])== undefined){
+            pheno.count = 1
+            this.phenoPool.push(pheno)
+
+          }else if(this.phenoPool.find(phenotype=> pheno['id']===phenotype['id'])!= undefined){
+            var t = this.phenoPool.find(phenotype=> pheno['id']===phenotype['id'])
+            t['count'] = t['count']+1
+          }
+        }
+        
+      }
+    }
+    console.log(this.phenoPool)
+    return [];
+  }
 }
