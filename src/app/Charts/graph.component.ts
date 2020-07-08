@@ -13,8 +13,8 @@ export class graphComponent implements AfterViewInit {
   pie: any;
 
   phenoPool = [];
-  freq = [];
-  terms = [];
+  freq = Array<number>();
+  terms = Array<string>();
   pieData = [];
 
   ngOnChanges(){
@@ -59,22 +59,36 @@ export class graphComponent implements AfterViewInit {
       tooltip: {
         trigger: "item"
       },
+      visualMap: {
+        show: false,
+        min: Math.min(...this.freq),
+        max: Math.max(...this.freq),
+        type: 'continuous',
+        inRange: {
+          color: ['#c23531'],
+          colorLightness: [0.3, 1]
+        }
+      },
       series: [{
-        name: "Patient(s) with Term",
+        name: "HPO Tag: Freq",
         type: "pie",
-        data: this.pieData,
+        data: this.pieData.sort(function (a, b) { return a.value - b.value; }),
+        radius: ['50%', '90%'],
         roseType: 'radius',
-        label: {
-            color: 'rgba(255, 255, 255, 0.3)'
-        },
         labelLine: {
-            lineStyle: {
-                color: 'rgba(255, 255, 255, 0.3)'
-            },
-            smooth: 0.2,
-            length: 10,
-            length2: 20
+          show: false
         },
+        label: {
+          show: false,
+          position: 'center'
+        },
+        emphasis: {
+            label: {
+                show: true,
+                fontSize: '30',
+                fontWeight: 'bold'
+            }
+        }
       }],
     }
 
