@@ -33,7 +33,7 @@ export class AppComponent {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
-  constructor(private searchService: SearchService) {}
+  //constructor(private searchService: SearchService) {}
 
   add(event: MatChipInputEvent): void {
     this.search_result = [];
@@ -378,9 +378,7 @@ export class AppComponent {
     this.AddtoSearch(event)
     this.refreshPage();
   }
-  toggleConfig() {
-    this.showConfig = !this.showConfig;
-  }
+
 
   public receive(term){
     this.add(term);
