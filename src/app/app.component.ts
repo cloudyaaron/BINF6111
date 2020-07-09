@@ -367,7 +367,11 @@ export class AppComponent {
     }
   }
 
-
+  addExtra(term){
+    
+    this.AddtoSearch(term)
+    this.refreshPage()
+  }
 
   public clickSuggestButton(event: string) {
     console.log("clicked");
@@ -380,9 +384,6 @@ export class AppComponent {
   }
 
 
-  public receive(term){
-    this.add(term);
-  }
       toggleConfig() { this.showConfig = !this.showConfig; }
 
   //Useful urls: https://www.freakyjolly.com/angular-e-charts-using-ngx-echarts-tutorial/#.XvFQAGgzY2w
