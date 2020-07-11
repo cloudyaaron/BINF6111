@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'my-app',
