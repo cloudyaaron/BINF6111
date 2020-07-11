@@ -5,10 +5,11 @@
 		<p> Accepted Input File Types: Excel (.xlsx), JSON (.json), CSV (.csv) </p>
     <form (submit)="onSubmit()">
       <label for="myfile">Select a file:</label>
-      <input type="file" id="myfile" name="myfile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/JSON" (change)="fileChanged($event)"><br><br>
+      <input type="file" id="myfile" name="myfile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/JSON, application/vnd.ms-excel" (change)="fileChanged($event)"><br><br>
       <input type="submit" name="submit" routerLink="main" routerLinkActive="active">
     </form>
 	</div>
 </div>
 
 <router-outlet></router-outlet>
+<!-- <app [patients]='patients'></app> -->

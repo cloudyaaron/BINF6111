@@ -13,7 +13,7 @@ export class PatientsList {
   patientsLength = Object.keys(this.patients).length
 
   // for JSON input
-  plist = initializePatients(this.patients);
+  //plist = initializePatients(this.patients);
   //can use plist as substitute for "patients = data"
 
 }
