@@ -1,5 +1,5 @@
-import { Component, Input } from "@angular/core";
-import data from '../phenotips_2020-06-09_18-16_with_external_id.json';
+import { Component, Input, OnInit } from "@angular/core";
+import data from "../phenotips_2020-06-09_18-16_with_external_id.json";
 import { query } from "@angular/animations";
 
 @Component({
@@ -7,7 +7,7 @@ import { query } from "@angular/animations";
   templateUrl: "graph.component.html",
   styleUrls: ["../bootstrap.min.css"]
 })
-export class graphComponent {
+export class graphComponent implements OnInit {
   @Input() patients: Array<any>;
   @Input() chartType: String;
   options: any;
@@ -15,23 +15,63 @@ export class graphComponent {
   phenoPool = [];
   freq = [];
   terms = [];
-  temp = [];
-  
-  constructor(){
- 
-    this.temp.push({query:"all",answer:data})
+  temp = new Array();
 
-    this.getPhenotypePool(this.temp)
+  ngOnInit() {
+    this.temp.push({ query: "all", answer: data });
+    this.getPhenotypePool(this.temp);
+    this.showBarChart();
+
   }
 
-  
+  ngOnChanges() {
+    console.log("changes==");
+    this.freq = [];
+    this.terms = [];
+    this.phenoPool = [];
+
+    if (this.patients.length == 0 || this.patients == undefined) {
+      this.patients = data;
+      this.getPhenotypePool(this.temp);
+    } else {
+      this.getPhenotypePool(this.patients);
+    }
+    this.showBarChart();
+
+    //console.log(this.patients)
+  }
+
+  public getPhenotypePool(plist: Array<any>): Array<any> {
+    //console.log("extractPHpool",plist);
+    for (var q of plist) {
+      for (var p of q["answer"]) {
+        for (var pheno of p["features"]) {
+          if (
+            pheno["observed"] == "yes" &&
+            this.phenoPool.find(phenotype => pheno["id"] === phenotype["id"]) ==
+              undefined
+          ) {
+            pheno.count = 1;
+            this.phenoPool.push(pheno);
+          } else if (
+            pheno["observed"] == "yes" &&
+            this.phenoPool.find(phenotype => pheno["id"] === phenotype["id"]) !=
+              undefined
+          ) {
+            var t = this.phenoPool.find(
+              phenotype => pheno["id"] === phenotype["id"]
+            );
+            t["count"] = t["count"] + 1;
+          }
+        }
+      }
+    }
 
 
-  ngOnChanges(){
+    return [];
+  }
 
-    this.freq = []
-    this.terms = []
-    this.phenoPool=[]
+  showBarChart() {
     this.options = {
       title: {
         text: "Frequency of HPO Terms for Filtered Patients",
@@ -44,67 +84,37 @@ export class graphComponent {
         }
       },
       xAxis: {
-        type: 'category',
+        type: "category",
         data: this.terms,
-        name: 'HPO Terms',
-        nameLocation: 'center',
+        name: "HPO Terms",
+        nameLocation: "center",
         axisTick: {
           alignWithLabel: true
         },
         axisLabel: {
-         rotate: 45
-       }
+          rotate: 45
+        }
       },
       yAxis: {
-          type: 'value',
-          name: 'Frequency of Term',
-          nameLocation: 'center',
+        type: "value",
+        name: "Frequency of Term",
+        nameLocation: "center"
       },
       series: [
         {
           name: "Patient(s) with Term",
           type: "bar",
           data: this.freq,
-          animationDelay: (idx) => idx * 10,
+          animationDelay: idx => idx * 10
         }
       ],
-      animationEasing: 'elasticOut',
-      animationDelayUpdate: (idx) => idx * 5,
-    }
-    
-    if (this.patients.length==0){
-      this.patients=data
-      this.getPhenotypePool(this.temp)
-    }else{
-      this.getPhenotypePool(this.patients)
-
-    }
-    //console.log(this.patients)
-  }
-
-  public getPhenotypePool(plist:Array<any>): Array<any>{
-    console.log(plist)
-    for (var q of plist) {
-      for(var p of q['answer']){
-        for(var pheno of p['features']){
-          if(pheno['observed']=="yes" && this.phenoPool.find(phenotype=> pheno['id']===phenotype['id'])== undefined){
-            pheno.count = 1
-            this.phenoPool.push(pheno)
-
-          }else if(pheno['observed']=="yes" && this.phenoPool.find(phenotype=> pheno['id']===phenotype['id'])!= undefined){
-            var t = this.phenoPool.find(phenotype=> pheno['id']===phenotype['id'])
-            t['count'] = t['count']+1
-          }
-        }
-      }
-    }
-
-    // Load data for bar graph
+      animationEasing: "elasticOut",
+      animationDelayUpdate: idx => idx * 5
+    };
+        // Load data for bar graph
     for (var item of this.phenoPool) {
-      this.terms.push(item['id'])
-      this.freq.push(item['count'])
+      this.terms.push(item["id"]);
+      this.freq.push(item["count"]);
     }
-
-    return [];
   }
 }

@@ -88,7 +88,8 @@
 		<!--<ng-container *ngIf="intersection_check">
   <patient-list [patients]= 'patients' [type]=typeR></patient-list>
 </ng-container>-->
-
+<div class="row">
+  <div class="column" style="width: 50%; padding:20px">
 		<ng-container *ngFor="let eachsearch of search_result">
 			<h3>
 				{{eachsearch['query']}}
@@ -96,6 +97,12 @@
 			</h3>
 			<patient-list [patients]="eachsearch['answer']" [type]=typeR></patient-list>
 		</ng-container>
+  </div>
+  <div class="column" style="width: 50%; padding:20px">
+    <graph-echart [patients]='search_result'></graph-echart>
+
+  </div>
+</div>
 
 
 		<mat-tab-group>
@@ -103,7 +110,7 @@
 				<patient-list [patients]='patients' [type]=''></patient-list>
 			</mat-tab>
 			<mat-tab label="Graph(testing)">
-				<graph-echart [patients]='search_result'></graph-echart>
+				<graph-echart ></graph-echart>
 			</mat-tab>
 		</mat-tab-group>
 
