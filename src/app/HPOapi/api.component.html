@@ -1,9 +1,11 @@
-<div *ngIf="toggleTerm">
-  <h3>Get Information for HPO Term {{input_term['detail']}}</h3>
+
+<h3>Get Information for HPO Term {{input_term['detail']}}</h3>
+
+<div>
   <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
   <Strong> Name : {{name}}, HPO id is {{hpoid}}</Strong>
   <div *ngIf="haveChildren">
-    <em> Childrens are: </em>
+    <em> Children are: </em>
     <br>
     <ul class="list-group">
       <ng-container *ngFor="let c of firstLevelChildren" > 
@@ -17,6 +19,8 @@
       </ng-container>
     </ul>
   </div>
+  
+
 </div>
 <div *ngIf="this.checkIfResult()"> Error Message: Cannot find results for {{input_term['detail']}}</div>
 

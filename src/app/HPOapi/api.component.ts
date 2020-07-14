@@ -13,7 +13,6 @@ import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
 
 export class ApiComponent {
   @Input('input') input_term: string[];
-
   error: any;
   headers: string[];
   hpoid: string;
