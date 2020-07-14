@@ -13,6 +13,7 @@ import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
 
 export class ApiComponent {
   @Input('input') input_term: string[];
+  @Output() extra = new EventEmitter<any>();
   error: any;
   headers: string[];
   hpoid: string;
@@ -53,6 +54,10 @@ export class ApiComponent {
                    },
                
       );
+  }
+
+  AddToSearch(term){
+    this.extra.emit(term)
   }
 
   extractInput() {
