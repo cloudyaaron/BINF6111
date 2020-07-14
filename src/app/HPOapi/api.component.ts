@@ -28,6 +28,8 @@ export class ApiComponent {
   firstLevelChildren: []; 
   toggle = true; 
   toggleTerm = true;
+  //noResuilt = true; 
+  @Output() deliever = new EventEmitter();  
 
   
   constructor(private apiService: ApiService) {}
@@ -38,14 +40,18 @@ export class ApiComponent {
         (data) => {
                     //let detail = {}
                     //this.result_object = new HPOTerm() 
- 
-                    this.hpoid = data['details']['id'];
+                    if (this.apiService.noResult = false) {
+                      this.hpoid = data['details']['id'];
                     
-                    if (data['relations']['children'].length == 0) {
+                      if (data['relations']['children'].length == 0) {
                         this.toggleChildren(); 
+                      }
+                      this.firstLevelChildren = data['relations']['children'];                    
+                      this.name = data['details']['name']
+                    } else {
+                      console.log("the api responds 404")
                     }
-                    this.firstLevelChildren = data['relations']['children'];                    
-                    this.name = data['details']['name']},
+                   },
                
       );
   }
@@ -65,6 +71,10 @@ export class ApiComponent {
   toggleLoad(){this.toggle = !this.toggle};
   toggleChildren(){this.haveChildren = !this.haveChildren}; 
   toggleTermType() {this.toggleTerm = !this.toggleTerm}; 
+  checkIfResult() { 
+    console.log(this.apiService.noResult)
+    return this.apiService.noResult; 
+  };
 }
 
 

@@ -1,7 +1,6 @@
 <div *ngIf="toggleTerm">
   <h3>Get Information for HPO Term {{input_term['detail']}}</h3>
   <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
-
   <Strong> Name : {{name}}, HPO id is {{hpoid}}</Strong>
   <div *ngIf="haveChildren">
     <em> Childrens are: </em>
@@ -19,6 +18,7 @@
     </ul>
   </div>
 </div>
+<div *ngIf="this.checkIfResult()"> Error Message: Cannot find results for {{input_term['detail']}}</div>
 
 
 <!-- 

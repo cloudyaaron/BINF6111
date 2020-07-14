@@ -8,12 +8,22 @@ import { HPOTerm, Details } from '../classes/HPOTerm';
 
 @Injectable()
 export class ApiService {
-  configUrl = 'https://hpo.jax.org/api/hpo/term/'; 
+  baseUrl = 'https://hpo.jax.org/api/hpo/'; 
+  termUrl = 'term/'
+  searchUrl = '/search/?q='
+  combinedUrl = '';  
+  noResult = false; 
+
   details: Details; 
   constructor(private http: HttpClient) { }
   
+  configUrl() {
+    // given a specific option and get the specified urls
+    this.combinedUrl = this.baseUrl + this.termUrl; 
+  }
   getConfig(term:string) {
-    let searchUrl = this.configUrl + term;
+    this.configUrl();
+    let searchUrl = this.combinedUrl + term;
    return this.http.get(searchUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -22,6 +32,10 @@ export class ApiService {
   }
 
   private handleError(error: HttpErrorResponse) {
+    if (error.status == 404) {
+      console.log("reach here")
+        this.noResult = true
+    }
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
@@ -34,7 +48,7 @@ export class ApiService {
     }
     // return an observable with a user-facing error message
     return throwError(
-      'Something bad happened; please try again later.');
+      'The Api could not approach to results; check the search query');
   };
 
 }
