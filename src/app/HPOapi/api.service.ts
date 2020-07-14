@@ -24,6 +24,7 @@ export class ApiService {
   getConfig(term:string) {
     this.configUrl();
     let searchUrl = this.combinedUrl + term;
+    console.log(searchUrl);
    return this.http.get(searchUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -32,10 +33,12 @@ export class ApiService {
   }
 
   private handleError(error: HttpErrorResponse) {
+    /*
     if (error.status == 404) {
       console.log("reach here")
         this.noResult = true
     }
+    */
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);

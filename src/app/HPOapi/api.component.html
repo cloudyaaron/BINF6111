@@ -22,7 +22,6 @@
   
 
 </div>
-<div *ngIf="this.checkIfResult()"> Error Message: Cannot find results for {{input_term['detail']}}</div>
 
 
 <!-- 
@@ -32,4 +31,6 @@ can be found in the LICENSE file at http://angular.io/license
 <HPOapi *ngFor="let s of input_term" > {{s}} </HPOapi>
 (click)="showConfig(c['ontologyId'])"
 <HPOapi *ngFor="let child of firstLevelChildren" > {{child}} </HPOapi>
+<div *ngIf="this.checkIfResult()"> Error Message: Cannot find results for {{input_term['detail']}}</div>
+
 -->

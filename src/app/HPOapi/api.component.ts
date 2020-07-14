@@ -28,7 +28,7 @@ export class ApiComponent {
   firstLevelChildren: []; 
   toggle = true; 
   toggleTerm = true;
-  //noResuilt = true; 
+  noResult = false; 
   @Output() deliever = new EventEmitter();  
 
   
@@ -40,7 +40,7 @@ export class ApiComponent {
         (data) => {
                     //let detail = {}
                     //this.result_object = new HPOTerm() 
-                    if (this.apiService.noResult = false) {
+                    
                       this.hpoid = data['details']['id'];
                     
                       if (data['relations']['children'].length == 0) {
@@ -48,9 +48,7 @@ export class ApiComponent {
                       }
                       this.firstLevelChildren = data['relations']['children'];                    
                       this.name = data['details']['name']
-                    } else {
-                      console.log("the api responds 404")
-                    }
+                   
                    },
                
       );
@@ -67,7 +65,6 @@ export class ApiComponent {
         this.toggleLoad(); 
     } else {
       console.log("It's null!"); 
-
       this.toggleTermType();
       return; 
     }
@@ -75,13 +72,15 @@ export class ApiComponent {
   toggleLoad(){this.toggle = !this.toggle};
   toggleChildren(){this.haveChildren = !this.haveChildren}; 
   toggleTermType() {this.toggleTerm = !this.toggleTerm}; 
+  /*
   checkIfResult() { 
     console.log(this.apiService.noResult)
     return this.apiService.noResult; 
   };
+  */
 }
 
-
+//just comment for change 
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
