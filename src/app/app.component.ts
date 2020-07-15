@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
+//import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
@@ -16,13 +16,13 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 })
 export class AppComponent {
   name = "Angular ";
-  hpoTerms: HashTable<string, any>;
-  hpoList = data[0];
-  patients = data;
+  //patients = data;
+  @Input() patients: Array<any> = [];
+  @Input() patientsLenth = 0;
   values = "";
   suggest_text = "";
   search_result = [];
-  patientsLenth = Object.keys(this.patients).length;
+  //patientsLenth = Object.keys(this.patients).length;
   suggested_queries = [];
   showConfig = true;
   typeR = "R";
@@ -167,6 +167,10 @@ export class AppComponent {
       }
     }
     if (search_term[0] == "P") {
+      console.log('patientsLenth');
+      console.log(this.patientsLenth);
+      console.log(Object.keys(this.patients).length);
+      console.log(this.patients);
       for (let i = 0; i < this.patientsLenth; i++) {
         if (this.patients[i]["report_id"] == search_term) {
           console.log(this.patients[i]["report_id"]);

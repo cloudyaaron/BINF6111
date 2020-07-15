@@ -1,5 +1,5 @@
 <div style="text-align:center">
-	<h1> Patients filter </h1>
+	<h1> Input File </h1>
 	<div>
     <br><br>
 		<p> Accepted Input File Types: Excel (.xlsx), JSON (.json), CSV (.csv) </p>
@@ -11,5 +11,7 @@
 	</div>
 </div>
 
-<router-outlet></router-outlet>
-<!-- <app [patients]='patients'></app> -->
+<!-- <router-outlet></router-outlet> -->
+<ng-container>
+  <app [patients]='data' [patientsLenth]='datalength'></app>
+</ng-container>
