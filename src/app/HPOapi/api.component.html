@@ -1,19 +1,24 @@
 
-<div id="accordion">
-  <div class="card">
-    <div class="card-header">
-      <strong class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#body" aria-expanded="false" aria-controls="body">
-          Search Result of {{input_term['detail']}}
-        </button>
-      </strong>
-    </div>
-    <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
+
+      <h3 class="mb-0">
+          Search Result of {{input_term['detail']}}      
+      </h3>
     
-    <div *ngIf="toggleTerm">  
-      <div *ngIf="isNaturalLanguage" class="card body" id="body" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"> 
+    <div *ngIf="toggleTerm" class="card body" id="resultbody" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">  
+      <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
+      <div *ngIf="isNaturalLanguage" > 
       <p> Disease lists are: </p>
-      
+      <ul class="list-group">
+          <ng-container *ngFor="let c of naturalLanguage_result" > 
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{c['name']}}, {{c['ontologyId']}}
+        <div class="btn-group">
+          <button class="btn btn-success"(click)="AddToSearch(c['ontologyId'])"> Add </button>
+          <button class="btn btn-success" (click)="showHPOTermConfig(c['ontologyId'])">Find Term</button>
+        </div>
+        </li>
+      </ng-container>
+        </ul>
       </div>
 
       <div *ngIf="!isNaturalLanguage" class="card body">
@@ -42,8 +47,6 @@
       </div>
     </div>
 
-  </div>
-</div>
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.
@@ -54,15 +57,5 @@ can be found in the LICENSE file at http://angular.io/license
 <HPOapi *ngFor="let child of firstLevelChildren" > {{child}} </HPOapi>
 <div *ngIf="this.checkIfResult()"> Error Message: Cannot find results for {{input_term['detail']}}</div>
 
-<ul class="list-group">
-          <ng-container *ngFor="let c of naturalLanguage_result['terms']" > 
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          {{c['name']}}, {{c['ontologyId']}}
-        <div class="btn-group">
-          <button class="btn btn-success"(click)="AddToSearch(c['ontologyId'])"> Add </button>
-          <button class="btn btn-success" (click)="showHPOTermConfig(c['ontologyId'])">Find Term</button>
-        </div>
-        </li>
-      </ng-container>
-        </ul>
+
 -->

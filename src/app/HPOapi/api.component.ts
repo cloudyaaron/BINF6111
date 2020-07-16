@@ -66,8 +66,8 @@ export class ApiComponent {
         (data) => {
                     //let detail = {}
                     //this.result_object = new HPOTerm() 
-                      this.naturalLanguage_result.push(data);
-                     
+                      this.naturalLanguage_result = data['terms'];
+                      console.log(this.naturalLanguage_result);
                    },
                
       );
@@ -92,7 +92,7 @@ export class ApiComponent {
           this.showQueryConfig(input_detail);
           this.toggleLoad(); 
           this.toggleQuery();
-          this.printQueryResult();
+          //this.printQueryResult();
         }        
     } else {
       console.log("input term is null!"); 
@@ -101,7 +101,7 @@ export class ApiComponent {
   }
 
 printQueryResult() {
-  console.log(this.naturalLanguage_result['terms']);
+  console.log(this.naturalLanguage_result);
   
 }
   toggleLoad(){this.toggle = !this.toggle};
