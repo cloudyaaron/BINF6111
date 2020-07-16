@@ -1,28 +1,49 @@
 
-<h3>Get Information for HPO Term {{input_term['detail']}}</h3>
+<div id="accordion">
+  <div class="card">
+    <div class="card-header">
+      <strong class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#body" aria-expanded="false" aria-controls="body">
+          Search Result of {{input_term['detail']}}
+        </button>
+      </strong>
+    </div>
+    <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
+    
+    <div *ngIf="toggleTerm">  
+      <div *ngIf="isNaturalLanguage" class="card body" id="body" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"> 
+      <p> Disease lists are: </p>
+      
+      </div>
 
-<div>
-  <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
-  <Strong> Name : {{name}}, HPO id is {{hpoid}}</Strong>
-  <div *ngIf="haveChildren">
-    <em> Children are: </em>
-    <br>
-    <ul class="list-group">
-      <ng-container *ngFor="let c of firstLevelChildren" > 
+      <div *ngIf="!isNaturalLanguage" class="card body">
+      <Strong> Name : {{name}}, HPO id is {{hpoid}}</Strong>
+
+         <div class="custom-control custom-switch">
+       <input type="checkbox" class="custom-control-input" id="customSwitches" >
+       <label class="custom-control-label" for="customSwitches">Children Mode</label>
+      </div>
+
+       <div *ngIf="haveChildren">
+        <em> Children are: </em> 
+       <br>
+       <ul class="list-group">
+          <ng-container *ngFor="let c of firstLevelChildren" > 
         <li class="list-group-item d-flex justify-content-between align-items-center">
           {{c['name']}}, {{c['ontologyId']}}
         <div class="btn-group">
           <button class="btn btn-success"(click)="AddToSearch(c['ontologyId'])"> Add </button>
-          <button class="btn btn-success" (click)="showConfig(c['ontologyId'])">Find Term</button>
+          <button class="btn btn-success" (click)="showHPOTermConfig(c['ontologyId'])">Find Term</button>
         </div>
         </li>
       </ng-container>
-    </ul>
+        </ul>
+      </div>
+      </div>
+    </div>
+
   </div>
-  
-
 </div>
-
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.
@@ -33,4 +54,15 @@ can be found in the LICENSE file at http://angular.io/license
 <HPOapi *ngFor="let child of firstLevelChildren" > {{child}} </HPOapi>
 <div *ngIf="this.checkIfResult()"> Error Message: Cannot find results for {{input_term['detail']}}</div>
 
+<ul class="list-group">
+          <ng-container *ngFor="let c of naturalLanguage_result['terms']" > 
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          {{c['name']}}, {{c['ontologyId']}}
+        <div class="btn-group">
+          <button class="btn btn-success"(click)="AddToSearch(c['ontologyId'])"> Add </button>
+          <button class="btn btn-success" (click)="showHPOTermConfig(c['ontologyId'])">Find Term</button>
+        </div>
+        </li>
+      </ng-container>
+        </ul>
 -->

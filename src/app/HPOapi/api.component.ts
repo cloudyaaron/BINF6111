@@ -4,6 +4,11 @@ import { ApiService } from './api.service';
 import { MessageService } from '../message.service';
 import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
 
+export interface QueryResult {
+  name: [],
+  ontologyId:[]
+}
+
 @Component({
   selector: 'HPOapi',
   templateUrl: './api.component.html',
@@ -29,12 +34,15 @@ export class ApiComponent {
   toggle = true; 
   toggleTerm = true;
   noResult = false; 
+  isNaturalLanguage = false; 
+  naturalLanguage_result: any[]; 
+
   @Output() deliever = new EventEmitter();  
 
   
   constructor(private apiService: ApiService) {}
 
-  showConfig(term:string) {
+  showHPOTermConfig(term:string) {
     this.apiService.getConfig(term)
       .subscribe(
         (data) => {
@@ -42,13 +50,24 @@ export class ApiComponent {
                     //this.result_object = new HPOTerm() 
                     
                       this.hpoid = data['details']['id'];
-                    
+                      //if there is no children
                       if (data['relations']['children'].length == 0) {
                         this.toggleChildren(); 
                       }
                       this.firstLevelChildren = data['relations']['children'];                    
                       this.name = data['details']['name']
-                   
+                   },               
+      );
+  }
+
+  showQueryConfig(term:string) {
+    this.apiService.getConfig(term)
+      .subscribe(
+        (data) => {
+                    //let detail = {}
+                    //this.result_object = new HPOTerm() 
+                      this.naturalLanguage_result.push(data);
+                     
                    },
                
       );
@@ -59,19 +78,36 @@ export class ApiComponent {
   }
 
   extractInput() {
-
-    if (this.input_term && this.input_term['detail'][0] == 'H') {
-        this.showConfig(this.input_term['detail']);
-        this.toggleLoad(); 
+    if (this.input_term) {
+        let input_detail = this.input_term['detail']
+        if (this.apiService.isHPOTerm(input_detail)) {
+            this.showHPOTermConfig(input_detail);
+            this.toggleLoad(); 
+        } else if (this.apiService.isPatient(input_detail)) {
+            console.log("patient case; ignore")
+            this.toggleTermType();
+            return;
+        } else {
+          console.log("natural language case")
+          this.showQueryConfig(input_detail);
+          this.toggleLoad(); 
+          this.toggleQuery();
+          this.printQueryResult();
+        }        
     } else {
-      console.log("It's null!"); 
-      this.toggleTermType();
+      console.log("input term is null!"); 
       return; 
     }
   }
+
+printQueryResult() {
+  console.log(this.naturalLanguage_result['terms']);
+  
+}
   toggleLoad(){this.toggle = !this.toggle};
   toggleChildren(){this.haveChildren = !this.haveChildren}; 
   toggleTermType() {this.toggleTerm = !this.toggleTerm}; 
+  toggleQuery() {this.isNaturalLanguage = !this.isNaturalLanguage};
   /*
   checkIfResult() { 
     console.log(this.apiService.noResult)

@@ -17,12 +17,17 @@ export class ApiService {
   details: Details; 
   constructor(private http: HttpClient) { }
   
-  configUrl() {
+  configUrl(term:string) {
     // given a specific option and get the specified urls
-    this.combinedUrl = this.baseUrl + this.termUrl; 
+    if (this.isHPOTerm(term)) {
+      this.combinedUrl = this.baseUrl + this.termUrl; 
+    } else {
+        this.combinedUrl = this.baseUrl + this.searchUrl;
+    }
+
   }
   getConfig(term:string) {
-    this.configUrl();
+    this.configUrl(term);
     let searchUrl = this.combinedUrl + term;
     console.log(searchUrl);
    return this.http.get(searchUrl)
@@ -33,12 +38,12 @@ export class ApiService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    /*
+    
     if (error.status == 404) {
       console.log("reach here")
         this.noResult = true
     }
-    */
+    
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
@@ -53,6 +58,17 @@ export class ApiService {
     return throwError(
       'The Api could not approach to results; check the search query');
   };
+
+  isHPOTerm(term:string):boolean {
+    let hregex = new RegExp('^HP:[0-9]{7}$')
+    console.log(hregex.test(term))
+    return hregex.test(term); 
+  }
+  isPatient(term:string):boolean {
+    let pregex = new RegExp('^P[0-9]{7}$')
+        console.log(pregex.test(term))
+    return pregex.test(term);
+  }
 
 }
 
