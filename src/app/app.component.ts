@@ -7,6 +7,7 @@ import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ActivatedRoute, Params } from '@angular/router';
+import { DataService } from './data.service';
 
 //https://bootswatch.com/litera/?
 
@@ -18,12 +19,13 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class AppComponent {
   name = "Angular ";
   //patients = data;
-  @Input() patients: Array<any> = [];
-  @Input() patientsLenth = 0;
+  //@Input() patients: Array<any> = [];
+  //@Input() patientsLenth = 0;
+  patients: Array<any> = [];
   values = "";
   suggest_text = "";
   search_result = [];
-  //patientsLenth = Object.keys(this.patients).length;
+  patientsLenth = Object.keys(this.patients).length;
   suggested_queries = [];
   showConfig = true;
   typeR = "R";
@@ -35,13 +37,15 @@ export class AppComponent {
   search_list = [];
 
   //constructor(private searchService: SearchService) {}
-  constructor( private route: ActivatedRoute) { }
+  constructor( private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit(): void {
+    //console.log(this.data.getData())
+    //this.patients = this.data.getData();
     this.route.queryParams.subscribe(
       params => {
-         let patients = JSON.parse(params['profile']);
-         console.log('Got param: ', patients.longitude);
+         this.patients = JSON.parse(params['profile']);
+         //console.log('Got param: ', this.patients.longitude);
       }
     )
   }
