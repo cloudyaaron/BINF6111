@@ -12,7 +12,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
-  styleUrls: ["./bootstrap.min.css"]
+  styleUrls: ["./lumen.css"]
 })
 export class AppComponent {
   name = "Angular ";

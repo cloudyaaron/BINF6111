@@ -54,6 +54,11 @@ export class ApiComponent {
     this.extra.emit(term)
   }
 
+  AddAll(){
+    for(var term of this.firstLevelChildren){
+      this.AddToSearch(term['ontologyId'])
+    }
+  }
   extractInput() {
 
     if (this.input_term && this.input_term['detail'][0] == 'H') {

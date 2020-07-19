@@ -1,26 +1,31 @@
-
 <h3>Get Information for HPO Term {{input_term['detail']}}</h3>
 
 <div>
-  <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
+	<HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
 
-  <Strong> Name : {{name}}, HPO id is {{hpoid}}</Strong>
-  <div *ngIf="haveChildren">
-    <em> Children are: </em>
-    <br>
-    <ul class="list-group">
-      <ng-container *ngFor="let c of firstLevelChildren" > 
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          {{c['name']}}, {{c['ontologyId']}}
-        <div class="btn-group">
-          <button class="btn btn-success"(click)="AddToSearch(c['ontologyId'])"> Add </button>
-          <button class="btn btn-success" (click)="showConfig(c['ontologyId'])">Find Term</button>
-        </div>
-        </li>
-      </ng-container>
-    </ul>
-  </div>
-  
+	<Strong> Name : {{name}}, HPO id is {{hpoid}}</Strong>
+	<div *ngIf="haveChildren">
+		<em> Children are: </em>
+
+		<p align="right" class="btn-group">
+
+			<button class="btn btn-info" (click)="AddAll()">Add all first level children</button>
+			<button class="btn btn-warning" (click)="AddAll()">Add all children</button>
+		</p>
+
+		<ul class="list-group">
+			<ng-container *ngFor="let c of firstLevelChildren">
+				<li class="list-group-item d-flex justify-content-between align-items-center">
+					{{c['name']}}, {{c['ontologyId']}}
+					<div class="btn-group">
+						<button class="btn btn-success"(click)="AddToSearch(c['ontologyId'])"> Add </button>
+						<button class="btn btn-success" (click)="showConfig(c['ontologyId'])">Find Term</button>
+					</div>
+				</li>
+			</ng-container>
+		</ul>
+	</div>
+
 
 </div>
 
