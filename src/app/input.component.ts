@@ -37,25 +37,27 @@ export class InputComponent {
       console.log('No file was selected')
     } else if (this.file.type == "application/json") {
       let reader = new FileReader();
-      
       reader.readAsText(this.file);
+      
       reader.onload = (e) => {
         this.data = JSON.parse(reader.result as string);
         this.datalength = Object.keys(this.data).length;
         this.dataService.setData(this.data);
         console.log(this.data);
-        console.log(this.dataService.getData());
+        //console.log(this.dataService.getData());
       }
       console.log(this.dataService.getData());
     } else if (this.file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || this.file.type == "application/vnd.ms-excel") {
-      console.log('excel file');
-      //this.data = JSON.parse('{ "myString": "string", "myNumber": 4 }');
+      let reader = new FileReader();
+      reader.readAsText(this.file);
 
-      this.data = JSON.parse('[{"features":[{"id":"HP:0002725","label":"Systemic lupus erythematosus","type":"phenotype","observed":"yes"}],"report_id":"P0000038","sex":"M","nonstandard_features":[],"external_id":"17F00037; 40421494","clinicalStatus":"affected"}, {"features": [],"report_id": "P0000112","sex": "F","nonstandard_features": [],"external_id": "C20MW112, 17F00040, 40421736","clinicalStatus": "affected"}]');
-      this.datalength = Object.keys(this.data).length;
-      this.dataService.setData(this.data);
-      console.log(this.data);
-      console.log(this.data.length);
+      reader.onload = (e) => {
+        this.data = JSON.parse('[{"features":[{"id":"HP:0002725","label":"Systemic lupus erythematosus","type":"phenotype","observed":"yes"}],"report_id":"P0000038","sex":"M","nonstandard_features":[],"external_id":"17F00037; 40421494","clinicalStatus":"affected"}, {"features": [],"report_id": "P0000112","sex": "F","nonstandard_features": [],"external_id": "C20MW112, 17F00040, 40421736","clinicalStatus": "affected"}]');
+        this.datalength = Object.keys(this.data).length;
+        this.dataService.setData(this.data);
+        console.log(this.data);
+        console.log(this.data.length);
+      }
       console.log(this.dataService.getData());
     }
 
