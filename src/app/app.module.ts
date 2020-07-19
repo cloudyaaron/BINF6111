@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { InputComponent } from './input.component';
 import { AppComponent } from './app.component';
+import { MainComponent } from './main.component';
 
 import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from './hello.component';
@@ -34,8 +35,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, AppRoutingModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule],
-  declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList, InputComponent, graphComponent],
-  bootstrap:    [ InputComponent ],
+  declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList, InputComponent, graphComponent, MainComponent],
+  bootstrap:    [ MainComponent ],
   providers:    [MessageService, ApiService, SearchService]
 })
 export class AppModule { }
