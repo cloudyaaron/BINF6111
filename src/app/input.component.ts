@@ -43,10 +43,11 @@ export class InputComponent {
         //console.log(reader.result);
         //console.log(JSON.parse(reader.result as string));
         this.data = JSON.parse(reader.result as string);
-        console.log(Object.keys(this.data).length);
-        console.log(JSON.stringify(this.data));
+        //console.log(Object.keys(this.data).length);
+        //console.log(JSON.stringify(this.data));
         this.datalength = Object.keys(this.data).length;
         this.dataService.setData(this.data);
+        console.log(this.dataService.getData());
       }
     } else if (this.file.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || this.file.type == 'application/vnd.ms-excel') {
       console.log('excel file');
@@ -59,7 +60,8 @@ export class InputComponent {
     console.log(">>> activatedRoute", this.route);
     console.log('route navigating');
     //this.router.navigate(['/main']);
-    this.router.navigate(['/app'], {queryParams: {profile: JSON.stringify(this.data)}})
+    //this.router.navigate(['/app'], {queryParams: {profile: JSON.stringify(this.data)}})
+    this.router.navigate(['/app'], {queryParams: this.data})
     //this.router.navigate(['/main'], { queryParams: { profile: JSON.stringify(this.data) }});
     //this.router.navigateByUrl('/main');
   }

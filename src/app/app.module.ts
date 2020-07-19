@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { InputComponent } from './input.component';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main.component';
+import { DataService } from './data.service';
 
 import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from './hello.component';
@@ -37,6 +38,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, AppRoutingModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule],
   declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList, InputComponent, graphComponent, MainComponent],
   bootstrap:    [ MainComponent ],
-  providers:    [MessageService, ApiService, SearchService]
+  providers:    [MessageService, ApiService, SearchService, DataService]
 })
 export class AppModule { }

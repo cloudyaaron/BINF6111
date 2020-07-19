@@ -16,16 +16,17 @@ import { DataService } from './data.service';
   templateUrl: './app.component.html',
   styleUrls: [ './bootstrap.min.css' ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   name = "Angular ";
   //patients = data;
   //@Input() patients: Array<any> = [];
   //@Input() patientsLenth = 0;
-  patients: Array<any> = [];
+  patients: Array<any>;
+  patientsLenth = 0;
+  subscription;
   values = "";
   suggest_text = "";
   search_result = [];
-  patientsLenth = Object.keys(this.patients).length;
   suggested_queries = [];
   showConfig = true;
   typeR = "R";
@@ -37,17 +38,20 @@ export class AppComponent {
   search_list = [];
 
   //constructor(private searchService: SearchService) {}
-  constructor( private route: ActivatedRoute, private data: DataService) { }
+  constructor( private route: ActivatedRoute, private dataService: DataService) { 
+    // this.patients = data.getData();
+    // console.log(this.patients.length);
+    // this.patientsLenth = Object.keys(this.patients).length;
+    // console.log(this.patientsLenth);
+    // console.log(this.patients);
+  }
 
-  ngOnInit(): void {
-    //console.log(this.data.getData())
-    //this.patients = this.data.getData();
-    this.route.queryParams.subscribe(
-      params => {
-         this.patients = JSON.parse(params['profile']);
-         //console.log('Got param: ', this.patients.longitude);
-      }
-    )
+  ngOnInit() {
+    this.dataService.observableName.subscribe(value => {
+      console.log(value);
+      this.patients = value;
+      this.patientsLenth = this.patients.length;
+    })
   }
 
   add(event: MatChipInputEvent): void {
