@@ -40,29 +40,25 @@ export class InputComponent {
       
       reader.readAsText(this.file);
       reader.onload = (e) => {
-        //console.log(reader.result);
-        //console.log(JSON.parse(reader.result as string));
         this.data = JSON.parse(reader.result as string);
-        //console.log(Object.keys(this.data).length);
-        //console.log(JSON.stringify(this.data));
         this.datalength = Object.keys(this.data).length;
         this.dataService.setData(this.data);
+        console.log(this.data);
         console.log(this.dataService.getData());
       }
-    } else if (this.file.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || this.file.type == 'application/vnd.ms-excel') {
+      console.log(this.dataService.getData());
+    } else if (this.file.type == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" || this.file.type == "application/vnd.ms-excel") {
       console.log('excel file');
       //this.data = JSON.parse('{ "myString": "string", "myNumber": 4 }');
-      this.data = JSON.parse('[{"features":[{"id":"HP:0002725","label":"Systemic lupus erythematosus","type":"phenotype","observed":"yes"}],"report_id":"P0000038","sex":"M","nonstandard_features":[],"external_id":"17F00037; 40421494","clinicalStatus":"affected"}]');
+
+      this.data = JSON.parse('[{"features":[{"id":"HP:0002725","label":"Systemic lupus erythematosus","type":"phenotype","observed":"yes"}],"report_id":"P0000038","sex":"M","nonstandard_features":[],"external_id":"17F00037; 40421494","clinicalStatus":"affected"}, {"features": [],"report_id": "P0000112","sex": "F","nonstandard_features": [],"external_id": "C20MW112, 17F00040, 40421736","clinicalStatus": "affected"}]');
       this.datalength = Object.keys(this.data).length;
+      this.dataService.setData(this.data);
+      console.log(this.data);
+      console.log(this.data.length);
+      console.log(this.dataService.getData());
     }
 
-    console.log(">>> router", this.router)
-    console.log(">>> activatedRoute", this.route);
-    console.log('route navigating');
-    //this.router.navigate(['/main']);
-    //this.router.navigate(['/app'], {queryParams: {profile: JSON.stringify(this.data)}})
-    this.router.navigate(['/app'], {queryParams: this.data})
-    //this.router.navigate(['/main'], { queryParams: { profile: JSON.stringify(this.data) }});
-    //this.router.navigateByUrl('/main');
+    this.router.navigate(['/app'])
   }
 }

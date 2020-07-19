@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   //patients = data;
   //@Input() patients: Array<any> = [];
   //@Input() patientsLenth = 0;
-  patients: Array<any>;
+  patients: Array<any> = [];
   patientsLenth = 0;
   subscription;
   values = "";
@@ -38,19 +38,14 @@ export class AppComponent implements OnInit {
   search_list = [];
 
   //constructor(private searchService: SearchService) {}
-  constructor( private route: ActivatedRoute, private dataService: DataService) { 
-    // this.patients = data.getData();
-    // console.log(this.patients.length);
-    // this.patientsLenth = Object.keys(this.patients).length;
-    // console.log(this.patientsLenth);
-    // console.log(this.patients);
-  }
+  constructor( private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.observableName.subscribe(value => {
+    this.dataService.changeData.subscribe(value => {
       console.log(value);
       this.patients = value;
       this.patientsLenth = this.patients.length;
+      console.log(this.patientsLenth);
     })
   }
 

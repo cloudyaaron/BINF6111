@@ -5,7 +5,7 @@ import { Observable, Subject }    from 'rxjs';
 export class DataService{
     //data;
     data: Subject<any> = new Subject<any>();
-    observableName : Observable<any> = this.data.asObservable();
+    changeData: Observable<any> = this.data.asObservable();
 
     constructor() { }
 
