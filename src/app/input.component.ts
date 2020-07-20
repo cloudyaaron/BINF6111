@@ -52,19 +52,11 @@ export class InputComponent {
       let reader = new FileReader();
       
       reader.onload = (e) => {
-        // this.data = JSON.parse('[{"features":[{"id":"HP:0002725","label":"Systemic lupus erythematosus","type":"phenotype","observed":"yes"}],"report_id":"P0000038","sex":"M","nonstandard_features":[],"external_id":"17F00037; 40421494","clinicalStatus":"affected"}, {"features": [],"report_id": "P0000112","sex": "F","nonstandard_features": [],"external_id": "C20MW112, 17F00040, 40421736","clinicalStatus": "affected"}]');
-        // this.datalength = Object.keys(this.data).length;
-        // this.dataService.setData(this.data);
-        // console.log(this.data);
-        // console.log(this.data.length);
-
         let bstr: string = e.target.result as string;
         let wb = XLSX.read(bstr, { type: 'binary' });
         let wsname: string = wb.SheetNames[0];
         let ws: XLSX.WorkSheet = wb.Sheets[wsname];
         this.res = <AOA>(XLSX.utils.sheet_to_json(ws, { header: 1 }));
-        //console.log("showing excel file");
-        //console.log(this.res);
 
         let report_id;
         let sex;
@@ -117,7 +109,7 @@ export class InputComponent {
           if (patient[i+1]) result = result + nonstandard + '},'; 
           else result = result + nonstandard + '}]';
         }
-        /console.log(result);
+        //console.log(result);
         this.data = JSON.parse(result);
         this.datalength = Object.keys(this.data).length;
         this.dataService.setData(this.data);
