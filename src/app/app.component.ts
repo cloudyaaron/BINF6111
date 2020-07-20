@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, OnDestroy } from "@angular/core";
 //import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
 import { HashTable } from "./classes/hashtable";
@@ -8,6 +8,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from './data.service';
+import { Subscription } from "rxjs";
 
 //https://bootswatch.com/litera/?
 
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
   //@Input() patientsLenth = 0;
   patients: Array<any> = [];
   patientsLenth = 0;
-  subscription;
+  subscription: Subscription;
   values = "";
   suggest_text = "";
   search_result = [];
@@ -41,12 +42,17 @@ export class AppComponent implements OnInit {
   constructor( private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.changeData.subscribe(value => {
+    this.subscription = this.dataService.changeData.subscribe(value => {
       console.log(value);
       this.patients = value;
       this.patientsLenth = this.patients.length;
       console.log(this.patientsLenth);
     })
+  }
+
+  ngOnDestroy() {
+    console.log("ngOnDestroy, unsubscribing");
+    this.subscription.unsubscribe();
   }
 
   add(event: MatChipInputEvent): void {
