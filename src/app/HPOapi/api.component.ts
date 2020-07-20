@@ -30,6 +30,7 @@ export class ApiComponent {
   result_object: HPOTerm; 
   */
   haveChildren = true; 
+  showChildren = true; 
   firstLevelChildren: []; 
   toggle = true; 
   toggleTerm = true;

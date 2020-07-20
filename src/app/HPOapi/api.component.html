@@ -24,12 +24,8 @@
       <div *ngIf="!isNaturalLanguage" class="card body">
       <Strong> Name : {{name}}, HPO id is {{hpoid}}</Strong>
 
-         <div class="custom-control custom-switch">
-       <input type="checkbox" class="custom-control-input" id="customSwitches" >
-       <label class="custom-control-label" for="customSwitches">Children Mode</label>
-      </div>
-
-       <div *ngIf="haveChildren">
+      <div *ngIf="haveChildren else noChildren" id="children">
+      
         <em> Children are: </em> 
        <br>
        <ul class="list-group">
@@ -44,6 +40,8 @@
       </ng-container>
         </ul>
       </div>
+    
+      <ng-template #noChildren> There is no First Level Children of this term! </ng-template>
       </div>
     </div>
 
