@@ -28,7 +28,6 @@ export class ApiComponent {
   firstLevelChildren: []; 
   toggle = true; 
   toggleTerm = true;
-
   
   constructor(private apiService: ApiService) {}
 

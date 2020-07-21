@@ -33,7 +33,7 @@ export class AppComponent {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
-  //constructor(private searchService: SearchService) {}
+  constructor(private apiService: ApiService) {}
 
   add(event: MatChipInputEvent): void {
     this.search_result = [];
@@ -363,6 +363,7 @@ export class AppComponent {
     } else if (user_input.length == 0) {
       this.suggest_text = "";
     } else {
+      this.apiService.natureSearch(user_input)
       this.suggest_text = "Nature language searching?";
     }
   }

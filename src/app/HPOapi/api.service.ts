@@ -8,10 +8,39 @@ import { HPOTerm, Details } from '../classes/HPOTerm';
 
 @Injectable()
 export class ApiService {
-  configUrl = 'https://hpo.jax.org/api/hpo/term/'; 
+  configUrl = 'https://hpo.jax.org/api/hpo/term/'
+  baseUrl = 'https://hpo.jax.org/api/hpo/search/?q='; 
+  termUrl = 'term/'
+  combinedUrl = '';  
+  noResult = false; 
+
   details: Details; 
   constructor(private http: HttpClient) { }
   
+  // configUrl(term:string) {
+  //   // given a specific option and get the specified urls
+  //   if (this.isHPOTerm(term)) {
+  //     this.combinedUrl = this.baseUrl + this.termUrl; 
+  //   } else {
+  //       this.combinedUrl = this.baseUrl + this.searchUrl;
+  //   }
+
+  // }
+  // getConfig(term:string) {
+  //   this.configUrl(term);
+  //   let searchUrl = this.combinedUrl + term;
+  //   console.log(searchUrl);
+  //  return this.http.get(searchUrl)
+  //     .pipe(
+  //       retry(3), // retry a failed request up to 3 times
+  //       catchError(this.handleError) // then handle the error
+  //     );
+  // }
+  natureSearch(term:string){
+    let searchUrl = this.configUrl + term;
+
+  }
+
   getConfig(term:string) {
     let searchUrl = this.configUrl + term;
    return this.http.get(searchUrl)
