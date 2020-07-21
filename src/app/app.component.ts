@@ -363,7 +363,7 @@ export class AppComponent {
     } else if (user_input.length == 0) {
       this.suggest_text = "";
     } else {
-      this.suggest_text = "Searching text is unexpected";
+      this.suggest_text = "Nature language searching?";
     }
   }
 
