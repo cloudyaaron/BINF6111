@@ -56,8 +56,10 @@
 <div class="btn-group-vertical">
 	<ng-container *ngFor="let sq of suggested_queries">
 		<button class="btn btn-primary" (click)="clickSuggestButton(sq)">
-    {{sq}}
+    {{sq['id']}}   {{sq['label']}}
+
   </button>
+
 	</ng-container>
 </div>
 
