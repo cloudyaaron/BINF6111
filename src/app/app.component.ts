@@ -391,7 +391,11 @@ export class AppComponent implements OnInit {
     }
   }
 
-
+  addExtra(term){
+    
+    this.AddtoSearch(term)
+    this.refreshPage()
+  }
 
   public clickSuggestButton(event: string) {
     console.log("clicked");
@@ -404,9 +408,6 @@ export class AppComponent implements OnInit {
   }
 
 
-  public receive(term){
-    this.add(term);
-  }
       toggleConfig() { this.showConfig = !this.showConfig; }
 
   //Useful urls: https://www.freakyjolly.com/angular-e-charts-using-ngx-echarts-tutorial/#.XvFQAGgzY2w
