@@ -33,7 +33,7 @@ export class AppComponent {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
-  //constructor(private searchService: SearchService) {}
+  constructor(private apiService: ApiService) {}
 
   add(event: MatChipInputEvent): void {
     this.search_result = [];
