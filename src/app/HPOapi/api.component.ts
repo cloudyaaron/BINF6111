@@ -14,6 +14,7 @@ import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
 export class ApiComponent {
   @Input('input') input_term: string[];
   @Output() extra = new EventEmitter<any>();
+  @Output() result = new EventEmitter<any>(); 
   error: any;
 
   //result of hpo term details 
@@ -44,9 +45,6 @@ export class ApiComponent {
   noResult = false; 
   isNaturalLanguage = false; 
 
-
-  @Output() deliever = new EventEmitter();  
-
   
   constructor(private apiService: ApiService) {}
 
@@ -56,6 +54,7 @@ export class ApiComponent {
         (data) => {
    
                     this.termDetailObject = data
+                    this.extractDetailObject()
                    },               
       );
   }
@@ -75,9 +74,13 @@ export class ApiComponent {
     this.extra.emit(term)
   }
 
+  delieverResult(searchresult){
+    this.result.emit(searchresult)
+  }
+
   extractDetailObject(){
      this.hpoid = this.termDetailObject['details']['id'];
-                      //if there is no children
+     //if there is no children
     if (this.termDetailObject['relations']['children'].length == 0) {
         this.toggleChildren(); 
    }
@@ -90,8 +93,9 @@ export class ApiComponent {
         let input_detail = this.input_term['detail']
         if (this.apiService.isHPOTerm(input_detail)) {
             this.showHPOTermConfig(input_detail);
-            this.extractDetailObject()
+            
             this.toggleLoad(); 
+            this.delieverResult(this.name)
         } else if (this.apiService.isPatient(input_detail)) {
             console.log("patient case; ignore")
             this.toggleTermType();
@@ -101,11 +105,18 @@ export class ApiComponent {
           this.showQueryConfig(input_detail);
           this.toggleLoad(); 
           this.toggleQuery();
+          this.delieverResult(this.querySearchObject)
           //this.printQueryResult();
-        }        
+        }       
     } else {
       console.log("input term is null!"); 
       return; 
+    }
+  }
+
+  AddAll(){
+    for(var term of this.firstLevelChildren){
+      this.AddToSearch(term['ontologyId'])
     }
   }
 

@@ -33,7 +33,10 @@ export class AppComponent {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
-  //constructor(private searchService: SearchService) {}
+  //adding the result object 
+  result_object :any;
+
+  constructor(private apiService: ApiService) {}
 
   add(event: MatChipInputEvent): void {
     this.search_result = [];
@@ -202,6 +205,7 @@ export class AppComponent {
         this.values = "HPO term format incorrect";
         this.search_list.pop();
       }
+      
     }
   }
 
@@ -322,6 +326,7 @@ export class AppComponent {
         */
       }
     } else if (user_input.slice(0, 3) == "HP:") {
+
       this.suggest_text = "Currently search HPO terms";
       if (user_input.length >= 2) {
         var w_card = ".*";
@@ -363,15 +368,14 @@ export class AppComponent {
     } else if (user_input.length == 0) {
       this.suggest_text = "";
     } else {
-
       let temp = [];
       this.apiService.natureSearch(user_input).subscribe(data => {
         //let detail = {}
+        
         this.suggested_queries=[]
 
         //this.result_object = new HPOTerm()
         temp = data["terms"];
-        console.log(temp);
         for (var t of temp){
           this.suggested_queries.push({id:t['ontologyId'],label:t['name']})
         }
@@ -381,9 +385,15 @@ export class AppComponent {
   }
 
   addExtra(term){
-    
+    console.log("here")
     this.AddtoSearch(term)
     this.refreshPage()
+  }
+
+  delieverResult(delievered) {
+    this.result_object = delievered
+    console.log("result object testing")
+    console.log(this.result_object)
   }
 
   public clickSuggestButton(event: any) {

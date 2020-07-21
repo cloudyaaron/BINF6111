@@ -64,7 +64,7 @@
 
 <mat-drawer-container autosize >
 	<mat-drawer #drawer mode="side" >
-		<HPOapi *ngFor="let s of search_list" [input]="s" (extra)="addExtra($event)"> </HPOapi>
+		<HPOapi *ngFor="let s of search_list" [input]="s" (extra)="addExtra($event)" (deliever)="delieverResult($event)"> </HPOapi>
 	</mat-drawer>
 	<mat-drawer-content>
   <div >
