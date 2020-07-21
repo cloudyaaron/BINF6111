@@ -1,28 +1,33 @@
-import { Component, Input } from "@angular/core";
-import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
+import { Component, Input, OnInit, OnDestroy } from "@angular/core";
+//import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { ActivatedRoute, Params } from '@angular/router';
+import { DataService } from './data.service';
+import { Subscription } from "rxjs";
 
 //https://bootswatch.com/litera/?
 
 @Component({
-  selector: "my-app",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./lumen.css"]
+  selector: 'app',
+  templateUrl: './app.component.html',
+  styleUrls: [ './bootstrap.min.css' ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   name = "Angular ";
-  hpoTerms: HashTable<string, any>;
-  hpoList = data[0];
-  patients = data;
+  //patients = data;
+  //@Input() patients: Array<any> = [];
+  //@Input() patientsLenth = 0;
+  patients: Array<any> = [];
+  patientsLenth = 0;
+  subscription: Subscription;
   values = "";
   suggest_text = "";
   search_result = [];
-  patientsLenth = Object.keys(this.patients).length;
   suggested_queries = [];
   showConfig = true;
   typeR = "R";
@@ -34,6 +39,21 @@ export class AppComponent {
   search_list = [];
 
   //constructor(private searchService: SearchService) {}
+  constructor( private route: ActivatedRoute, private dataService: DataService) { }
+
+  ngOnInit() {
+    this.subscription = this.dataService.changeData.subscribe(value => {
+      console.log(value);
+      this.patients = value;
+      this.patientsLenth = this.patients.length;
+      console.log(this.patientsLenth);
+    })
+  }
+
+  ngOnDestroy() {
+    console.log("ngOnDestroy, unsubscribing");
+    this.subscription.unsubscribe();
+  }
 
   add(event: MatChipInputEvent): void {
     this.search_result = [];
@@ -167,6 +187,10 @@ export class AppComponent {
       }
     }
     if (search_term[0] == "P") {
+      console.log('patientsLenth');
+      console.log(this.patientsLenth);
+      console.log(Object.keys(this.patients).length);
+      console.log(this.patients);
       for (let i = 0; i < this.patientsLenth; i++) {
         if (this.patients[i]["report_id"] == search_term) {
           console.log(this.patients[i]["report_id"]);
