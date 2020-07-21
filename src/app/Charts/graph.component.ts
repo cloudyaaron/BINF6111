@@ -5,7 +5,7 @@ import { query } from "@angular/animations";
 @Component({
   selector: "graph-echart",
   templateUrl: "graph.component.html",
-  styleUrls: ["../lumen.css"]
+  styleUrls: ["../bootstrap.min.css"]
 })
 export class graphComponent implements OnInit {
   @Input() patients: Array<any>;

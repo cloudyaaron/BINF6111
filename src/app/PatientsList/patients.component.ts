@@ -6,7 +6,7 @@ import { initializePatients } from './patientList';
 @Component({
   selector: 'patient-list',
   templateUrl: './patients.component.html',
-  styleUrls: [ '../lumen.css' ]
+  styleUrls: [ '../bootstrap.min.css' ]
 })
 export class PatientsList {
   @Input() patients: Array<any>;
