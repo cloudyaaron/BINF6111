@@ -4,15 +4,15 @@ import { ApiService } from "./HPOapi/api.service";
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatSidenavModule } from "@angular/material/sidenav";
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 //https://bootswatch.com/litera/?
 
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
-  styleUrls: ["./lumen.css"]
+  styleUrls: ["./bootstrap.min.css"]
 })
 export class AppComponent {
   name = "Angular ";
@@ -33,7 +33,7 @@ export class AppComponent {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
-  constructor(private apiService: ApiService) {}
+  //constructor(private searchService: SearchService) {}
 
   add(event: MatChipInputEvent): void {
     this.search_result = [];
@@ -42,7 +42,7 @@ export class AppComponent {
 
     // Add label
     if ((value || "").trim()) {
-      this.AddtoSearch(value);
+      this.AddtoSearch(value)
     }
     // Reset the input value
     if (input) {
@@ -51,8 +51,8 @@ export class AppComponent {
     this.refreshPage();
   }
 
-  AddtoSearch(t: string): void {
-    t = t.trim();
+  AddtoSearch(t:string):void{
+    t = t.trim()
     this.search_list.push({ detail: t.trim() });
     this.search_result.push({ query: t.trim(), answer: [] });
   }
@@ -61,8 +61,8 @@ export class AppComponent {
     this.search_result = [];
     this.suggested_queries = [];
 
-    console.log("search_list", this.search_list);
-    console.log("resultlust", this.search_result);
+    console.log("search_list",this.search_list);
+    console.log("resultlust",this.search_result);
     if (this.search_list.length != 0) {
       for (var search_term of this.search_list) {
         this.search_result.push({ query: search_term["detail"], answer: [] });
@@ -362,8 +362,8 @@ export class AppComponent {
       }
     } else if (user_input.length == 0) {
       this.suggest_text = "";
-      this.suggested_queries=[]
     } else {
+
       let temp = [];
       this.apiService.natureSearch(user_input).subscribe(data => {
         //let detail = {}
@@ -380,9 +380,10 @@ export class AppComponent {
     }
   }
 
-  addExtra(term) {
-    this.AddtoSearch(term);
-    this.refreshPage();
+  addExtra(term){
+    
+    this.AddtoSearch(term)
+    this.refreshPage()
   }
 
   public clickSuggestButton(event: any) {
@@ -390,12 +391,12 @@ export class AppComponent {
     //var st['detail'] = this.suggested_queries[0]
     //event["detail"] = event
     this.AddtoSearch(event['id']);
+
     this.refreshPage();
   }
 
-  toggleConfig() {
-    this.showConfig = !this.showConfig;
-  }
+
+      toggleConfig() { this.showConfig = !this.showConfig; }
 
   //Useful urls: https://www.freakyjolly.com/angular-e-charts-using-ngx-echarts-tutorial/#.XvFQAGgzY2w
   //https://www.npmjs.com/package/ngx-echarts

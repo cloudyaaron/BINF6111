@@ -8,43 +8,65 @@ import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
   selector: 'HPOapi',
   templateUrl: './api.component.html',
   providers: [ ApiService ],
-  styleUrls: [ '../lumen.css' ]
+  styleUrls: [ '../bootstrap.min.css' ]
 })
 
 export class ApiComponent {
   @Input('input') input_term: string[];
   @Output() extra = new EventEmitter<any>();
   error: any;
-  headers: string[];
+
+  //result of hpo term details 
+  termDetailObject: any; 
   hpoid: string;
   name: string; 
-  /*
-  detail_object: Details; 
-  relation_object: Relations;
-  relationterm: RelationTerm;
-  result_object: HPOTerm; 
-  */
-  haveChildren = true; 
   firstLevelChildren: []; 
+
+  //result of hpo term associations
+  assoGeneObject: any;
+  assoDiseaseObject: any; 
+
+  //result of query search
+  querySearchObject: any; 
+  term_result: any[]; 
+  gene_result: any[];
+  disease_result: any[];
+
+  //result of gene search 
+  geneSearchObject: any; 
+
+
+  haveChildren = true; 
+  showChildren = true; 
+
   toggle = true; 
   toggleTerm = true;
+  noResult = false; 
+  isNaturalLanguage = false; 
+
+
+  @Output() deliever = new EventEmitter();  
+
   
   constructor(private apiService: ApiService) {}
 
-  showConfig(term:string) {
+  showHPOTermConfig(term:string) {
     this.apiService.getConfig(term)
       .subscribe(
         (data) => {
-                    //let detail = {}
-                    //this.result_object = new HPOTerm() 
- 
-                    this.hpoid = data['details']['id'];
-                    
-                    if (data['relations']['children'].length == 0) {
-                        this.toggleChildren(); 
-                    }
-                    this.firstLevelChildren = data['relations']['children'];                    
-                    this.name = data['details']['name']},
+   
+                    this.termDetailObject = data
+                   },               
+      );
+  }
+
+  showQueryConfig(term:string) {
+    this.apiService.natureSearch(term)
+      .subscribe(
+        (data) => {
+                      this.querySearchObject = data
+                      this.term_result = data['terms'];
+                   },
                
       );
   }
@@ -53,29 +75,53 @@ export class ApiComponent {
     this.extra.emit(term)
   }
 
-  AddAll(){
-    for(var term of this.firstLevelChildren){
-      this.AddToSearch(term['ontologyId'])
-    }
+  extractDetailObject(){
+     this.hpoid = this.termDetailObject['details']['id'];
+                      //if there is no children
+    if (this.termDetailObject['relations']['children'].length == 0) {
+        this.toggleChildren(); 
+   }
+     this.firstLevelChildren = this.termDetailObject['relations']['children'];                    
+    this.name = this.termDetailObject['details']['name']
   }
+
   extractInput() {
-
-    if (this.input_term && this.input_term['detail'][0] == 'H') {
-        this.showConfig(this.input_term['detail']);
-        this.toggleLoad(); 
+    if (this.input_term) {
+        let input_detail = this.input_term['detail']
+        if (this.apiService.isHPOTerm(input_detail)) {
+            this.showHPOTermConfig(input_detail);
+            this.extractDetailObject()
+            this.toggleLoad(); 
+        } else if (this.apiService.isPatient(input_detail)) {
+            console.log("patient case; ignore")
+            this.toggleTermType();
+            return;
+        } else {
+          console.log("natural language case")
+          this.showQueryConfig(input_detail);
+          this.toggleLoad(); 
+          this.toggleQuery();
+          //this.printQueryResult();
+        }        
     } else {
-      console.log("It's null!"); 
-
-      this.toggleTermType();
+      console.log("input term is null!"); 
       return; 
     }
   }
+
   toggleLoad(){this.toggle = !this.toggle};
   toggleChildren(){this.haveChildren = !this.haveChildren}; 
   toggleTermType() {this.toggleTerm = !this.toggleTerm}; 
+  toggleQuery() {this.isNaturalLanguage = !this.isNaturalLanguage};
+  /*
+  checkIfResult() { 
+    console.log(this.apiService.noResult)
+    return this.apiService.noResult; 
+  };
+  */
 }
 
-
+//just comment for change 
 /*
 Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
