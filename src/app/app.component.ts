@@ -344,7 +344,7 @@ export class AppComponent {
               }
               add_suggestion += 1;
               //console.log('worked')
-              suggestion_array.push(phenotype["id"]);
+              suggestion_array.push(phenotype);
             }
           }
           if (add_suggestion == 5) {
@@ -363,7 +363,20 @@ export class AppComponent {
     } else if (user_input.length == 0) {
       this.suggest_text = "";
     } else {
-      this.suggest_text = "Searching text is unexpected";
+
+      let temp = [];
+      this.apiService.natureSearch(user_input).subscribe(data => {
+        //let detail = {}
+        this.suggested_queries=[]
+
+        //this.result_object = new HPOTerm()
+        temp = data["terms"];
+        console.log(temp);
+        for (var t of temp){
+          this.suggested_queries.push({id:t['ontologyId'],label:t['name']})
+        }
+      });
+      this.suggest_text = "Nature language searching?";
     }
   }
 
@@ -373,13 +386,12 @@ export class AppComponent {
     this.refreshPage()
   }
 
-  public clickSuggestButton(event: string) {
-    console.log("clicked");
-    //console.log(this.suggested_queries[0])
+  public clickSuggestButton(event: any) {
+    console.log(event)
     //var st['detail'] = this.suggested_queries[0]
-    console.log(event);
     //event["detail"] = event
-    this.AddtoSearch(event)
+    this.AddtoSearch(event['id']);
+
     this.refreshPage();
   }
 

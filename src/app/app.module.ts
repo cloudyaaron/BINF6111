@@ -28,9 +28,10 @@ import { NgxEchartsModule } from 'ngx-echarts';
 import * as echarts from 'echarts';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, NgBusyModule,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule],
+  imports:      [ BrowserModule, FormsModule, NgBusyModule,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule,MatSelectModule],
   declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList,graphComponent],
   bootstrap:    [ AppComponent ],
   providers:    [MessageService, ApiService, SearchService]

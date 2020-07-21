@@ -42,7 +42,6 @@
         (matChipInputTokenEnd)="add($event)"
         (keyup)="onKeyUp($event)"
       >
-
     </form>
 		<!--</div>-->
 </nav>
@@ -52,13 +51,16 @@
 {{suggest_text}}
 <br>
 
-<div class="btn-group-vertical">
+<div class="btn-group-vertical" >
 	<ng-container *ngFor="let sq of suggested_queries">
 		<button class="btn btn-primary" (click)="clickSuggestButton(sq)">
-    {{sq}}
+    {{sq['id']}}   {{sq['label']}}
+
   </button>
+
 	</ng-container>
 </div>
+
 
 <mat-drawer-container autosize >
 	<mat-drawer #drawer mode="side" >
