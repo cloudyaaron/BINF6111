@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-//import data from '../phenotips_2020-06-09_18-16_with_external_id.json';
+import data from '../phenotips_2020-06-09_18-16_with_external_id.json';
 //import { Patient } from './patient';
 import { initializePatients } from './patientList';
 
@@ -9,7 +9,7 @@ import { initializePatients } from './patientList';
   styleUrls: [ '../lumen.css' ]
 })
 export class PatientsList {
-  @Input() patients: Array<any> = [];
+  @Input() patients: Array<any>;
   @Input() type: String;
 
 
