@@ -2,16 +2,13 @@
 	<small class="text-muted" >In testing</small>
 
 </h3>
- <mat-form-field >
-   <mat-label>
-     Chart type
-   </mat-label>
-	<mat-select [(value)]="selectType">
-		<mat-option value="Bar">Option 1</mat-option>
-		<mat-option value="Pie">Option 2</mat-option>
-		<mat-option value="Sunburst">Option 3</mat-option>
-	</mat-select>
- </mat-form-field>
+ 
+	<select class="custom-select" (change)="changeChartType($event)" >
+		<option value="Bar" > Bar Chart </option>
+		<option value="Pie"> Pie Chart (quick demo) </option>
+		<option value="Sunburst" > Sunburst(in testing) </option>
+	</select>
 
-<div echarts [options]="options" class="bar-chart">
+
+<div echarts [options]="options" >
 </div>
