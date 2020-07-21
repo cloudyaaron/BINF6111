@@ -9,9 +9,8 @@ import { HPOTerm, Details } from '../classes/HPOTerm';
 @Injectable()
 export class ApiService {
   configUrl = 'https://hpo.jax.org/api/hpo/term/'
-  baseUrl = 'https://hpo.jax.org/api/hpo/search/?q='; 
+  baseUrl = 'https://hpo.jax.org/api/hpo//search/?q='; 
   termUrl = 'term/'
-  combinedUrl = '';  
   noResult = false; 
 
   details: Details; 
@@ -37,8 +36,12 @@ export class ApiService {
   //     );
   // }
   natureSearch(term:string){
-    let searchUrl = this.configUrl + term;
-
+    let searchUrl = this.baseUrl + term;
+   return this.http.get(searchUrl)
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
   }
 
   getConfig(term:string) {
