@@ -3,7 +3,7 @@
       <h3 class="mb-0">
           Search Result of {{input_term['detail']}}      
       </h3>
-    
+     <button class="btn btn-success"(click)="delieverResult(this.name)"> send to main </button>
     <div *ngIf="toggleTerm" class="card body" id="resultbody" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">  
       <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
       <div *ngIf="isNaturalLanguage" > 

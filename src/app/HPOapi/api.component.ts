@@ -93,7 +93,6 @@ export class ApiComponent {
         let input_detail = this.input_term['detail']
         if (this.apiService.isHPOTerm(input_detail)) {
             this.showHPOTermConfig(input_detail);
-            
             this.toggleLoad(); 
             this.delieverResult(this.name)
         } else if (this.apiService.isPatient(input_detail)) {

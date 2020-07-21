@@ -1,6 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ViewChild } from "@angular/core";
 import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
+import {ApiComponent} from "./HPOapi/api.component"
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
@@ -35,7 +36,12 @@ export class AppComponent {
 
   //adding the result object 
   result_object :any;
-
+  @ViewChild(ApiComponent) 
+  set pane(v: ApiComponent) {
+    setTimeout(() => {
+      this.result_object = v.name;
+    }, 0);
+  }
   constructor(private apiService: ApiService) {}
 
   add(event: MatChipInputEvent): void {
@@ -158,6 +164,8 @@ export class AppComponent {
         this.values = "Sorry but nothing has been found";
       }
     }
+    console.log("result", this.result_object)
+
   }
 
   search(search_term: string): any {
@@ -207,6 +215,8 @@ export class AppComponent {
       }
       
     }
+        console.log("result", this.result_object)
+
   }
 
   getResultNum() {
@@ -317,7 +327,7 @@ export class AppComponent {
           }
         }
         console.log(suggestion_array);
-        this.suggested_queries = suggestion_array;
+        this.suggested_queries = suggestion_array; 
         /*
         for (let i=0; i<suggestion_array.length;i++)
         {
@@ -326,7 +336,6 @@ export class AppComponent {
         */
       }
     } else if (user_input.slice(0, 3) == "HP:") {
-
       this.suggest_text = "Currently search HPO terms";
       if (user_input.length >= 2) {
         var w_card = ".*";
@@ -382,19 +391,15 @@ export class AppComponent {
       });
       this.suggest_text = "Nature language searching?";
     }
+
   }
 
   addExtra(term){
-    console.log("here")
     this.AddtoSearch(term)
     this.refreshPage()
   }
 
-  delieverResult(delievered) {
-    this.result_object = delievered
-    console.log("result object testing")
-    console.log(this.result_object)
-  }
+
 
   public clickSuggestButton(event: any) {
     console.log(event)
