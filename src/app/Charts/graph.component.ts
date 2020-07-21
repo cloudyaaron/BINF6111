@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import data from "../phenotips_2020-06-09_18-16_with_external_id.json";
 import { query } from "@angular/animations";
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: "graph-echart",
@@ -9,13 +10,13 @@ import { query } from "@angular/animations";
 })
 export class graphComponent implements OnInit {
   @Input() patients: Array<any>;
-  @Input() chartType: String;
   options: any;
 
   phenoPool = [];
   freq = [];
   terms = [];
   temp = new Array();
+  selectType="option 2";
 
   ngOnInit() {
     this.temp.push({ query: "all", answer: data });
@@ -36,6 +37,7 @@ export class graphComponent implements OnInit {
     } else {
       this.getPhenotypePool(this.patients);
     }
+    console.log(this.selectType)
     this.showBarChart();
 
     //console.log(this.patients)

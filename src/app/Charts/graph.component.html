@@ -1,5 +1,17 @@
 <h3>Chart
-  <small class="text-muted" >In testing</small >
+	<small class="text-muted" >In testing</small>
+
 </h3>
+ <mat-form-field >
+   <mat-label>
+     Chart type
+   </mat-label>
+	<mat-select [(value)]="selectType">
+		<mat-option value="Bar">Option 1</mat-option>
+		<mat-option value="Pie">Option 2</mat-option>
+		<mat-option value="Sunburst">Option 3</mat-option>
+	</mat-select>
+ </mat-form-field>
+
 <div echarts [options]="options" class="bar-chart">
 </div>
