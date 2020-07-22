@@ -30,10 +30,15 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 
+
+import { DataService } from './Input/data.service';
+import { AppRoutingModule } from './app-routing.module'
+import { InputComponent } from './Input/input.component';
+
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, NgBusyModule,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule,MatSelectModule],
+  imports:      [ BrowserModule, FormsModule, NgBusyModule,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule,MatSelectModule,InputComponent,AppRoutingModule],
   declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList,graphComponent],
   bootstrap:    [ AppComponent ],
-  providers:    [MessageService, ApiService, SearchService]
+  providers:    [MessageService, ApiService, SearchService,DataService]
 })
 export class AppModule { }
