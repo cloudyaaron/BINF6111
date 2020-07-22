@@ -13,7 +13,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
-  styleUrls: ["./bootstrap.min.css"]
+  styleUrls: ["./lumen.css"]
 })
 export class AppComponent {
   name = "Angular ";
@@ -376,6 +376,7 @@ export class AppComponent {
       }
     } else if (user_input.length == 0) {
       this.suggest_text = "";
+      this.suggested_queries=[]
     } else {
       let temp = [];
       this.apiService.natureSearch(user_input).subscribe(data => {

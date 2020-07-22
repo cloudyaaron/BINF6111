@@ -8,7 +8,7 @@ import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
   selector: 'HPOapi',
   templateUrl: './api.component.html',
   providers: [ ApiService ],
-  styleUrls: [ '../bootstrap.min.css' ]
+  styleUrls: [ '../lumen.css' ]
 })
 
 export class ApiComponent {
