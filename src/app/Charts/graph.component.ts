@@ -88,7 +88,6 @@ export class graphComponent implements OnInit {
 
   showPieChart() {	
     this.options = {	
-      backgroundColor: "#2c343c",	
 
       title: {	
         text: "Customized Pie",	

@@ -1,12 +1,12 @@
 import { Component, Input, ViewChild } from "@angular/core";
 import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
-import {ApiComponent} from "./HPOapi/api.component"
+import { ApiComponent } from "./HPOapi/api.component";
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 //https://bootswatch.com/litera/?
 
@@ -34,9 +34,9 @@ export class AppComponent {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
-  //adding the result object 
-  result_object :any;
-  @ViewChild(ApiComponent) 
+  //adding the result object
+  result_object: any;
+  @ViewChild(ApiComponent)
   set pane(v: ApiComponent) {
     setTimeout(() => {
       this.result_object = v.name;
@@ -51,7 +51,7 @@ export class AppComponent {
 
     // Add label
     if ((value || "").trim()) {
-      this.AddtoSearch(value)
+      this.AddtoSearch(value);
     }
     // Reset the input value
     if (input) {
@@ -60,8 +60,8 @@ export class AppComponent {
     this.refreshPage();
   }
 
-  AddtoSearch(t:string):void{
-    t = t.trim()
+  AddtoSearch(t: string): void {
+    t = t.trim();
     this.search_list.push({ detail: t.trim() });
     this.search_result.push({ query: t.trim(), answer: [] });
   }
@@ -70,8 +70,8 @@ export class AppComponent {
     this.search_result = [];
     this.suggested_queries = [];
 
-    console.log("search_list",this.search_list);
-    console.log("resultlust",this.search_result);
+    console.log("search_list", this.search_list);
+    console.log("resultlust", this.search_result);
     if (this.search_list.length != 0) {
       for (var search_term of this.search_list) {
         this.search_result.push({ query: search_term["detail"], answer: [] });
@@ -164,8 +164,7 @@ export class AppComponent {
         this.values = "Sorry but nothing has been found";
       }
     }
-    console.log("result", this.result_object)
-
+    console.log("result", this.result_object);
   }
 
   search(search_term: string): any {
@@ -213,10 +212,8 @@ export class AppComponent {
         this.values = "HPO term format incorrect";
         this.search_list.pop();
       }
-      
     }
-        console.log("result", this.result_object)
-
+    console.log("result", this.result_object);
   }
 
   getResultNum() {
@@ -327,7 +324,7 @@ export class AppComponent {
           }
         }
         console.log(suggestion_array);
-        this.suggested_queries = suggestion_array; 
+        this.suggested_queries = suggestion_array;
         /*
         for (let i=0; i<suggestion_array.length;i++)
         {
@@ -376,43 +373,54 @@ export class AppComponent {
       }
     } else if (user_input.length == 0) {
       this.suggest_text = "";
-      this.suggested_queries=[]
+      this.suggested_queries = [];
     } else {
       let temp = [];
       this.apiService.natureSearch(user_input).subscribe(data => {
         //let detail = {}
-        
-        this.suggested_queries=[]
+
+        this.suggested_queries = [];
 
         //this.result_object = new HPOTerm()
         temp = data["terms"];
-        for (var t of temp){
-          this.suggested_queries.push({id:t['ontologyId'],label:t['name']})
+        for (var t of temp) {
+          this.suggested_queries.push({
+            id: t["ontologyId"],
+            label: t["name"]
+          });
         }
+        this.apiService.geneSearch(user_input).subscribe(data => {
+          console.log(data)
+          for (var t of temp) {
+            this.suggested_queries.push({
+              id: t["ontologyId"],
+              label: t["name"]
+            });
+          }
+        });
       });
-      this.suggest_text = "Nature language searching?";
+
+      this.suggest_text = "Searching everything?";
     }
-
   }
 
-  addExtra(term){
-    this.AddtoSearch(term)
-    this.refreshPage()
+  addExtra(term) {
+    this.AddtoSearch(term);
+    this.refreshPage();
   }
-
-
 
   public clickSuggestButton(event: any) {
-    console.log(event)
+    console.log(event);
     //var st['detail'] = this.suggested_queries[0]
     //event["detail"] = event
-    this.AddtoSearch(event['id']);
+    this.AddtoSearch(event["id"]);
 
     this.refreshPage();
   }
 
-
-      toggleConfig() { this.showConfig = !this.showConfig; }
+  toggleConfig() {
+    this.showConfig = !this.showConfig;
+  }
 
   //Useful urls: https://www.freakyjolly.com/angular-e-charts-using-ngx-echarts-tutorial/#.XvFQAGgzY2w
   //https://www.npmjs.com/package/ngx-echarts
