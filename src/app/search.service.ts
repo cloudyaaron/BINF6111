@@ -1,29 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs'; 
 import { HashTable } from './classes/hashtable';
-//import data from './phenotips_2020-06-09_18-16_with_external_id.json';
-import { DataService } from './data.service'
+import data from './phenotips_2020-06-09_18-16_with_external_id.json';
 
 @Injectable()
 export class SearchService {
 
   search_list = [];
-  //patients = data;
-  //patientsLenth = Object.keys(this.patients).length
-  patients: Array<any>;
-  patientsLenth = 0;
+  hpoTerms: HashTable<string, any>;
+  hpoList = data[0];
+  patients = data;
+  patientsLenth = Object.keys(this.patients).length
   search_result = [];
   values = ''
-
-constructor( private dataService: DataService) { }
-
-  ngOnInit() {
-    this.dataService.changeData.subscribe(value => {
-      console.log(value);
-      this.patients = value;
-      this.patientsLenth = this.patients.length;
-    })
-  }
 
   search(search_term: string):any{
     console.log('search')

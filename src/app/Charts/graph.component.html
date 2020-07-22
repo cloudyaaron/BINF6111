@@ -1,5 +1,12 @@
 <h3>Chart
-  <small class="text-muted" >In testing</small >
+	<small class="text-muted" >In testing</small>
+
 </h3>
+<select class="custom-select" (change)="changeChartType($event)" >	  
+		<option value="Bar" > Bar Chart </option>	     Chart type
+		<option value="Pie"> Pie Chart (quick demo) </option>	   
+		<option value="Sunburst" > Sunburst(in testing) </option>		
+	</select>
+
 <div echarts [options]="options" class="bar-chart">
 </div>

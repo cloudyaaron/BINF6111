@@ -1,33 +1,29 @@
-import { Component, Input, OnInit, OnDestroy } from "@angular/core";
-//import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
+import { Component, Input, ViewChild } from "@angular/core";
+import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
+import {ApiComponent} from "./HPOapi/api.component"
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { ActivatedRoute, Params } from '@angular/router';
-import { DataService } from './data.service';
-import { Subscription } from "rxjs";
 
 //https://bootswatch.com/litera/?
 
 @Component({
-  selector: 'app',
-  templateUrl: './app.component.html',
-  styleUrls: [ './bootstrap.min.css' ]
+  selector: "my-app",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./lumen.css"]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   name = "Angular ";
-  //patients = data;
-  //@Input() patients: Array<any> = [];
-  //@Input() patientsLenth = 0;
-  patients: Array<any> = [];
-  patientsLenth = 0;
-  subscription: Subscription;
+  hpoTerms: HashTable<string, any>;
+  hpoList = data[0];
+  patients = data;
   values = "";
   suggest_text = "";
   search_result = [];
+  patientsLenth = Object.keys(this.patients).length;
   suggested_queries = [];
   showConfig = true;
   typeR = "R";
@@ -38,22 +34,15 @@ export class AppComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
-  //constructor(private searchService: SearchService) {}
-  constructor( private route: ActivatedRoute, private dataService: DataService) { }
-
-  ngOnInit() {
-    this.subscription = this.dataService.changeData.subscribe(value => {
-      console.log(value);
-      this.patients = value;
-      this.patientsLenth = this.patients.length;
-      console.log(this.patientsLenth);
-    })
+  //adding the result object 
+  result_object :any;
+  @ViewChild(ApiComponent) 
+  set pane(v: ApiComponent) {
+    setTimeout(() => {
+      this.result_object = v.name;
+    }, 0);
   }
-
-  ngOnDestroy() {
-    console.log("ngOnDestroy, unsubscribing");
-    this.subscription.unsubscribe();
-  }
+  constructor(private apiService: ApiService) {}
 
   add(event: MatChipInputEvent): void {
     this.search_result = [];
@@ -175,6 +164,8 @@ export class AppComponent implements OnInit {
         this.values = "Sorry but nothing has been found";
       }
     }
+    console.log("result", this.result_object)
+
   }
 
   search(search_term: string): any {
@@ -187,10 +178,6 @@ export class AppComponent implements OnInit {
       }
     }
     if (search_term[0] == "P") {
-      console.log('patientsLenth');
-      console.log(this.patientsLenth);
-      console.log(Object.keys(this.patients).length);
-      console.log(this.patients);
       for (let i = 0; i < this.patientsLenth; i++) {
         if (this.patients[i]["report_id"] == search_term) {
           console.log(this.patients[i]["report_id"]);
@@ -226,7 +213,10 @@ export class AppComponent implements OnInit {
         this.values = "HPO term format incorrect";
         this.search_list.pop();
       }
+      
     }
+        console.log("result", this.result_object)
+
   }
 
   getResultNum() {
@@ -337,7 +327,7 @@ export class AppComponent implements OnInit {
           }
         }
         console.log(suggestion_array);
-        this.suggested_queries = suggestion_array;
+        this.suggested_queries = suggestion_array; 
         /*
         for (let i=0; i<suggestion_array.length;i++)
         {
@@ -368,7 +358,7 @@ export class AppComponent implements OnInit {
               }
               add_suggestion += 1;
               //console.log('worked')
-              suggestion_array.push(phenotype["id"]);
+              suggestion_array.push(phenotype);
             }
           }
           if (add_suggestion == 5) {
@@ -386,24 +376,38 @@ export class AppComponent implements OnInit {
       }
     } else if (user_input.length == 0) {
       this.suggest_text = "";
+      this.suggested_queries=[]
     } else {
-      this.suggest_text = "Searching text is unexpected";
+      let temp = [];
+      this.apiService.natureSearch(user_input).subscribe(data => {
+        //let detail = {}
+        
+        this.suggested_queries=[]
+
+        //this.result_object = new HPOTerm()
+        temp = data["terms"];
+        for (var t of temp){
+          this.suggested_queries.push({id:t['ontologyId'],label:t['name']})
+        }
+      });
+      this.suggest_text = "Nature language searching?";
     }
+
   }
 
   addExtra(term){
-    
     this.AddtoSearch(term)
     this.refreshPage()
   }
 
-  public clickSuggestButton(event: string) {
-    console.log("clicked");
-    //console.log(this.suggested_queries[0])
+
+
+  public clickSuggestButton(event: any) {
+    console.log(event)
     //var st['detail'] = this.suggested_queries[0]
-    console.log(event);
     //event["detail"] = event
-    this.AddtoSearch(event)
+    this.AddtoSearch(event['id']);
+
     this.refreshPage();
   }
 
