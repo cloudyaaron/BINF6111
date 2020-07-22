@@ -35,7 +35,7 @@ export class graphComponent implements OnInit {
     this.f = 0;
     this.u = 0;
     if (this.patients.length == 0 || this.patients == undefined) {
-      this.patients = data;
+      //this.patients = data;
       this.getPhenotypePool(this.temp);
     } else {
       this.getPhenotypePool(this.patients);
@@ -104,7 +104,7 @@ export class graphComponent implements OnInit {
     }
 
     let i = 0;
-    console.log(this.m);
+    console.log(plist);
     for (var q of plist) {
       for (var p of q["answer"]) {
         i = i + 1;
