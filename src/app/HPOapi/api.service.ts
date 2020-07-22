@@ -28,7 +28,7 @@ export class ApiService {
       );
   }
 
-  // search via natural language; return lists of genes, diseases, or hpo terms.
+  // search via natural language; return lists of genes, diseases, or hpo terms. 
   natureSearch(term:string){
     let searchUrl = this.searchUrl + term;
    return this.http.get(searchUrl)

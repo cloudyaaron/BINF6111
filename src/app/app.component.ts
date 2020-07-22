@@ -1,6 +1,7 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, ViewChild } from "@angular/core";
 import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
+import {ApiComponent} from "./HPOapi/api.component"
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
@@ -33,6 +34,14 @@ export class AppComponent {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
+  //adding the result object 
+  result_object :any;
+  @ViewChild(ApiComponent) 
+  set pane(v: ApiComponent) {
+    setTimeout(() => {
+      this.result_object = v.name;
+    }, 0);
+  }
   constructor(private apiService: ApiService) {}
 
   add(event: MatChipInputEvent): void {
@@ -155,6 +164,8 @@ export class AppComponent {
         this.values = "Sorry but nothing has been found";
       }
     }
+    console.log("result", this.result_object)
+
   }
 
   search(search_term: string): any {
@@ -202,7 +213,10 @@ export class AppComponent {
         this.values = "HPO term format incorrect";
         this.search_list.pop();
       }
+      
     }
+        console.log("result", this.result_object)
+
   }
 
   getResultNum() {
@@ -313,7 +327,7 @@ export class AppComponent {
           }
         }
         console.log(suggestion_array);
-        this.suggested_queries = suggestion_array;
+        this.suggested_queries = suggestion_array; 
         /*
         for (let i=0; i<suggestion_array.length;i++)
         {
@@ -363,28 +377,29 @@ export class AppComponent {
     } else if (user_input.length == 0) {
       this.suggest_text = "";
     } else {
-
       let temp = [];
       this.apiService.natureSearch(user_input).subscribe(data => {
         //let detail = {}
+        
         this.suggested_queries=[]
 
         //this.result_object = new HPOTerm()
         temp = data["terms"];
-        console.log(temp);
         for (var t of temp){
           this.suggested_queries.push({id:t['ontologyId'],label:t['name']})
         }
       });
       this.suggest_text = "Nature language searching?";
     }
+
   }
 
   addExtra(term){
-    
     this.AddtoSearch(term)
     this.refreshPage()
   }
+
+
 
   public clickSuggestButton(event: any) {
     console.log(event)
