@@ -35,7 +35,7 @@
 
 
 
-		<input placeholder="Searching"          class="form-control mr-sm-4"
+		<input placeholder="HPO Terms, Genes, or Diseases..."          class="form-control mr-sm-4"
 
         [matChipInputFor]="searchList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
@@ -44,6 +44,20 @@
       >
     </form>
 		<!--</div>-->
+   <button class="btn btn-primary" (click)="toggleOption()">
+  Options
+  </button>
+  <ng-container *ngIf="show">
+    <div>
+    <mat-checkbox labelPosition="before" [checked]="this.checkedGene" (change)="toggleGene()">Genes
+    </mat-checkbox>
+    <mat-checkbox labelPosition="before" [checked]="this.checkedTerm" (change)="toggleTerm()">Terms
+    </mat-checkbox>
+    <mat-checkbox labelPosition="before" [checked]="this.checkedDisease" (change)="toggleDisease()">Diseases
+    </mat-checkbox>
+    </div>
+  </ng-container>
+   
 </nav>
 
 {{values}}
