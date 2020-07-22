@@ -6,7 +6,7 @@ import {MatSelectModule} from '@angular/material/select';
 @Component({
   selector: "graph-echart",
   templateUrl: "graph.component.html",
-  styleUrls: ["../bootstrap.min.css"]
+  styleUrls: ["../lumen.css"]
 })
 export class graphComponent implements OnInit {
   @Input() patients: Array<any>;
