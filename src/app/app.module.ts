@@ -10,6 +10,7 @@ import { DataService } from './data.service';
 import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from './hello.component';
 import { NgBusyModule } from 'ng-busy';
+import { ModalModule } from './modal';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTree, MatTreeModule } from '@angular/material/tree';
 import { MatChipsModule } from '@angular/material/chips';
@@ -35,7 +36,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, AppRoutingModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule],
+  imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, AppRoutingModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule, ModalModule],
   declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList, InputComponent, graphComponent, MainComponent],
   bootstrap:    [ MainComponent ],
   providers:    [MessageService, ApiService, SearchService, DataService]

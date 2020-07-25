@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from "@angular/core";
+import { Component, Input, OnInit, OnDestroy, TemplateRef } from "@angular/core";
 //import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
 import { HashTable } from "./classes/hashtable";
@@ -9,8 +9,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from './data.service';
 import { Subscription } from "rxjs";
-import { setTheme } from 'ngx-bootstrap/utils';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 //https://bootswatch.com/litera/?
 
@@ -40,14 +38,8 @@ export class AppComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
-  modelRef : BsModalRef;
-
-
-
   //constructor(private searchService: SearchService) {}
-  constructor( private route: ActivatedRoute, private dataService: DataService, private modalService: BsModalService) {
-    setTheme('bs3');
-   }
+  constructor( private route: ActivatedRoute, private dataService: DataService) {}
 
   ngOnInit() {
     this.subscription = this.dataService.changeData.subscribe(value => {
@@ -61,13 +53,6 @@ export class AppComponent implements OnInit {
   ngOnDestroy() {
     console.log("ngOnDestroy, unsubscribing");
     this.subscription.unsubscribe();
-  }
-
-  openModel(template) {
-    this.modelRef = this.modalService.show(template);
-    // setTimeout(() => {
-    //   this.modelRef.hide();
-    // }, 5000);
   }
   
   add(event: MatChipInputEvent): void {
