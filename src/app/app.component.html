@@ -15,7 +15,7 @@
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	<a class="navbar-brand" href="#">PATIENTS:{{patientsLenth}}</a>
+	<a class="navbar-brand">PATIENTS:{{patientsLenth}}</a>
 	<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button> -->
@@ -30,22 +30,36 @@
 			<a class="nav-link" href="#">Features</a>
 		</li>
     <li class="nav-item">
-			<a class="nav-link">About</a>
-      &nbsp;
+			<a class="nav-link" onmouseover="" style="cursor: pointer;" (click)="openModal('about-modal')">About</a>
 		</li>
 	</ul>
+  <form class="form-inline my-2 my-lg-0">
+  <input placeholder="Searching"          class="form-control mr-sm-4"
 
-	  <form class="form-inline my-2 my-lg-0">
-		<input placeholder="Searching"          class="form-control mr-sm-4"
-
-        [matChipInputFor]="searchList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)"
-        (keyup)="onKeyUp($event)"
-      >
-    </form>
-		<!--</div>-->
+      [matChipInputFor]="searchList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"
+      (keyup)="onKeyUp($event)"
+    >
+  </form>
+  <!--</div>-->
 </nav>
+
+<jw-modal id="about-modal">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModal('about-modal')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h1>Welcome to Patients Filter!</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	    <a class="navbar-brand">About</a>
+    </nav>
+    <h2> Input File </h2>
+    <p> To input a new file, navigate to the home page. File types can be either JSON or excel. </p>
+    <h2> Searching </h2>
+    <p> You can start your search by entering "HP:XXXXXXX". Make sure "HP" is in capital letter. </p>
+    <p> Clicking on the "HPO api" button will enable searching the HPO term to the api to return children terms. The API used in this software can be found at https://hpo.jax.org/webjars/swagger-ui/3.20.9/index.html?url=/api/hpo/docs/. </p>
+    <!-- <button (click)="closeModal('about-modal');">Close</button> -->
+</jw-modal>
 
 {{values}}
 <br>

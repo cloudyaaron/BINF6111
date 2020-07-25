@@ -9,6 +9,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from './data.service';
 import { Subscription } from "rxjs";
+import { ModalService } from './modal';
 
 //https://bootswatch.com/litera/?
 
@@ -39,7 +40,7 @@ export class AppComponent implements OnInit {
   search_list = [];
 
   //constructor(private searchService: SearchService) {}
-  constructor( private route: ActivatedRoute, private dataService: DataService) {}
+  constructor( private route: ActivatedRoute, private dataService: DataService, private modalService: ModalService) {}
 
   ngOnInit() {
     this.subscription = this.dataService.changeData.subscribe(value => {
@@ -54,6 +55,14 @@ export class AppComponent implements OnInit {
     console.log("ngOnDestroy, unsubscribing");
     this.subscription.unsubscribe();
   }
+
+  openModal(id: string) {
+        this.modalService.open(id);
+    }
+
+    closeModal(id: string) {
+        this.modalService.close(id);
+    }
   
   add(event: MatChipInputEvent): void {
     this.search_result = [];
