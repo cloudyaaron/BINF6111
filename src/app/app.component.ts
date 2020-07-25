@@ -9,6 +9,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from './data.service';
 import { Subscription } from "rxjs";
+import { setTheme } from 'ngx-bootstrap/utils';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 //https://bootswatch.com/litera/?
 
@@ -38,8 +40,14 @@ export class AppComponent implements OnInit {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
+  modelRef : BsModalRef;
+
+
+
   //constructor(private searchService: SearchService) {}
-  constructor( private route: ActivatedRoute, private dataService: DataService) { }
+  constructor( private route: ActivatedRoute, private dataService: DataService, private modalService: BsModalService) {
+    setTheme('bs3');
+   }
 
   ngOnInit() {
     this.subscription = this.dataService.changeData.subscribe(value => {
@@ -55,6 +63,13 @@ export class AppComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
+  openModel(template) {
+    this.modelRef = this.modalService.show(template);
+    // setTimeout(() => {
+    //   this.modelRef.hide();
+    // }, 5000);
+  }
+  
   add(event: MatChipInputEvent): void {
     this.search_result = [];
     const input = event.input;

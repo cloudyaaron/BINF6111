@@ -29,9 +29,12 @@
 		<li class="nav-item">
 			<a class="nav-link" href="#">Features</a>
 		</li>
+    <li class="nav-item">
+			<a class="btn btn-primary" type="button" (click)="openModel(template)" data-toggle="modal" data-target="#aboutModal">About</a>
+		</li>
 	</ul>
 
-	<form class="form-inline my-2 my-lg-0">
+	  <form class="form-inline my-2 my-lg-0">
 
 
 
@@ -46,6 +49,18 @@
     </form>
 		<!--</div>-->
 </nav>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modelRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Hi Kavitha, This is a modal.
+  </div>
+</ng-template>
 
 {{values}}
 <br>
