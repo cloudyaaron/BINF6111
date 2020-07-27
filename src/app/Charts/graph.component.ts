@@ -99,8 +99,8 @@ export class graphComponent implements OnInit {
     let plist = this.temp;
     if (this.patients.length == 0 || this.patients == undefined) {
       plist = this.temp;
-    } else{
-      plist=this.patients
+    } else {
+      plist = this.patients;
     }
 
     let i = 0;
@@ -420,6 +420,7 @@ export class graphComponent implements OnInit {
     };
   }
   showBarChart() {
+
     this.options = {
       title: {
         text: "Frequency of HPO Terms for Filtered Patients",
@@ -429,6 +430,10 @@ export class graphComponent implements OnInit {
         trigger: "axis",
         axisPointer: {
           type: "shadow"
+        },
+        formatter: (params)=>{
+          console.log(params)
+          return params[0].axisValue+":<br>"+params[0].data['termname'] +"<br> hits:"+params[0].data['value']
         }
       },
       xAxis: {
@@ -459,10 +464,10 @@ export class graphComponent implements OnInit {
       animationEasing: "elasticOut",
       animationDelayUpdate: idx => idx * 5
     };
-    // Load data for bar graph
-    for (var item of this.phenoPool) {
+        for (var item of this.phenoPool) {
       this.terms.push(item["id"]);
-      this.freq.push(item["count"]);
+      this.freq.push({ value: item["count"], termname: item["label"] });
     }
+    // Load data for bar graph
   }
 }
