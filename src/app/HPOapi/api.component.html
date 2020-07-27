@@ -1,10 +1,10 @@
 <h3 class="mb-0">
 	Search Result of {{input_term['detail']}}
 </h3>
+<button class="btn btn-success"(click)="delieverResult(this.name)"> send to main </button>
 <div *ngIf="toggleTerm" class="card body" id="resultbody" class="collapse show" aria-labelledby="headingOne"
 	data-parent="#accordion">
 	<HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
-  <!--
 	<div *ngIf="isNaturalLanguage">
 		<p> Disease lists are: </p>
 		<ul class="list-group">
@@ -18,25 +18,21 @@
 			</ng-container>
 		</ul>
 	</div>
-  -->
 
-	<div *ngIf="isTerm" class="card body">
-		<mat-list>
-       <mat-list-item>Name : {{name}}</mat-list-item>
-       <mat-list-item> Alternative Ontology Id : 
-         <span *ngFor="let id of althpoid"> {{id}}<br> </span>
-       </mat-list-item>
-       <mat-list-item>Definition : {{definition}}</mat-list-item>
-  <br>
-		<div *ngIf="haveChildren else noChildren">
-   
+	<div *ngIf="!isNaturalLanguage" class="card body">
+		<Strong> Name : {{name}}, HPO id is {{hpoid}}</Strong>
+
+		<div *ngIf="haveChildren else noChildren" id="children">
+
+			<em> Children are: </em>
+
 			<p align="right" class="btn-group">
+
 				<button class="btn btn-info" (click)="AddAll()">Add all first level children</button>
 				<button class="btn btn-warning" (click)="AddAll()">Add all children</button>
-        <button class="btn btn-primary"(click)="toggleShowChildren()"> Show First Level Children </button>
 			</p>
 
-			<ul class="list-group" *ngIf="showAssoChildren">
+			<ul class="list-group">
 				<ng-container *ngFor="let c of firstLevelChildren">
 					<li class="list-group-item d-flex justify-content-between align-items-center">
 						{{c['name']}}, {{c['ontologyId']}}
@@ -46,59 +42,9 @@
 					</li>
 				</ng-container>
 			</ul>
-      
 		</div>
-    </mat-list>
+
 		<ng-template #noChildren> There is no First Level Children of this term! </ng-template>
-	</div>
-
-  <div *ngIf="isDisease" class="card body">
-		<mat-list>
-       <mat-list-item>Name : {{diseaseSearchObject['disease']['diseaseName']}}</mat-list-item>
-       <mat-list-item> Disease Id : 
-         {{diseaseSearchObject['disease']['dbId']}}
-       </mat-list-item>
-       <mat-list-item>Associated Gene : {{diseaseSearchObject['geneAssoc']['entrezGeneSymbol']}}</mat-list-item>
-  <br>
-    <!--
-			<em> Associated Ontologies are: </em>
-			<ul class="list-group">
-				<ng-container *ngFor="let t of diseaseSearchObject['catTermsMap']['terms']">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-						{{t['name']}}, {{t['ontologyId']}}
-						<div class="btn-group">
-							<button class="btn btn-success"(click)="AddToSearch(t['ontologyId'])"> Search </button>
-						</div>
-            </li>
-
-				</ng-container>
-			</ul>
-    -->
-    </mat-list>
-	</div>
-
-  <div *ngIf="isGene" class="card body">
-		<mat-list>
-       <mat-list-item>Name : {{geneSearchObject['gene']['entrezGeneSymbol']}}</mat-list-item>
-       <mat-list-item> Gene Id : 
-         {{geneSearchObject['gene']['entrezGeneId']}}
-       </mat-list-item>
-       
-  <br>
-    
-			<button class="btn btn-success"(click)="toggleShowTerms()"> Show Associated Ontologies </button>
-			<ul class="list-group" *ngIf="showAssoTerms">
-				<ng-container *ngFor="let t of assoterms">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-						{{t['name']}}, {{t['ontologyId']}}
-						<div class="btn-group">
-							<button class="btn btn-success"(click)="AddToSearch(t['ontologyId'])"> Search </button>
-						</div>
-            </li>
-
-				</ng-container>
-			</ul>
-    </mat-list>
 	</div>
 </div>
 

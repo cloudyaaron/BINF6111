@@ -50,7 +50,7 @@ export class ApiService {
 
   //search via disease OMIM or ORPHA id, return disease information and associated mapped body parts & mapped hpo terms 
   diseaseSearch(term:string){
-    let searchUrl = this.diseaseUrl + term;
+    let searchUrl = this.geneUrl + term;
    return this.http.get(searchUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -60,7 +60,7 @@ export class ApiService {
 
   //search via one hpo term and return associated list disease details and its associated gene id
   assoDiseaseSearch(term:string){
-    let searchUrl = this.baseUrl + term + '/disease';
+    let searchUrl = this.geneUrl + term + '/disease';
    return this.http.get(searchUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -70,7 +70,7 @@ export class ApiService {
 
   //search via one hpo term and return associated list gene details and its associated disease id 
   assoGeneSearch(term:string){
-    let searchUrl = this.baseUrl + term + '/genes';
+    let searchUrl = this.geneUrl + term + '/genes';
    return this.http.get(searchUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -110,16 +110,7 @@ export class ApiService {
         console.log(pregex.test(term))
     return pregex.test(term);
   }
-  isDisease(term:string):boolean {
-    let dregex1 = new RegExp('^ORPHA:')
-    let dregex2 = new RegExp('^OMIM:')
-    return dregex1.test(term)||dregex2.test(term)
-  }
-  isGene(term:string):boolean {
-    let gregex1 = new RegExp('^[0-9]*$')
 
-    return gregex1.test(term)
-  }
 }
 
 
