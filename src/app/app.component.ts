@@ -389,15 +389,6 @@ export class AppComponent {
             label: t["name"]
           });
         }
-        this.apiService.geneSearch(user_input).subscribe(data => {
-          console.log(data)
-          for (var t of temp) {
-            this.suggested_queries.push({
-              id: t["ontologyId"],
-              label: t["name"]
-            });
-          }
-        });
       });
 
       this.suggest_text = "Searching everything?";
