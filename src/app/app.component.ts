@@ -12,6 +12,7 @@ import { DataService } from './data.service';
 import { Subscription } from "rxjs";
 import { ModalService } from './modal';
 
+import {MatCheckboxModule} from '@angular/material/checkbox'
 //https://bootswatch.com/litera/?
 
 @Component({
@@ -61,6 +62,12 @@ export class AppComponent {
     console.log("ngOnDestroy, unsubscribing");
     this.subscription.unsubscribe();
   }
+  //options
+  show = false
+  checkedGene = true
+  checkedTerm = true
+  checkedDisease = true
+
   constructor(private apiService: ApiService) {}
 
   openModal(id: string) {
@@ -402,19 +409,34 @@ export class AppComponent {
       this.suggest_text = "";
       this.suggested_queries = [];
     } else {
-      let temp = [];
+      let temp_genes = [];
+      let temp_diseases = [];
+      let temp_terms = []; 
       this.apiService.natureSearch(user_input).subscribe(data => {
         //let detail = {}
 
         this.suggested_queries = [];
 
+
+        temp_diseases = data['diseases'];
+        temp_genes = data['genes']
         //this.result_object = new HPOTerm()
-        temp = data["terms"];
-        for (var t of temp) {
-          this.suggested_queries.push({
-            id: t["ontologyId"],
-            label: t["name"]
-          });
+        if (this.checkedTerm && data['termsTotalCount'] > 0) {
+          temp_terms = data["terms"];
+          for (var t of temp_terms ){
+          this.suggested_queries.push({id:t['ontologyId'],label:t['name']})}
+        }
+        if (this.checkedGene && temp_genes.length > 0){
+          console.log(temp_genes)
+          for (var t of temp_genes){
+          this.suggested_queries.push({id:t['entrezGeneId'],label:t["entrezGeneSymbol"]})
+          }
+        }
+        if (this.checkedDisease && temp_diseases.length > 0) {
+          console.log(temp_diseases)
+          for (var t of temp_diseases){
+          this.suggested_queries.push({id:t["diseaseId"],label:t['dbName']})
+          }
         }
         this.apiService.geneSearch(user_input).subscribe(data => {
           console.log(data)
@@ -426,6 +448,9 @@ export class AppComponent {
           }
         });
       });
+       
+      this.suggest_text = "Nature language searching?";
+    }
 
       this.suggest_text = "Searching everything?";
     }
@@ -436,6 +461,13 @@ export class AppComponent {
     this.refreshPage();
   }
 
+  toggleOption(){
+    this.show = !this.show
+  }
+
+  toggleGene() {this.checkedGene = !this.checkedGene}
+  toggleDisease() {this.checkedDisease = !this.checkedDisease}
+  toggleTerm() {this.checkedTerm = !this.checkedTerm}
   public clickSuggestButton(event: any) {
     console.log(event);
     //var st['detail'] = this.suggested_queries[0]

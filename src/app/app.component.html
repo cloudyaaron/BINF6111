@@ -33,16 +33,34 @@
 			<a class="nav-link" onmouseover="" style="cursor: pointer;" (click)="openModal('about-modal')">About</a>
 		</li>
 	</ul>
-  <form class="form-inline my-2 my-lg-0">
-  <input placeholder="Searching"          class="form-control mr-sm-4"
 
-      [matChipInputFor]="searchList"
-      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-      (matChipInputTokenEnd)="add($event)"
-      (keyup)="onKeyUp($event)"
-    >
-  </form>
-  <!--</div>-->
+	<form class="form-inline my-2 my-lg-0">
+
+
+
+		<input placeholder="HPO Terms, Genes, or Diseases..."          class="form-control mr-sm-4"
+
+        [matChipInputFor]="searchList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+        (keyup)="onKeyUp($event)"
+      >
+    </form>
+		<!--</div>-->
+   <button class="btn btn-primary" (click)="toggleOption()">
+  Options
+  </button>
+  <ng-container *ngIf="show">
+    <div>
+    <mat-checkbox labelPosition="before" [checked]="this.checkedGene" (change)="toggleGene()">Genes
+    </mat-checkbox>
+    <mat-checkbox labelPosition="before" [checked]="this.checkedTerm" (change)="toggleTerm()">Terms
+    </mat-checkbox>
+    <mat-checkbox labelPosition="before" [checked]="this.checkedDisease" (change)="toggleDisease()">Diseases
+    </mat-checkbox>
+    </div>
+  </ng-container>
+   
 </nav>
 
 <jw-modal id="about-modal">
