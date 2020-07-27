@@ -1,24 +1,18 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  OnDestroy,
-  TemplateRef
-} from "@angular/core";
+import { Component, Input, OnInit, OnDestroy, TemplateRef } from "@angular/core";
 //import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
 import { ApiComponent } from "./HPOapi/api.component";
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import { ActivatedRoute, Params } from "@angular/router";
-import { DataService } from "./data.service";
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { ActivatedRoute, Params } from '@angular/router';
+//import { DataService } from './data.service';
 import { Subscription } from "rxjs";
-import { ModalService } from "./modal";
+import { ModalService } from './modal';
 
-import { MatCheckboxModule } from "@angular/material/checkbox";
+import {MatCheckboxModule} from '@angular/material/checkbox'
 //https://bootswatch.com/litera/?
 
 @Component({
@@ -53,12 +47,7 @@ export class AppComponent implements OnInit {
   //     this.result_object = v.name;
   //   }, 0);
   // }
-  constructor(
-    private route: ActivatedRoute,
-    private dataService: DataService,
-    private modalService: ModalService,
-    private apiService: ApiService
-  ) {}
+  constructor( private route: ActivatedRoute, private dataService: DataService, private modalService: ModalService) {}
 
   ngOnInit() {
     this.subscription = this.dataService.changeData.subscribe(value => {
@@ -66,7 +55,7 @@ export class AppComponent implements OnInit {
       this.patients = value;
       this.patientsLenth = this.patients.length;
       console.log(this.patientsLenth);
-    });
+    })
   }
 
   ngOnDestroy() {
@@ -74,19 +63,21 @@ export class AppComponent implements OnInit {
     this.subscription.unsubscribe();
   }
   //options
-  show = false;
-  checkedGene = true;
-  checkedTerm = true;
-  checkedDisease = true;
+  show = false
+  checkedGene = true
+  checkedTerm = true
+  checkedDisease = true
+
+ 
 
   openModal(id: string) {
-    this.modalService.open(id);
-  }
+        this.modalService.open(id);
+    }
 
-  closeModal(id: string) {
-    this.modalService.close(id);
-  }
-
+    closeModal(id: string) {
+        this.modalService.close(id);
+    }
+  
   add(event: MatChipInputEvent): void {
     this.search_result = [];
     const input = event.input;
@@ -420,45 +411,48 @@ export class AppComponent implements OnInit {
     } else {
       let temp_genes = [];
       let temp_diseases = [];
-      let temp_terms = [];
+      let temp_terms = []; 
       this.apiService.natureSearch(user_input).subscribe(data => {
         //let detail = {}
 
         this.suggested_queries = [];
 
-        temp_diseases = data["diseases"];
-        temp_genes = data["genes"];
+
+        temp_diseases = data['diseases'];
+        temp_genes = data['genes']
         //this.result_object = new HPOTerm()
-        if (this.checkedTerm && data["termsTotalCount"] > 0) {
+        if (this.checkedTerm && data['termsTotalCount'] > 0) {
           temp_terms = data["terms"];
-          for (var t of temp_terms) {
+          for (var t of temp_terms ){
+          this.suggested_queries.push({id:t['ontologyId'],label:t['name']})}
+        }
+        if (this.checkedGene && temp_genes.length > 0){
+          console.log(temp_genes)
+          for (var t of temp_genes){
+          this.suggested_queries.push({id:t['entrezGeneId'],label:t["entrezGeneSymbol"]})
+          }
+        }
+        if (this.checkedDisease && temp_diseases.length > 0) {
+          console.log(temp_diseases)
+          for (var t of temp_diseases){
+          this.suggested_queries.push({id:t["diseaseId"],label:t['dbName']})
+          }
+        }
+        this.apiService.geneSearch(user_input).subscribe(data => {
+          console.log(data)
+          for (var t of temp) {
             this.suggested_queries.push({
               id: t["ontologyId"],
               label: t["name"]
             });
           }
-        }
-        if (this.checkedGene && temp_genes.length > 0) {
-          console.log(temp_genes);
-          for (var t of temp_genes) {
-            this.suggested_queries.push({
-              id: t["entrezGeneId"],
-              label: t["entrezGeneSymbol"]
-            });
-          }
-        }
-        if (this.checkedDisease && temp_diseases.length > 0) {
-          console.log(temp_diseases);
-          for (var t of temp_diseases) {
-            this.suggested_queries.push({
-              id: t["diseaseId"],
-              label: t["dbName"]
-            });
-          }
-        }
+        });
       });
+       
       this.suggest_text = "Nature language searching?";
     }
+
+
   }
 
   addExtra(term) {
@@ -466,19 +460,13 @@ export class AppComponent implements OnInit {
     this.refreshPage();
   }
 
-  toggleOption() {
-    this.show = !this.show;
+  toggleOption(){
+    this.show = !this.show
   }
 
-  toggleGene() {
-    this.checkedGene = !this.checkedGene;
-  }
-  toggleDisease() {
-    this.checkedDisease = !this.checkedDisease;
-  }
-  toggleTerm() {
-    this.checkedTerm = !this.checkedTerm;
-  }
+  toggleGene() {this.checkedGene = !this.checkedGene}
+  toggleDisease() {this.checkedDisease = !this.checkedDisease}
+  toggleTerm() {this.checkedTerm = !this.checkedTerm}
   public clickSuggestButton(event: any) {
     console.log(event);
     //var st['detail'] = this.suggested_queries[0]
