@@ -1,16 +1,12 @@
-import { Component, Input, OnInit, OnDestroy, TemplateRef } from "@angular/core";
-//import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
+import { Component, Input, ViewChild } from "@angular/core";
+import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
 import { ApiComponent } from "./HPOapi/api.component";
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import { ActivatedRoute, Params } from '@angular/router';
-import { DataService } from './data.service';
-import { Subscription } from "rxjs";
-import { ModalService } from './modal';
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 //https://bootswatch.com/litera/?
 
@@ -45,32 +41,9 @@ export class AppComponent {
     setTimeout(() => {
       this.result_object = v.name;
     }, 0);
-  //constructor(private searchService: SearchService) {}
-  constructor( private route: ActivatedRoute, private dataService: DataService, private modalService: ModalService) {}
-
-  ngOnInit() {
-    this.subscription = this.dataService.changeData.subscribe(value => {
-      console.log(value);
-      this.patients = value;
-      this.patientsLenth = this.patients.length;
-      console.log(this.patientsLenth);
-    })
-  }
-
-  ngOnDestroy() {
-    console.log("ngOnDestroy, unsubscribing");
-    this.subscription.unsubscribe();
   }
   constructor(private apiService: ApiService) {}
 
-  openModal(id: string) {
-        this.modalService.open(id);
-    }
-
-    closeModal(id: string) {
-        this.modalService.close(id);
-    }
-  
   add(event: MatChipInputEvent): void {
     this.search_result = [];
     const input = event.input;
