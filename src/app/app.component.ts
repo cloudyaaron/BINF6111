@@ -46,7 +46,7 @@ export class AppComponent {
     setTimeout(() => {
       this.result_object = v.name;
     }, 0);
-  }
+  //constructor(private searchService: SearchService) {}
   constructor( private route: ActivatedRoute, private dataService: DataService, private modalService: ModalService) {}
 
   ngOnInit() {
@@ -452,7 +452,8 @@ export class AppComponent {
       this.suggest_text = "Nature language searching?";
     }
 
-
+      this.suggest_text = "Searching everything?";
+    }
   }
 
   addExtra(term) {
