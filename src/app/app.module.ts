@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { NgBusyModule } from 'ng-busy';
+import { ModalModule } from './modal';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTree, MatTreeModule } from '@angular/material/tree';
 import { MatChipsModule } from '@angular/material/chips';
@@ -31,9 +32,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, NgBusyModule,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule,MatSelectModule],
-  declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList,graphComponent],
-  bootstrap:    [ AppComponent ],
-  providers:    [MessageService, ApiService, SearchService]
+  imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, AppRoutingModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule, ModalModule],
+  declarations: [ AppComponent, HelloComponent,ApiComponent,PatientsList, InputComponent, graphComponent, MainComponent],
+  bootstrap:    [ MainComponent ],
+  providers:    [MessageService, ApiService, SearchService, DataService]
 })
 export class AppModule { }
