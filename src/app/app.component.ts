@@ -8,7 +8,7 @@ import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { ActivatedRoute, Params } from '@angular/router';
-import { DataService } from './data.service';
+//import { DataService } from './data.service';
 import { Subscription } from "rxjs";
 import { ModalService } from './modal';
 
@@ -20,11 +20,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox'
   templateUrl: "./app.component.html",
   styleUrls: ["./lumen.css"]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   name = "Angular ";
   hpoTerms: HashTable<string, any>;
-  hpoList = data[0];
-  patients = data;
+  patients: Array<any> = [];
+  subscription: Subscription;
   values = "";
   suggest_text = "";
   search_result = [];
@@ -41,12 +41,12 @@ export class AppComponent {
 
   //adding the result object
   result_object: any;
-  @ViewChild(ApiComponent)
-  set pane(v: ApiComponent) {
-    setTimeout(() => {
-      this.result_object = v.name;
-    }, 0);
-  }
+  // @ViewChild(ApiComponent)
+  // set pane(v: ApiComponent) {
+  //   setTimeout(() => {
+  //     this.result_object = v.name;
+  //   }, 0);
+  // }
   constructor( private route: ActivatedRoute, private dataService: DataService, private modalService: ModalService) {}
 
   ngOnInit() {
@@ -68,7 +68,7 @@ export class AppComponent {
   checkedTerm = true
   checkedDisease = true
 
-  constructor(private apiService: ApiService) {}
+ 
 
   openModal(id: string) {
         this.modalService.open(id);
