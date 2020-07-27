@@ -31,9 +31,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module'
-import { InputComponent } from './input.component';
-import { MainComponent } from './main.component';
-import { DataService } from './data.service';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, AppRoutingModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule, ModalModule],
