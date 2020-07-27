@@ -1,13 +1,13 @@
 import { Component, Input, ViewChild } from "@angular/core";
 import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
-import {ApiComponent} from "./HPOapi/api.component"
+import { ApiComponent } from "./HPOapi/api.component";
 import { HashTable } from "./classes/hashtable";
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatCheckboxModule} from '@angular/material/checkbox'
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 //https://bootswatch.com/litera/?
 
 @Component({
@@ -34,19 +34,19 @@ export class AppComponent {
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
 
-  //adding the result object 
-  result_object :any;
-  @ViewChild(ApiComponent) 
+  //adding the result object
+  result_object: any;
+  @ViewChild(ApiComponent)
   set pane(v: ApiComponent) {
     setTimeout(() => {
       this.result_object = v.name;
     }, 0);
   }
   //options
-  show = false
-  checkedGene = true
-  checkedTerm = true
-  checkedDisease = true
+  show = false;
+  checkedGene = true;
+  checkedTerm = true;
+  checkedDisease = true;
 
   constructor(private apiService: ApiService) {}
 
@@ -57,7 +57,7 @@ export class AppComponent {
 
     // Add label
     if ((value || "").trim()) {
-      this.AddtoSearch(value)
+      this.AddtoSearch(value);
     }
     // Reset the input value
     if (input) {
@@ -66,8 +66,8 @@ export class AppComponent {
     this.refreshPage();
   }
 
-  AddtoSearch(t:string):void{
-    t = t.trim()
+  AddtoSearch(t: string): void {
+    t = t.trim();
     this.search_list.push({ detail: t.trim() });
     this.search_result.push({ query: t.trim(), answer: [] });
   }
@@ -76,8 +76,8 @@ export class AppComponent {
     this.search_result = [];
     this.suggested_queries = [];
 
-    console.log("search_list",this.search_list);
-    console.log("resultlust",this.search_result);
+    console.log("search_list", this.search_list);
+    console.log("resultlust", this.search_result);
     if (this.search_list.length != 0) {
       for (var search_term of this.search_list) {
         this.search_result.push({ query: search_term["detail"], answer: [] });
@@ -170,8 +170,7 @@ export class AppComponent {
         this.values = "Sorry but nothing has been found";
       }
     }
-    console.log("result", this.result_object)
-
+    console.log("result", this.result_object);
   }
 
   search(search_term: string): any {
@@ -219,10 +218,8 @@ export class AppComponent {
         this.values = "HPO term format incorrect";
         this.search_list.pop();
       }
-      
     }
-        console.log("result", this.result_object)
-
+    console.log("result", this.result_object);
   }
 
   getResultNum() {
@@ -311,6 +308,8 @@ export class AppComponent {
   //single searching function will be integret into multiple seaching function
   // suggest from here!!!
   onKeyUp(event: any) {
+    this.suggested_queries = [];
+
     var user_input = event.target.value.trim();
     console.log(user_input);
     if (user_input[0] == "P") {
@@ -333,7 +332,7 @@ export class AppComponent {
           }
         }
         console.log(suggestion_array);
-        this.suggested_queries = suggestion_array; 
+        this.suggested_queries = suggestion_array;
         /*
         for (let i=0; i<suggestion_array.length;i++)
         {
@@ -382,67 +381,82 @@ export class AppComponent {
       }
     } else if (user_input.length == 0) {
       this.suggest_text = "";
-      this.suggested_queries=[]
+      this.suggested_queries = [];
     } else {
       let temp_genes = [];
       let temp_diseases = [];
-      let temp_terms = []; 
+      let temp_terms = [];
       this.apiService.natureSearch(user_input).subscribe(data => {
         //let detail = {}
-        
-        this.suggested_queries=[]
 
+        this.suggested_queries = [];
 
-        temp_diseases = data['diseases'];
-        temp_genes = data['genes']
+        temp_diseases = data["diseases"];
+        temp_genes = data["genes"];
         //this.result_object = new HPOTerm()
-        if (this.checkedTerm && data['termsTotalCount'] > 0) {
+        if (this.checkedTerm && data["termsTotalCount"] > 0) {
           temp_terms = data["terms"];
-          for (var t of temp_terms ){
-          this.suggested_queries.push({id:t['ontologyId'],label:t['name']})}
+          for (var t of temp_terms) {
+            this.suggested_queries.push({
+              id: t["ontologyId"],
+              label: t["name"]
+            });
+          }
         }
-        if (this.checkedGene && temp_genes.length > 0){
-          console.log(temp_genes)
-          for (var t of temp_genes){
-          this.suggested_queries.push({id:t['entrezGeneId'],label:t["entrezGeneSymbol"]})
+        if (this.checkedGene && temp_genes.length > 0) {
+          console.log(temp_genes);
+          for (var t of temp_genes) {
+            this.suggested_queries.push({
+              id: t["entrezGeneId"],
+              label: t["entrezGeneSymbol"]
+            });
           }
         }
         if (this.checkedDisease && temp_diseases.length > 0) {
-          console.log(temp_diseases)
-          for (var t of temp_diseases){
-          this.suggested_queries.push({id:t["diseaseId"],label:t['dbName']})
+          console.log(temp_diseases);
+          for (var t of temp_diseases) {
+            this.suggested_queries.push({
+              id: t["diseaseId"],
+              label: t["dbName"]
+            });
           }
         }
       });
-       
+
       this.suggest_text = "Nature language searching?";
     }
-
   }
 
-  addExtra(term){
-    this.AddtoSearch(term)
-    this.refreshPage()
+  addExtra(term) {
+    this.AddtoSearch(term);
+    this.refreshPage();
   }
 
-  toggleOption(){
-    this.show = !this.show
+  toggleOption() {
+    this.show = !this.show;
   }
 
-  toggleGene() {this.checkedGene = !this.checkedGene}
-  toggleDisease() {this.checkedDisease = !this.checkedDisease}
-  toggleTerm() {this.checkedTerm = !this.checkedTerm}
+  toggleGene() {
+    this.checkedGene = !this.checkedGene;
+  }
+  toggleDisease() {
+    this.checkedDisease = !this.checkedDisease;
+  }
+  toggleTerm() {
+    this.checkedTerm = !this.checkedTerm;
+  }
   public clickSuggestButton(event: any) {
-    console.log(event)
+    console.log(event);
     //var st['detail'] = this.suggested_queries[0]
     //event["detail"] = event
-    this.AddtoSearch(event['id']);
+    this.AddtoSearch(event["id"]);
 
     this.refreshPage();
   }
 
-
-      toggleConfig() { this.showConfig = !this.showConfig; }
+  toggleConfig() {
+    this.showConfig = !this.showConfig;
+  }
 
   //Useful urls: https://www.freakyjolly.com/angular-e-charts-using-ngx-echarts-tutorial/#.XvFQAGgzY2w
   //https://www.npmjs.com/package/ngx-echarts
