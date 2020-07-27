@@ -3,6 +3,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from './api.service';
 import { MessageService } from '../message.service';
 import { HPOTerm, Details, Relations, RelationTerm } from '../classes/HPOTerm';
+import {MatListModule} from '@angular/material/list';
 
 @Component({
   selector: 'HPOapi',
@@ -19,8 +20,9 @@ export class ApiComponent {
 
   //result of hpo term details 
   termDetailObject: any; 
-  hpoid: string;
+  althpoid: string[];
   name: string; 
+  definition: string;
   firstLevelChildren: []; 
 
   //result of hpo term associations
@@ -35,7 +37,11 @@ export class ApiComponent {
 
   //result of gene search 
   geneSearchObject: any; 
+  assoterms: any;
 
+  //result of disease search
+  diseaseSearchObject:any
+  catLabels:string[]
 
   haveChildren = true; 
   showChildren = true; 
@@ -44,6 +50,11 @@ export class ApiComponent {
   toggleTerm = true;
   noResult = false; 
   isNaturalLanguage = false; 
+  isDisease = false; 
+  isTerm = false; 
+  isGene = false; 
+  showAssoTerms = false; 
+  showAssoChildren = false; 
 
   
   constructor(private apiService: ApiService) {}
@@ -70,22 +81,42 @@ export class ApiComponent {
       );
   }
 
+  showDiseaseConfig(term:string) {
+    this.apiService.diseaseSearch(term)
+      .subscribe(
+        (data) => {
+                      this.diseaseSearchObject = data
+                      this.catLabels = data['catTermsMap']['catLabel']
+                   },
+               
+      );
+  }
+
+  showGeneConfig(term:string) {
+    this.apiService.geneSearch(term)
+      .subscribe(
+        (data) => {
+                      this.geneSearchObject = data
+                      this.assoterms = data['termAssoc']
+                   },
+               
+      );
+  }
+
   AddToSearch(term){
     this.extra.emit(term)
   }
 
-  delieverResult(searchresult){
-    this.result.emit(searchresult)
-  }
 
   extractDetailObject(){
-     this.hpoid = this.termDetailObject['details']['id'];
+     this.althpoid = this.termDetailObject['details']['altTermIds'];
      //if there is no children
     if (this.termDetailObject['relations']['children'].length == 0) {
         this.toggleChildren(); 
    }
      this.firstLevelChildren = this.termDetailObject['relations']['children'];                    
     this.name = this.termDetailObject['details']['name']
+    this.definition = this.termDetailObject['details']['definition']
   }
 
   extractInput() {
@@ -94,17 +125,27 @@ export class ApiComponent {
         if (this.apiService.isHPOTerm(input_detail)) {
             this.showHPOTermConfig(input_detail);
             this.toggleLoad(); 
-            this.delieverResult(this.name)
+            this.toggleIsTerm();
         } else if (this.apiService.isPatient(input_detail)) {
             console.log("patient case; ignore")
             this.toggleTermType();
             return;
-        } else {
+        } else if (this.apiService.isDisease(input_detail)){
+            console.log("disease type")
+            this.showDiseaseConfig(input_detail)
+            this.toggleLoad(); 
+            this.toggleDisease()
+        } else if (this.apiService.isGene(input_detail)) {
+            console.log("gene type")
+            this.showGeneConfig(input_detail)
+            this.toggleLoad()
+            this.toggleIsGene()
+        }
+        else {
           console.log("natural language case")
           this.showQueryConfig(input_detail);
           this.toggleLoad(); 
           this.toggleQuery();
-          this.delieverResult(this.querySearchObject)
           //this.printQueryResult();
         }       
     } else {
@@ -123,6 +164,11 @@ export class ApiComponent {
   toggleChildren(){this.haveChildren = !this.haveChildren}; 
   toggleTermType() {this.toggleTerm = !this.toggleTerm}; 
   toggleQuery() {this.isNaturalLanguage = !this.isNaturalLanguage};
+  toggleDisease() {this.isDisease = !this.isDisease};
+  toggleIsTerm() {this.isTerm = !this.isTerm};
+  toggleIsGene() {this.isGene = !this.isGene};
+  toggleShowTerms() {this.showAssoTerms = !this.showAssoTerms}
+  toggleShowChildren() {this.showAssoChildren !=this.showAssoChildren}
   /*
   checkIfResult() { 
     console.log(this.apiService.noResult)
