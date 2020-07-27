@@ -30,6 +30,7 @@ import * as echarts from 'echarts';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSelectModule } from '@angular/material/select';
+import { AppRoutingModule } from './app-routing.module'
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,NgBusyModule ,MatProgressSpinnerModule, MatTreeModule, MatChipsModule, MatFormFieldModule,BrowserAnimationsModule, HttpClientModule, AppRoutingModule, NgxEchartsModule.forRoot({echarts}),MatTabsModule,MatSidenavModule, ModalModule],
