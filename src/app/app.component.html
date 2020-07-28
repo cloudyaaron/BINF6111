@@ -44,10 +44,10 @@
       >
     </form>
 		<!--</div>-->
-   <button class="btn btn-primary" (click)="toggleOption()">
+		<button class="btn btn-primary" (click)="toggleOption()">
   Options
   </button>
-  <ng-container *ngIf="show">
+		<!-- <ng-container *ngIf="show">
     <div>
     <mat-checkbox labelPosition="before" [checked]="this.checkedGene" (change)="toggleGene()">Genes
     </mat-checkbox>
@@ -56,8 +56,8 @@
     <mat-checkbox labelPosition="before" [checked]="this.checkedDisease" (change)="toggleDisease()">Diseases
     </mat-checkbox>
     </div>
-  </ng-container>
-   
+  </ng-container> -->
+
 </nav>
 
 {{values}}
@@ -65,7 +65,7 @@
 {{suggest_text}}
 <br>
 
-<div class="btn-group-vertical" >
+<div class="btn-group-vertical">
 	<ng-container *ngFor="let sq of suggested_queries">
 		<button class="btn btn-primary" (click)="clickSuggestButton(sq)">
     {{sq['id']}}   {{sq['label']}}
@@ -76,16 +76,16 @@
 </div>
 
 
-<mat-drawer-container autosize >
-	<mat-drawer #drawer mode="side" >
+<mat-drawer-container autosize>
+	<mat-drawer #drawer mode="side">
 		<HPOapi *ngFor="let s of search_list" [input]="s" (extra)="addExtra($event)"> </HPOapi>
 	</mat-drawer>
 	<mat-drawer-content>
-  <div >
-    <button type="button"class="btn btn-info btn-sm" mat-button (click)="drawer.toggle()">
+		<div>
+			<button type="button"class="btn btn-info btn-sm" mat-button (click)="drawer.toggle()">
       HPO api
     </button>
-  </div>
+		</div>
 
 
 
@@ -104,21 +104,21 @@
 		<!--<ng-container *ngIf="intersection_check">
   <patient-list [patients]= 'patients' [type]=typeR></patient-list>
 </ng-container>-->
-<div class="row">
-  <div class="column" style="width: 50%; padding:20px">
-		<ng-container *ngFor="let eachsearch of search_result">
-			<h3>
-				{{eachsearch['query']}}
-				<small class="text-muted"> Results : {{eachsearch['answer'].length}}</small>
-			</h3>
-			<patient-list [patients]="eachsearch['answer']" [type]=typeR></patient-list>
-		</ng-container>
-  </div>
-  <div class="column" style="width: 50%; padding:20px">
-    <graph-echart [patients]='search_result'></graph-echart>
+		<div class="row">
+			<div class="column" style="width: 50%; padding:20px">
+				<ng-container *ngFor="let eachsearch of search_result">
+					<h3>
+						{{eachsearch['query']}}
+						<small class="text-muted"> Results : {{eachsearch['answer'].length}}</small>
+					</h3>
+					<patient-list [patients]="eachsearch['answer']" [type]=typeR></patient-list>
+				</ng-container>
+			</div>
+			<div class="column" style="width: 50%; padding:20px">
+				<graph-echart [patients]='search_result'></graph-echart>
 
-  </div>
-</div>
+			</div>
+		</div>
 
 
 		<mat-tab-group>
@@ -126,7 +126,7 @@
 				<patient-list [patients]='patients' [type]=''></patient-list>
 			</mat-tab>
 			<mat-tab label="Graph(testing)">
-				<graph-echart ></graph-echart>
+				<graph-echart></graph-echart>
 			</mat-tab>
 		</mat-tab-group>
 
