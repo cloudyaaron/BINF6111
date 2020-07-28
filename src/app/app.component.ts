@@ -48,7 +48,9 @@ export class AppComponent {
   checkedTerm = true;
   checkedDisease = true;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {
+    
+  }
 
   add(event: MatChipInputEvent): void {
     this.search_result = [];
@@ -390,7 +392,7 @@ export class AppComponent {
         //let detail = {}
 
         this.suggested_queries = [];
-
+        console.log(data)
         temp_diseases = data["diseases"];
         temp_genes = data["genes"];
         //this.result_object = new HPOTerm()

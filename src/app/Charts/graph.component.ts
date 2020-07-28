@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import data from "../phenotips_2020-06-09_18-16_with_external_id.json";
 import { query } from "@angular/animations";
 import { MatSelectModule } from "@angular/material/select";
+import { ApiService } from "./HPOapi/api.service";
 
 @Component({
   selector: "graph-echart",
@@ -20,6 +21,7 @@ export class graphComponent implements OnInit {
   m = 0;
   f = 0;
   u = 0;
+  constructor(private apiService: ApiService) {}
   ngOnInit() {
     this.temp.push({ query: "all", answer: data });
     this.getPhenotypePool(this.temp);
@@ -183,6 +185,10 @@ export class graphComponent implements OnInit {
   }
 
   showSunburst() {
+    console.log(this.phenoPool)
+    this.apiService.getConfig("HP%3A0000002").subscribe(data => {
+      console.log(data);
+    });
     var item1 = {
       color: "#F54F4A"
     };
@@ -420,7 +426,6 @@ export class graphComponent implements OnInit {
     };
   }
   showBarChart() {
-
     this.options = {
       title: {
         text: "Frequency of HPO Terms for Filtered Patients",
@@ -431,9 +436,15 @@ export class graphComponent implements OnInit {
         axisPointer: {
           type: "shadow"
         },
-        formatter: (params)=>{
-          console.log(params)
-          return params[0].axisValue+":<br>"+params[0].data['termname'] +"<br> hits:"+params[0].data['value']
+        formatter: params => {
+          console.log(params);
+          return (
+            params[0].axisValue +
+            ":<br>" +
+            params[0].data["termname"] +
+            "<br> hits:" +
+            params[0].data["value"]
+          );
         }
       },
       xAxis: {
@@ -464,7 +475,7 @@ export class graphComponent implements OnInit {
       animationEasing: "elasticOut",
       animationDelayUpdate: idx => idx * 5
     };
-        for (var item of this.phenoPool) {
+    for (var item of this.phenoPool) {
       this.terms.push(item["id"]);
       this.freq.push({ value: item["count"], termname: item["label"] });
     }
