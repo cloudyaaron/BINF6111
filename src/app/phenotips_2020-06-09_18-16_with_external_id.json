@@ -4450,12 +4450,6 @@
         "observed": "no"
       },
       {
-        "id": "HP:0000000",
-        "label": "HP:0000000",
-        "type": "phenotype",
-        "observed": "yes"
-      },
-      {
         "id": "HP:0000118",
         "label": "Phenotypic abnormality",
         "type": "phenotype",
@@ -5248,12 +5242,6 @@
   },
   {
     "features": [
-      {
-        "id": "HP:0000000",
-        "label": "HP:0000000",
-        "type": "phenotype",
-        "observed": "no"
-      },
       {
         "id": "HP:0000118",
         "label": "Phenotypic abnormality",
@@ -8622,12 +8610,6 @@
   },
   {
     "features": [
-      {
-        "id": "HP:0000000",
-        "label": "HP:0000000",
-        "type": "phenotype",
-        "observed": "no"
-      },
       {
         "id": "HP:0000118",
         "label": "Phenotypic abnormality",

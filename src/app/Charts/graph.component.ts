@@ -3,6 +3,7 @@ import data from "../phenotips_2020-06-09_18-16_with_external_id.json";
 import { query } from "@angular/animations";
 import { MatSelectModule } from "@angular/material/select";
 import { ApiService } from "../HPOapi/api.service";
+import { delay } from "rxjs/operators";
 
 @Component({
   selector: "graph-echart",
@@ -21,6 +22,7 @@ export class graphComponent implements OnInit {
   m = 0;
   f = 0;
   u = 0;
+  tree = []
   constructor(private apiService: ApiService) {}
   ngOnInit() {
     this.temp.push({ query: "all", answer: data });
@@ -185,10 +187,13 @@ export class graphComponent implements OnInit {
   }
 
   showSunburst() {
-    console.log(this.phenoPool)
-    this.apiService.getConfig("HP%3A0000002").subscribe(data => {
-      console.log(data);
-    });
+    for(var pheno of this.phenoPool){
+      this.apiService.getConfig(pheno['id']).subscribe(data => {
+        this.tree.push({id:data['details']['id'],name:data['details']['name'],value:pheno['count'],child:data['relations']['children'],parent:data['relations']['parents'],children:[]})
+      });
+    }
+    console.log(this.tree)
+
     var item1 = {
       color: "#F54F4A"
     };
@@ -437,7 +442,6 @@ export class graphComponent implements OnInit {
           type: "shadow"
         },
         formatter: params => {
-          console.log(params);
           return (
             params[0].axisValue +
             ":<br>" +
