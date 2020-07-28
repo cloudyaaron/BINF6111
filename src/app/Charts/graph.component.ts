@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import data from "../phenotips_2020-06-09_18-16_with_external_id.json";
 import { query } from "@angular/animations";
 import { MatSelectModule } from "@angular/material/select";
-import { ApiService } from "./HPOapi/api.service";
+import { ApiService } from "../HPOapi/api.service";
 
 @Component({
   selector: "graph-echart",
