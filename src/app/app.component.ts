@@ -78,6 +78,7 @@ export class AppComponent {
 
     console.log("search_list", this.search_list);
     console.log("resultlust", this.search_result);
+    
     if (this.search_list.length != 0) {
       for (var search_term of this.search_list) {
         this.search_result.push({ query: search_term["detail"], answer: [] });
@@ -446,10 +447,11 @@ export class AppComponent {
     this.checkedTerm = !this.checkedTerm;
   }
   public clickSuggestButton(event: any) {
-    console.log(event);
+    console.log("event", event);
+    let id = event["id"].toString();
     //var st['detail'] = this.suggested_queries[0]
     //event["detail"] = event
-    this.AddtoSearch(event["id"]);
+    this.AddtoSearch(id);
 
     this.refreshPage();
   }
