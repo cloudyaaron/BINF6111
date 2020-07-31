@@ -207,11 +207,11 @@ export class graphComponent implements OnInit {
       tooltip: {
         show: true,
         formatter: para => {
-          return (para["data"]["id"]+"<br>" + para["data"]["name"]+"<br> Patients: "+para["data"]["value"]);
+          return (para["data"]["id"]+"<br>" + para["data"]["name"]+"<br> Patients: "+para["data"]["nP"]);
         }
       },
       series: {
-        radius: ["15%", "80%"],
+        radius: ["5%", "90%"],
         type: "sunburst",
         sort: null,
         highlightPolicy: "ancestor",

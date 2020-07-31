@@ -9,7 +9,6 @@ import { DataService } from './data.service';
 
 import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from "./hello.component";
-import { NgBusyModule } from "ng-busy";
 import { ModalModule } from './modal';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTree, MatTreeModule } from "@angular/material/tree";
@@ -39,7 +38,6 @@ import { MatListModule } from "@angular/material/list";
   imports: [
     BrowserModule,
     FormsModule,
-    NgBusyModule,
     MatProgressSpinnerModule,
     MatTreeModule,
     MatChipsModule,
