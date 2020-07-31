@@ -4,7 +4,7 @@ import { query } from "@angular/animations";
 import { MatSelectModule } from "@angular/material/select";
 import { ApiService } from "../HPOapi/api.service";
 import { delay } from "rxjs/operators";
-import js from './tree.json'
+import js from './treeWithP.json'
 
 @Component({
   selector: "graph-echart",
