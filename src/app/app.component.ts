@@ -219,6 +219,16 @@ export class AppComponent {
         this.values = "HPO term format incorrect";
         this.search_list.pop();
       }
+    } else {
+        //non standard feature search returns patients with feature
+        for (let i = 0; i < this.patientsLenth; i++) {
+            if (this.patients[i]["nonstandard_features"]["label"] == search_term && this.patients[i]["nonstandard_features"]["observed"] == "yes") {
+                this.search_result[index]["answer"].push(this.patients[i]);
+             }
+        }
+
+
+
     }
     console.log("result", this.result_object);
   }
@@ -403,6 +413,36 @@ export class AppComponent {
               label: t["name"]
             });
           }
+        } else {
+        // There were no successful terms returned from the API natural search see if anything exists in non-standard features
+        // split the query based on spaces
+        // use regex to see if there exists any similar non-standard features
+            input_words = user_input.split(" ")
+            // Go through each word and make a REGEX out of it
+            var add_suggestion = 0;
+            for (let i = 0; i < input_words.length; i++) {
+                var w_card = ".*";
+                var regex = w_card.concat(input_words[i]);
+                regex = regex.concat(w_card);
+                var non_std_regex = new RegExp(regex);
+                //go through patients and append non standard features that
+                var suggestion_array = [];
+
+                for (let i = 0; i < this.patientsLenth; i++) {
+                    if (add_suggestion == 5) {
+                        break;
+                    }
+                    if (non_std_regex.test(this.patients[i]["nonstandard_features"]["label"])) {
+                        add_suggestion += 1;
+                        //console.log('worked')
+                        suggestion_array.push(this.patients[i]["nonstandard_features"]["label"]);
+                    }
+
+                }
+                this.suggested_queries = suggestion_array;
+            }
+
+
         }
         if (this.checkedGene && temp_genes.length > 0) {
           console.log(temp_genes);
