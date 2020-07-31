@@ -4,7 +4,7 @@ import { query } from "@angular/animations";
 import { MatSelectModule } from "@angular/material/select";
 import { ApiService } from "../HPOapi/api.service";
 import { delay } from "rxjs/operators";
-import js from './treeWithP.json'
+import js from "./treeWithP.json";
 
 @Component({
   selector: "graph-echart",
@@ -187,53 +187,6 @@ export class graphComponent implements OnInit {
     };
   }
 
-  // getTree(term) {
-  //   let t = [];
-  //   var data = this.apiService
-  //     .getConfig(term)
-  //     .toPromise()
-  //     .then();
-  //   t.push({
-  //     id: data["details"]["id"],
-  //     name: data["details"]["name"],
-  //     value: data["relations"]["termCount"],
-  //     children: []
-  //   });
-  //   console.log(data);
-  //   var i = 0;
-  //   if (data["relations"]["termCount"] == 0) {
-  //     return t;
-  //   }
-  //   while (i < data["relations"]["termCount"]) {
-  //     var subtree = this.getTree(
-  //       data["relations"]["children"][i]["ontologyId"]
-  //     );
-  //     t["children"].push(subtree);
-  //     i = i + 1;
-  //   }
-  //   // this.apiService.getConfig(term).toPromise().then(data => {
-  //   //   t.push({
-  //   //     id: data["details"]["id"],
-  //   //     name: data["details"]["name"],
-  //   //     value: data["relations"]["termCount"],
-  //   //     children: []
-  //   //   });
-  //   //   console.log(data)
-  //   //   var i = 0;
-  //   //   if (data["relations"]["termCount"] == 0) {
-  //   //     return t;
-  //   //   }
-  //   //   while (i < data["relations"]["termCount"]) {
-  //   //      var subtree = this.getTree(
-  //   //       data["relations"]["children"][i]["ontologyId"]
-  //   //     );
-  //   //     t["children"].push(subtree);
-  //   //     i = i + 1;
-  //   //   }
-  //   // });
-  //   return t;
-  // }
-
   showSunburst() {
     //this.tree = this.getTree("HP:0000001");
     console.log(js);
@@ -248,216 +201,15 @@ export class graphComponent implements OnInit {
       color: "#FFB499"
     };
 
-    var data = js
-    // var data = [
-    //   {
-    //     children: [
-    //       {
-    //         value: 5,
-    //         children: [
-    //           {
-    //             value: 1,
-    //             itemStyle: item1
-    //           },
-    //           {
-    //             value: 2,
-    //             children: [
-    //               {
-    //                 value: 1,
-    //                 itemStyle: item2
-    //               }
-    //             ]
-    //           },
-    //           {
-    //             children: [
-    //               {
-    //                 value: 1
-    //               }
-    //             ]
-    //           }
-    //         ],
-    //         itemStyle: item1
-    //       },
-    //       {
-    //         value: 10,
-    //         children: [
-    //           {
-    //             value: 6,
-    //             children: [
-    //               {
-    //                 value: 1,
-    //                 itemStyle: item1
-    //               },
-    //               {
-    //                 value: 1
-    //               },
-    //               {
-    //                 value: 1,
-    //                 itemStyle: item2
-    //               },
-    //               {
-    //                 value: 1
-    //               }
-    //             ],
-    //             itemStyle: item3
-    //           },
-    //           {
-    //             value: 2,
-    //             children: [
-    //               {
-    //                 value: 1
-    //               }
-    //             ],
-    //             itemStyle: item3
-    //           },
-    //           {
-    //             children: [
-    //               {
-    //                 value: 1,
-    //                 itemStyle: item2
-    //               }
-    //             ]
-    //           }
-    //         ],
-    //         itemStyle: item1
-    //       }
-    //     ],
-    //     itemStyle: item1
-    //   },
-    //   {
-    //     value: 9,
-    //     children: [
-    //       {
-    //         value: 4,
-    //         children: [
-    //           {
-    //             value: 2,
-    //             itemStyle: item2
-    //           },
-    //           {
-    //             children: [
-    //               {
-    //                 value: 1,
-    //                 itemStyle: item1
-    //               }
-    //             ]
-    //           }
-    //         ],
-    //         itemStyle: item1
-    //       },
-    //       {
-    //         children: [
-    //           {
-    //             value: 3,
-    //             children: [
-    //               {
-    //                 value: 1
-    //               },
-    //               {
-    //                 value: 1,
-    //                 itemStyle: item2
-    //               }
-    //             ]
-    //           }
-    //         ],
-    //         itemStyle: item3
-    //       }
-    //     ],
-    //     itemStyle: item2
-    //   },
-    //   {
-    //     value: 7,
-    //     children: [
-    //       {
-    //         children: [
-    //           {
-    //             value: 1,
-    //             itemStyle: item3
-    //           },
-    //           {
-    //             value: 3,
-    //             children: [
-    //               {
-    //                 value: 1,
-    //                 itemStyle: item2
-    //               },
-    //               {
-    //                 value: 1
-    //               }
-    //             ],
-    //             itemStyle: item2
-    //           },
-    //           {
-    //             value: 2,
-    //             children: [
-    //               {
-    //                 value: 1
-    //               },
-    //               {
-    //                 value: 1,
-    //                 itemStyle: item1
-    //               }
-    //             ],
-    //             itemStyle: item1
-    //           }
-    //         ],
-    //         itemStyle: item3
-    //       }
-    //     ],
-    //     itemStyle: item1
-    //   },
-    //   {
-    //     children: [
-    //       {
-    //         value: 6,
-    //         children: [
-    //           {
-    //             value: 1,
-    //             itemStyle: item2
-    //           },
-    //           {
-    //             value: 2,
-    //             children: [
-    //               {
-    //                 value: 2,
-    //                 itemStyle: item2
-    //               }
-    //             ],
-    //             itemStyle: item1
-    //           },
-    //           {
-    //             value: 1,
-    //             itemStyle: item3
-    //           }
-    //         ],
-    //         itemStyle: item3
-    //       },
-    //       {
-    //         value: 3,
-    //         children: [
-    //           {
-    //             value: 1
-    //           },
-    //           {
-    //             children: [
-    //               {
-    //                 value: 1,
-    //                 itemStyle: item2
-    //               }
-    //             ]
-    //           },
-    //           {
-    //             value: 1
-    //           }
-    //         ],
-    //         itemStyle: item3
-    //       }
-    //     ],
-    //     itemStyle: item1
-    //   }
-    // ];
+    var data = js;
 
     this.options = {
+      tooltip: {
+        show: true,
+        formatter: para => {
+          return (para["data"]["id"]+"<br>" + para["data"]["name"]+"<br> Patients: "+para["data"]["value"]);
+        }
+      },
       series: {
         radius: ["15%", "80%"],
         type: "sunburst",
@@ -465,9 +217,9 @@ export class graphComponent implements OnInit {
         highlightPolicy: "ancestor",
         data: data,
         label: {
-          rotate: "radial"
+          show: false
         },
-        levels: [],
+        nodeClick: "rootToNode",
         itemStyle: {
           color: "#ddd",
           borderWidth: 2
