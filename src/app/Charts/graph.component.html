@@ -5,7 +5,9 @@
 <select class="custom-select" (change)="changeChartType($event)" >	  
 		<option value="Bar" > Bar Chart </option>	     Chart type
 		<option value="Pie"> Pie Chart (quick demo) </option>	   
-		<option value="Sunburst" > Sunburst(in testing) </option>		
+		<option value="Sunburst" > Sunburst(in testing) </option>	
+    <option value="tree" > tree(in testing) </option>		
+	
 	</select>
 
 <div echarts [options]="options" class="bar-chart" >

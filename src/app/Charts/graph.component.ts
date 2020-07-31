@@ -51,6 +51,8 @@ export class graphComponent implements OnInit {
       this.showPieChart();
     } else if (this.selectType == "Sunburst") {
       this.showSunburst();
+    } else{
+      this.showTreeChart();
     }
 
     //console.log(this.patients)
@@ -97,6 +99,9 @@ export class graphComponent implements OnInit {
       this.showPieChart();
     } else if (this.selectType == "Sunburst") {
       this.showSunburst();
+    }else{
+      this.showTreeChart();
+
     }
   }
 
@@ -218,6 +223,51 @@ export class graphComponent implements OnInit {
         },
         radius: ["5%", "90%"],
         type: "sunburst",
+        sort: null,
+        highlightPolicy: "ancestor",
+        data: data,
+        label: {
+          show: false
+        },
+        nodeClick: "rootToNode",
+        itemStyle: {
+          color: "#ddd",
+          borderWidth: 2
+        }
+      }
+    };
+  }
+  showTreeChart() {
+    //this.tree = this.getTree("HP:0000001");
+    console.log(js);
+
+    var item1 = {
+      color: "#F54F4A"
+    };
+    var item2 = {
+      color: "#FF8C75"
+    };
+    var item3 = {
+      color: "#FFB499"
+    };
+
+    var data = js;
+
+    this.options = {
+      tooltip: {
+        show: true,
+        formatter: para => {
+          return (para["data"]["id"]+"<br>" + para["data"]["name"]+"<br> Patients: "+para["data"]["nP"]);
+        }
+      },
+      series: {
+        hightlight:{
+          itemStyle:{
+            item3
+          }
+        },
+        radius: ["5%", "90%"],
+        type: "tree",
         sort: null,
         highlightPolicy: "ancestor",
         data: data,
