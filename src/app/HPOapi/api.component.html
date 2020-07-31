@@ -1,23 +1,105 @@
-<div *ngIf="toggleTerm">
-  <h3>Get Information for HPO Term {{input_term['detail']}}</h3>
-  <HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
+<h3 class="mb-0">
+	Search Result of {{input_term['detail']}}
+</h3>
+<div *ngIf="toggleTerm" class="card body" id="resultbody" class="collapse show" aria-labelledby="headingOne"
+	data-parent="#accordion">
+	<HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
+  <!--
+	<div *ngIf="isNaturalLanguage">
+		<p> Disease lists are: </p>
+		<ul class="list-group">
+			<ng-container *ngFor="let c of term_result">
+				<li class="list-group-item d-flex justify-content-between align-items-center">
+					{{c['name']}}, {{c['ontologyId']}}
+					<div class="btn-group">
+						<button class="btn btn-success"(click)="AddToSearch(c['ontologyId'])"> Add </button>
+					</div>
+				</li>
+			</ng-container>
+		</ul>
+	</div>
+  -->
 
-  <Strong> Name : {{name}}, HPO id is {{hpoid}}</Strong>
-  <div *ngIf="haveChildren">
-    <em> Childrens are: </em>
-    <br>
-    <ul class="list-group">
-      <ng-container *ngFor="let c of firstLevelChildren" > 
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          {{c['name']}}, {{c['ontologyId']}}
-        <div class="btn-group">
-          <button class="btn btn-success"> Search Patient</button>
-          <button class="btn btn-success" (click)="showConfig(c['ontologyId'])">Find Term</button>
-        </div>
-        </li>
-      </ng-container>
-    </ul>
-  </div>
+	<div *ngIf="isTerm" class="card body">
+		<mat-list>
+       <mat-list-item>Name : {{name}}</mat-list-item>
+       <mat-list-item> Alternative Ontology Id : 
+         <span *ngFor="let id of althpoid"> {{id}}<br> </span>
+       </mat-list-item>
+       <mat-list-item>Definition : {{definition}}</mat-list-item>
+  <br>
+		<div *ngIf="haveChildren else noChildren">
+   
+			<p align="right" class="btn-group">
+				<button class="btn btn-info" (click)="AddAll()">Add all first level children</button>
+				<button class="btn btn-warning" (click)="AddAll()">Add all children</button>
+        <button class="btn btn-primary"(click)="toggleShowChildren()"> Show First Level Children </button>
+			</p>
+
+			<ul class="list-group" *ngIf="showAssoChildren">
+				<ng-container *ngFor="let c of firstLevelChildren">
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						{{c['name']}}, {{c['ontologyId']}}
+						<div class="btn-group">
+							<button class="btn btn-success"(click)="AddToSearch(c['ontologyId'])"> Add </button>
+						</div>
+					</li>
+				</ng-container>
+			</ul>
+      
+		</div>
+    </mat-list>
+		<ng-template #noChildren> There is no First Level Children of this term! </ng-template>
+	</div>
+
+  <div *ngIf="isDisease" class="card body">
+		<mat-list>
+       <mat-list-item>Name : {{diseaseSearchObject['disease']['diseaseName']}}</mat-list-item>
+       <mat-list-item> Disease Id : 
+         {{diseaseSearchObject['disease']['dbId']}}
+       </mat-list-item>
+       <mat-list-item>Associated Gene : {{diseaseSearchObject['geneAssoc']['entrezGeneSymbol']}}</mat-list-item>
+  <br>
+    <!--
+			<em> Associated Ontologies are: </em>
+			<ul class="list-group">
+				<ng-container *ngFor="let t of diseaseSearchObject['catTermsMap']['terms']">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+						{{t['name']}}, {{t['ontologyId']}}
+						<div class="btn-group">
+							<button class="btn btn-success"(click)="AddToSearch(t['ontologyId'])"> Search </button>
+						</div>
+            </li>
+
+				</ng-container>
+			</ul>
+    -->
+    </mat-list>
+	</div>
+
+  <div *ngIf="isGene" class="card body">
+		<mat-list>
+       <mat-list-item>Name : {{geneSearchObject['gene']['entrezGeneSymbol']}}</mat-list-item>
+       <mat-list-item> Gene Id : 
+         {{geneSearchObject['gene']['entrezGeneId']}}
+       </mat-list-item>
+       
+  <br>
+    
+			<button class="btn btn-success"(click)="toggleShowTerms()"> Show Associated Ontologies </button>
+			<ul class="list-group" *ngIf="showAssoTerms">
+				<ng-container *ngFor="let t of assoterms">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+						{{t['name']}}, {{t['ontologyId']}}
+						<div class="btn-group">
+							<button class="btn btn-success"(click)="AddToSearch(t['ontologyId'])"> Search </button>
+						</div>
+            </li>
+
+				</ng-container>
+			</ul>
+    </mat-list>
+	</div>
 </div>
 
 
@@ -28,4 +110,7 @@ can be found in the LICENSE file at http://angular.io/license
 <HPOapi *ngFor="let s of input_term" > {{s}} </HPOapi>
 (click)="showConfig(c['ontologyId'])"
 <HPOapi *ngFor="let child of firstLevelChildren" > {{child}} </HPOapi>
+<div *ngIf="this.checkIfResult()"> Error Message: Cannot find results for {{input_term['detail']}}</div>
+
+
 -->
