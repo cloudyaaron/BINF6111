@@ -211,6 +211,11 @@ export class graphComponent implements OnInit {
         }
       },
       series: {
+        hightlight:{
+          itemStyle:{
+            item3
+          }
+        },
         radius: ["5%", "90%"],
         type: "sunburst",
         sort: null,

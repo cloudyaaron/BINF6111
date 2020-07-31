@@ -29,6 +29,7 @@ import { MessageService } from "./message.service";
 import { HPOTerm, Details, Relations, RelationTerm } from "./classes/HPOTerm";
 
 import { NgxEchartsModule } from "ngx-echarts";
+
 import * as echarts from "echarts";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatSidenavModule } from "@angular/material/sidenav";
@@ -51,6 +52,7 @@ import { MatListModule } from "@angular/material/list";
     MatListModule,
     AppRoutingModule,
     ModalModule
+    
   ],
   declarations: [
     AppComponent,
