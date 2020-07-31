@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from "@angular/core";
 import data from "../phenotips_2020-06-09_18-16_with_external_id.json";
 import { query } from "@angular/animations";
 import { MatSelectModule } from "@angular/material/select";
+import { ApiService } from "../HPOapi/api.service";
+import { delay } from "rxjs/operators";
+import js from './hpmyjson.json'
 
 @Component({
   selector: "graph-echart",
@@ -20,6 +23,8 @@ export class graphComponent implements OnInit {
   m = 0;
   f = 0;
   u = 0;
+  tree = [];
+  constructor(private apiService: ApiService) {}
   ngOnInit() {
     this.temp.push({ query: "all", answer: data });
     this.getPhenotypePool(this.temp);
@@ -182,7 +187,57 @@ export class graphComponent implements OnInit {
     };
   }
 
+  // getTree(term) {
+  //   let t = [];
+  //   var data = this.apiService
+  //     .getConfig(term)
+  //     .toPromise()
+  //     .then();
+  //   t.push({
+  //     id: data["details"]["id"],
+  //     name: data["details"]["name"],
+  //     value: data["relations"]["termCount"],
+  //     children: []
+  //   });
+  //   console.log(data);
+  //   var i = 0;
+  //   if (data["relations"]["termCount"] == 0) {
+  //     return t;
+  //   }
+  //   while (i < data["relations"]["termCount"]) {
+  //     var subtree = this.getTree(
+  //       data["relations"]["children"][i]["ontologyId"]
+  //     );
+  //     t["children"].push(subtree);
+  //     i = i + 1;
+  //   }
+  //   // this.apiService.getConfig(term).toPromise().then(data => {
+  //   //   t.push({
+  //   //     id: data["details"]["id"],
+  //   //     name: data["details"]["name"],
+  //   //     value: data["relations"]["termCount"],
+  //   //     children: []
+  //   //   });
+  //   //   console.log(data)
+  //   //   var i = 0;
+  //   //   if (data["relations"]["termCount"] == 0) {
+  //   //     return t;
+  //   //   }
+  //   //   while (i < data["relations"]["termCount"]) {
+  //   //      var subtree = this.getTree(
+  //   //       data["relations"]["children"][i]["ontologyId"]
+  //   //     );
+  //   //     t["children"].push(subtree);
+  //   //     i = i + 1;
+  //   //   }
+  //   // });
+  //   return t;
+  // }
+
   showSunburst() {
+    //this.tree = this.getTree("HP:0000001");
+    console.log(js);
+
     var item1 = {
       color: "#F54F4A"
     };
@@ -193,213 +248,214 @@ export class graphComponent implements OnInit {
       color: "#FFB499"
     };
 
-    var data = [
-      {
-        children: [
-          {
-            value: 5,
-            children: [
-              {
-                value: 1,
-                itemStyle: item1
-              },
-              {
-                value: 2,
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  }
-                ]
-              },
-              {
-                children: [
-                  {
-                    value: 1
-                  }
-                ]
-              }
-            ],
-            itemStyle: item1
-          },
-          {
-            value: 10,
-            children: [
-              {
-                value: 6,
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item1
-                  },
-                  {
-                    value: 1
-                  },
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  },
-                  {
-                    value: 1
-                  }
-                ],
-                itemStyle: item3
-              },
-              {
-                value: 2,
-                children: [
-                  {
-                    value: 1
-                  }
-                ],
-                itemStyle: item3
-              },
-              {
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  }
-                ]
-              }
-            ],
-            itemStyle: item1
-          }
-        ],
-        itemStyle: item1
-      },
-      {
-        value: 9,
-        children: [
-          {
-            value: 4,
-            children: [
-              {
-                value: 2,
-                itemStyle: item2
-              },
-              {
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item1
-                  }
-                ]
-              }
-            ],
-            itemStyle: item1
-          },
-          {
-            children: [
-              {
-                value: 3,
-                children: [
-                  {
-                    value: 1
-                  },
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  }
-                ]
-              }
-            ],
-            itemStyle: item3
-          }
-        ],
-        itemStyle: item2
-      },
-      {
-        value: 7,
-        children: [
-          {
-            children: [
-              {
-                value: 1,
-                itemStyle: item3
-              },
-              {
-                value: 3,
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  },
-                  {
-                    value: 1
-                  }
-                ],
-                itemStyle: item2
-              },
-              {
-                value: 2,
-                children: [
-                  {
-                    value: 1
-                  },
-                  {
-                    value: 1,
-                    itemStyle: item1
-                  }
-                ],
-                itemStyle: item1
-              }
-            ],
-            itemStyle: item3
-          }
-        ],
-        itemStyle: item1
-      },
-      {
-        children: [
-          {
-            value: 6,
-            children: [
-              {
-                value: 1,
-                itemStyle: item2
-              },
-              {
-                value: 2,
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: item2
-                  }
-                ],
-                itemStyle: item1
-              },
-              {
-                value: 1,
-                itemStyle: item3
-              }
-            ],
-            itemStyle: item3
-          },
-          {
-            value: 3,
-            children: [
-              {
-                value: 1
-              },
-              {
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  }
-                ]
-              },
-              {
-                value: 1
-              }
-            ],
-            itemStyle: item3
-          }
-        ],
-        itemStyle: item1
-      }
-    ];
+    var data = js
+    // var data = [
+    //   {
+    //     children: [
+    //       {
+    //         value: 5,
+    //         children: [
+    //           {
+    //             value: 1,
+    //             itemStyle: item1
+    //           },
+    //           {
+    //             value: 2,
+    //             children: [
+    //               {
+    //                 value: 1,
+    //                 itemStyle: item2
+    //               }
+    //             ]
+    //           },
+    //           {
+    //             children: [
+    //               {
+    //                 value: 1
+    //               }
+    //             ]
+    //           }
+    //         ],
+    //         itemStyle: item1
+    //       },
+    //       {
+    //         value: 10,
+    //         children: [
+    //           {
+    //             value: 6,
+    //             children: [
+    //               {
+    //                 value: 1,
+    //                 itemStyle: item1
+    //               },
+    //               {
+    //                 value: 1
+    //               },
+    //               {
+    //                 value: 1,
+    //                 itemStyle: item2
+    //               },
+    //               {
+    //                 value: 1
+    //               }
+    //             ],
+    //             itemStyle: item3
+    //           },
+    //           {
+    //             value: 2,
+    //             children: [
+    //               {
+    //                 value: 1
+    //               }
+    //             ],
+    //             itemStyle: item3
+    //           },
+    //           {
+    //             children: [
+    //               {
+    //                 value: 1,
+    //                 itemStyle: item2
+    //               }
+    //             ]
+    //           }
+    //         ],
+    //         itemStyle: item1
+    //       }
+    //     ],
+    //     itemStyle: item1
+    //   },
+    //   {
+    //     value: 9,
+    //     children: [
+    //       {
+    //         value: 4,
+    //         children: [
+    //           {
+    //             value: 2,
+    //             itemStyle: item2
+    //           },
+    //           {
+    //             children: [
+    //               {
+    //                 value: 1,
+    //                 itemStyle: item1
+    //               }
+    //             ]
+    //           }
+    //         ],
+    //         itemStyle: item1
+    //       },
+    //       {
+    //         children: [
+    //           {
+    //             value: 3,
+    //             children: [
+    //               {
+    //                 value: 1
+    //               },
+    //               {
+    //                 value: 1,
+    //                 itemStyle: item2
+    //               }
+    //             ]
+    //           }
+    //         ],
+    //         itemStyle: item3
+    //       }
+    //     ],
+    //     itemStyle: item2
+    //   },
+    //   {
+    //     value: 7,
+    //     children: [
+    //       {
+    //         children: [
+    //           {
+    //             value: 1,
+    //             itemStyle: item3
+    //           },
+    //           {
+    //             value: 3,
+    //             children: [
+    //               {
+    //                 value: 1,
+    //                 itemStyle: item2
+    //               },
+    //               {
+    //                 value: 1
+    //               }
+    //             ],
+    //             itemStyle: item2
+    //           },
+    //           {
+    //             value: 2,
+    //             children: [
+    //               {
+    //                 value: 1
+    //               },
+    //               {
+    //                 value: 1,
+    //                 itemStyle: item1
+    //               }
+    //             ],
+    //             itemStyle: item1
+    //           }
+    //         ],
+    //         itemStyle: item3
+    //       }
+    //     ],
+    //     itemStyle: item1
+    //   },
+    //   {
+    //     children: [
+    //       {
+    //         value: 6,
+    //         children: [
+    //           {
+    //             value: 1,
+    //             itemStyle: item2
+    //           },
+    //           {
+    //             value: 2,
+    //             children: [
+    //               {
+    //                 value: 2,
+    //                 itemStyle: item2
+    //               }
+    //             ],
+    //             itemStyle: item1
+    //           },
+    //           {
+    //             value: 1,
+    //             itemStyle: item3
+    //           }
+    //         ],
+    //         itemStyle: item3
+    //       },
+    //       {
+    //         value: 3,
+    //         children: [
+    //           {
+    //             value: 1
+    //           },
+    //           {
+    //             children: [
+    //               {
+    //                 value: 1,
+    //                 itemStyle: item2
+    //               }
+    //             ]
+    //           },
+    //           {
+    //             value: 1
+    //           }
+    //         ],
+    //         itemStyle: item3
+    //       }
+    //     ],
+    //     itemStyle: item1
+    //   }
+    // ];
 
     this.options = {
       series: {
@@ -420,7 +476,6 @@ export class graphComponent implements OnInit {
     };
   }
   showBarChart() {
-
     this.options = {
       title: {
         text: "Frequency of HPO Terms for Filtered Patients",
@@ -431,9 +486,14 @@ export class graphComponent implements OnInit {
         axisPointer: {
           type: "shadow"
         },
-        formatter: (params)=>{
-          console.log(params)
-          return params[0].axisValue+":<br>"+params[0].data['termname'] +"<br> hits:"+params[0].data['value']
+        formatter: params => {
+          return (
+            params[0].axisValue +
+            ":<br>" +
+            params[0].data["termname"] +
+            "<br> hits:" +
+            params[0].data["value"]
+          );
         }
       },
       xAxis: {
@@ -464,7 +524,7 @@ export class graphComponent implements OnInit {
       animationEasing: "elasticOut",
       animationDelayUpdate: idx => idx * 5
     };
-        for (var item of this.phenoPool) {
+    for (var item of this.phenoPool) {
       this.terms.push(item["id"]);
       this.freq.push({ value: item["count"], termname: item["label"] });
     }

@@ -1,5 +1,4 @@
 <div style="text-align:center">
-	<h1> Patients filter </h1>
 	<div>
 		<mat-form-field>
 			<mat-chip-list #searchList>
@@ -29,6 +28,9 @@
 		<li class="nav-item">
 			<a class="nav-link" href="#">Features</a>
 		</li>
+    <li class="nav-item">
+			<a class="nav-link" onmouseover="" style="cursor: pointer;" (click)="openModal('about-modal')">About</a>
+		</li>
 	</ul>
 
 	<form class="form-inline my-2 my-lg-0">
@@ -57,6 +59,22 @@
   </span>
 
 </nav>
+
+<jw-modal id="about-modal">
+    <button style="color:#808080" type="button" class="close pull-right" aria-label="Close" (click)="closeModal('about-modal')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h1>Welcome to Patients Filter!</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	    <a class="navbar-brand">About</a>
+    </nav>
+    <h2> Input File </h2>
+    <p> To input a new file, navigate to the home page. File types can be either JSON or excel. </p>
+    <h2> Searching </h2>
+    <p> You can start your search by entering "HP:XXXXXXX". Make sure "HP" is in capital letter. </p>
+    <p> Clicking on the "HPO api" button will enable searching the HPO term to the api to return children terms. The API used in this software can be found at https://hpo.jax.org/webjars/swagger-ui/3.20.9/index.html?url=/api/hpo/docs/. </p>
+    <!-- <button (click)="closeModal('about-modal');">Close</button> -->
+</jw-modal>
 
 {{values}}
 <br>

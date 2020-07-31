@@ -2,9 +2,15 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 
-import { AppComponent } from "./app.component";
+import { InputComponent } from './input.component';
+import { AppComponent } from './app.component';
+import { MainComponent } from './main.component';
+import { DataService } from './data.service';
+
+import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from "./hello.component";
 import { NgBusyModule } from "ng-busy";
+import { ModalModule } from './modal';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTree, MatTreeModule } from "@angular/material/tree";
 import { MatChipsModule } from "@angular/material/chips";
@@ -48,15 +54,19 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSelectModule,
     MatListModule,
     MatCheckboxModule
+    AppRoutingModule,
+    ModalModule
   ],
   declarations: [
     AppComponent,
     HelloComponent,
     ApiComponent,
     PatientsList,
-    graphComponent
+    graphComponent,
+    InputComponent,
+    MainComponent
   ],
-  bootstrap: [AppComponent],
-  providers: [MessageService, ApiService, SearchService]
+  bootstrap: [MainComponent],
+  providers: [MessageService, ApiService, SearchService, DataService]
 })
 export class AppModule {}
