@@ -5,6 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { InputComponent } from './input.component';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main.component';
+import { AboutComponent } from './About/about.component';
 import { DataService } from './data.service';
 
 import { AppRoutingModule } from './app-routing.module'
@@ -61,7 +62,8 @@ import { MatListModule } from "@angular/material/list";
     PatientsList,
     graphComponent,
     InputComponent,
-    MainComponent
+    MainComponent,
+    AboutComponent
   ],
   bootstrap: [MainComponent],
   providers: [MessageService, ApiService, SearchService, DataService]
