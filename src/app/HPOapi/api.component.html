@@ -54,11 +54,11 @@
 
   <div *ngIf="isDisease" class="card body">
 		<mat-list>
-       <mat-list-item>Name : {{diseaseSearchObject['disease']['diseaseName']}}</mat-list-item>
+       <mat-list-item>Name : {{resultObject['disease']['diseaseName']}}</mat-list-item>
        <mat-list-item> Disease Id : 
-         {{diseaseSearchObject['disease']['dbId']}}
+         {{resultObject['disease']['dbId']}}
        </mat-list-item>
-       <mat-list-item>Associated Gene : {{diseaseSearchObject['geneAssoc']['entrezGeneSymbol']}}</mat-list-item>
+       <mat-list-item>Associated Gene : {{resultObject['geneAssoc']['entrezGeneSymbol']}}</mat-list-item>
   <br>
     <!--
 			<em> Associated Ontologies are: </em>
@@ -79,9 +79,9 @@
 
   <div *ngIf="isGene" class="card body">
 		<mat-list>
-       <mat-list-item>Name : {{geneSearchObject['gene']['entrezGeneSymbol']}}</mat-list-item>
+       <mat-list-item>Name : {{resultObject['gene']['entrezGeneSymbol']}}</mat-list-item>
        <mat-list-item> Gene Id : 
-         {{geneSearchObject['gene']['entrezGeneId']}}
+         {{resultObject['gene']['entrezGeneId']}}
        </mat-list-item>
        
   <br>

@@ -29,6 +29,8 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSelectModule } from "@angular/material/select";
 import { MatListModule } from "@angular/material/list";
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { MatListModule } from "@angular/material/list";
     MatTabsModule,
     MatSidenavModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ],
   declarations: [
     AppComponent,
