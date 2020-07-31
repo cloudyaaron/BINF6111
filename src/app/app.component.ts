@@ -417,28 +417,39 @@ export class AppComponent {
         // There were no successful terms returned from the API natural search see if anything exists in non-standard features
         // split the query based on spaces
         // use regex to see if there exists any similar non-standard features
-            input_words = user_input.split(" ")
+            console.log("non-standard search")
+            var input_words = user_input.split(" ")
+            console.log(input_words)
             // Go through each word and make a REGEX out of it
             var add_suggestion = 0;
             for (let i = 0; i < input_words.length; i++) {
                 var w_card = ".*";
                 var regex = w_card.concat(input_words[i]);
                 regex = regex.concat(w_card);
+                console.log(regex)
                 var non_std_regex = new RegExp(regex);
+                console.log(non_std_regex)
                 //go through patients and append non standard features that
                 var suggestion_array = [];
 
-                for (let i = 0; i < this.patientsLenth; i++) {
-                    if (add_suggestion == 5) {
-                        break;
-                    }
-                    if (non_std_regex.test(this.patients[i]["nonstandard_features"]["label"])) {
-                        add_suggestion += 1;
-                        //console.log('worked')
-                        suggestion_array.push(this.patients[i]["nonstandard_features"]["label"]);
+                for (let j = 0; j < this.patientsLenth; j++) {
+                    var pp = this.patients[j]["nonstandard_features"];
+                    for (var phenotype of pp) {
+                      //console.log('print label')
+                      //console.log(phenotype["label"])
+                      if (add_suggestion == 5) {
+                          break;
+                      }
+                      if (non_std_regex.test(phenotype["label"])) {
+                          console.log('yeah')
+                          add_suggestion += 1;
+                          //console.log('worked')
+                          suggestion_array.push(phenotype);
+                      }
                     }
 
                 }
+                console.log(suggestion_array)
                 this.suggested_queries = suggestion_array;
             }
 
