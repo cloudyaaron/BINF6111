@@ -1,8 +1,7 @@
 <h3 class="mb-0">
 	Search Result of {{input_term['detail']}}
 </h3>
-<div *ngIf="toggleTerm" class="card body" id="resultbody" class="collapse show" aria-labelledby="headingOne"
-	data-parent="#accordion">
+<div *ngIf="toggleTerm" class="card body" id="resultbody">
 	<HPOapi *ngIf="toggle"> {{extractInput()}} </HPOapi>
   <!--
 	<div *ngIf="isNaturalLanguage">
@@ -27,16 +26,15 @@
          <span *ngFor="let id of althpoid"> {{id}}<br> </span>
        </mat-list-item>
        <mat-list-item>Definition : {{definition}}</mat-list-item>
-  <br>
-		<div *ngIf="haveChildren else noChildren">
-   
+           </mat-list>
+	        <button class="btn btn-primary"(click)="openModal('term-modal')"> More Details </button>
+        <ng-container *ngIf="showChildren">
+      <div *ngIf="haveChildren else noChildren">
 			<p align="right" class="btn-group">
 				<button class="btn btn-info" (click)="AddAll()">Add all first level children</button>
 				<button class="btn btn-warning" (click)="AddAll()">Add all children</button>
-        <button class="btn btn-primary"(click)="toggleShowChildren()"> Show First Level Children </button>
 			</p>
-
-			<ul class="list-group" *ngIf="showAssoChildren">
+			<ul class="list-group" >
 				<ng-container *ngFor="let c of firstLevelChildren">
 					<li class="list-group-item d-flex justify-content-between align-items-center">
 						{{c['name']}}, {{c['ontologyId']}}
@@ -45,11 +43,10 @@
 						</div>
 					</li>
 				</ng-container>
-			</ul>
-      
+			</ul>   
 		</div>
-    </mat-list>
 		<ng-template #noChildren> There is no First Level Children of this term! </ng-template>
+    </ng-container>
 	</div>
 
   <div *ngIf="isDisease" class="card body">
@@ -59,6 +56,7 @@
          {{resultObject['disease']['dbId']}}
        </mat-list-item>
        <mat-list-item>Associated Gene : {{resultObject['geneAssoc']['entrezGeneSymbol']}}</mat-list-item>
+
   <br>
     <!--
 			<em> Associated Ontologies are: </em>
@@ -100,6 +98,57 @@
 			</ul>
     </mat-list>
 	</div>
+  
+  <jw-modal id="term-modal"> 
+     <button style="color:#808080" type="button" class="close pull-right" aria-label="Close" (click)="closeModal('term-modal')">
+      <span aria-hidden="true">&times;</span>
+     </button>
+      <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" (onclick)="toggleShowChildren()">Children</a>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link" data-toggle="tab" (onclick)="assoGeneSearch(input_term['detail'])">Associated Genes</button>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="">Associated Diseases</a>
+    </li>
+      </ul>
+
+      <ng-container *ngIf="showChildren">
+      <div *ngIf="haveChildren else noChildren">
+			<p align="right" class="btn-group">
+				<button class="btn btn-info" (click)="AddAll()">Add all first level children</button>
+				<button class="btn btn-warning" (click)="AddAll()">Add all children</button>
+			</p>
+			<ul class="list-group" >
+				<ng-container *ngFor="let c of firstLevelChildren">
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						{{c['name']}}, {{c['ontologyId']}}
+						<div class="btn-group">
+							<button class="btn btn-success"(click)="AddToSearch(c['ontologyId'])"> Add </button>
+						</div>
+					</li>
+				</ng-container>
+			</ul>   
+		</div>
+		<ng-template #noChildren> There is no First Level Children of this term! </ng-template>
+    </ng-container>
+
+    <ng-container *ngIf="showAssoTerms">
+			<ul class="list-group" >
+				<ng-container *ngFor="let c of result_list">
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						{{c['id']}}, {{c['name']}}
+						<div class="btn-group">
+							<button class="btn btn-success"(click)="AddToSearch(c['id'])"> Add </button>
+						</div>
+					</li>
+				</ng-container>
+			</ul>   
+    </ng-container>
+
+  </jw-modal>
 </div>
 
 

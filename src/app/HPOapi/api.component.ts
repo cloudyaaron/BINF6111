@@ -3,6 +3,13 @@ import { ApiService } from "./api.service";
 import { MessageService } from "../message.service";
 import { HPOTerm, Details, Relations, RelationTerm } from "../classes/HPOTerm";
 import { MatListModule } from "@angular/material/list";
+import { ModalService } from '../modal';
+import { ActivatedRoute, Params } from '@angular/router';
+import { DataService } from '../data.service';
+
+import { Subscription } from "rxjs";
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @Component({
   selector: "HPOapi",
@@ -10,10 +17,10 @@ import { MatListModule } from "@angular/material/list";
   providers: [ApiService],
   styleUrls: ["../lumen.css"]
 })
+
 export class ApiComponent {
   @Input("input") input_term: string[];
   @Output() extra = new EventEmitter<any>();
-  @Output() result = new EventEmitter<any>();
   error: any;
 
   //result of hpo term details
@@ -22,9 +29,11 @@ export class ApiComponent {
   name: string;
   definition: string;
   firstLevelChildren: [];
+  result_list: any[];
 
   //result of hpo term associations
-
+  assogenes: []
+  assodiseases: []
 
   //result of query search
   term_result: any[];
@@ -51,8 +60,17 @@ export class ApiComponent {
   showAssoTerms = false;
   showAssoChildren = false;
 
-  constructor(private apiService: ApiService) {}
 
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private dataService: DataService, private modalService: ModalService) {}
+
+  //modal
+  openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string) {
+    this.modalService.close(id);
+  }
   showHPOTermConfig(term: string) {
     this.apiService.getConfig(term).subscribe(data => {
       this.resultObject = data;
@@ -83,6 +101,19 @@ export class ApiComponent {
 
   AddToSearch(term) {
     this.extra.emit(term);
+  }
+  
+  assoGeneSearch(term:string) {
+    if (this.showAssoTerms) {
+      this.toggleShowTerms();
+    }
+    this.apiService.assoGeneSearch(term).subscribe(data => {
+      this.resultObject = data
+      for (var x of data['genes']) {
+      this.result_list.push({id: x['entrezGeneId'], name: x['entrezGeneSymbol']})
+      }
+    })
+    this.toggleShowTerms();
   }
 
   extractDetailObject() {
@@ -136,6 +167,9 @@ export class ApiComponent {
     }
   }
 
+  generateModalId() {
+    
+  }
   toggleLoad() {
     this.toggle = !this.toggle;
   }
@@ -161,7 +195,7 @@ export class ApiComponent {
     this.showAssoTerms = !this.showAssoTerms;
   }
   toggleShowChildren() {
-    this.showAssoChildren != this.showAssoChildren;
+    this.showAssoChildren = !this.showAssoChildren;
   }
   /*
   checkIfResult() { 
