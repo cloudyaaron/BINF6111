@@ -3,7 +3,7 @@ import { ApiService } from "./api.service";
 import { MessageService } from "../message.service";
 import { HPOTerm, Details, Relations, RelationTerm } from "../classes/HPOTerm";
 import { MatListModule } from "@angular/material/list";
-import { ModalService } from '../modal';
+import { ModalService } from '../modal/modal.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from '../data.service';
 
@@ -60,8 +60,8 @@ export class ApiComponent {
   showAssoTerms = false;
   showAssoChildren = false;
 
-  modalId: number; 
-  
+  modalId: 0; 
+
   constructor(private apiService: ApiService, private route: ActivatedRoute, private dataService: DataService, private modalService: ModalService) {}
 
   //modal
@@ -169,7 +169,7 @@ export class ApiComponent {
   }
 
   generateModalId() {
-    
+    this.modalId += 1
   }
   toggleLoad() {
     this.toggle = !this.toggle;
