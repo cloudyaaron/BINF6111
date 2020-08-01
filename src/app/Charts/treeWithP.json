@@ -1,16 +1,16 @@
 [
   {
-    "id": "HP:0000001",
+    "hpoid": "HP:0000001",
     "name": "All",
     "value": 566,
     "children": [
       {
-        "id": "HP:0032443",
+        "hpoid": "HP:0032443",
         "name": "Past medical history",
         "value": 2,
         "children": [
           {
-            "id": "HP:0032557",
+            "hpoid": "HP:0032557",
             "name": "History of bone marrow transplant",
             "value": 1,
             "children": [],
@@ -26,22 +26,22 @@
         "nP": 1
       },
       {
-        "id": "HP:0000118",
+        "hpoid": "HP:0000118",
         "name": "Phenotypic abnormality",
         "value": 563,
         "children": [
           {
-            "id": "HP:0003549",
+            "hpoid": "HP:0003549",
             "name": "Abnormality of connective tissue",
             "value": 4,
             "children": [
               {
-                "id": "HP:0009124",
+                "hpoid": "HP:0009124",
                 "name": "Abnormal adipose tissue morphology",
                 "value": 2,
                 "children": [
                   {
-                    "id": "HP:0012490",
+                    "hpoid": "HP:0012490",
                     "name": "Panniculitis",
                     "value": 1,
                     "children": [],
@@ -57,7 +57,7 @@
                 "nP": 1
               },
               {
-                "id": "HP:0001371",
+                "hpoid": "HP:0001371",
                 "name": "Flexion contracture",
                 "value": 1,
                 "children": [],
@@ -74,17 +74,17 @@
             "nP": 2
           },
           {
-            "id": "HP:0045027",
+            "hpoid": "HP:0045027",
             "name": "Abnormality of the thoracic cavity",
             "value": 3,
             "children": [
               {
-                "id": "HP:0045026",
+                "hpoid": "HP:0045026",
                 "name": "Abnormality of the mediastinum",
                 "value": 2,
                 "children": [
                   {
-                    "id": "HP:0100721",
+                    "hpoid": "HP:0100721",
                     "name": "Mediastinal lymphadenopathy",
                     "value": 1,
                     "children": [],
@@ -106,12 +106,12 @@
             "nP": 1
           },
           {
-            "id": "HP:0002664",
+            "hpoid": "HP:0002664",
             "name": "Neoplasm",
             "value": 10,
             "children": [
               {
-                "id": "HP:0011792",
+                "hpoid": "HP:0011792",
                 "name": "Neoplasm by histology",
                 "value": 1,
                 "children": [],
@@ -121,17 +121,17 @@
                 "nP": 1
               },
               {
-                "id": "HP:0011793",
+                "hpoid": "HP:0011793",
                 "name": "Neoplasm by anatomical site",
                 "value": 8,
                 "children": [
                   {
-                    "id": "HP:0004377",
+                    "hpoid": "HP:0004377",
                     "name": "Hematological neoplasm",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0005523",
+                        "hpoid": "HP:0005523",
                         "name": "Lymphoproliferative disorder",
                         "value": 1,
                         "children": [],
@@ -141,12 +141,12 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0002863",
+                        "hpoid": "HP:0002863",
                         "name": "Myelodysplasia",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0012148",
+                            "hpoid": "HP:0012148",
                             "name": "Multiple lineage myelodysplasia",
                             "value": 1,
                             "children": [],
@@ -169,17 +169,17 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0008069",
+                    "hpoid": "HP:0008069",
                     "name": "Neoplasm of the skin",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0012740",
+                        "hpoid": "HP:0012740",
                         "name": "Papilloma",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0200043",
+                            "hpoid": "HP:0200043",
                             "name": "Verrucae",
                             "value": 1,
                             "children": [],
@@ -217,12 +217,12 @@
             "nP": 3
           },
           {
-            "id": "HP:0025142",
+            "hpoid": "HP:0025142",
             "name": "Constitutional symptom",
             "value": 9,
             "children": [
               {
-                "id": "HP:0031058",
+                "hpoid": "HP:0031058",
                 "name": "Impairment of activities of daily living",
                 "value": 1,
                 "children": [],
@@ -232,12 +232,12 @@
                 "nP": 1
               },
               {
-                "id": "HP:0012378",
+                "hpoid": "HP:0012378",
                 "name": "Fatigue",
                 "value": 2,
                 "children": [
                   {
-                    "id": "HP:0012432",
+                    "hpoid": "HP:0012432",
                     "name": "Chronic fatigue",
                     "value": 1,
                     "children": [],
@@ -255,12 +255,12 @@
                 "nP": 3
               },
               {
-                "id": "HP:0012531",
+                "hpoid": "HP:0012531",
                 "name": "Pain",
                 "value": 5,
                 "children": [
                   {
-                    "id": "HP:0002027",
+                    "hpoid": "HP:0002027",
                     "name": "Abdominal pain",
                     "value": 1,
                     "children": [],
@@ -270,7 +270,7 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0003326",
+                    "hpoid": "HP:0003326",
                     "name": "Myalgia",
                     "value": 1,
                     "children": [],
@@ -280,12 +280,12 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0002829",
+                    "hpoid": "HP:0002829",
                     "name": "Arthralgia",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0005059",
+                        "hpoid": "HP:0005059",
                         "name": "Arthralgia/arthritis",
                         "value": 1,
                         "children": [],
@@ -324,17 +324,17 @@
             "nP": 7
           },
           {
-            "id": "HP:0001197",
+            "hpoid": "HP:0001197",
             "name": "Abnormality of prenatal development or birth",
             "value": 3,
             "children": [
               {
-                "id": "HP:0001787",
+                "hpoid": "HP:0001787",
                 "name": "Abnormal delivery",
                 "value": 2,
                 "children": [
                   {
-                    "id": "HP:0005268",
+                    "hpoid": "HP:0005268",
                     "name": "Spontaneous abortion",
                     "value": 1,
                     "children": [],
@@ -356,27 +356,27 @@
             "nP": 1
           },
           {
-            "id": "HP:0000818",
+            "hpoid": "HP:0000818",
             "name": "Abnormality of the endocrine system",
             "value": 12,
             "children": [
               {
-                "id": "HP:0000834",
+                "hpoid": "HP:0000834",
                 "name": "Abnormality of the adrenal glands",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0011733",
+                    "hpoid": "HP:0011733",
                     "name": "Abnormality of adrenal physiology",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0002717",
+                        "hpoid": "HP:0002717",
                         "name": "Adrenal overactivity",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0003118",
+                            "hpoid": "HP:0003118",
                             "name": "Increased circulating cortisol level",
                             "value": 1,
                             "children": [],
@@ -404,17 +404,17 @@
                 "nP": 1
               },
               {
-                "id": "HP:0000828",
+                "hpoid": "HP:0000828",
                 "name": "Abnormality of the parathyroid gland",
                 "value": 3,
                 "children": [
                   {
-                    "id": "HP:0011767",
+                    "hpoid": "HP:0011767",
                     "name": "Abnormality of the parathyroid physiology",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0000829",
+                        "hpoid": "HP:0000829",
                         "name": "Hypoparathyroidism",
                         "value": 1,
                         "children": [],
@@ -436,22 +436,22 @@
                 "nP": 1
               },
               {
-                "id": "HP:0000820",
+                "hpoid": "HP:0000820",
                 "name": "Abnormality of the thyroid gland",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0011772",
+                    "hpoid": "HP:0011772",
                     "name": "Abnormality of thyroid morphology",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0100646",
+                        "hpoid": "HP:0100646",
                         "name": "Thyroiditis",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0000872",
+                            "hpoid": "HP:0000872",
                             "name": "Hashimoto thyroiditis",
                             "value": 1,
                             "children": [],
@@ -487,17 +487,17 @@
             "nP": 3
           },
           {
-            "id": "HP:0040064",
+            "hpoid": "HP:0040064",
             "name": "Abnormality of limbs",
             "value": 8,
             "children": [
               {
-                "id": "HP:0002817",
+                "hpoid": "HP:0002817",
                 "name": "Abnormality of the upper limb",
                 "value": 2,
                 "children": [
                   {
-                    "id": "HP:0001155",
+                    "hpoid": "HP:0001155",
                     "name": "Abnormality of the hand",
                     "value": 1,
                     "children": [],
@@ -513,27 +513,27 @@
                 "nP": 1
               },
               {
-                "id": "HP:0002814",
+                "hpoid": "HP:0002814",
                 "name": "Abnormality of the lower limb",
                 "value": 5,
                 "children": [
                   {
-                    "id": "HP:0100491",
+                    "hpoid": "HP:0100491",
                     "name": "Abnormality of lower limb joint",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0001384",
+                        "hpoid": "HP:0001384",
                         "name": "Abnormality of the hip joint",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0003170",
+                            "hpoid": "HP:0003170",
                             "name": "Abnormality of the acetabulum",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0008807",
+                                "hpoid": "HP:0008807",
                                 "name": "Acetabular dysplasia",
                                 "value": 1,
                                 "children": [],
@@ -574,37 +574,37 @@
             "nP": 2
           },
           {
-            "id": "HP:0000924",
+            "hpoid": "HP:0000924",
             "name": "Abnormality of the skeletal system",
             "value": 26,
             "children": [
               {
-                "id": "HP:0040068",
+                "hpoid": "HP:0040068",
                 "name": "Abnormality of limb bone",
                 "value": 6,
                 "children": [
                   {
-                    "id": "HP:0002813",
+                    "hpoid": "HP:0002813",
                     "name": "Abnormality of limb bone morphology",
                     "value": 5,
                     "children": [
                       {
-                        "id": "HP:0011297",
+                        "hpoid": "HP:0011297",
                         "name": "Abnormal digit morphology",
                         "value": 4,
                         "children": [
                           {
-                            "id": "HP:0001167",
+                            "hpoid": "HP:0001167",
                             "name": "Abnormality of finger",
                             "value": 3,
                             "children": [
                               {
-                                "id": "HP:0001211",
+                                "hpoid": "HP:0001211",
                                 "name": "Abnormal fingertip morphology",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0100759",
+                                    "hpoid": "HP:0100759",
                                     "name": "Clubbing of fingers",
                                     "value": 1,
                                     "children": [],
@@ -644,22 +644,22 @@
                 "nP": 1
               },
               {
-                "id": "HP:0011842",
+                "hpoid": "HP:0011842",
                 "name": "Abnormality of skeletal morphology",
                 "value": 15,
                 "children": [
                   {
-                    "id": "HP:0001367",
+                    "hpoid": "HP:0001367",
                     "name": "Abnormal joint morphology",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0001369",
+                        "hpoid": "HP:0001369",
                         "name": "Arthritis",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0005059",
+                            "hpoid": "HP:0005059",
                             "name": "Arthralgia/arthritis",
                             "value": 1,
                             "children": [],
@@ -683,22 +683,22 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0011844",
+                    "hpoid": "HP:0011844",
                     "name": "Abnormal appendicular skeleton morphology",
                     "value": 7,
                     "children": [
                       {
-                        "id": "HP:0002813",
+                        "hpoid": "HP:0002813",
                         "name": "Abnormality of limb bone morphology",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0011297",
+                            "hpoid": "HP:0011297",
                             "name": "Abnormal digit morphology",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0001167",
+                                "hpoid": "HP:0001167",
                                 "name": "Abnormality of finger",
                                 "value": 1,
                                 "children": [],
@@ -720,17 +720,17 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0002644",
+                        "hpoid": "HP:0002644",
                         "name": "Abnormality of pelvic girdle bone morphology",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0003272",
+                            "hpoid": "HP:0003272",
                             "name": "Abnormality of the hip bone",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0001385",
+                                "hpoid": "HP:0001385",
                                 "name": "Hip dysplasia",
                                 "value": 1,
                                 "children": [],
@@ -759,22 +759,22 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0009121",
+                    "hpoid": "HP:0009121",
                     "name": "Abnormal axial skeleton morphology",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0000925",
+                        "hpoid": "HP:0000925",
                         "name": "Abnormality of the vertebral column",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0010674",
+                            "hpoid": "HP:0010674",
                             "name": "Abnormality of the curvature of the vertebral column",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0002650",
+                                "hpoid": "HP:0002650",
                                 "name": "Scoliosis",
                                 "value": 1,
                                 "children": [],
@@ -812,17 +812,17 @@
                 "nP": 5
               },
               {
-                "id": "HP:0011843",
+                "hpoid": "HP:0011843",
                 "name": "Abnormality of skeletal physiology",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0011729",
+                    "hpoid": "HP:0011729",
                     "name": "Abnormality of joint mobility",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0001371",
+                        "hpoid": "HP:0001371",
                         "name": "Flexion contracture",
                         "value": 1,
                         "children": [],
@@ -838,7 +838,7 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0009763",
+                    "hpoid": "HP:0009763",
                     "name": "Limb pain",
                     "value": 1,
                     "children": [],
@@ -867,17 +867,17 @@
             "nP": 7
           },
           {
-            "id": "HP:0003011",
+            "hpoid": "HP:0003011",
             "name": "Abnormality of the musculature",
             "value": 5,
             "children": [
               {
-                "id": "HP:0011805",
+                "hpoid": "HP:0011805",
                 "name": "Abnormal skeletal muscle morphology",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0001371",
+                    "hpoid": "HP:0001371",
                     "name": "Flexion contracture",
                     "value": 1,
                     "children": [],
@@ -887,7 +887,7 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0003201",
+                    "hpoid": "HP:0003201",
                     "name": "Rhabdomyolysis",
                     "value": 1,
                     "children": [],
@@ -897,7 +897,7 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0100614",
+                    "hpoid": "HP:0100614",
                     "name": "Myositis",
                     "value": 1,
                     "children": [],
@@ -921,32 +921,32 @@
             "nP": 2
           },
           {
-            "id": "HP:0000478",
+            "hpoid": "HP:0000478",
             "name": "Abnormality of the eye",
             "value": 11,
             "children": [
               {
-                "id": "HP:0012372",
+                "hpoid": "HP:0012372",
                 "name": "Abnormal eye morphology",
                 "value": 10,
                 "children": [
                   {
-                    "id": "HP:0000553",
+                    "hpoid": "HP:0000553",
                     "name": "Abnormal uvea morphology",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0000525",
+                        "hpoid": "HP:0000525",
                         "name": "Abnormality iris morphology",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0008034",
+                            "hpoid": "HP:0008034",
                             "name": "Abnormal iris pigmentation",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0000635",
+                                "hpoid": "HP:0000635",
                                 "name": "Blue irides",
                                 "value": 1,
                                 "children": [],
@@ -974,27 +974,27 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0004328",
+                    "hpoid": "HP:0004328",
                     "name": "Abnormal anterior eye segment morphology",
                     "value": 5,
                     "children": [
                       {
-                        "id": "HP:0000525",
+                        "hpoid": "HP:0000525",
                         "name": "Abnormality iris morphology",
                         "value": 4,
                         "children": [
                           {
-                            "id": "HP:0008034",
+                            "hpoid": "HP:0008034",
                             "name": "Abnormal iris pigmentation",
                             "value": 3,
                             "children": [
                               {
-                                "id": "HP:0007730",
+                                "hpoid": "HP:0007730",
                                 "name": "Iris hypopigmentation",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0001107",
+                                    "hpoid": "HP:0001107",
                                     "name": "Ocular albinism",
                                     "value": 1,
                                     "children": [],
@@ -1040,12 +1040,12 @@
             "nP": 1
           },
           {
-            "id": "HP:0001608",
+            "hpoid": "HP:0001608",
             "name": "Abnormality of the voice",
             "value": 2,
             "children": [
               {
-                "id": "HP:0001609",
+                "hpoid": "HP:0001609",
                 "name": "Hoarse voice",
                 "value": 1,
                 "children": [],
@@ -1061,47 +1061,47 @@
             "nP": 1
           },
           {
-            "id": "HP:0000152",
+            "hpoid": "HP:0000152",
             "name": "Abnormality of head or neck",
             "value": 24,
             "children": [
               {
-                "id": "HP:0000234",
+                "hpoid": "HP:0000234",
                 "name": "Abnormality of the head",
                 "value": 23,
                 "children": [
                   {
-                    "id": "HP:0000271",
+                    "hpoid": "HP:0000271",
                     "name": "Abnormality of the face",
                     "value": 22,
                     "children": [
                       {
-                        "id": "HP:0000153",
+                        "hpoid": "HP:0000153",
                         "name": "Abnormality of the mouth",
                         "value": 11,
                         "children": [
                           {
-                            "id": "HP:0031816",
+                            "hpoid": "HP:0031816",
                             "name": "Abnormal oral morphology",
                             "value": 10,
                             "children": [
                               {
-                                "id": "HP:0000163",
+                                "hpoid": "HP:0000163",
                                 "name": "Abnormal oral cavity morphology",
                                 "value": 9,
                                 "children": [
                                   {
-                                    "id": "HP:0011830",
+                                    "hpoid": "HP:0011830",
                                     "name": "Abnormal oral mucosa morphology",
                                     "value": 8,
                                     "children": [
                                       {
-                                        "id": "HP:0000168",
+                                        "hpoid": "HP:0000168",
                                         "name": "Abnormality of the gingiva",
                                         "value": 2,
                                         "children": [
                                           {
-                                            "id": "HP:0000230",
+                                            "hpoid": "HP:0000230",
                                             "name": "Gingivitis",
                                             "value": 1,
                                             "children": [],
@@ -1117,12 +1117,12 @@
                                         "nP": 1
                                       },
                                       {
-                                        "id": "HP:0010280",
+                                        "hpoid": "HP:0010280",
                                         "name": "Stomatitis",
                                         "value": 2,
                                         "children": [
                                           {
-                                            "id": "HP:0011107",
+                                            "hpoid": "HP:0011107",
                                             "name": "Recurrent aphthous stomatitis",
                                             "value": 1,
                                             "children": [],
@@ -1138,7 +1138,7 @@
                                         "nP": 1
                                       },
                                       {
-                                        "id": "HP:0000155",
+                                        "hpoid": "HP:0000155",
                                         "name": "Oral ulcer",
                                         "value": 1,
                                         "children": [],
@@ -1150,12 +1150,12 @@
                                         "nP": 3
                                       },
                                       {
-                                        "id": "HP:0032154",
+                                        "hpoid": "HP:0032154",
                                         "name": "Aphthous ulcer",
                                         "value": 2,
                                         "children": [
                                           {
-                                            "id": "HP:0011107",
+                                            "hpoid": "HP:0011107",
                                             "name": "Recurrent aphthous stomatitis",
                                             "value": 1,
                                             "children": [],
@@ -1207,12 +1207,12 @@
                         "nP": 4
                       },
                       {
-                        "id": "HP:0000306",
+                        "hpoid": "HP:0000306",
                         "name": "Abnormality of the chin",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0000331",
+                            "hpoid": "HP:0000331",
                             "name": "Short chin",
                             "value": 1,
                             "children": [],
@@ -1228,17 +1228,17 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0000366",
+                        "hpoid": "HP:0000366",
                         "name": "Abnormality of the nose",
                         "value": 5,
                         "children": [
                           {
-                            "id": "HP:0012384",
+                            "hpoid": "HP:0012384",
                             "name": "Rhinitis",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0003193",
+                                "hpoid": "HP:0003193",
                                 "name": "Allergic rhinitis",
                                 "value": 1,
                                 "children": [],
@@ -1256,12 +1256,12 @@
                             "nP": 2
                           },
                           {
-                            "id": "HP:0005105",
+                            "hpoid": "HP:0005105",
                             "name": "Abnormal nasal morphology",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0000445",
+                                "hpoid": "HP:0000445",
                                 "name": "Wide nose",
                                 "value": 1,
                                 "children": [],
@@ -1285,12 +1285,12 @@
                         "nP": 3
                       },
                       {
-                        "id": "HP:0001999",
+                        "hpoid": "HP:0001999",
                         "name": "Abnormal facial shape",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0000320",
+                            "hpoid": "HP:0000320",
                             "name": "Bird-like facies",
                             "value": 1,
                             "children": [],
@@ -1300,7 +1300,7 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0012368",
+                            "hpoid": "HP:0012368",
                             "name": "Flat face",
                             "value": 1,
                             "children": [],
@@ -1371,27 +1371,27 @@
             "nP": 12
           },
           {
-            "id": "HP:0001507",
+            "hpoid": "HP:0001507",
             "name": "Growth abnormality",
             "value": 15,
             "children": [
               {
-                "id": "HP:0000002",
+                "hpoid": "HP:0000002",
                 "name": "Abnormality of body height",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0004322",
+                    "hpoid": "HP:0004322",
                     "name": "Short stature",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0003508",
+                        "hpoid": "HP:0003508",
                         "name": "Proportionate short stature",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0003510",
+                            "hpoid": "HP:0003510",
                             "name": "Severe short stature",
                             "value": 1,
                             "children": [],
@@ -1427,17 +1427,17 @@
                 "nP": 4
               },
               {
-                "id": "HP:0001510",
+                "hpoid": "HP:0001510",
                 "name": "Growth delay",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0008897",
+                    "hpoid": "HP:0008897",
                     "name": "Postnatal growth retardation",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0008850",
+                        "hpoid": "HP:0008850",
                         "name": "Severe postnatal growth retardation",
                         "value": 1,
                         "children": [],
@@ -1453,7 +1453,7 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0004322",
+                    "hpoid": "HP:0004322",
                     "name": "Short stature",
                     "value": 1,
                     "children": [],
@@ -1474,17 +1474,17 @@
                 "nP": 4
               },
               {
-                "id": "HP:0004323",
+                "hpoid": "HP:0004323",
                 "name": "Abnormality of body weight",
                 "value": 6,
                 "children": [
                   {
-                    "id": "HP:0004325",
+                    "hpoid": "HP:0004325",
                     "name": "Decreased body weight",
                     "value": 5,
                     "children": [
                       {
-                        "id": "HP:0001518",
+                        "hpoid": "HP:0001518",
                         "name": "Small for gestational age",
                         "value": 1,
                         "children": [],
@@ -1495,12 +1495,12 @@
                         "nP": 2
                       },
                       {
-                        "id": "HP:0001508",
+                        "hpoid": "HP:0001508",
                         "name": "Failure to thrive",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0001525",
+                            "hpoid": "HP:0001525",
                             "name": "Severe failure to thrive",
                             "value": 1,
                             "children": [],
@@ -1511,7 +1511,7 @@
                             "nP": 2
                           },
                           {
-                            "id": "HP:0001531",
+                            "hpoid": "HP:0001531",
                             "name": "Failure to thrive in infancy",
                             "value": 1,
                             "children": [],
@@ -1570,27 +1570,27 @@
             "nP": 10
           },
           {
-            "id": "HP:0001626",
+            "hpoid": "HP:0001626",
             "name": "Abnormality of the cardiovascular system",
             "value": 19,
             "children": [
               {
-                "id": "HP:0030680",
+                "hpoid": "HP:0030680",
                 "name": "Abnormality of cardiovascular system morphology",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0001627",
+                    "hpoid": "HP:0001627",
                     "name": "Abnormal heart morphology",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0001697",
+                        "hpoid": "HP:0001697",
                         "name": "Abnormal pericardium morphology",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0001701",
+                            "hpoid": "HP:0001701",
                             "name": "Pericarditis",
                             "value": 1,
                             "children": [],
@@ -1618,17 +1618,17 @@
                 "nP": 1
               },
               {
-                "id": "HP:0002597",
+                "hpoid": "HP:0002597",
                 "name": "Abnormality of the vasculature",
                 "value": 14,
                 "children": [
                   {
-                    "id": "HP:0011276",
+                    "hpoid": "HP:0011276",
                     "name": "Vascular skin abnormality",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0001025",
+                        "hpoid": "HP:0001025",
                         "name": "Urticaria",
                         "value": 1,
                         "children": [],
@@ -1644,22 +1644,22 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0100763",
+                    "hpoid": "HP:0100763",
                     "name": "Abnormality of the lymphatic system",
                     "value": 11,
                     "children": [
                       {
-                        "id": "HP:0000777",
+                        "hpoid": "HP:0000777",
                         "name": "Abnormality of the thymus",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0010515",
+                            "hpoid": "HP:0010515",
                             "name": "Aplasia/Hypoplasia of the thymus",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0005359",
+                                "hpoid": "HP:0005359",
                                 "name": "Aplasia of the thymus",
                                 "value": 1,
                                 "children": [],
@@ -1681,17 +1681,17 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0001743",
+                        "hpoid": "HP:0001743",
                         "name": "Abnormality of the spleen",
                         "value": 4,
                         "children": [
                           {
-                            "id": "HP:0025408",
+                            "hpoid": "HP:0025408",
                             "name": "Abnormal spleen morphology",
                             "value": 3,
                             "children": [
                               {
-                                "id": "HP:0001744",
+                                "hpoid": "HP:0001744",
                                 "name": "Splenomegaly",
                                 "value": 1,
                                 "children": [],
@@ -1703,7 +1703,7 @@
                                 "nP": 3
                               },
                               {
-                                "id": "HP:0001433",
+                                "hpoid": "HP:0001433",
                                 "name": "Hepatosplenomegaly",
                                 "value": 1,
                                 "children": [],
@@ -1732,17 +1732,17 @@
                         "nP": 5
                       },
                       {
-                        "id": "HP:0002733",
+                        "hpoid": "HP:0002733",
                         "name": "Abnormality of the lymph nodes",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0002716",
+                            "hpoid": "HP:0002716",
                             "name": "Lymphadenopathy",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0002729",
+                                "hpoid": "HP:0002729",
                                 "name": "Follicular hyperplasia",
                                 "value": 1,
                                 "children": [],
@@ -1812,12 +1812,12 @@
             "nP": 10
           },
           {
-            "id": "HP:0025354",
+            "hpoid": "HP:0025354",
             "name": "Abnormal cellular phenotype",
             "value": 26,
             "children": [
               {
-                "id": "HP:0031550",
+                "hpoid": "HP:0031550",
                 "name": "Abnormal flow cytometry test result",
                 "value": 1,
                 "children": [],
@@ -1827,12 +1827,12 @@
                 "nP": 1
               },
               {
-                "id": "HP:0011017",
+                "hpoid": "HP:0011017",
                 "name": "Abnormal cellular physiology",
                 "value": 24,
                 "children": [
                   {
-                    "id": "HP:0002916",
+                    "hpoid": "HP:0002916",
                     "name": "Abnormality of chromosome segregation",
                     "value": 1,
                     "children": [],
@@ -1842,17 +1842,17 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0031409",
+                    "hpoid": "HP:0031409",
                     "name": "Abnormal lymphocyte physiology",
                     "value": 22,
                     "children": [
                       {
-                        "id": "HP:0005372",
+                        "hpoid": "HP:0005372",
                         "name": "Abnormality of B cell physiology",
                         "value": 21,
                         "children": [
                           {
-                            "id": "HP:0005424",
+                            "hpoid": "HP:0005424",
                             "name": "Absent specific antibody response",
                             "value": 1,
                             "children": [],
@@ -1862,17 +1862,17 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0010701",
+                            "hpoid": "HP:0010701",
                             "name": "Abnormal immunoglobulin level",
                             "value": 19,
                             "children": [
                               {
-                                "id": "HP:0410241",
+                                "hpoid": "HP:0410241",
                                 "name": "Abnormal circulating IgE level",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0003212",
+                                    "hpoid": "HP:0003212",
                                     "name": "Increased circulating IgE level",
                                     "value": 1,
                                     "children": [],
@@ -1888,12 +1888,12 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0410240",
+                                "hpoid": "HP:0410240",
                                 "name": "Abnormal circulating IgA level",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0002720",
+                                    "hpoid": "HP:0002720",
                                     "name": "Decreased circulating IgA level",
                                     "value": 1,
                                     "children": [],
@@ -1911,22 +1911,22 @@
                                 "nP": 2
                               },
                               {
-                                "id": "HP:0410242",
+                                "hpoid": "HP:0410242",
                                 "name": "Abnormal circulating IgG level",
                                 "value": 4,
                                 "children": [
                                   {
-                                    "id": "HP:0004315",
+                                    "hpoid": "HP:0004315",
                                     "name": "Decreased circulating IgG level",
                                     "value": 3,
                                     "children": [
                                       {
-                                        "id": "HP:0032135",
+                                        "hpoid": "HP:0032135",
                                         "name": "Decreased circulating IgG subclass level",
                                         "value": 2,
                                         "children": [
                                           {
-                                            "id": "HP:0032138",
+                                            "hpoid": "HP:0032138",
                                             "name": "Decreased circulating IgG4 level",
                                             "value": 1,
                                             "children": [],
@@ -1954,12 +1954,12 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0010702",
+                                "hpoid": "HP:0010702",
                                 "name": "Increased circulating antibody level",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0003212",
+                                    "hpoid": "HP:0003212",
                                     "name": "Increased circulating IgE level",
                                     "value": 1,
                                     "children": [],
@@ -1976,12 +1976,12 @@
                                 "nP": 2
                               },
                               {
-                                "id": "HP:0410243",
+                                "hpoid": "HP:0410243",
                                 "name": "Abnormal circulating IgM level",
                                 "value": 3,
                                 "children": [
                                   {
-                                    "id": "HP:0003496",
+                                    "hpoid": "HP:0003496",
                                     "name": "Increased circulating IgM level",
                                     "value": 1,
                                     "children": [],
@@ -1991,7 +1991,7 @@
                                     "nP": 1
                                   },
                                   {
-                                    "id": "HP:0002850",
+                                    "hpoid": "HP:0002850",
                                     "name": "Decreased circulating total IgM",
                                     "value": 1,
                                     "children": [],
@@ -2010,17 +2010,17 @@
                                 "nP": 3
                               },
                               {
-                                "id": "HP:0004313",
+                                "hpoid": "HP:0004313",
                                 "name": "Decreased circulating antibody level",
                                 "value": 5,
                                 "children": [
                                   {
-                                    "id": "HP:0012475",
+                                    "hpoid": "HP:0012475",
                                     "name": "Decreased circulating level of specific antibody",
                                     "value": 2,
                                     "children": [
                                       {
-                                        "id": "HP:0002848",
+                                        "hpoid": "HP:0002848",
                                         "name": "Decreased specific anti-polysaccharide antibody level",
                                         "value": 1,
                                         "children": [],
@@ -2040,12 +2040,12 @@
                                     "nP": 4
                                   },
                                   {
-                                    "id": "HP:0004315",
+                                    "hpoid": "HP:0004315",
                                     "name": "Decreased circulating IgG level",
                                     "value": 2,
                                     "children": [
                                       {
-                                        "id": "HP:0032132",
+                                        "hpoid": "HP:0032132",
                                         "name": "Decreased circulating total IgG",
                                         "value": 1,
                                         "children": [],
@@ -2154,22 +2154,22 @@
             "nP": 13
           },
           {
-            "id": "HP:0025031",
+            "hpoid": "HP:0025031",
             "name": "Abnormality of the digestive system",
             "value": 51,
             "children": [
               {
-                "id": "HP:0001438",
+                "hpoid": "HP:0001438",
                 "name": "Abnormality of abdomen morphology",
                 "value": 3,
                 "children": [
                   {
-                    "id": "HP:0003271",
+                    "hpoid": "HP:0003271",
                     "name": "Visceromegaly",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0001433",
+                        "hpoid": "HP:0001433",
                         "name": "Hepatosplenomegaly",
                         "value": 1,
                         "children": [],
@@ -2191,27 +2191,27 @@
                 "nP": 1
               },
               {
-                "id": "HP:0011024",
+                "hpoid": "HP:0011024",
                 "name": "Abnormality of the gastrointestinal tract",
                 "value": 11,
                 "children": [
                   {
-                    "id": "HP:0012718",
+                    "hpoid": "HP:0012718",
                     "name": "Morphological abnormality of the gastrointestinal tract",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0002242",
+                        "hpoid": "HP:0002242",
                         "name": "Abnormal intestine morphology",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0002250",
+                            "hpoid": "HP:0002250",
                             "name": "Abnormal large intestine morphology",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0002037",
+                                "hpoid": "HP:0002037",
                                 "name": "Inflammation of the large intestine",
                                 "value": 1,
                                 "children": [],
@@ -2241,22 +2241,22 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0012719",
+                    "hpoid": "HP:0012719",
                     "name": "Functional abnormality of the gastrointestinal tract",
                     "value": 6,
                     "children": [
                       {
-                        "id": "HP:0004386",
+                        "hpoid": "HP:0004386",
                         "name": "Gastrointestinal inflammation",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0100633",
+                            "hpoid": "HP:0100633",
                             "name": "Esophagitis",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0410151",
+                                "hpoid": "HP:0410151",
                                 "name": "Eosinophilic infiltration of the esophagus",
                                 "value": 1,
                                 "children": [],
@@ -2278,12 +2278,12 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0004798",
+                        "hpoid": "HP:0004798",
                         "name": "Recurrent infection of the gastrointestinal tract",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0005202",
+                            "hpoid": "HP:0005202",
                             "name": "Helicobacter pylori infection",
                             "value": 1,
                             "children": [],
@@ -2315,32 +2315,32 @@
                 "nP": 4
               },
               {
-                "id": "HP:0025033",
+                "hpoid": "HP:0025033",
                 "name": "Abnormality of digestive system morphology",
                 "value": 14,
                 "children": [
                   {
-                    "id": "HP:0012718",
+                    "hpoid": "HP:0012718",
                     "name": "Morphological abnormality of the gastrointestinal tract",
                     "value": 13,
                     "children": [
                       {
-                        "id": "HP:0002577",
+                        "hpoid": "HP:0002577",
                         "name": "Abnormality of the stomach",
                         "value": 4,
                         "children": [
                           {
-                            "id": "HP:0004295",
+                            "hpoid": "HP:0004295",
                             "name": "Abnormality of the gastric mucosa",
                             "value": 3,
                             "children": [
                               {
-                                "id": "HP:0005263",
+                                "hpoid": "HP:0005263",
                                 "name": "Gastritis",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0410147",
+                                    "hpoid": "HP:0410147",
                                     "name": "Eosinophilic infiltration in the stomach mucosa",
                                     "value": 1,
                                     "children": [],
@@ -2368,12 +2368,12 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0002242",
+                        "hpoid": "HP:0002242",
                         "name": "Abnormal intestine morphology",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0002250",
+                            "hpoid": "HP:0002250",
                             "name": "Abnormal large intestine morphology",
                             "value": 1,
                             "children": [],
@@ -2389,17 +2389,17 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0002031",
+                        "hpoid": "HP:0002031",
                         "name": "Abnormal esophagus morphology",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0100633",
+                            "hpoid": "HP:0100633",
                             "name": "Esophagitis",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0410151",
+                                "hpoid": "HP:0410151",
                                 "name": "Eosinophilic infiltration of the esophagus",
                                 "value": 1,
                                 "children": [],
@@ -2421,17 +2421,17 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0012732",
+                        "hpoid": "HP:0012732",
                         "name": "Anorectal anomaly",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0004378",
+                            "hpoid": "HP:0004378",
                             "name": "Abnormality of the anus",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0011131",
+                                "hpoid": "HP:0011131",
                                 "name": "Perianal rash",
                                 "value": 1,
                                 "children": [],
@@ -2471,27 +2471,27 @@
                 "nP": 4
               },
               {
-                "id": "HP:0025032",
+                "hpoid": "HP:0025032",
                 "name": "Abnormality of digestive system physiology",
                 "value": 10,
                 "children": [
                   {
-                    "id": "HP:0012719",
+                    "hpoid": "HP:0012719",
                     "name": "Functional abnormality of the gastrointestinal tract",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0004386",
+                        "hpoid": "HP:0004386",
                         "name": "Gastrointestinal inflammation",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0002037",
+                            "hpoid": "HP:0002037",
                             "name": "Inflammation of the large intestine",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0002583",
+                                "hpoid": "HP:0002583",
                                 "name": "Colitis",
                                 "value": 1,
                                 "children": [],
@@ -2522,12 +2522,12 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0011458",
+                    "hpoid": "HP:0011458",
                     "name": "Abdominal symptom",
                     "value": 5,
                     "children": [
                       {
-                        "id": "HP:0002027",
+                        "hpoid": "HP:0002027",
                         "name": "Abdominal pain",
                         "value": 1,
                         "children": [],
@@ -2537,7 +2537,7 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0011968",
+                        "hpoid": "HP:0011968",
                         "name": "Feeding difficulties",
                         "value": 1,
                         "children": [],
@@ -2547,12 +2547,12 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0002014",
+                        "hpoid": "HP:0002014",
                         "name": "Diarrhea",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0002028",
+                            "hpoid": "HP:0002028",
                             "name": "Chronic diarrhea",
                             "value": 1,
                             "children": [],
@@ -2586,22 +2586,22 @@
                 "nP": 5
               },
               {
-                "id": "HP:0002012",
+                "hpoid": "HP:0002012",
                 "name": "Abnormality of the abdominal organs",
                 "value": 12,
                 "children": [
                   {
-                    "id": "HP:0001743",
+                    "hpoid": "HP:0001743",
                     "name": "Abnormality of the spleen",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0025408",
+                        "hpoid": "HP:0025408",
                         "name": "Abnormal spleen morphology",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0001744",
+                            "hpoid": "HP:0001744",
                             "name": "Splenomegaly",
                             "value": 1,
                             "children": [],
@@ -2623,17 +2623,17 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0001392",
+                    "hpoid": "HP:0001392",
                     "name": "Abnormality of the liver",
                     "value": 8,
                     "children": [
                       {
-                        "id": "HP:0410042",
+                        "hpoid": "HP:0410042",
                         "name": "Abnormal liver morphology",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0001395",
+                            "hpoid": "HP:0001395",
                             "name": "Hepatic fibrosis",
                             "value": 1,
                             "children": [],
@@ -2643,7 +2643,7 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0012115",
+                            "hpoid": "HP:0012115",
                             "name": "Hepatitis",
                             "value": 1,
                             "children": [],
@@ -2659,22 +2659,22 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0004297",
+                        "hpoid": "HP:0004297",
                         "name": "Abnormality of the biliary system",
                         "value": 4,
                         "children": [
                           {
-                            "id": "HP:0001396",
+                            "hpoid": "HP:0001396",
                             "name": "Cholestasis",
                             "value": 3,
                             "children": [
                               {
-                                "id": "HP:0002611",
+                                "hpoid": "HP:0002611",
                                 "name": "Cholestatic liver disease",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0006566",
+                                    "hpoid": "HP:0006566",
                                     "name": "Neonatal cholestatic liver disease",
                                     "value": 1,
                                     "children": [],
@@ -2740,32 +2740,32 @@
             "nP": 14
           },
           {
-            "id": "HP:0001939",
+            "hpoid": "HP:0001939",
             "name": "Abnormality of metabolism/homeostasis",
             "value": 47,
             "children": [
               {
-                "id": "HP:0012337",
+                "hpoid": "HP:0012337",
                 "name": "Abnormal homeostasis",
                 "value": 9,
                 "children": [
                   {
-                    "id": "HP:0011032",
+                    "hpoid": "HP:0011032",
                     "name": "Abnormality of fluid regulation",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0000969",
+                        "hpoid": "HP:0000969",
                         "name": "Edema",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0002202",
+                            "hpoid": "HP:0002202",
                             "name": "Pleural effusion",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0011919",
+                                "hpoid": "HP:0011919",
                                 "name": "Pleural empyema",
                                 "value": 1,
                                 "children": [],
@@ -2793,17 +2793,17 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0004370",
+                    "hpoid": "HP:0004370",
                     "name": "Abnormality of temperature regulation",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0001945",
+                        "hpoid": "HP:0001945",
                         "name": "Fever",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0001955",
+                            "hpoid": "HP:0001955",
                             "name": "Unexplained fevers",
                             "value": 1,
                             "children": [],
@@ -2813,7 +2813,7 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0001954",
+                            "hpoid": "HP:0001954",
                             "name": "Recurrent fever",
                             "value": 1,
                             "children": [],
@@ -2853,27 +2853,27 @@
                 "nP": 5
               },
               {
-                "id": "HP:0032245",
+                "hpoid": "HP:0032245",
                 "name": "Abnormal metabolism",
                 "value": 5,
                 "children": [
                   {
-                    "id": "HP:0100508",
+                    "hpoid": "HP:0100508",
                     "name": "Abnormality of vitamin metabolism",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0004340",
+                        "hpoid": "HP:0004340",
                         "name": "Abnormality of vitamin B metabolism",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0004341",
+                            "hpoid": "HP:0004341",
                             "name": "Abnormality of vitamin B12 metabolism",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0200118",
+                                "hpoid": "HP:0200118",
                                 "name": "Malabsorption of Vitamin B12",
                                 "value": 1,
                                 "children": [],
@@ -2907,32 +2907,32 @@
                 "nP": 1
               },
               {
-                "id": "HP:0032180",
+                "hpoid": "HP:0032180",
                 "name": "Abnormal circulating metabolite concentration",
                 "value": 6,
                 "children": [
                   {
-                    "id": "HP:0004354",
+                    "hpoid": "HP:0004354",
                     "name": "Abnormal circulating carboxylic acid concentration",
                     "value": 5,
                     "children": [
                       {
-                        "id": "HP:0003112",
+                        "hpoid": "HP:0003112",
                         "name": "Abnormality of serum amino acid level",
                         "value": 4,
                         "children": [
                           {
-                            "id": "HP:0004338",
+                            "hpoid": "HP:0004338",
                             "name": "Abnormal circulating aromatic amino acid concentration",
                             "value": 3,
                             "children": [
                               {
-                                "id": "HP:0010893",
+                                "hpoid": "HP:0010893",
                                 "name": "Abnormal circulating phenylalanine concentration",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0008297",
+                                    "hpoid": "HP:0008297",
                                     "name": "Transient hyperphenylalaninemia",
                                     "value": 1,
                                     "children": [],
@@ -2972,32 +2972,32 @@
                 "nP": 1
               },
               {
-                "id": "HP:0011017",
+                "hpoid": "HP:0011017",
                 "name": "Abnormal cellular physiology",
                 "value": 22,
                 "children": [
                   {
-                    "id": "HP:0031409",
+                    "hpoid": "HP:0031409",
                     "name": "Abnormal lymphocyte physiology",
                     "value": 21,
                     "children": [
                       {
-                        "id": "HP:0005372",
+                        "hpoid": "HP:0005372",
                         "name": "Abnormality of B cell physiology",
                         "value": 20,
                         "children": [
                           {
-                            "id": "HP:0010701",
+                            "hpoid": "HP:0010701",
                             "name": "Abnormal immunoglobulin level",
                             "value": 19,
                             "children": [
                               {
-                                "id": "HP:0010702",
+                                "hpoid": "HP:0010702",
                                 "name": "Increased circulating antibody level",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0003496",
+                                    "hpoid": "HP:0003496",
                                     "name": "Increased circulating IgM level",
                                     "value": 1,
                                     "children": [],
@@ -3013,12 +3013,12 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0410242",
+                                "hpoid": "HP:0410242",
                                 "name": "Abnormal circulating IgG level",
                                 "value": 3,
                                 "children": [
                                   {
-                                    "id": "HP:0004315",
+                                    "hpoid": "HP:0004315",
                                     "name": "Decreased circulating IgG level",
                                     "value": 1,
                                     "children": [],
@@ -3029,7 +3029,7 @@
                                     "nP": 2
                                   },
                                   {
-                                    "id": "HP:0003237",
+                                    "hpoid": "HP:0003237",
                                     "name": "Increased circulating IgG level",
                                     "value": 1,
                                     "children": [],
@@ -3047,12 +3047,12 @@
                                 "nP": 3
                               },
                               {
-                                "id": "HP:0410243",
+                                "hpoid": "HP:0410243",
                                 "name": "Abnormal circulating IgM level",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0002850",
+                                    "hpoid": "HP:0002850",
                                     "name": "Decreased circulating total IgM",
                                     "value": 1,
                                     "children": [],
@@ -3070,12 +3070,12 @@
                                 "nP": 2
                               },
                               {
-                                "id": "HP:0410241",
+                                "hpoid": "HP:0410241",
                                 "name": "Abnormal circulating IgE level",
                                 "value": 3,
                                 "children": [
                                   {
-                                    "id": "HP:0003212",
+                                    "hpoid": "HP:0003212",
                                     "name": "Increased circulating IgE level",
                                     "value": 1,
                                     "children": [],
@@ -3085,7 +3085,7 @@
                                     "nP": 1
                                   },
                                   {
-                                    "id": "HP:0005479",
+                                    "hpoid": "HP:0005479",
                                     "name": "Decreased circulating IgE",
                                     "value": 1,
                                     "children": [],
@@ -3102,12 +3102,12 @@
                                 "nP": 2
                               },
                               {
-                                "id": "HP:0004313",
+                                "hpoid": "HP:0004313",
                                 "name": "Decreased circulating antibody level",
                                 "value": 5,
                                 "children": [
                                   {
-                                    "id": "HP:0004315",
+                                    "hpoid": "HP:0004315",
                                     "name": "Decreased circulating IgG level",
                                     "value": 1,
                                     "children": [],
@@ -3117,12 +3117,12 @@
                                     "nP": 1
                                   },
                                   {
-                                    "id": "HP:0012475",
+                                    "hpoid": "HP:0012475",
                                     "name": "Decreased circulating level of specific antibody",
                                     "value": 3,
                                     "children": [
                                       {
-                                        "id": "HP:0002848",
+                                        "hpoid": "HP:0002848",
                                         "name": "Decreased specific anti-polysaccharide antibody level",
                                         "value": 1,
                                         "children": [],
@@ -3132,7 +3132,7 @@
                                         "nP": 1
                                       },
                                       {
-                                        "id": "HP:0012476",
+                                        "hpoid": "HP:0012476",
                                         "name": "Decreased specific pneumococcal antibody level",
                                         "value": 1,
                                         "children": [],
@@ -3162,17 +3162,17 @@
                                 "nP": 4
                               },
                               {
-                                "id": "HP:0410240",
+                                "hpoid": "HP:0410240",
                                 "name": "Abnormal circulating IgA level",
                                 "value": 3,
                                 "children": [
                                   {
-                                    "id": "HP:0002720",
+                                    "hpoid": "HP:0002720",
                                     "name": "Decreased circulating IgA level",
                                     "value": 2,
                                     "children": [
                                       {
-                                        "id": "HP:0003460",
+                                        "hpoid": "HP:0003460",
                                         "name": "Decreased circulating total IgA",
                                         "value": 1,
                                         "children": [],
@@ -3261,22 +3261,22 @@
                 "nP": 11
               },
               {
-                "id": "HP:0031863",
+                "hpoid": "HP:0031863",
                 "name": "Bloodstream infectious agent",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0020071",
+                    "hpoid": "HP:0020071",
                     "name": "Viremia",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0032248",
+                        "hpoid": "HP:0032248",
                         "name": "Persistent viremia",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0032247",
+                            "hpoid": "HP:0032247",
                             "name": "Persistent CMV viremia",
                             "value": 1,
                             "children": [],
@@ -3330,22 +3330,22 @@
             "nP": 17
           },
           {
-            "id": "HP:0002086",
+            "hpoid": "HP:0002086",
             "name": "Abnormality of the respiratory system",
             "value": 18,
             "children": [
               {
-                "id": "HP:0002795",
+                "hpoid": "HP:0002795",
                 "name": "Functional respiratory abnormality",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0002094",
+                    "hpoid": "HP:0002094",
                     "name": "Dyspnea",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0002875",
+                        "hpoid": "HP:0002875",
                         "name": "Exertional dyspnea",
                         "value": 1,
                         "children": [],
@@ -3361,7 +3361,7 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0002099",
+                    "hpoid": "HP:0002099",
                     "name": "Asthma",
                     "value": 1,
                     "children": [],
@@ -3378,27 +3378,27 @@
                 "nP": 2
               },
               {
-                "id": "HP:0012252",
+                "hpoid": "HP:0012252",
                 "name": "Abnormal respiratory system morphology",
                 "value": 13,
                 "children": [
                   {
-                    "id": "HP:0002087",
+                    "hpoid": "HP:0002087",
                     "name": "Abnormality of the upper respiratory tract",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0005607",
+                        "hpoid": "HP:0005607",
                         "name": "Abnormal tracheobronchial morphology",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0025426",
+                            "hpoid": "HP:0025426",
                             "name": "Abnormal bronchus morphology",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0002110",
+                                "hpoid": "HP:0002110",
                                 "name": "Bronchiectasis",
                                 "value": 1,
                                 "children": [],
@@ -3434,12 +3434,12 @@
                     "nP": 3
                   },
                   {
-                    "id": "HP:0002088",
+                    "hpoid": "HP:0002088",
                     "name": "Abnormal lung morphology",
                     "value": 8,
                     "children": [
                       {
-                        "id": "HP:0006530",
+                        "hpoid": "HP:0006530",
                         "name": "Interstitial pulmonary abnormality",
                         "value": 1,
                         "children": [],
@@ -3451,17 +3451,17 @@
                         "nP": 3
                       },
                       {
-                        "id": "HP:0011947",
+                        "hpoid": "HP:0011947",
                         "name": "Respiratory tract infection",
                         "value": 6,
                         "children": [
                           {
-                            "id": "HP:0002090",
+                            "hpoid": "HP:0002090",
                             "name": "Pneumonia",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0006532",
+                                "hpoid": "HP:0006532",
                                 "name": "Recurrent pneumonia",
                                 "value": 1,
                                 "children": [],
@@ -3479,12 +3479,12 @@
                             "nP": 2
                           },
                           {
-                            "id": "HP:0002205",
+                            "hpoid": "HP:0002205",
                             "name": "Recurrent respiratory infections",
                             "value": 3,
                             "children": [
                               {
-                                "id": "HP:0005425",
+                                "hpoid": "HP:0005425",
                                 "name": "Recurrent sinopulmonary infections",
                                 "value": 1,
                                 "children": [],
@@ -3494,7 +3494,7 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0005366",
+                                "hpoid": "HP:0005366",
                                 "name": "Recurrent streptococcus pneumoniae infections",
                                 "value": 1,
                                 "children": [],
@@ -3569,42 +3569,42 @@
             "nP": 14
           },
           {
-            "id": "HP:0000119",
+            "hpoid": "HP:0000119",
             "name": "Abnormality of the genitourinary system",
             "value": 8,
             "children": [
               {
-                "id": "HP:0000079",
+                "hpoid": "HP:0000079",
                 "name": "Abnormality of the urinary system",
                 "value": 7,
                 "children": [
                   {
-                    "id": "HP:0010935",
+                    "hpoid": "HP:0010935",
                     "name": "Abnormality of the upper urinary tract",
                     "value": 6,
                     "children": [
                       {
-                        "id": "HP:0000077",
+                        "hpoid": "HP:0000077",
                         "name": "Abnormality of the kidney",
                         "value": 5,
                         "children": [
                           {
-                            "id": "HP:0012210",
+                            "hpoid": "HP:0012210",
                             "name": "Abnormal renal morphology",
                             "value": 4,
                             "children": [
                               {
-                                "id": "HP:0010944",
+                                "hpoid": "HP:0010944",
                                 "name": "Abnormal renal pelvis morphology",
                                 "value": 3,
                                 "children": [
                                   {
-                                    "id": "HP:0010946",
+                                    "hpoid": "HP:0010946",
                                     "name": "Dilatation of the renal pelvis",
                                     "value": 2,
                                     "children": [
                                       {
-                                        "id": "HP:0000126",
+                                        "hpoid": "HP:0000126",
                                         "name": "Hydronephrosis",
                                         "value": 1,
                                         "children": [],
@@ -3656,17 +3656,17 @@
             "nP": 1
           },
           {
-            "id": "HP:0002715",
+            "hpoid": "HP:0002715",
             "name": "Abnormality of the immune system",
             "value": 108,
             "children": [
               {
-                "id": "HP:0100763",
+                "hpoid": "HP:0100763",
                 "name": "Abnormality of the lymphatic system",
                 "value": 2,
                 "children": [
                   {
-                    "id": "HP:0002733",
+                    "hpoid": "HP:0002733",
                     "name": "Abnormality of the lymph nodes",
                     "value": 1,
                     "children": [],
@@ -3682,12 +3682,12 @@
                 "nP": 1
               },
               {
-                "id": "HP:0032251",
+                "hpoid": "HP:0032251",
                 "name": "Abnormal immune system morphology",
                 "value": 37,
                 "children": [
                   {
-                    "id": "HP:0032252",
+                    "hpoid": "HP:0032252",
                     "name": "Granuloma",
                     "value": 1,
                     "children": [],
@@ -3697,32 +3697,32 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0010987",
+                    "hpoid": "HP:0010987",
                     "name": "Abnormal cellular immune system morphology",
                     "value": 35,
                     "children": [
                       {
-                        "id": "HP:0001881",
+                        "hpoid": "HP:0001881",
                         "name": "Abnormal leukocyte morphology",
                         "value": 34,
                         "children": [
                           {
-                            "id": "HP:0011893",
+                            "hpoid": "HP:0011893",
                             "name": "Abnormal leukocyte count",
                             "value": 11,
                             "children": [
                               {
-                                "id": "HP:0040088",
+                                "hpoid": "HP:0040088",
                                 "name": "Abnormal lymphocyte count",
                                 "value": 6,
                                 "children": [
                                   {
-                                    "id": "HP:0010975",
+                                    "hpoid": "HP:0010975",
                                     "name": "Abnormal B cell count",
                                     "value": 2,
                                     "children": [
                                       {
-                                        "id": "HP:0025539",
+                                        "hpoid": "HP:0025539",
                                         "name": "Abnormal B cell subset distribution",
                                         "value": 1,
                                         "children": [],
@@ -3738,17 +3738,17 @@
                                     "nP": 1
                                   },
                                   {
-                                    "id": "HP:0011839",
+                                    "hpoid": "HP:0011839",
                                     "name": "Abnormal T cell count",
                                     "value": 3,
                                     "children": [
                                       {
-                                        "id": "HP:0025540",
+                                        "hpoid": "HP:0025540",
                                         "name": "Abnormal T cell subset distribution",
                                         "value": 2,
                                         "children": [
                                           {
-                                            "id": "HP:0031392",
+                                            "hpoid": "HP:0031392",
                                             "name": "Abnormal proportion of CD4-positive T cells",
                                             "value": 1,
                                             "children": [],
@@ -3780,17 +3780,17 @@
                                 "nP": 3
                               },
                               {
-                                "id": "HP:0001882",
+                                "hpoid": "HP:0001882",
                                 "name": "Leukopenia",
                                 "value": 3,
                                 "children": [
                                   {
-                                    "id": "HP:0001888",
+                                    "hpoid": "HP:0001888",
                                     "name": "Lymphopenia",
                                     "value": 2,
                                     "children": [
                                       {
-                                        "id": "HP:0010976",
+                                        "hpoid": "HP:0010976",
                                         "name": "B lymphocytopenia",
                                         "value": 1,
                                         "children": [],
@@ -3814,7 +3814,7 @@
                                 "nP": 2
                               },
                               {
-                                "id": "HP:0001974",
+                                "hpoid": "HP:0001974",
                                 "name": "Leukocytosis",
                                 "value": 1,
                                 "children": [],
@@ -3834,27 +3834,27 @@
                             "nP": 5
                           },
                           {
-                            "id": "HP:0004332",
+                            "hpoid": "HP:0004332",
                             "name": "Abnormal lymphocyte morphology",
                             "value": 12,
                             "children": [
                               {
-                                "id": "HP:0002843",
+                                "hpoid": "HP:0002843",
                                 "name": "Abnormal T cell morphology",
                                 "value": 4,
                                 "children": [
                                   {
-                                    "id": "HP:0011839",
+                                    "hpoid": "HP:0011839",
                                     "name": "Abnormal T cell count",
                                     "value": 3,
                                     "children": [
                                       {
-                                        "id": "HP:0025540",
+                                        "hpoid": "HP:0025540",
                                         "name": "Abnormal T cell subset distribution",
                                         "value": 2,
                                         "children": [
                                           {
-                                            "id": "HP:0031394",
+                                            "hpoid": "HP:0031394",
                                             "name": "Abnormal CD4:CD8 ratio",
                                             "value": 1,
                                             "children": [],
@@ -3882,12 +3882,12 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0040088",
+                                "hpoid": "HP:0040088",
                                 "name": "Abnormal lymphocyte count",
                                 "value": 3,
                                 "children": [
                                   {
-                                    "id": "HP:0010975",
+                                    "hpoid": "HP:0010975",
                                     "name": "Abnormal B cell count",
                                     "value": 1,
                                     "children": [],
@@ -3897,7 +3897,7 @@
                                     "nP": 1
                                   },
                                   {
-                                    "id": "HP:0001888",
+                                    "hpoid": "HP:0001888",
                                     "name": "Lymphopenia",
                                     "value": 1,
                                     "children": [],
@@ -3914,22 +3914,22 @@
                                 "nP": 2
                               },
                               {
-                                "id": "HP:0002846",
+                                "hpoid": "HP:0002846",
                                 "name": "Abnormal B cell morphology",
                                 "value": 4,
                                 "children": [
                                   {
-                                    "id": "HP:0010975",
+                                    "hpoid": "HP:0010975",
                                     "name": "Abnormal B cell count",
                                     "value": 3,
                                     "children": [
                                       {
-                                        "id": "HP:0025539",
+                                        "hpoid": "HP:0025539",
                                         "name": "Abnormal B cell subset distribution",
                                         "value": 2,
                                         "children": [
                                           {
-                                            "id": "HP:0030373",
+                                            "hpoid": "HP:0030373",
                                             "name": "Abnormal proportion of memory B cells",
                                             "value": 1,
                                             "children": [],
@@ -3974,17 +3974,17 @@
                             "nP": 6
                           },
                           {
-                            "id": "HP:0010974",
+                            "hpoid": "HP:0010974",
                             "name": "Abnormal myeloid leukocyte morphology",
                             "value": 10,
                             "children": [
                               {
-                                "id": "HP:0004311",
+                                "hpoid": "HP:0004311",
                                 "name": "Abnormal macrophage morphology",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0012156",
+                                    "hpoid": "HP:0012156",
                                     "name": "Hemophagocytosis",
                                     "value": 1,
                                     "children": [],
@@ -4000,12 +4000,12 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0012144",
+                                "hpoid": "HP:0012144",
                                 "name": "Abnormality monocyte morphology",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0012310",
+                                    "hpoid": "HP:0012310",
                                     "name": "Abnormal monocyte count",
                                     "value": 1,
                                     "children": [],
@@ -4021,27 +4021,27 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0001911",
+                                "hpoid": "HP:0001911",
                                 "name": "Abnormal granulocyte morphology",
                                 "value": 5,
                                 "children": [
                                   {
-                                    "id": "HP:0001874",
+                                    "hpoid": "HP:0001874",
                                     "name": "Abnormality of neutrophils",
                                     "value": 4,
                                     "children": [
                                       {
-                                        "id": "HP:0011991",
+                                        "hpoid": "HP:0011991",
                                         "name": "Abnormal neutrophil count",
                                         "value": 3,
                                         "children": [
                                           {
-                                            "id": "HP:0011897",
+                                            "hpoid": "HP:0011897",
                                             "name": "Neutrophilia",
                                             "value": 2,
                                             "children": [
                                               {
-                                                "id": "HP:0410257",
+                                                "hpoid": "HP:0410257",
                                                 "name": "Neutrophilia in presence of infection",
                                                 "value": 1,
                                                 "children": [],
@@ -4126,12 +4126,12 @@
                 "nP": 10
               },
               {
-                "id": "HP:0010978",
+                "hpoid": "HP:0010978",
                 "name": "Abnormality of immune system physiology",
                 "value": 68,
                 "children": [
                   {
-                    "id": "HP:0031404",
+                    "hpoid": "HP:0031404",
                     "name": "Impaired antigen-specific response",
                     "value": 1,
                     "children": [],
@@ -4141,17 +4141,17 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0100326",
+                    "hpoid": "HP:0100326",
                     "name": "Immunologic hypersensitivity",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0012393",
+                        "hpoid": "HP:0012393",
                         "name": "Allergy",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0003193",
+                            "hpoid": "HP:0003193",
                             "name": "Allergic rhinitis",
                             "value": 1,
                             "children": [],
@@ -4167,7 +4167,7 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0002099",
+                        "hpoid": "HP:0002099",
                         "name": "Asthma",
                         "value": 1,
                         "children": [],
@@ -4184,27 +4184,27 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0005368",
+                    "hpoid": "HP:0005368",
                     "name": "Abnormality of humoral immunity",
                     "value": 10,
                     "children": [
                       {
-                        "id": "HP:0010701",
+                        "hpoid": "HP:0010701",
                         "name": "Abnormal immunoglobulin level",
                         "value": 9,
                         "children": [
                           {
-                            "id": "HP:0004313",
+                            "hpoid": "HP:0004313",
                             "name": "Decreased circulating antibody level",
                             "value": 3,
                             "children": [
                               {
-                                "id": "HP:0012475",
+                                "hpoid": "HP:0012475",
                                 "name": "Decreased circulating level of specific antibody",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0012476",
+                                    "hpoid": "HP:0012476",
                                     "name": "Decreased specific pneumococcal antibody level",
                                     "value": 1,
                                     "children": [],
@@ -4226,12 +4226,12 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0410242",
+                            "hpoid": "HP:0410242",
                             "name": "Abnormal circulating IgG level",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0004315",
+                                "hpoid": "HP:0004315",
                                 "name": "Decreased circulating IgG level",
                                 "value": 1,
                                 "children": [],
@@ -4247,17 +4247,17 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0010702",
+                            "hpoid": "HP:0010702",
                             "name": "Increased circulating antibody level",
                             "value": 3,
                             "children": [
                               {
-                                "id": "HP:0003496",
+                                "hpoid": "HP:0003496",
                                 "name": "Increased circulating IgM level",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0003459",
+                                    "hpoid": "HP:0003459",
                                     "name": "Polyclonal elevation of IgM",
                                     "value": 1,
                                     "children": [],
@@ -4295,12 +4295,12 @@
                     "nP": 3
                   },
                   {
-                    "id": "HP:0002960",
+                    "hpoid": "HP:0002960",
                     "name": "Autoimmunity",
                     "value": 8,
                     "children": [
                       {
-                        "id": "HP:0001890",
+                        "hpoid": "HP:0001890",
                         "name": "Autoimmune hemolytic anemia",
                         "value": 1,
                         "children": [],
@@ -4311,7 +4311,7 @@
                         "nP": 2
                       },
                       {
-                        "id": "HP:0001973",
+                        "hpoid": "HP:0001973",
                         "name": "Autoimmune thrombocytopenia",
                         "value": 1,
                         "children": [],
@@ -4321,7 +4321,7 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0002725",
+                        "hpoid": "HP:0002725",
                         "name": "Systemic lupus erythematosus",
                         "value": 1,
                         "children": [],
@@ -4333,12 +4333,12 @@
                         "nP": 3
                       },
                       {
-                        "id": "HP:0030057",
+                        "hpoid": "HP:0030057",
                         "name": "Autoimmune antibody positivity",
                         "value": 4,
                         "children": [
                           {
-                            "id": "HP:0003613",
+                            "hpoid": "HP:0003613",
                             "name": "Antiphospholipid antibody positivity",
                             "value": 1,
                             "children": [],
@@ -4348,7 +4348,7 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0025379",
+                            "hpoid": "HP:0025379",
                             "name": "Anti-thyroid peroxidase antibody positivity",
                             "value": 1,
                             "children": [],
@@ -4358,7 +4358,7 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0003493",
+                            "hpoid": "HP:0003493",
                             "name": "Antinuclear antibody positivity",
                             "value": 1,
                             "children": [],
@@ -4390,27 +4390,27 @@
                     "nP": 9
                   },
                   {
-                    "id": "HP:0031409",
+                    "hpoid": "HP:0031409",
                     "name": "Abnormal lymphocyte physiology",
                     "value": 7,
                     "children": [
                       {
-                        "id": "HP:0005372",
+                        "hpoid": "HP:0005372",
                         "name": "Abnormality of B cell physiology",
                         "value": 6,
                         "children": [
                           {
-                            "id": "HP:0010701",
+                            "hpoid": "HP:0010701",
                             "name": "Abnormal immunoglobulin level",
                             "value": 5,
                             "children": [
                               {
-                                "id": "HP:0010702",
+                                "hpoid": "HP:0010702",
                                 "name": "Increased circulating antibody level",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0003237",
+                                    "hpoid": "HP:0003237",
                                     "name": "Increased circulating IgG level",
                                     "value": 1,
                                     "children": [],
@@ -4426,12 +4426,12 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0004313",
+                                "hpoid": "HP:0004313",
                                 "name": "Decreased circulating antibody level",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0003139",
+                                    "hpoid": "HP:0003139",
                                     "name": "Panhypogammaglobulinemia",
                                     "value": 1,
                                     "children": [],
@@ -4472,17 +4472,17 @@
                     "nP": 3
                   },
                   {
-                    "id": "HP:0012647",
+                    "hpoid": "HP:0012647",
                     "name": "Abnormal inflammatory response",
                     "value": 13,
                     "children": [
                       {
-                        "id": "HP:0012649",
+                        "hpoid": "HP:0012649",
                         "name": "Increased inflammatory response",
                         "value": 12,
                         "children": [
                           {
-                            "id": "HP:0000388",
+                            "hpoid": "HP:0000388",
                             "name": "Otitis media",
                             "value": 1,
                             "children": [],
@@ -4492,12 +4492,12 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0004386",
+                            "hpoid": "HP:0004386",
                             "name": "Gastrointestinal inflammation",
                             "value": 4,
                             "children": [
                               {
-                                "id": "HP:0002037",
+                                "hpoid": "HP:0002037",
                                 "name": "Inflammation of the large intestine",
                                 "value": 1,
                                 "children": [],
@@ -4507,12 +4507,12 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0100633",
+                                "hpoid": "HP:0100633",
                                 "name": "Esophagitis",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0410151",
+                                    "hpoid": "HP:0410151",
                                     "name": "Eosinophilic infiltration of the esophagus",
                                     "value": 1,
                                     "children": [],
@@ -4535,17 +4535,17 @@
                             "nP": 2
                           },
                           {
-                            "id": "HP:0011123",
+                            "hpoid": "HP:0011123",
                             "name": "Inflammatory abnormality of the skin",
                             "value": 4,
                             "children": [
                               {
-                                "id": "HP:0000964",
+                                "hpoid": "HP:0000964",
                                 "name": "Eczema",
                                 "value": 3,
                                 "children": [
                                   {
-                                    "id": "HP:0000976",
+                                    "hpoid": "HP:0000976",
                                     "name": "Eczematoid dermatitis",
                                     "value": 1,
                                     "children": [],
@@ -4556,7 +4556,7 @@
                                     "nP": 2
                                   },
                                   {
-                                    "id": "HP:0001047",
+                                    "hpoid": "HP:0001047",
                                     "name": "Atopic dermatitis",
                                     "value": 1,
                                     "children": [],
@@ -4582,12 +4582,12 @@
                             "nP": 3
                           },
                           {
-                            "id": "HP:0012115",
+                            "hpoid": "HP:0012115",
                             "name": "Hepatitis",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0200084",
+                                "hpoid": "HP:0200084",
                                 "name": "Giant cell hepatitis",
                                 "value": 1,
                                 "children": [],
@@ -4627,12 +4627,12 @@
                     "nP": 7
                   },
                   {
-                    "id": "HP:0002721",
+                    "hpoid": "HP:0002721",
                     "name": "Immunodeficiency",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0005363",
+                        "hpoid": "HP:0005363",
                         "name": "Humoral immunodeficiency",
                         "value": 1,
                         "children": [],
@@ -4642,12 +4642,12 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0005387",
+                        "hpoid": "HP:0005387",
                         "name": "Combined immunodeficiency",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0004430",
+                            "hpoid": "HP:0004430",
                             "name": "Severe combined immunodeficiency",
                             "value": 1,
                             "children": [],
@@ -4674,22 +4674,22 @@
                     "nP": 5
                   },
                   {
-                    "id": "HP:0032101",
+                    "hpoid": "HP:0032101",
                     "name": "Unusual infection",
                     "value": 20,
                     "children": [
                       {
-                        "id": "HP:0020100",
+                        "hpoid": "HP:0020100",
                         "name": "Unusual fungal infection",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0002841",
+                            "hpoid": "HP:0002841",
                             "name": "Recurrent fungal infections",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0002724",
+                                "hpoid": "HP:0002724",
                                 "name": "Recurrent Aspergillus infections",
                                 "value": 1,
                                 "children": [],
@@ -4711,7 +4711,7 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0012302",
+                        "hpoid": "HP:0012302",
                         "name": "Herpes simplex encephalitis",
                         "value": 1,
                         "children": [],
@@ -4723,17 +4723,17 @@
                         "nP": 3
                       },
                       {
-                        "id": "HP:0032169",
+                        "hpoid": "HP:0032169",
                         "name": "Severe infection",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0031691",
+                            "hpoid": "HP:0031691",
                             "name": "Severe viral infection",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0031693",
+                                "hpoid": "HP:0031693",
                                 "name": "Severe Epstein Barr virus infection",
                                 "value": 1,
                                 "children": [],
@@ -4758,12 +4758,12 @@
                         "nP": 2
                       },
                       {
-                        "id": "HP:0002719",
+                        "hpoid": "HP:0002719",
                         "name": "Recurrent infections",
                         "value": 12,
                         "children": [
                           {
-                            "id": "HP:0002841",
+                            "hpoid": "HP:0002841",
                             "name": "Recurrent fungal infections",
                             "value": 1,
                             "children": [],
@@ -4773,17 +4773,17 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0004429",
+                            "hpoid": "HP:0004429",
                             "name": "Recurrent viral infections",
                             "value": 4,
                             "children": [
                               {
-                                "id": "HP:0005353",
+                                "hpoid": "HP:0005353",
                                 "name": "Recurrent herpes",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0410028",
+                                    "hpoid": "HP:0410028",
                                     "name": "Recurrent oral herpes",
                                     "value": 1,
                                     "children": [],
@@ -4801,7 +4801,7 @@
                                 "nP": 3
                               },
                               {
-                                "id": "HP:0002743",
+                                "hpoid": "HP:0002743",
                                 "name": "Recurrent enteroviral infections",
                                 "value": 1,
                                 "children": [],
@@ -4822,12 +4822,12 @@
                             "nP": 5
                           },
                           {
-                            "id": "HP:0002718",
+                            "hpoid": "HP:0002718",
                             "name": "Recurrent bacterial infections",
                             "value": 6,
                             "children": [
                               {
-                                "id": "HP:0005429",
+                                "hpoid": "HP:0005429",
                                 "name": "Recurrent systemic pyogenic infections",
                                 "value": 1,
                                 "children": [],
@@ -4843,12 +4843,12 @@
                                 "nP": 7
                               },
                               {
-                                "id": "HP:0011274",
+                                "hpoid": "HP:0011274",
                                 "name": "Recurrent mycobacterial infections",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0011275",
+                                    "hpoid": "HP:0011275",
                                     "name": "Recurrent mycobacterium avium complex infections",
                                     "value": 1,
                                     "children": [],
@@ -4865,7 +4865,7 @@
                                 "nP": 2
                               },
                               {
-                                "id": "HP:0020096",
+                                "hpoid": "HP:0020096",
                                 "name": "Recurrent streptococcal infections",
                                 "value": 1,
                                 "children": [],
@@ -4875,7 +4875,7 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0007499",
+                                "hpoid": "HP:0007499",
                                 "name": "Recurrent staphylococcal infections",
                                 "value": 1,
                                 "children": [],
@@ -5024,17 +5024,17 @@
             "nP": 35
           },
           {
-            "id": "HP:0000707",
+            "hpoid": "HP:0000707",
             "name": "Abnormality of the nervous system",
             "value": 41,
             "children": [
               {
-                "id": "HP:0012638",
+                "hpoid": "HP:0012638",
                 "name": "Abnormal nervous system physiology",
                 "value": 30,
                 "children": [
                   {
-                    "id": "HP:0001250",
+                    "hpoid": "HP:0001250",
                     "name": "Seizure",
                     "value": 1,
                     "children": [],
@@ -5044,17 +5044,17 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0011442",
+                    "hpoid": "HP:0011442",
                     "name": "Abnormal central motor function",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0011443",
+                        "hpoid": "HP:0011443",
                         "name": "Abnormality of coordination",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0001251",
+                            "hpoid": "HP:0001251",
                             "name": "Ataxia",
                             "value": 1,
                             "children": [],
@@ -5076,7 +5076,7 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0001298",
+                    "hpoid": "HP:0001298",
                     "name": "Encephalopathy",
                     "value": 1,
                     "children": [],
@@ -5086,7 +5086,7 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0002315",
+                    "hpoid": "HP:0002315",
                     "name": "Headache",
                     "value": 1,
                     "children": [],
@@ -5096,17 +5096,17 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0100022",
+                    "hpoid": "HP:0100022",
                     "name": "Abnormality of movement",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0000752",
+                        "hpoid": "HP:0000752",
                         "name": "Hyperactivity",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0007018",
+                            "hpoid": "HP:0007018",
                             "name": "Attention deficit hyperactivity disorder",
                             "value": 1,
                             "children": [],
@@ -5128,17 +5128,17 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0000708",
+                    "hpoid": "HP:0000708",
                     "name": "Behavioral abnormality",
                     "value": 7,
                     "children": [
                       {
-                        "id": "HP:0000736",
+                        "hpoid": "HP:0000736",
                         "name": "Short attention span",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0007018",
+                            "hpoid": "HP:0007018",
                             "name": "Attention deficit hyperactivity disorder",
                             "value": 1,
                             "children": [],
@@ -5154,7 +5154,7 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0010865",
+                        "hpoid": "HP:0010865",
                         "name": "Oppositional defiant disorder",
                         "value": 1,
                         "children": [],
@@ -5165,12 +5165,12 @@
                         "nP": 2
                       },
                       {
-                        "id": "HP:0000729",
+                        "hpoid": "HP:0000729",
                         "name": "Autistic behavior",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0000753",
+                            "hpoid": "HP:0000753",
                             "name": "Autism with high cognitive abilities",
                             "value": 1,
                             "children": [],
@@ -5186,7 +5186,7 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0002360",
+                        "hpoid": "HP:0002360",
                         "name": "Sleep disturbance",
                         "value": 1,
                         "children": [],
@@ -5204,17 +5204,17 @@
                     "nP": 3
                   },
                   {
-                    "id": "HP:0012759",
+                    "hpoid": "HP:0012759",
                     "name": "Neurodevelopmental abnormality",
                     "value": 6,
                     "children": [
                       {
-                        "id": "HP:0001249",
+                        "hpoid": "HP:0001249",
                         "name": "Intellectual disability",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0010864",
+                            "hpoid": "HP:0010864",
                             "name": "Intellectual disability, severe",
                             "value": 1,
                             "children": [],
@@ -5230,17 +5230,17 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0012758",
+                        "hpoid": "HP:0012758",
                         "name": "Neurodevelopmental delay",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0001263",
+                            "hpoid": "HP:0001263",
                             "name": "Global developmental delay",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0011342",
+                                "hpoid": "HP:0011342",
                                 "name": "Mild global developmental delay",
                                 "value": 1,
                                 "children": [],
@@ -5269,17 +5269,17 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0011446",
+                    "hpoid": "HP:0011446",
                     "name": "Abnormality of higher mental function",
                     "value": 7,
                     "children": [
                       {
-                        "id": "HP:0001249",
+                        "hpoid": "HP:0001249",
                         "name": "Intellectual disability",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0010864",
+                            "hpoid": "HP:0010864",
                             "name": "Intellectual disability, severe",
                             "value": 1,
                             "children": [],
@@ -5295,12 +5295,12 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0100543",
+                        "hpoid": "HP:0100543",
                         "name": "Cognitive impairment",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0002354",
+                            "hpoid": "HP:0002354",
                             "name": "Memory impairment",
                             "value": 1,
                             "children": [],
@@ -5319,12 +5319,12 @@
                         "nP": 3
                       },
                       {
-                        "id": "HP:0002167",
+                        "hpoid": "HP:0002167",
                         "name": "Neurological speech impairment",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0002465",
+                            "hpoid": "HP:0002465",
                             "name": "Poor speech",
                             "value": 1,
                             "children": [],
@@ -5365,22 +5365,22 @@
                 "nP": 10
               },
               {
-                "id": "HP:0012639",
+                "hpoid": "HP:0012639",
                 "name": "Abnormal nervous system morphology",
                 "value": 10,
                 "children": [
                   {
-                    "id": "HP:0002011",
+                    "hpoid": "HP:0002011",
                     "name": "Morphological central nervous system abnormality",
                     "value": 9,
                     "children": [
                       {
-                        "id": "HP:0011450",
+                        "hpoid": "HP:0011450",
                         "name": "Unusual CNS infection",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0001287",
+                            "hpoid": "HP:0001287",
                             "name": "Meningitis",
                             "value": 1,
                             "children": [],
@@ -5396,32 +5396,32 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0012443",
+                        "hpoid": "HP:0012443",
                         "name": "Abnormality of brain morphology",
                         "value": 6,
                         "children": [
                           {
-                            "id": "HP:0011282",
+                            "hpoid": "HP:0011282",
                             "name": "Abnormality of hindbrain morphology",
                             "value": 5,
                             "children": [
                               {
-                                "id": "HP:0011283",
+                                "hpoid": "HP:0011283",
                                 "name": "Abnormality of the metencephalon",
                                 "value": 4,
                                 "children": [
                                   {
-                                    "id": "HP:0001317",
+                                    "hpoid": "HP:0001317",
                                     "name": "Abnormal cerebellum morphology",
                                     "value": 3,
                                     "children": [
                                       {
-                                        "id": "HP:0002438",
+                                        "hpoid": "HP:0002438",
                                         "name": "Cerebellar malformation",
                                         "value": 2,
                                         "children": [
                                           {
-                                            "id": "HP:0002308",
+                                            "hpoid": "HP:0002308",
                                             "name": "Arnold-Chiari malformation",
                                             "value": 1,
                                             "children": [],
@@ -5499,27 +5499,27 @@
             "nP": 13
           },
           {
-            "id": "HP:0000598",
+            "hpoid": "HP:0000598",
             "name": "Abnormality of the ear",
             "value": 13,
             "children": [
               {
-                "id": "HP:0031704",
+                "hpoid": "HP:0031704",
                 "name": "Abnormal ear physiology",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0000364",
+                    "hpoid": "HP:0000364",
                     "name": "Hearing abnormality",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0000365",
+                        "hpoid": "HP:0000365",
                         "name": "Hearing impairment",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0000405",
+                            "hpoid": "HP:0000405",
                             "name": "Conductive hearing impairment",
                             "value": 1,
                             "children": [],
@@ -5550,22 +5550,22 @@
                 "nP": 2
               },
               {
-                "id": "HP:0031703",
+                "hpoid": "HP:0031703",
                 "name": "Abnormal ear morphology",
                 "value": 8,
                 "children": [
                   {
-                    "id": "HP:0000356",
+                    "hpoid": "HP:0000356",
                     "name": "Abnormality of the outer ear",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0000357",
+                        "hpoid": "HP:0000357",
                         "name": "Abnormal location of ears",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0000369",
+                            "hpoid": "HP:0000369",
                             "name": "Low-set ears",
                             "value": 1,
                             "children": [],
@@ -5587,17 +5587,17 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0000370",
+                    "hpoid": "HP:0000370",
                     "name": "Abnormality of the middle ear",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0000388",
+                        "hpoid": "HP:0000388",
                         "name": "Otitis media",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0031353",
+                            "hpoid": "HP:0031353",
                             "name": "Otitis media with effusion",
                             "value": 1,
                             "children": [],
@@ -5607,7 +5607,7 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0000403",
+                            "hpoid": "HP:0000403",
                             "name": "Recurrent otitis media",
                             "value": 1,
                             "children": [],
@@ -5662,32 +5662,32 @@
             "nP": 7
           },
           {
-            "id": "HP:0001574",
+            "hpoid": "HP:0001574",
             "name": "Abnormality of the integument",
             "value": 34,
             "children": [
               {
-                "id": "HP:0011138",
+                "hpoid": "HP:0011138",
                 "name": "Abnormality of skin adnexa morphology",
                 "value": 10,
                 "children": [
                   {
-                    "id": "HP:0001595",
+                    "hpoid": "HP:0001595",
                     "name": "Abnormal hair morphology",
                     "value": 9,
                     "children": [
                       {
-                        "id": "HP:0010720",
+                        "hpoid": "HP:0010720",
                         "name": "Abnormal hair pattern",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0011360",
+                            "hpoid": "HP:0011360",
                             "name": "Acquired abnormal hair pattern",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0002232",
+                                "hpoid": "HP:0002232",
                                 "name": "Patchy alopecia",
                                 "value": 1,
                                 "children": [],
@@ -5709,17 +5709,17 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0009887",
+                        "hpoid": "HP:0009887",
                         "name": "Abnormality of hair pigmentation",
                         "value": 5,
                         "children": [
                           {
-                            "id": "HP:0005599",
+                            "hpoid": "HP:0005599",
                             "name": "Hypopigmentation of hair",
                             "value": 4,
                             "children": [
                               {
-                                "id": "HP:0001022",
+                                "hpoid": "HP:0001022",
                                 "name": "Albinism",
                                 "value": 1,
                                 "children": [],
@@ -5729,12 +5729,12 @@
                                 "nP": 1
                               },
                               {
-                                "id": "HP:0011358",
+                                "hpoid": "HP:0011358",
                                 "name": "Generalized hypopigmentation of hair",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0002286",
+                                    "hpoid": "HP:0002286",
                                     "name": "Fair hair",
                                     "value": 1,
                                     "children": [],
@@ -5776,17 +5776,17 @@
                 "nP": 2
               },
               {
-                "id": "HP:0000951",
+                "hpoid": "HP:0000951",
                 "name": "Abnormality of the skin",
                 "value": 23,
                 "children": [
                   {
-                    "id": "HP:0008069",
+                    "hpoid": "HP:0008069",
                     "name": "Neoplasm of the skin",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0100726",
+                        "hpoid": "HP:0100726",
                         "name": "Kaposi's sarcoma",
                         "value": 1,
                         "children": [],
@@ -5796,7 +5796,7 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0012740",
+                        "hpoid": "HP:0012740",
                         "name": "Papilloma",
                         "value": 1,
                         "children": [],
@@ -5813,22 +5813,22 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0011121",
+                    "hpoid": "HP:0011121",
                     "name": "Abnormality of skin morphology",
                     "value": 11,
                     "children": [
                       {
-                        "id": "HP:0011354",
+                        "hpoid": "HP:0011354",
                         "name": "Generalized abnormality of skin",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0011276",
+                            "hpoid": "HP:0011276",
                             "name": "Vascular skin abnormality",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0001025",
+                                "hpoid": "HP:0001025",
                                 "name": "Urticaria",
                                 "value": 1,
                                 "children": [],
@@ -5850,17 +5850,17 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0011355",
+                        "hpoid": "HP:0011355",
                         "name": "Localized skin lesion",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0200035",
+                            "hpoid": "HP:0200035",
                             "name": "Skin plaque",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0030351",
+                                "hpoid": "HP:0030351",
                                 "name": "Urticarial plaque",
                                 "value": 1,
                                 "children": [],
@@ -5885,7 +5885,7 @@
                         "nP": 2
                       },
                       {
-                        "id": "HP:0000980",
+                        "hpoid": "HP:0000980",
                         "name": "Pallor",
                         "value": 1,
                         "children": [],
@@ -5895,12 +5895,12 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0001000",
+                        "hpoid": "HP:0001000",
                         "name": "Abnormality of skin pigmentation",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0007427",
+                            "hpoid": "HP:0007427",
                             "name": "Reticulated skin pigmentation",
                             "value": 1,
                             "children": [],
@@ -5910,7 +5910,7 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0007483",
+                            "hpoid": "HP:0007483",
                             "name": "Depigmentation/hyperpigmentation of skin",
                             "value": 1,
                             "children": [],
@@ -5935,17 +5935,17 @@
                     "nP": 4
                   },
                   {
-                    "id": "HP:0011122",
+                    "hpoid": "HP:0011122",
                     "name": "Abnormality of skin physiology",
                     "value": 8,
                     "children": [
                       {
-                        "id": "HP:0011123",
+                        "hpoid": "HP:0011123",
                         "name": "Inflammatory abnormality of the skin",
                         "value": 7,
                         "children": [
                           {
-                            "id": "HP:0003765",
+                            "hpoid": "HP:0003765",
                             "name": "Psoriasiform dermatitis",
                             "value": 1,
                             "children": [],
@@ -5955,12 +5955,12 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0000964",
+                            "hpoid": "HP:0000964",
                             "name": "Eczema",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0001047",
+                                "hpoid": "HP:0001047",
                                 "name": "Atopic dermatitis",
                                 "value": 1,
                                 "children": [],
@@ -5979,17 +5979,17 @@
                             "nP": 4
                           },
                           {
-                            "id": "HP:0001581",
+                            "hpoid": "HP:0001581",
                             "name": "Recurrent skin infections",
                             "value": 3,
                             "children": [
                               {
-                                "id": "HP:0005406",
+                                "hpoid": "HP:0005406",
                                 "name": "Recurrent bacterial skin infections",
                                 "value": 2,
                                 "children": [
                                   {
-                                    "id": "HP:0011132",
+                                    "hpoid": "HP:0011132",
                                     "name": "Chronic furunculosis",
                                     "value": 1,
                                     "children": [],
@@ -6073,22 +6073,22 @@
             "nP": 14
           },
           {
-            "id": "HP:0001871",
+            "hpoid": "HP:0001871",
             "name": "Abnormality of blood and blood-forming tissues",
             "value": 65,
             "children": [
               {
-                "id": "HP:0005561",
+                "hpoid": "HP:0005561",
                 "name": "Abnormality of bone marrow cell morphology",
                 "value": 4,
                 "children": [
                   {
-                    "id": "HP:0012145",
+                    "hpoid": "HP:0012145",
                     "name": "Abnormality of multiple cell lineages in the bone marrow",
                     "value": 3,
                     "children": [
                       {
-                        "id": "HP:0001980",
+                        "hpoid": "HP:0001980",
                         "name": "Megaloblastic bone marrow",
                         "value": 1,
                         "children": [],
@@ -6098,7 +6098,7 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0001876",
+                        "hpoid": "HP:0001876",
                         "name": "Pancytopenia",
                         "value": 1,
                         "children": [],
@@ -6122,12 +6122,12 @@
                 "nP": 2
               },
               {
-                "id": "HP:0001877",
+                "hpoid": "HP:0001877",
                 "name": "Abnormal erythrocyte morphology",
                 "value": 18,
                 "children": [
                   {
-                    "id": "HP:0012131",
+                    "hpoid": "HP:0012131",
                     "name": "Abnormal number of erythroid precursors",
                     "value": 1,
                     "children": [],
@@ -6137,7 +6137,7 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0025065",
+                    "hpoid": "HP:0025065",
                     "name": "Abnormal mean corpuscular volume",
                     "value": 1,
                     "children": [],
@@ -6147,12 +6147,12 @@
                     "nP": 1
                   },
                   {
-                    "id": "HP:0020058",
+                    "hpoid": "HP:0020058",
                     "name": "Abnormal red blood cell count",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0020060",
+                        "hpoid": "HP:0020060",
                         "name": "Decreased red blood cell count",
                         "value": 1,
                         "children": [],
@@ -6170,12 +6170,12 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0020061",
+                    "hpoid": "HP:0020061",
                     "name": "Abnormal hemoglobin concentration",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0020062",
+                        "hpoid": "HP:0020062",
                         "name": "Decreased hemoglobin concentration",
                         "value": 1,
                         "children": [],
@@ -6193,12 +6193,12 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0025546",
+                    "hpoid": "HP:0025546",
                     "name": "Abnormal mean corpuscular hemoglobin concentration",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0025548",
+                        "hpoid": "HP:0025548",
                         "name": "Increased mean corpuscular hemoglobin concentration",
                         "value": 1,
                         "children": [],
@@ -6215,12 +6215,12 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0031850",
+                    "hpoid": "HP:0031850",
                     "name": "Abnormal hematocrit",
                     "value": 2,
                     "children": [
                       {
-                        "id": "HP:0031851",
+                        "hpoid": "HP:0031851",
                         "name": "Reduced hematocrit",
                         "value": 1,
                         "children": [],
@@ -6238,17 +6238,17 @@
                     "nP": 2
                   },
                   {
-                    "id": "HP:0001903",
+                    "hpoid": "HP:0001903",
                     "name": "Anemia",
                     "value": 7,
                     "children": [
                       {
-                        "id": "HP:0011895",
+                        "hpoid": "HP:0011895",
                         "name": "Anemia due to reduced life span of red cells",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0001878",
+                            "hpoid": "HP:0001878",
                             "name": "Hemolytic anemia",
                             "value": 1,
                             "children": [],
@@ -6265,17 +6265,17 @@
                         "nP": 2
                       },
                       {
-                        "id": "HP:0010972",
+                        "hpoid": "HP:0010972",
                         "name": "Anemia of inadequate production",
                         "value": 4,
                         "children": [
                           {
-                            "id": "HP:0001931",
+                            "hpoid": "HP:0001931",
                             "name": "Hypochromic anemia",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0001891",
+                                "hpoid": "HP:0001891",
                                 "name": "Iron deficiency anemia",
                                 "value": 1,
                                 "children": [],
@@ -6291,7 +6291,7 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0001935",
+                            "hpoid": "HP:0001935",
                             "name": "Microcytic anemia",
                             "value": 1,
                             "children": [],
@@ -6327,22 +6327,22 @@
                 "nP": 4
               },
               {
-                "id": "HP:0001872",
+                "hpoid": "HP:0001872",
                 "name": "Abnormal thrombocyte morphology",
                 "value": 5,
                 "children": [
                   {
-                    "id": "HP:0011873",
+                    "hpoid": "HP:0011873",
                     "name": "Abnormal platelet count",
                     "value": 4,
                     "children": [
                       {
-                        "id": "HP:0001873",
+                        "hpoid": "HP:0001873",
                         "name": "Thrombocytopenia",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0001973",
+                            "hpoid": "HP:0001973",
                             "name": "Autoimmune thrombocytopenia",
                             "value": 1,
                             "children": [],
@@ -6353,7 +6353,7 @@
                             "nP": 2
                           },
                           {
-                            "id": "HP:0004854",
+                            "hpoid": "HP:0004854",
                             "name": "Intermittent thrombocytopenia",
                             "value": 1,
                             "children": [],
@@ -6399,27 +6399,27 @@
                 "nP": 7
               },
               {
-                "id": "HP:0001881",
+                "hpoid": "HP:0001881",
                 "name": "Abnormal leukocyte morphology",
                 "value": 37,
                 "children": [
                   {
-                    "id": "HP:0010974",
+                    "hpoid": "HP:0010974",
                     "name": "Abnormal myeloid leukocyte morphology",
                     "value": 6,
                     "children": [
                       {
-                        "id": "HP:0012144",
+                        "hpoid": "HP:0012144",
                         "name": "Abnormality monocyte morphology",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0012310",
+                            "hpoid": "HP:0012310",
                             "name": "Abnormal monocyte count",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0012312",
+                                "hpoid": "HP:0012312",
                                 "name": "Monocytopenia",
                                 "value": 1,
                                 "children": [],
@@ -6441,12 +6441,12 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0004311",
+                        "hpoid": "HP:0004311",
                         "name": "Abnormal macrophage morphology",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0012156",
+                            "hpoid": "HP:0012156",
                             "name": "Hemophagocytosis",
                             "value": 1,
                             "children": [],
@@ -6472,17 +6472,17 @@
                     "nP": 3
                   },
                   {
-                    "id": "HP:0004332",
+                    "hpoid": "HP:0004332",
                     "name": "Abnormal lymphocyte morphology",
                     "value": 20,
                     "children": [
                       {
-                        "id": "HP:0002846",
+                        "hpoid": "HP:0002846",
                         "name": "Abnormal B cell morphology",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0010975",
+                            "hpoid": "HP:0010975",
                             "name": "Abnormal B cell count",
                             "value": 1,
                             "children": [],
@@ -6500,17 +6500,17 @@
                         "nP": 2
                       },
                       {
-                        "id": "HP:0012176",
+                        "hpoid": "HP:0012176",
                         "name": "Abnormal natural killer cell morphology",
                         "value": 3,
                         "children": [
                           {
-                            "id": "HP:0040089",
+                            "hpoid": "HP:0040089",
                             "name": "Abnormal natural killer cell count",
                             "value": 2,
                             "children": [
                               {
-                                "id": "HP:0040218",
+                                "hpoid": "HP:0040218",
                                 "name": "Reduced natural killer cell count",
                                 "value": 1,
                                 "children": [],
@@ -6532,27 +6532,27 @@
                         "nP": 1
                       },
                       {
-                        "id": "HP:0002843",
+                        "hpoid": "HP:0002843",
                         "name": "Abnormal T cell morphology",
                         "value": 5,
                         "children": [
                           {
-                            "id": "HP:0011839",
+                            "hpoid": "HP:0011839",
                             "name": "Abnormal T cell count",
                             "value": 4,
                             "children": [
                               {
-                                "id": "HP:0025540",
+                                "hpoid": "HP:0025540",
                                 "name": "Abnormal T cell subset distribution",
                                 "value": 3,
                                 "children": [
                                   {
-                                    "id": "HP:0025623",
+                                    "hpoid": "HP:0025623",
                                     "name": "Abnormal proportion of CD4+ effector memory cells",
                                     "value": 2,
                                     "children": [
                                       {
-                                        "id": "HP:0025625",
+                                        "hpoid": "HP:0025625",
                                         "name": "Elevated proportion of CD4+ effector memory T cells",
                                         "value": 1,
                                         "children": [],
@@ -6591,12 +6591,12 @@
                         "nP": 3
                       },
                       {
-                        "id": "HP:0040088",
+                        "hpoid": "HP:0040088",
                         "name": "Abnormal lymphocyte count",
                         "value": 9,
                         "children": [
                           {
-                            "id": "HP:0001888",
+                            "hpoid": "HP:0001888",
                             "name": "Lymphopenia",
                             "value": 1,
                             "children": [],
@@ -6606,17 +6606,17 @@
                             "nP": 1
                           },
                           {
-                            "id": "HP:0011839",
+                            "hpoid": "HP:0011839",
                             "name": "Abnormal T cell count",
                             "value": 7,
                             "children": [
                               {
-                                "id": "HP:0025540",
+                                "hpoid": "HP:0025540",
                                 "name": "Abnormal T cell subset distribution",
                                 "value": 6,
                                 "children": [
                                   {
-                                    "id": "HP:0031392",
+                                    "hpoid": "HP:0031392",
                                     "name": "Abnormal proportion of CD4-positive T cells",
                                     "value": 1,
                                     "children": [],
@@ -6626,22 +6626,22 @@
                                     "nP": 1
                                   },
                                   {
-                                    "id": "HP:0032182",
+                                    "hpoid": "HP:0032182",
                                     "name": "Abnormal proportion of memory T cells",
                                     "value": 4,
                                     "children": [
                                       {
-                                        "id": "HP:0032184",
+                                        "hpoid": "HP:0032184",
                                         "name": "Increased proportion of memory T cells",
                                         "value": 3,
                                         "children": [
                                           {
-                                            "id": "HP:0410392",
+                                            "hpoid": "HP:0410392",
                                             "name": "Increased proportion of CD8-positive, alpha-beta memory T cells",
                                             "value": 2,
                                             "children": [
                                               {
-                                                "id": "HP:0410395",
+                                                "hpoid": "HP:0410395",
                                                 "name": "Increased proportion of effector memory CD8-positive, alpha-beta T cells",
                                                 "value": 1,
                                                 "children": [],
@@ -6706,17 +6706,17 @@
                     "nP": 7
                   },
                   {
-                    "id": "HP:0011893",
+                    "hpoid": "HP:0011893",
                     "name": "Abnormal leukocyte count",
                     "value": 10,
                     "children": [
                       {
-                        "id": "HP:0040088",
+                        "hpoid": "HP:0040088",
                         "name": "Abnormal lymphocyte count",
                         "value": 7,
                         "children": [
                           {
-                            "id": "HP:0010975",
+                            "hpoid": "HP:0010975",
                             "name": "Abnormal B cell count",
                             "value": 1,
                             "children": [],
@@ -6727,27 +6727,27 @@
                             "nP": 2
                           },
                           {
-                            "id": "HP:0011839",
+                            "hpoid": "HP:0011839",
                             "name": "Abnormal T cell count",
                             "value": 5,
                             "children": [
                               {
-                                "id": "HP:0025540",
+                                "hpoid": "HP:0025540",
                                 "name": "Abnormal T cell subset distribution",
                                 "value": 4,
                                 "children": [
                                   {
-                                    "id": "HP:0031396",
+                                    "hpoid": "HP:0031396",
                                     "name": "Abnormal proportion of naive T cells",
                                     "value": 3,
                                     "children": [
                                       {
-                                        "id": "HP:0031397",
+                                        "hpoid": "HP:0031397",
                                         "name": "Decreased proportion of naive T cells",
                                         "value": 2,
                                         "children": [
                                           {
-                                            "id": "HP:0410378",
+                                            "hpoid": "HP:0410378",
                                             "name": "Decreased proportion of naive CD4 T cells",
                                             "value": 1,
                                             "children": [],
@@ -6802,12 +6802,12 @@
                         "nP": 7
                       },
                       {
-                        "id": "HP:0001882",
+                        "hpoid": "HP:0001882",
                         "name": "Leukopenia",
                         "value": 2,
                         "children": [
                           {
-                            "id": "HP:0001888",
+                            "hpoid": "HP:0001888",
                             "name": "Lymphopenia",
                             "value": 1,
                             "children": [],

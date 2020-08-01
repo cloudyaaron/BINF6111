@@ -212,7 +212,7 @@ export class graphComponent implements OnInit {
       tooltip: {
         show: true,
         formatter: para => {
-          return (para["data"]["id"]+"<br>" + para["data"]["name"]+"<br> Patients: "+para["data"]["nP"]);
+          return (para["data"]["hpoid"]+"<br>" + para["data"]["name"]+"<br> Patients: "+para["data"]["nP"]);
         }
       },
       series: {
@@ -238,18 +238,6 @@ export class graphComponent implements OnInit {
     };
   }
   showTreeChart() {
-    //this.tree = this.getTree("HP:0000001");
-    console.log(js);
-
-    var item1 = {
-      color: "#F54F4A"
-    };
-    var item2 = {
-      color: "#FF8C75"
-    };
-    var item3 = {
-      color: "#FFB499"
-    };
 
     var data = js;
 
@@ -257,16 +245,20 @@ export class graphComponent implements OnInit {
       tooltip: {
         show: true,
         formatter: para => {
-          return (para["data"]["id"]+"<br>" + para["data"]["name"]+"<br> Patients: "+para["data"]["nP"]);
+          return (para["data"]["hpoid"]+"<br>" + para["data"]["name"]+"<br> Patients: "+para["data"]["nP"]);
         }
       },
       series: {
-        hightlight:{
-          itemStyle:{
-            item3
-          }
-        },
-        radius: ["5%", "90%"],
+
+                layout: 'radial',
+
+                symbol: 'emptyCircle',
+
+                top: '18%',
+                bottom: '14%',
+                symbolSize: 3,
+
+                initialTreeDepth: 2,
         type: "tree",
         sort: null,
         highlightPolicy: "ancestor",
