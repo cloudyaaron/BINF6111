@@ -221,17 +221,22 @@ export class AppComponent {
       }
     } else {
         //non standard feature search returns patients with feature
-        for (let i = 0; i < this.patientsLenth; i++) {
-            if (this.patients[i]["nonstandard_features"]["label"] == search_term && this.patients[i]["nonstandard_features"]["observed"] == "yes") {
-                this.search_result[index]["answer"].push(this.patients[i]);
-             }
-        }
+      for (let i = 0; i < this.patientsLenth; i++) {
+        var nf = this.patients[i]["nonstandard_features"];
+        for (var non_std_patient of nf) {
+          if (non_std_patient["label"] == search_term && non_std_patient["observed"] == "yes"){
+              //if(this.check_result(this.patients[i])== true){
+            this.search_result[index]["answer"].push(this.patients[i]);
 
+                //}
+            break;
 
+            }
+          }
+      }
+    }  
+}
 
-    }
-    console.log("result", this.result_object);
-  }
 
   getResultNum() {
     var r = 0;
@@ -440,8 +445,8 @@ export class AppComponent {
                       if (add_suggestion == 5) {
                           break;
                       }
-                      if (non_std_regex.test(phenotype["label"])) {
-                          console.log('yeah')
+                      if (non_std_regex.test(phenotype["label"]) && phenotype["observed"] == 'yes') {
+                          //console.log('yeah')
                           add_suggestion += 1;
                           //console.log('worked')
                           suggestion_array.push(phenotype);
