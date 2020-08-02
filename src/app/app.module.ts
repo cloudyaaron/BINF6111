@@ -36,6 +36,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSelectModule } from "@angular/material/select";
 import { MatListModule } from "@angular/material/list";
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatListModule,
     MatCheckboxModule,
     AppRoutingModule,
-    ModalModule
+    ModalModule,
+    MatAutocompleteModule
     
   ],
   declarations: [
