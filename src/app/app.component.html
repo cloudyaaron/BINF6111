@@ -25,9 +25,6 @@
 		<li class="nav-item ">
 			<a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
 		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="#">Features</a>
-		</li>
     <li class="nav-item">
 			<a class="nav-link" onmouseover="" style="cursor: pointer;" (click)="openModal('about-modal')">About</a>
 		</li>
@@ -52,8 +49,10 @@
 		<span *ngIf="show">
     <mat-checkbox labelPosition="before" [checked]="this.checkedGene" (change)="toggleGene()">Genes
     </mat-checkbox>
+    &nbsp;&nbsp;
     <mat-checkbox labelPosition="before" [checked]="this.checkedTerm" (change)="toggleTerm()">Terms
     </mat-checkbox>
+    &nbsp;&nbsp;
     <mat-checkbox labelPosition="before" [checked]="this.checkedDisease" (change)="toggleDisease()">Diseases
     </mat-checkbox>
   </span>
