@@ -1,3 +1,4 @@
+
 import { Component, Input, ViewChild, OnInit, OnDestroy, TemplateRef } from "@angular/core";
 //import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
@@ -8,6 +9,7 @@ import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from './data.service';
 import { Subscription } from "rxjs";
@@ -21,6 +23,7 @@ import { ModalService } from './modal';
 })
 export class AppComponent {
   name = "Angular ";
+
   //patients = data;
   patients: Array<any> = [];
   patientsLenth = 0;
@@ -29,6 +32,7 @@ export class AppComponent {
   suggest_text = "";
   search_result = [];
   //patientsLenth = Object.keys(this.patients).length;
+
   suggested_queries = [];
   showConfig = true;
   typeR = "R";
@@ -52,6 +56,7 @@ export class AppComponent {
   checkedGene = true;
   checkedTerm = true;
   checkedDisease = true;
+
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private dataService: DataService, private modalService: ModalService) {  }
 
@@ -105,6 +110,7 @@ export class AppComponent {
 
     console.log("search_list", this.search_list);
     console.log("resultlust", this.search_result);
+
     if (this.search_list.length != 0) {
       for (var search_term of this.search_list) {
         this.search_result.push({ query: search_term["detail"], answer: [] });
@@ -417,7 +423,7 @@ export class AppComponent {
         //let detail = {}
 
         this.suggested_queries = [];
-        console.log(data)
+
         temp_diseases = data["diseases"];
         temp_genes = data["genes"];
         //this.result_object = new HPOTerm()
@@ -473,10 +479,13 @@ export class AppComponent {
     this.checkedTerm = !this.checkedTerm;
   }
   public clickSuggestButton(event: any) {
-    console.log(event);
+
+    console.log("event", event);
+    let id = event["id"].toString();
     //var st['detail'] = this.suggested_queries[0]
     //event["detail"] = event
-    this.AddtoSearch(event["id"]);
+    this.AddtoSearch(id);
+
 
     this.refreshPage();
   }

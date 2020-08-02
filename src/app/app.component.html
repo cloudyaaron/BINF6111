@@ -49,16 +49,14 @@
 		<button class="btn btn-primary" (click)="toggleOption()">
   Options
   </button>
-		<!-- <ng-container *ngIf="show">
-    <div>
+		<span *ngIf="show">
     <mat-checkbox labelPosition="before" [checked]="this.checkedGene" (change)="toggleGene()">Genes
     </mat-checkbox>
     <mat-checkbox labelPosition="before" [checked]="this.checkedTerm" (change)="toggleTerm()">Terms
     </mat-checkbox>
     <mat-checkbox labelPosition="before" [checked]="this.checkedDisease" (change)="toggleDisease()">Diseases
     </mat-checkbox>
-    </div>
-  </ng-container> -->
+  </span>
 
 </nav>
 
