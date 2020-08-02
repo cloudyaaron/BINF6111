@@ -37,6 +37,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatListModule } from "@angular/material/list";
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import{ MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   imports: [
@@ -56,7 +57,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatCheckboxModule,
     AppRoutingModule,
     ModalModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatDialogModule
     
   ],
   declarations: [
