@@ -6,7 +6,7 @@ import { InputComponent } from './input.component';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main.component';
 import { DataService } from './data.service';
-import {DialogOverviewExampleDialog} from'./PatientsList'
+import {DialogOverviewExampleDialog} from'./PatientsList/patients.component'
 
 import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from "./hello.component";
