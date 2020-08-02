@@ -10,10 +10,7 @@ import {
 } from "@angular/material/dialog";
 
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
+
 @Component({
   selector: "patient-list",
   templateUrl: "./patients.component.html",
@@ -28,10 +25,10 @@ export class PatientsList {
 
   constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
+  openDialog(p:any): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
+      width: '800px',
+      data: p
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -50,7 +47,7 @@ export class DialogOverviewExampleDialog {
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   onNoClick(): void {
     this.dialogRef.close();

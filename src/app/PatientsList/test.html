@@ -1,8 +1,12 @@
-<h1 mat-dialog-title>Hi {{data.name}}</h1>
-<div mat-dialog-content>
-yo
-</div>
+<h1 mat-dialog-title>Patient: {{data['report_id']}}</h1>
+
+<mat-dialog-content>
+
+<ul *ngFor="let f of data['features']">
+
+	<li>{{f['id']}} {{f['label']}} {{f['type']}}{{f['observed']}}</li>
+</ul>
+</mat-dialog-content>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+	<button mat-button (click)="onNoClick()">Close</button>
 </div>
