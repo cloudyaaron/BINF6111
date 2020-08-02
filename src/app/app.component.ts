@@ -4,6 +4,7 @@ import { Component, Input, ViewChild, OnInit, OnDestroy, TemplateRef } from "@an
 import { ApiService } from "./HPOapi/api.service";
 import { ApiComponent } from "./HPOapi/api.component";
 import { HashTable } from "./classes/hashtable";
+import { ModalService } from './modal';
 import { MatChipsModule, MatChipInputEvent } from "@angular/material/chips";
 import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import { MatTabsModule } from "@angular/material/tabs";
@@ -13,7 +14,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from './data.service';
 import { Subscription } from "rxjs";
-import { ModalService } from './modal';
+
 //https://bootswatch.com/litera/?
 
 @Component({

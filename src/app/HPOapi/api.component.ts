@@ -3,11 +3,9 @@ import { ApiService } from "./api.service";
 import { MessageService } from "../message.service";
 import { HPOTerm, Details, Relations, RelationTerm } from "../classes/HPOTerm";
 import { MatListModule } from "@angular/material/list";
-import { ModalService } from '../modal/modal.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { DataService } from '../data.service';
 
-import { Subscription } from "rxjs";
+import { ModalService } from '../modal';
+
 import {MatPaginatorModule} from '@angular/material/paginator';
 
 
@@ -24,12 +22,13 @@ export class ApiComponent {
   error: any;
 
   //result of hpo term details
-  resultObject: any;
   althpoid: string[];
   name: string;
   definition: string;
   firstLevelChildren: [];
   result_list: any[];
+  resultObject: any;
+
 
   //result of hpo term associations
   assogenes: []
@@ -49,7 +48,6 @@ export class ApiComponent {
   //toggles
   haveChildren = true;
   showChildren = true;
-
   toggle = true;
   toggleTerm = true;
   noResult = false;
@@ -62,7 +60,7 @@ export class ApiComponent {
 
   modalId: 0; 
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute, private dataService: DataService, private modalService: ModalService) {}
+  constructor(private apiService: ApiService, private modalService: ModalService) {}
 
   //modal
   openModal(id: string) {
