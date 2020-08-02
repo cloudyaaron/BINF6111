@@ -6,6 +6,7 @@ import { InputComponent } from './input.component';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main.component';
 import { DataService } from './data.service';
+import {DialogOverviewExampleDialog} from'./PatientsList'
 
 import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from "./hello.component";
@@ -39,6 +40,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import{ MatDialogModule} from "@angular/material/dialog";
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import{ MatDialogModule} from "@angular/material/dialog";
     PatientsList,
     graphComponent,
     InputComponent,
-    MainComponent
+    MainComponent,
+    DialogOverviewExampleDialog 
   ],
   bootstrap: [MainComponent],
   providers: [MessageService, ApiService, SearchService, DataService]
