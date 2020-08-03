@@ -65,7 +65,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     graphComponent,
     InputComponent,
     MainComponent,
-    Modal
+    Modal    
   ],
   bootstrap: [MainComponent],
   providers: [MessageService, ApiService, SearchService, DataService]
