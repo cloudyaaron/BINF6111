@@ -141,7 +141,6 @@ export class ApiComponent {
     for (var t of this.resultObject["catTermsMap"]) {      
       if (t['catLabel'] == term) {
         this.assoMapTerms = t['terms']
-        
       }
     }
   }
@@ -149,6 +148,7 @@ export class ApiComponent {
   finddbDisease(term:string) {
     for (var t of this.resultObject["genes"]) {    
       if (t['entrezGeneId'] == term) {
+        console.log(t)
         this.dbDisease = t
       }
     }
@@ -235,20 +235,8 @@ export class ApiComponent {
   toggleShowChildren() {
     this.showAssoChildren = !this.showAssoChildren;
   }
-  /*
-  checkIfResult() { 
-    console.log(this.apiService.noResult)
-    return this.apiService.noResult; 
-  };
-  */
-}
 
-//just comment for change
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
+}
 
 @Component({
   selector: 'dialog-overview-example-dialog',
