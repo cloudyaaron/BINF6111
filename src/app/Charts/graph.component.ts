@@ -145,7 +145,7 @@ export class graphComponent implements OnInit {
       }
     }
     this.options = {
-      backgroundColor: "#2c343c",
+      backgroundColor: "#FFFFFF",
       title: {
         text: "Patients Gender Distribution",
         left: "center",
@@ -183,11 +183,11 @@ export class graphComponent implements OnInit {
           }),
           roseType: "radius",
           label: {
-            color: "rgba(255, 255, 255, 0.3)"
+            color: "rgba(0, 0, 0, 1)"
           },
           labelLine: {
             lineStyle: {
-              color: "rgba(255, 255, 255, 0.3)"
+              color: "rgba(0, 0, 0, 0.5)"
             },
             smooth: 0.2,
             length: 10,
