@@ -9,6 +9,10 @@
     <option value="tree" > Tree(hierarchical) </option>		
 	
 	</select>
-
+<select *ngIf="this.selectType=='tree'" class="custom-select" (change)="changetree($event)">	  
+		<option value="normal" > Normal tree </option>
+    <option value="circle" > Circle tree </option>		
+	
+	</select>
 <div echarts [options]="options" class="bar-chart" [autoResize]	(chartClick)="onChartClick($event)">
 </div>

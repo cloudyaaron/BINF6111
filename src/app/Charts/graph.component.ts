@@ -55,7 +55,7 @@ export class graphComponent implements OnInit {
       } else if (this.selectType == "Sunburst") {
         this.showSunburst();
       } else {
-        this.showTreeChart();
+        this.showTreeChart('orthogonal');
       }
     }
 
@@ -98,15 +98,27 @@ export class graphComponent implements OnInit {
     this.u = 0;
     this.selectType = event.target.value;
     if (this.selectType == "Bar") {
+      
       this.showBarChart();
     } else if (this.selectType == "Pie") {
       this.showPieChart();
     } else if (this.selectType == "Sunburst") {
       this.showSunburst();
     } else {
-      this.showTreeChart();
+      this.showTreeChart('orthogonal');
     }
   }
+  changetree(event) {
+    this.selectType = event.target.value;
+    if (this.selectType == "normal") {
+      this.showTreeChart('orthogonal');
+
+    } else if (this.selectType == "circle") {
+      this.showTreeChart("radial");
+
+    }
+  }
+
   onChartClick(event) {
     this.result.emit(event);
   }
@@ -248,7 +260,7 @@ export class graphComponent implements OnInit {
       }
     };
   }
-  showTreeChart() {
+  showTreeChart(t:string) {
     var data = js;
 
     this.options = {
@@ -265,14 +277,14 @@ export class graphComponent implements OnInit {
         }
       },
       series: {
-        layout: "radial",
+        layout: t,
 
         symbol: "emptyCircle",
-
+        left: "10%",
+        right: "25%",
         top: "18%",
-        bottom: "14%",
-        symbolSize: 3,
-
+        bottom: "18%",
+        symbolSize: 1,
         initialTreeDepth: 2,
         type: "tree",
         sort: null,
