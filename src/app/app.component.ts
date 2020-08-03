@@ -14,7 +14,6 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from './data.service';
 import { Subscription } from "rxjs";
-import {CommonModule} from '@angular/common';
 
 
 //https://bootswatch.com/litera/?

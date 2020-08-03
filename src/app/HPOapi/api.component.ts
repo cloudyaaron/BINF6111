@@ -7,7 +7,7 @@ import { MatListModule } from "@angular/material/list";
 import { ModalService } from '../modal';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatDialogModule} from '@angular/material/dialog';
 
-import {MatPaginatorModule} from '@angular/material/paginator';
+import {CommonModule} from '@angular/common';
 
 
 @Component({
