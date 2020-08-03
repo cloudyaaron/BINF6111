@@ -17,7 +17,6 @@
     "ngx-echarts": "5.0.0",
     "rxjs": "^6.5.5",
     "tslib": "^2.0.0",
-    "xlsx": "0.14.2",
     "zone.js": "^0.10.3"
   },
   "scripts": {
