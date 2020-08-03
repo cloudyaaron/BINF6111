@@ -1,8 +1,7 @@
-<h1 mat-dialog-title>Disease </h1>
+<h1 mat-dialog-title>Associated Disease for {{data['entrezGeneSym']}}</h1>
 <div mat-dialog-content>
-  {{data}}
   <ul class="list-group">
-				<ng-container *ngFor="let t of data">
+				<ng-container *ngFor="let t of data['dbDiseases']">
             <li class="list-group-item d-flex justify-content-between align-items-center">
 						{{t['diseaseId']}}, {{t['diseaseName']}} 
             </li>

@@ -148,6 +148,7 @@ export class ApiComponent {
   finddbDisease(term:string) {
     for (var t of this.resultObject["genes"]) {    
       if (t['entrezGeneId'] == term) {
+        console.log(t)
         this.dbDisease = t
       }
     }
