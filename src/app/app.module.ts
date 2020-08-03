@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main.component';
 import { AboutComponent } from './About/about.component';
 import { DataService } from './data.service';
+import {DialogOverviewExampleDialog} from'./PatientsList/patients.component'
 
 import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from "./hello.component";
@@ -37,6 +38,9 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSelectModule } from "@angular/material/select";
 import { MatListModule } from "@angular/material/list";
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import{ MatDialogModule} from "@angular/material/dialog";
+
 
 @NgModule({
   imports: [
@@ -55,7 +59,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatListModule,
     MatCheckboxModule,
     AppRoutingModule,
-    ModalModule
+    ModalModule,
+    MatAutocompleteModule,
+    MatDialogModule
     
   ],
   declarations: [
@@ -66,7 +72,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     graphComponent,
     InputComponent,
     MainComponent,
-    AboutComponent
+    AboutComponent,
+    DialogOverviewExampleDialog 
   ],
   bootstrap: [MainComponent],
   providers: [MessageService, ApiService, SearchService, DataService]

@@ -161,7 +161,7 @@ export class ApiComponent {
     this.showAssoTerms = !this.showAssoTerms;
   }
   toggleShowChildren() {
-    this.showAssoChildren != this.showAssoChildren;
+    this.showAssoChildren = !this.showAssoChildren;
   }
   /*
   checkIfResult() { 
