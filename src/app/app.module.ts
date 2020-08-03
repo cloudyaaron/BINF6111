@@ -10,7 +10,6 @@ import { DataService } from './data.service';
 
 import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from "./hello.component";
-import { NgBusyModule } from "ng-busy";
 import { ModalModule } from './modal';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTree, MatTreeModule } from "@angular/material/tree";
@@ -31,16 +30,18 @@ import { MessageService } from "./message.service";
 import { HPOTerm, Details, Relations, RelationTerm } from "./classes/HPOTerm";
 
 import { NgxEchartsModule } from "ngx-echarts";
+
 import * as echarts from "echarts";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSelectModule } from "@angular/material/select";
 import { MatListModule } from "@angular/material/list";
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    NgBusyModule,
     MatProgressSpinnerModule,
     MatTreeModule,
     MatChipsModule,
@@ -52,8 +53,10 @@ import { MatListModule } from "@angular/material/list";
     MatSidenavModule,
     MatSelectModule,
     MatListModule,
+    MatCheckboxModule
     AppRoutingModule,
     ModalModule
+    
   ],
   declarations: [
     AppComponent,
