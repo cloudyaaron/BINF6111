@@ -364,7 +364,7 @@ export class AppComponent {
           if (patient_regex.test(this.patients[i]["report_id"])) {
             add_suggestion += 1;
             //console.log('worked')
-            suggestion_array.push(this.patients[i]["report_id"]);
+            suggestion_array.push({id:this.patients[i]["report_id"]});
           }
         }
         console.log(suggestion_array);
@@ -472,6 +472,10 @@ getChartResult(event){
   console.log(event)
   if (event['seriesType']=='bar'){
     this.AddtoSearch(event['name'])
+    this.refreshPage()
+  }else if(event['seriesType']=='sunburst'){
+    this.AddtoSearch(event['data']['hpoid'])
+    this.refreshPage()
   }
 }
   toggleOption() {

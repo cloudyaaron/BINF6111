@@ -1,4 +1,4 @@
-import { Component, Input, OnInit,Output, EventEmitter } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import data from "../phenotips_2020-06-09_18-16_with_external_id.json";
 import { query } from "@angular/animations";
 import { MatSelectModule } from "@angular/material/select";
@@ -35,26 +35,28 @@ export class graphComponent implements OnInit {
 
   ngOnChanges() {
     console.log("changes==");
-    this.freq = [];
-    this.terms = [];
-    this.phenoPool = [];
-    this.m = 0;
-    this.f = 0;
-    this.u = 0;
-    if (this.patients.length == 0 || this.patients == undefined) {
-      //this.patients = data;
-      this.getPhenotypePool(this.temp);
-    } else {
-      this.getPhenotypePool(this.patients);
-    }
-    if (this.selectType == "Bar") {
-      this.showBarChart();
-    } else if (this.selectType == "Pie") {
-      this.showPieChart();
-    } else if (this.selectType == "Sunburst") {
-      this.showSunburst();
-    } else {
-      this.showTreeChart();
+    if (this.selectType != "Sunburst") {
+      this.freq = [];
+      this.terms = [];
+      this.phenoPool = [];
+      this.m = 0;
+      this.f = 0;
+      this.u = 0;
+      if (this.patients.length == 0 || this.patients == undefined) {
+        //this.patients = data;
+        this.getPhenotypePool(this.temp);
+      } else {
+        this.getPhenotypePool(this.patients);
+      }
+      if (this.selectType == "Bar") {
+        this.showBarChart();
+      } else if (this.selectType == "Pie") {
+        this.showPieChart();
+      } else if (this.selectType == "Sunburst") {
+        this.showSunburst();
+      } else {
+        this.showTreeChart();
+      }
     }
 
     //console.log(this.patients)
@@ -106,7 +108,7 @@ export class graphComponent implements OnInit {
     }
   }
   onChartClick(event) {
-    this.result.emit(event)
+    this.result.emit(event);
   }
   showPieChart() {
     let plist = this.temp;
