@@ -53,7 +53,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSidenavModule,
     MatSelectModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
     AppRoutingModule,
     ModalModule
     

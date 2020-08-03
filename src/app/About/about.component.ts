@@ -30,4 +30,8 @@ export class AboutComponent {
     //iframe.postMessage('{"event":"command","func":"' + 'stopVideo' +   '","args":""}', '*');
   }
 
+  scrollToInput() {
+    window.scrollTo(0, 500);
+  }
+
 }
