@@ -65,15 +65,12 @@ export class AppComponent {
 
   ngOnInit() {
     this.subscription = this.dataService.changeData.subscribe(value => {
-      console.log(value);
       this.patients = value;
       this.patientsLenth = this.patients.length;
-      console.log(this.patientsLenth);
     })
   }
 
   ngOnDestroy() {
-    console.log("ngOnDestroy, unsubscribing");
     this.subscription.unsubscribe();
   }
 

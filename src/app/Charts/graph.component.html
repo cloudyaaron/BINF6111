@@ -1,16 +1,12 @@
-<h3>Chart
-	<small class="text-muted" >In testing</small>
 
-</h3>
 <select class="custom-select" (change)="changeChartType($event)" >	  
-		<option value="Bar" > Bar Chart(single term) </option>	     Chart type
+		<option value="Bar" > Bar Chart (single term) </option>	
 		<option value="Pie"> Pie Chart (passive) </option>	   
-		<option value="Sunburst" > Sunburst(hierarchical) </option>	
-    <option value="tree" > Tree(hierarchical) </option>		
-	
-	</select>
+		<option value="Sunburst" > Sunburst (hierarchical) </option>	
+    <option value="tree" > Tree (hierarchical) </option>		
+</select>
 <select *ngIf="this.selectType=='tree'" class="custom-select" (change)="changetree($event)">	  
-		<option value="normal" > Normal tree </option>
+		<option value="normal" > Linear tree </option>
     <option value="circle" > Circle tree </option>		
 	
 	</select>
