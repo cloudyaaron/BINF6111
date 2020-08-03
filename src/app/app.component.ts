@@ -9,6 +9,8 @@ import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from './data.service';
@@ -39,6 +41,7 @@ export class AppComponent {
   intersection_check = false;
 
   //multiple seaching function + ui
+
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
@@ -86,7 +89,7 @@ export class AppComponent {
     this.search_result = [];
     const input = event.input;
     const value = event.value;
-
+    console.log(value)
     // Add label
     if ((value || "").trim()) {
       this.AddtoSearch(value);
@@ -361,7 +364,7 @@ export class AppComponent {
           if (patient_regex.test(this.patients[i]["report_id"])) {
             add_suggestion += 1;
             //console.log('worked')
-            suggestion_array.push(this.patients[i]["report_id"]);
+            suggestion_array.push({id:this.patients[i]["report_id"]});
           }
         }
         console.log(suggestion_array);
@@ -465,6 +468,16 @@ export class AppComponent {
     this.refreshPage();
   }
 
+getChartResult(event){
+  console.log(event)
+  if (event['seriesType']=='bar'){
+    this.AddtoSearch(event['name'])
+    this.refreshPage()
+  }else if(event['seriesType']=='sunburst'){
+    this.AddtoSearch(event['data']['hpoid'])
+    this.refreshPage()
+  }
+}
   toggleOption() {
     this.show = !this.show;
   }

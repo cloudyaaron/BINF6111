@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>
+	<strong>Patient:</strong>
+	{{data['report_id']}}&nbsp;&nbsp;
+	<strong> Sex:</strong>
+	{{data['sex']}}&nbsp;&nbsp;
+	<strong> ClinicalStatus: </strong>
+	{{data['clinicalStatus']}}
+</h1>
+
+<mat-dialog-content>
+	<h3>External_id: </h3>
+	{{data['external_id']}}
+
+	<h3>Standard Features</h3>
+	<ul *ngFor="let f of data['features']">
+
+		<li>{{f['id']}} {{f['label']}}     &nbsp;&nbsp;
+type: {{f['type']}}     &nbsp;&nbsp;
+observed:{{f['observed']}}</li>
+	</ul>
+	<h3>Non-Standard Features</h3>
+	<ul *ngFor="let f of data['nonstandard_features']">
+
+		<li>{{f['id']}} {{f['label']}} &nbsp;&nbsp;
+type:{{f['type']}}&nbsp;&nbsp;
+observed:{{f['observed']}}</li>
+	</ul>
+
+</mat-dialog-content>
+<div mat-dialog-actions>
+	<button mat-button (click)="onNoClick()">Close</button>
+</div>
