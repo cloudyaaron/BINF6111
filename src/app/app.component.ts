@@ -1,5 +1,6 @@
-import { Component, Input, ViewChild } from "@angular/core";
-import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
+
+import { Component, Input, ViewChild, OnInit, OnDestroy, TemplateRef } from "@angular/core";
+//import data from "./phenotips_2020-06-09_18-16_with_external_id.json";
 import { ApiService } from "./HPOapi/api.service";
 import { ApiComponent } from "./HPOapi/api.component";
 import { HashTable } from "./classes/hashtable";
@@ -8,28 +9,39 @@ import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
+
+import { ActivatedRoute, Params } from '@angular/router';
+import { DataService } from './data.service';
+import { Subscription } from "rxjs";
+import { ModalService } from './modal';
 //https://bootswatch.com/litera/?
 
 @Component({
-  selector: "my-app",
+  selector: "app",
   templateUrl: "./app.component.html",
   styleUrls: ["./lumen.css"]
 })
 export class AppComponent {
   name = "Angular ";
-  hpoTerms: HashTable<string, any>;
-  hpoList = data[0];
-  patients = data;
+
+  //patients = data;
+  patients: Array<any> = [];
+  patientsLenth = 0;
+  subscription: Subscription;
   values = "";
   suggest_text = "";
   search_result = [];
-  patientsLenth = Object.keys(this.patients).length;
+  //patientsLenth = Object.keys(this.patients).length;
+
   suggested_queries = [];
   showConfig = true;
   typeR = "R";
   intersection_check = false;
 
   //multiple seaching function + ui
+
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
@@ -48,13 +60,36 @@ export class AppComponent {
   checkedTerm = true;
   checkedDisease = true;
 
-  constructor(private apiService: ApiService) {}
+
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private dataService: DataService, private modalService: ModalService) {  }
+
+  ngOnInit() {
+    this.subscription = this.dataService.changeData.subscribe(value => {
+      console.log(value);
+      this.patients = value;
+      this.patientsLenth = this.patients.length;
+      console.log(this.patientsLenth);
+    })
+  }
+
+  ngOnDestroy() {
+    console.log("ngOnDestroy, unsubscribing");
+    this.subscription.unsubscribe();
+  }
+
+  openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string) {
+    this.modalService.close(id);
+  }
 
   add(event: MatChipInputEvent): void {
     this.search_result = [];
     const input = event.input;
     const value = event.value;
-
+    console.log(value)
     // Add label
     if ((value || "").trim()) {
       this.AddtoSearch(value);
@@ -78,7 +113,7 @@ export class AppComponent {
 
     console.log("search_list", this.search_list);
     console.log("resultlust", this.search_result);
-    
+
     if (this.search_list.length != 0) {
       for (var search_term of this.search_list) {
         this.search_result.push({ query: search_term["detail"], answer: [] });
@@ -344,7 +379,7 @@ export class AppComponent {
           if (patient_regex.test(this.patients[i]["report_id"])) {
             add_suggestion += 1;
             //console.log('worked')
-            suggestion_array.push(this.patients[i]["report_id"]);
+            suggestion_array.push({id:this.patients[i]["report_id"]});
           }
         }
         console.log(suggestion_array);
@@ -489,6 +524,16 @@ export class AppComponent {
     this.refreshPage();
   }
 
+getChartResult(event){
+  console.log(event)
+  if (event['seriesType']=='bar'){
+    this.AddtoSearch(event['name'])
+    this.refreshPage()
+  }else if(event['seriesType']=='sunburst'){
+    this.AddtoSearch(event['data']['hpoid'])
+    this.refreshPage()
+  }
+}
   toggleOption() {
     this.show = !this.show;
   }
@@ -503,11 +548,13 @@ export class AppComponent {
     this.checkedTerm = !this.checkedTerm;
   }
   public clickSuggestButton(event: any) {
+
     console.log("event", event);
     let id = event["id"].toString();
     //var st['detail'] = this.suggested_queries[0]
     //event["detail"] = event
     this.AddtoSearch(id);
+
 
     this.refreshPage();
   }

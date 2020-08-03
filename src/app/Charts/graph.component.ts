@@ -1,7 +1,11 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 import data from "../phenotips_2020-06-09_18-16_with_external_id.json";
 import { query } from "@angular/animations";
 import { MatSelectModule } from "@angular/material/select";
+import { ApiService } from "../HPOapi/api.service";
+import { delay } from "rxjs/operators";
+import js from "./treeWithP.json";
+import { graphic } from "echarts";
 
 @Component({
   selector: "graph-echart",
@@ -11,7 +15,7 @@ import { MatSelectModule } from "@angular/material/select";
 export class graphComponent implements OnInit {
   @Input() patients: Array<any>;
   options: any;
-
+  @Output() result = new EventEmitter<any>();
   phenoPool = [];
   freq = [];
   terms = [];
@@ -20,6 +24,9 @@ export class graphComponent implements OnInit {
   m = 0;
   f = 0;
   u = 0;
+  tree = [];
+  constructor(private apiService: ApiService) {}
+
   ngOnInit() {
     this.temp.push({ query: "all", answer: data });
     this.getPhenotypePool(this.temp);
@@ -28,24 +35,28 @@ export class graphComponent implements OnInit {
 
   ngOnChanges() {
     console.log("changes==");
-    this.freq = [];
-    this.terms = [];
-    this.phenoPool = [];
-    this.m = 0;
-    this.f = 0;
-    this.u = 0;
-    if (this.patients.length == 0 || this.patients == undefined) {
-      //this.patients = data;
-      this.getPhenotypePool(this.temp);
-    } else {
-      this.getPhenotypePool(this.patients);
-    }
-    if (this.selectType == "Bar") {
-      this.showBarChart();
-    } else if (this.selectType == "Pie") {
-      this.showPieChart();
-    } else if (this.selectType == "Sunburst") {
-      this.showSunburst();
+    if (this.selectType != "Sunburst") {
+      this.freq = [];
+      this.terms = [];
+      this.phenoPool = [];
+      this.m = 0;
+      this.f = 0;
+      this.u = 0;
+      if (this.patients.length == 0 || this.patients == undefined) {
+        //this.patients = data;
+        this.getPhenotypePool(this.temp);
+      } else {
+        this.getPhenotypePool(this.patients);
+      }
+      if (this.selectType == "Bar") {
+        this.showBarChart();
+      } else if (this.selectType == "Pie") {
+        this.showPieChart();
+      } else if (this.selectType == "Sunburst") {
+        this.showSunburst();
+      } else {
+        this.showTreeChart('orthogonal');
+      }
     }
 
     //console.log(this.patients)
@@ -87,14 +98,30 @@ export class graphComponent implements OnInit {
     this.u = 0;
     this.selectType = event.target.value;
     if (this.selectType == "Bar") {
+      
       this.showBarChart();
     } else if (this.selectType == "Pie") {
       this.showPieChart();
     } else if (this.selectType == "Sunburst") {
       this.showSunburst();
+    } else {
+      this.showTreeChart('orthogonal');
+    }
+  }
+  changetree(event) {
+    this.selectType = event.target.value;
+    if (this.selectType == "normal") {
+      this.showTreeChart('orthogonal');
+
+    } else if (this.selectType == "circle") {
+      this.showTreeChart("radial");
+
     }
   }
 
+  onChartClick(event) {
+    this.result.emit(event);
+  }
   showPieChart() {
     let plist = this.temp;
     if (this.patients.length == 0 || this.patients == undefined) {
@@ -118,7 +145,7 @@ export class graphComponent implements OnInit {
       }
     }
     this.options = {
-      backgroundColor: "#2c343c",
+      backgroundColor: "#FFFFFF",
       title: {
         text: "Patients Gender Distribution",
         left: "center",
@@ -156,11 +183,11 @@ export class graphComponent implements OnInit {
           }),
           roseType: "radius",
           label: {
-            color: "rgba(255, 255, 255, 0.3)"
+            color: "rgba(0, 0, 0, 1)"
           },
           labelLine: {
             lineStyle: {
-              color: "rgba(255, 255, 255, 0.3)"
+              color: "rgba(0, 0, 0, 0.5)"
             },
             smooth: 0.2,
             length: 10,
@@ -183,6 +210,9 @@ export class graphComponent implements OnInit {
   }
 
   showSunburst() {
+    //this.tree = this.getTree("HP:0000001");
+    console.log(js);
+
     var item1 = {
       color: "#F54F4A"
     };
@@ -193,225 +223,77 @@ export class graphComponent implements OnInit {
       color: "#FFB499"
     };
 
-    var data = [
-      {
-        children: [
-          {
-            value: 5,
-            children: [
-              {
-                value: 1,
-                itemStyle: item1
-              },
-              {
-                value: 2,
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  }
-                ]
-              },
-              {
-                children: [
-                  {
-                    value: 1
-                  }
-                ]
-              }
-            ],
-            itemStyle: item1
-          },
-          {
-            value: 10,
-            children: [
-              {
-                value: 6,
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item1
-                  },
-                  {
-                    value: 1
-                  },
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  },
-                  {
-                    value: 1
-                  }
-                ],
-                itemStyle: item3
-              },
-              {
-                value: 2,
-                children: [
-                  {
-                    value: 1
-                  }
-                ],
-                itemStyle: item3
-              },
-              {
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  }
-                ]
-              }
-            ],
-            itemStyle: item1
-          }
-        ],
-        itemStyle: item1
-      },
-      {
-        value: 9,
-        children: [
-          {
-            value: 4,
-            children: [
-              {
-                value: 2,
-                itemStyle: item2
-              },
-              {
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item1
-                  }
-                ]
-              }
-            ],
-            itemStyle: item1
-          },
-          {
-            children: [
-              {
-                value: 3,
-                children: [
-                  {
-                    value: 1
-                  },
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  }
-                ]
-              }
-            ],
-            itemStyle: item3
-          }
-        ],
-        itemStyle: item2
-      },
-      {
-        value: 7,
-        children: [
-          {
-            children: [
-              {
-                value: 1,
-                itemStyle: item3
-              },
-              {
-                value: 3,
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  },
-                  {
-                    value: 1
-                  }
-                ],
-                itemStyle: item2
-              },
-              {
-                value: 2,
-                children: [
-                  {
-                    value: 1
-                  },
-                  {
-                    value: 1,
-                    itemStyle: item1
-                  }
-                ],
-                itemStyle: item1
-              }
-            ],
-            itemStyle: item3
-          }
-        ],
-        itemStyle: item1
-      },
-      {
-        children: [
-          {
-            value: 6,
-            children: [
-              {
-                value: 1,
-                itemStyle: item2
-              },
-              {
-                value: 2,
-                children: [
-                  {
-                    value: 2,
-                    itemStyle: item2
-                  }
-                ],
-                itemStyle: item1
-              },
-              {
-                value: 1,
-                itemStyle: item3
-              }
-            ],
-            itemStyle: item3
-          },
-          {
-            value: 3,
-            children: [
-              {
-                value: 1
-              },
-              {
-                children: [
-                  {
-                    value: 1,
-                    itemStyle: item2
-                  }
-                ]
-              },
-              {
-                value: 1
-              }
-            ],
-            itemStyle: item3
-          }
-        ],
-        itemStyle: item1
-      }
-    ];
+    var data = js;
 
     this.options = {
+      tooltip: {
+        show: true,
+        formatter: para => {
+          return (
+            para["data"]["hpoid"] +
+            "<br>" +
+            para["data"]["name"] +
+            "<br> Patients: " +
+            para["data"]["nP"]
+          );
+        }
+      },
       series: {
-        radius: ["15%", "80%"],
+        hightlight: {
+          itemStyle: {
+            item3
+          }
+        },
+        radius: ["5%", "90%"],
         type: "sunburst",
         sort: null,
         highlightPolicy: "ancestor",
         data: data,
         label: {
-          rotate: "radial"
+          show: false
         },
-        levels: [],
+        nodeClick: "rootToNode",
+        itemStyle: {
+          color: "#ddd",
+          borderWidth: 2
+        }
+      }
+    };
+  }
+  showTreeChart(t:string) {
+    var data = js;
+
+    this.options = {
+      tooltip: {
+        show: true,
+        formatter: para => {
+          return (
+            para["data"]["hpoid"] +
+            "<br>" +
+            para["data"]["name"] +
+            "<br> Patients: " +
+            para["data"]["nP"]
+          );
+        }
+      },
+      series: {
+        layout: t,
+
+        symbol: "emptyCircle",
+        left: "10%",
+        right: "25%",
+        top: "18%",
+        bottom: "18%",
+        symbolSize: 1,
+        initialTreeDepth: 2,
+        type: "tree",
+        sort: null,
+        highlightPolicy: "ancestor",
+        data: data,
+        label: {
+          show: false
+        },
+        nodeClick: "rootToNode",
         itemStyle: {
           color: "#ddd",
           borderWidth: 2
@@ -420,7 +302,6 @@ export class graphComponent implements OnInit {
     };
   }
   showBarChart() {
-
     this.options = {
       title: {
         text: "Frequency of HPO Terms for Filtered Patients",
@@ -431,9 +312,14 @@ export class graphComponent implements OnInit {
         axisPointer: {
           type: "shadow"
         },
-        formatter: (params)=>{
-          console.log(params)
-          return params[0].axisValue+":<br>"+params[0].data['termname'] +"<br> hits:"+params[0].data['value']
+        formatter: params => {
+          return (
+            params[0].axisValue +
+            ":<br>" +
+            params[0].data["termname"] +
+            "<br> hits:" +
+            params[0].data["value"]
+          );
         }
       },
       xAxis: {
@@ -464,7 +350,7 @@ export class graphComponent implements OnInit {
       animationEasing: "elasticOut",
       animationDelayUpdate: idx => idx * 5
     };
-        for (var item of this.phenoPool) {
+    for (var item of this.phenoPool) {
       this.terms.push(item["id"]);
       this.freq.push({ value: item["count"], termname: item["label"] });
     }

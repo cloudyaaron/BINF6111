@@ -17,30 +17,27 @@ export class ApiComponent {
   error: any;
 
   //result of hpo term details
-  termDetailObject: any;
+  resultObject: any;
   althpoid: string[];
   name: string;
   definition: string;
   firstLevelChildren: [];
 
   //result of hpo term associations
-  assoGeneObject: any;
-  assoDiseaseObject: any;
+
 
   //result of query search
-  querySearchObject: any;
   term_result: any[];
   gene_result: any[];
   disease_result: any[];
 
   //result of gene search
-  geneSearchObject: any;
   assoterms: any;
 
   //result of disease search
-  diseaseSearchObject: any;
   catLabels: string[];
 
+  //toggles
   haveChildren = true;
   showChildren = true;
 
@@ -58,28 +55,28 @@ export class ApiComponent {
 
   showHPOTermConfig(term: string) {
     this.apiService.getConfig(term).subscribe(data => {
-      this.termDetailObject = data;
+      this.resultObject = data;
       this.extractDetailObject();
     });
   }
 
   showQueryConfig(term: string) {
     this.apiService.natureSearch(term).subscribe(data => {
-      this.querySearchObject = data;
+      this.resultObject = data;
       this.term_result = data["terms"];
     });
   }
 
   showDiseaseConfig(term: string) {
     this.apiService.diseaseSearch(term).subscribe(data => {
-      this.diseaseSearchObject = data;
+      this.resultObject = data;
       this.catLabels = data["catTermsMap"]["catLabel"];
     });
   }
 
   showGeneConfig(term: string) {
     this.apiService.geneSearch(term).subscribe(data => {
-      this.geneSearchObject = data;
+      this.resultObject = data;
       this.assoterms = data["termAssoc"];
     });
   }
@@ -89,14 +86,14 @@ export class ApiComponent {
   }
 
   extractDetailObject() {
-    this.althpoid = this.termDetailObject["details"]["altTermIds"];
+    this.althpoid = this.resultObject["details"]["altTermIds"];
     //if there is no children
-    if (this.termDetailObject["relations"]["children"].length == 0) {
+    if (this.resultObject["relations"]["children"].length == 0) {
       this.toggleChildren();
     }
-    this.firstLevelChildren = this.termDetailObject["relations"]["children"];
-    this.name = this.termDetailObject["details"]["name"];
-    this.definition = this.termDetailObject["details"]["definition"];
+    this.firstLevelChildren = this.resultObject["relations"]["children"];
+    this.name = this.resultObject["details"]["name"];
+    this.definition = this.resultObject["details"]["definition"];
   }
 
   extractInput() {
@@ -164,7 +161,7 @@ export class ApiComponent {
     this.showAssoTerms = !this.showAssoTerms;
   }
   toggleShowChildren() {
-    this.showAssoChildren != this.showAssoChildren;
+    this.showAssoChildren = !this.showAssoChildren;
   }
   /*
   checkIfResult() { 
