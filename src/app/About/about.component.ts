@@ -21,13 +21,7 @@ export class AboutComponent {
   }
 
   closeModal(id: string) {
-    var iframe = document.getElementsByTagName("iframe")[0];
-    var iframeSrc = iframe.src;
-		iframe.src = iframeSrc;
-    
     this.modalService.close(id);
-
-    //iframe.postMessage('{"event":"command","func":"' + 'stopVideo' +   '","args":""}', '*');
   }
 
   scrollToInput() {

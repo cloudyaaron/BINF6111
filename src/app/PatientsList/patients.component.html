@@ -11,7 +11,7 @@
     <tbody>   
       <ng-container *ngFor="let patient of patients">
         <tr [ngClass]="{'table-secondary':type=='R'}" >
-          <th scope="row" (click)="openDialog(patient)">{{patient.report_id}}</th>
+          <th scope="row" onmouseover="" style="cursor: pointer;" (click)="openDialog(patient)">{{patient.report_id}}</th>
           <td>{{patient.sex}}</td>
           <td>
             <div class="form-group">
