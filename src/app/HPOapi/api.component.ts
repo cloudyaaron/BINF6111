@@ -32,7 +32,7 @@ export class ApiComponent {
 
   //result of hpo term associations
   assogenes: []
-  assodiseases: []
+  assoMapTerms: []
 
   //result of query search
   term_result: any[];
@@ -60,6 +60,13 @@ export class ApiComponent {
 
   modalId: 0; 
 
+  isAssoGene = false
+  showAssoGene = true
+  isAssoDisease = false
+  showAssoDisease = true
+  
+  showContent = true
+  showMapTerms = false
   constructor(private apiService: ApiService, private modalService: ModalService) {}
 
   //modal
@@ -103,18 +110,27 @@ export class ApiComponent {
   }
   
   assoGeneSearch(term:string) {
-    if (this.showAssoTerms) {
-      this.toggleShowTerms();
-    }
     this.apiService.assoGeneSearch(term).subscribe(data => {
       this.resultObject = data
-      for (var x of data['genes']) {
-      this.result_list.push({id: x['entrezGeneId'], name: x['entrezGeneSymbol']})
-      }
     })
-    this.toggleShowTerms();
+    this.isAssoGene = !this.isAssoGene;
+  }
+  
+  assoDiseaseSearch(term:string) {
+    this.apiService.assoDiseaseSearch(term).subscribe(data => {
+      this.resultObject = data
+    })
+    this.isAssoDisease = !this.isAssoDisease;
   }
 
+  findTermMap(term:string) {
+    for (var t in this.resultObject["disease"]) {
+      if (t['catLabel'] == term) {
+        this.assoMapTerms = t['terms']
+        this.showMapTerms = !this.showMapTerms
+      }
+    }
+  }
   extractDetailObject() {
     this.althpoid = this.resultObject["details"]["altTermIds"];
     //if there is no children

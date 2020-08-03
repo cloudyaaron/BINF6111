@@ -60,7 +60,7 @@ export class ApiService {
 
   //search via one hpo term and return associated list disease details and its associated gene id
   assoDiseaseSearch(term:string){
-    let searchUrl = this.baseUrl + term + '/disease';
+    let searchUrl = this.baseUrl + term + '/diseases';
    return this.http.get(searchUrl)
       .pipe(
         retry(3), // retry a failed request up to 3 times
