@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit,Output, EventEmitter } from "@angular/core";
 import data from "../phenotips_2020-06-09_18-16_with_external_id.json";
 import { query } from "@angular/animations";
 import { MatSelectModule } from "@angular/material/select";
 import { ApiService } from "../HPOapi/api.service";
 import { delay } from "rxjs/operators";
 import js from "./treeWithP.json";
+import { graphic } from "echarts";
 
 @Component({
   selector: "graph-echart",
@@ -14,7 +15,7 @@ import js from "./treeWithP.json";
 export class graphComponent implements OnInit {
   @Input() patients: Array<any>;
   options: any;
-
+  @Output() result = new EventEmitter<any>();
   phenoPool = [];
   freq = [];
   terms = [];
@@ -25,6 +26,7 @@ export class graphComponent implements OnInit {
   u = 0;
   tree = [];
   constructor(private apiService: ApiService) {}
+
   ngOnInit() {
     this.temp.push({ query: "all", answer: data });
     this.getPhenotypePool(this.temp);
@@ -51,7 +53,7 @@ export class graphComponent implements OnInit {
       this.showPieChart();
     } else if (this.selectType == "Sunburst") {
       this.showSunburst();
-    } else{
+    } else {
       this.showTreeChart();
     }
 
@@ -99,12 +101,13 @@ export class graphComponent implements OnInit {
       this.showPieChart();
     } else if (this.selectType == "Sunburst") {
       this.showSunburst();
-    }else{
+    } else {
       this.showTreeChart();
-
     }
   }
-
+  onChartClick(event) {
+    this.result.emit(event)
+  }
   showPieChart() {
     let plist = this.temp;
     if (this.patients.length == 0 || this.patients == undefined) {
@@ -212,12 +215,18 @@ export class graphComponent implements OnInit {
       tooltip: {
         show: true,
         formatter: para => {
-          return (para["data"]["hpoid"]+"<br>" + para["data"]["name"]+"<br> Patients: "+para["data"]["nP"]);
+          return (
+            para["data"]["hpoid"] +
+            "<br>" +
+            para["data"]["name"] +
+            "<br> Patients: " +
+            para["data"]["nP"]
+          );
         }
       },
       series: {
-        hightlight:{
-          itemStyle:{
+        hightlight: {
+          itemStyle: {
             item3
           }
         },
@@ -238,27 +247,31 @@ export class graphComponent implements OnInit {
     };
   }
   showTreeChart() {
-
     var data = js;
 
     this.options = {
       tooltip: {
         show: true,
         formatter: para => {
-          return (para["data"]["hpoid"]+"<br>" + para["data"]["name"]+"<br> Patients: "+para["data"]["nP"]);
+          return (
+            para["data"]["hpoid"] +
+            "<br>" +
+            para["data"]["name"] +
+            "<br> Patients: " +
+            para["data"]["nP"]
+          );
         }
       },
       series: {
+        layout: "radial",
 
-                layout: 'radial',
+        symbol: "emptyCircle",
 
-                symbol: 'emptyCircle',
+        top: "18%",
+        bottom: "14%",
+        symbolSize: 3,
 
-                top: '18%',
-                bottom: '14%',
-                symbolSize: 3,
-
-                initialTreeDepth: 2,
+        initialTreeDepth: 2,
         type: "tree",
         sort: null,
         highlightPolicy: "ancestor",

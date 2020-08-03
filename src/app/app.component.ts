@@ -468,6 +468,12 @@ export class AppComponent {
     this.refreshPage();
   }
 
+getChartResult(event){
+  console.log(event)
+  if (event['seriesType']=='bar'){
+    this.AddtoSearch(event['name'])
+  }
+}
   toggleOption() {
     this.show = !this.show;
   }

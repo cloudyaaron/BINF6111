@@ -3,12 +3,12 @@
 
 </h3>
 <select class="custom-select" (change)="changeChartType($event)" >	  
-		<option value="Bar" > Bar Chart </option>	     Chart type
-		<option value="Pie"> Pie Chart (quick demo) </option>	   
-		<option value="Sunburst" > Sunburst(in testing) </option>	
-    <option value="tree" > tree(in testing) </option>		
+		<option value="Bar" > Bar Chart(single term) </option>	     Chart type
+		<option value="Pie"> Pie Chart (passive) </option>	   
+		<option value="Sunburst" > Sunburst(hierarchical) </option>	
+    <option value="tree" > Tree(hierarchical) </option>		
 	
 	</select>
 
-<div echarts [options]="options" class="bar-chart" [autoResize]	>
+<div echarts [options]="options" class="bar-chart" [autoResize]	(chartClick)="onChartClick($event)">
 </div>
