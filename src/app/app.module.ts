@@ -5,11 +5,12 @@ import { FormsModule } from "@angular/forms";
 import { InputComponent } from './input.component';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main.component';
+import { AboutComponent } from './About/about.component';
 import { DataService } from './data.service';
+import {DialogOverviewExampleDialog} from'./PatientsList/patients.component'
 
 import { AppRoutingModule } from './app-routing.module'
 import { HelloComponent } from "./hello.component";
-import { NgBusyModule } from "ng-busy";
 import { ModalModule } from './modal';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTree, MatTreeModule } from "@angular/material/tree";
@@ -30,18 +31,21 @@ import { MessageService } from "./message.service";
 import { HPOTerm, Details, Relations, RelationTerm } from "./classes/HPOTerm";
 
 import { NgxEchartsModule } from "ngx-echarts";
+
 import * as echarts from "echarts";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatSelectModule } from "@angular/material/select";
 import { MatListModule } from "@angular/material/list";
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import{ MatDialogModule} from "@angular/material/dialog";
+
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    NgBusyModule,
     MatProgressSpinnerModule,
     MatTreeModule,
     MatChipsModule,
@@ -55,7 +59,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatListModule,
     MatCheckboxModule,
     AppRoutingModule,
-    ModalModule
+    ModalModule,
+    MatAutocompleteModule,
+    MatDialogModule
+    
   ],
   declarations: [
     AppComponent,
@@ -65,7 +72,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     graphComponent,
     InputComponent,
     MainComponent,
-    Modal    
+    Modal,    
+    AboutComponent,
+    DialogOverviewExampleDialog 
   ],
   bootstrap: [MainComponent],
   providers: [MessageService, ApiService, SearchService, DataService]

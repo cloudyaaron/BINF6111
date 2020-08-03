@@ -10,6 +10,8 @@ import { COMMA, ENTER } from "@angular/cdk/keycodes";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from './data.service';
@@ -41,6 +43,7 @@ export class AppComponent {
   intersection_check = false;
 
   //multiple seaching function + ui
+
   removable = true;
   readonly separatorKeysCodes: number[] = [ENTER];
   search_list = [];
@@ -64,15 +67,12 @@ export class AppComponent {
 
   ngOnInit() {
     this.subscription = this.dataService.changeData.subscribe(value => {
-      console.log(value);
       this.patients = value;
       this.patientsLenth = this.patients.length;
-      console.log(this.patientsLenth);
     })
   }
 
   ngOnDestroy() {
-    console.log("ngOnDestroy, unsubscribing");
     this.subscription.unsubscribe();
   }
 
@@ -88,7 +88,7 @@ export class AppComponent {
     this.search_result = [];
     const input = event.input;
     const value = event.value;
-
+    console.log(value)
     // Add label
     if ((value || "").trim()) {
       this.AddtoSearch(value);
@@ -253,9 +253,25 @@ export class AppComponent {
         this.values = "HPO term format incorrect";
         this.search_list.pop();
       }
-    }
-    console.log("result", this.result_object);
-  }
+    } else {
+      console.log("non-standard search")
+        //non standard feature search returns patients with feature
+      for (let i = 0; i < this.patientsLenth; i++) {
+        var nf = this.patients[i]["nonstandard_features"];
+        for (var non_std_patient of nf) {
+          if (non_std_patient["label"] == search_term && non_std_patient["observed"] == "yes"){
+              //if(this.check_result(this.patients[i])== true){
+            this.search_result[index]["answer"].push(this.patients[i]);
+
+                //}
+            break;
+
+            }
+          }
+      }
+    }  
+}
+
 
   getResultNum() {
     var r = 0;
@@ -363,7 +379,7 @@ export class AppComponent {
           if (patient_regex.test(this.patients[i]["report_id"])) {
             add_suggestion += 1;
             //console.log('worked')
-            suggestion_array.push(this.patients[i]["report_id"]);
+            suggestion_array.push({id:this.patients[i]["report_id"]});
           }
         }
         console.log(suggestion_array);
@@ -456,6 +472,46 @@ export class AppComponent {
             });
           }
         }
+        if (temp_diseases.length == 0 && temp_genes.length == 0 &&  data["termsTotalCount"] == 0) {
+          // There were no successful terms returned from the API natural search see if anything exists in non-standard features
+          // split the query based on spaces
+          // use regex to see if there exists any similar non-standard features
+          console.log("non-standard search")
+          var input_words = user_input.split(" ")
+          console.log(input_words)
+          // Go through each word and make a REGEX out of it
+          var add_suggestion = 0;
+          for (let i = 0; i < input_words.length; i++) {
+            var w_card = ".*";
+            var regex = w_card.concat(input_words[i]);
+            regex = regex.concat(w_card);
+            console.log(regex)
+            var non_std_regex = new RegExp(regex);
+            console.log(non_std_regex)
+            //go through patients and append non standard features that
+            var suggestion_array = [];
+
+            for (let j = 0; j < this.patientsLenth; j++) {
+              var pp = this.patients[j]["nonstandard_features"];
+              for (var phenotype of pp) {
+                //console.log('print label')
+                //console.log(phenotype["label"])
+                if (add_suggestion == 5) {
+                  break;
+                }
+                if (non_std_regex.test(phenotype["label"]) && phenotype["observed"] == 'yes') {
+                  //console.log('yeah')
+                  add_suggestion += 1;
+                  //console.log('worked')
+                  suggestion_array.push({id: phenotype["label"], label: phenotype["notes"]});
+                }
+              }
+
+            }
+            console.log(suggestion_array)
+            this.suggested_queries = suggestion_array;
+          }
+        }
       });
 
       this.suggest_text = "Nature language searching?";
@@ -467,6 +523,16 @@ export class AppComponent {
     this.refreshPage();
   }
 
+getChartResult(event){
+  console.log(event)
+  if (event['seriesType']=='bar'){
+    this.AddtoSearch(event['name'])
+    this.refreshPage()
+  }else if(event['seriesType']=='sunburst'){
+    this.AddtoSearch(event['data']['hpoid'])
+    this.refreshPage()
+  }
+}
   toggleOption() {
     this.show = !this.show;
   }

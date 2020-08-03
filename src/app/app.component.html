@@ -1,18 +1,3 @@
-<div style="text-align:center">
-	<div>
-		<mat-form-field>
-			<mat-chip-list #searchList>
-				<mat-chip *ngFor="let search_term of search_list" [removable]="removable"
-					(removed)="remove(search_term)" class="btn btn-primary">
-					{{search_term.detail}}
-					<mat-icon matChipRemove *ngIf="removable"> X </mat-icon>
-				</mat-chip>
-
-			</mat-chip-list>
-		</mat-form-field>
-	</div>
-</div>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	<a class="navbar-brand" href="#">PATIENTS:{{patientsLenth}}</a>
 	<!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,34 +11,42 @@
 			<a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Features</a>
-		</li>
-    <li class="nav-item">
 			<a class="nav-link" onmouseover="" style="cursor: pointer;" (click)="openModal('about-modal')">About</a>
 		</li>
 	</ul>
-
-	<form class="form-inline my-2 my-lg-0">
-
-
-
-		<input placeholder="HPO Terms, Genes, or Diseases..."          class="form-control mr-sm-4"
-
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+	<mat-form-field class="example-chip-list" >
+		<mat-chip *ngFor="let search_term of search_list" [removable]="removable" 
+			(removed)="remove(search_term)" >
+			{{search_term.detail}}
+			<mat-icon matChipRemove *ngIf="removable"> X </mat-icon>
+		</mat-chip>
+		<input placeholder="Search HPO Terms, Genes, or Diseases..."         
         [matChipInputFor]="searchList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
         (matChipInputTokenEnd)="add($event)"
         (keyup)="onKeyUp($event)"
-      >
-    </form>
-		<!--</div>-->
-		<button class="btn btn-primary" (click)="toggleOption()">
+              >
+		<mat-chip-list #searchList >
+
+		</mat-chip-list>
+	</mat-form-field>
+
+
+
+
+	<!--</div>-->
+	<button class="btn btn-primary" (click)="toggleOption()">
   Options
   </button>
-		<span *ngIf="show">
+	<span *ngIf="show">
     <mat-checkbox labelPosition="before" [checked]="this.checkedGene" (change)="toggleGene()">Genes
     </mat-checkbox>
+    &nbsp;&nbsp;
     <mat-checkbox labelPosition="before" [checked]="this.checkedTerm" (change)="toggleTerm()">Terms
     </mat-checkbox>
+    &nbsp;&nbsp;
     <mat-checkbox labelPosition="before" [checked]="this.checkedDisease" (change)="toggleDisease()">Diseases
     </mat-checkbox>
   </span>
@@ -61,19 +54,7 @@
 </nav>
 
 <jw-modal id="about-modal">
-    <button style="color:#808080" type="button" class="close pull-right" aria-label="Close" (click)="closeModal('about-modal')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <h1>Welcome to Patients Filter!</h1>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	    <a class="navbar-brand">About</a>
-    </nav>
-    <h2> Input File </h2>
-    <p> To input a new file, navigate to the home page. File types can be either JSON or excel. </p>
-    <h2> Searching </h2>
-    <p> You can start your search by entering "HP:XXXXXXX". Make sure "HP" is in capital letter. </p>
-    <p> Clicking on the "HPO api" button will enable searching the HPO term to the api to return children terms. The API used in this software can be found at https://hpo.jax.org/webjars/swagger-ui/3.20.9/index.html?url=/api/hpo/docs/. </p>
-    <!-- <button (click)="closeModal('about-modal');">Close</button> -->
+  <about></about>
 </jw-modal>
 
 {{values}}
@@ -93,13 +74,13 @@
 
 
 <mat-drawer-container autosize>
-	<mat-drawer #drawer mode="side">
+	<mat-drawer #drawer mode="side" style="width: 50%;">
 		<HPOapi *ngFor="let s of search_list" [input]="s" (extra)="addExtra($event)"> </HPOapi>
 	</mat-drawer>
 	<mat-drawer-content>
 		<div>
 			<button type="button"class="btn btn-info btn-sm" mat-button (click)="drawer.toggle()">
-      HPO api
+      Activate API
     </button>
 		</div>
 
@@ -130,17 +111,17 @@
 				</ng-container>
 			</div>
 			<div class="column" style="width: 50%; padding:20px">
-				<graph-echart [patients]='search_result'></graph-echart>
+				<graph-echart [patients]='search_result' (result)="getChartResult($event)"></graph-echart>
 
 			</div>
 		</div>
 
 
 		<mat-tab-group>
-			<mat-tab label="All Patients Data">
+			<mat-tab label="All Patients">
 				<patient-list [patients]='patients' [type]=''></patient-list>
 			</mat-tab>
-			<mat-tab label="Graph(testing)">
+			<mat-tab label="Graphs">
 				<graph-echart></graph-echart>
 			</mat-tab>
 		</mat-tab-group>

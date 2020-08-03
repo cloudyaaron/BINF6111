@@ -53,5 +53,10 @@ export class ModalComponent implements OnInit, OnDestroy {
     close(): void {
         this.element.style.display = 'none';
         document.body.classList.remove('jw-modal-open');
+
+
+        var iframe = document.getElementsByTagName("iframe")[0];
+        var iframeSrc = iframe.src;
+		    iframe.src = iframeSrc;
     }
 }
