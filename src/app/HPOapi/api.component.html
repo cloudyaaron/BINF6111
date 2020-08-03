@@ -27,10 +27,30 @@
        </mat-list-item>
        <mat-list-item>Definition : {{definition}}</mat-list-item>
     </mat-list>
-	        <button class="btn btn-primary"(click)="openModal('term-modal')"> More Details </button>
           <button class="btn btn-primary"(click)="assoGeneSearch(input_term['detail'])"> Associate Gene Search </button>
           <button class="btn btn-primary"(click)="assoDiseaseSearch(input_term['detail'])"> Associate Disease Search </button>
+
+          <ng-container *ngIf="showChildren">
+      <div *ngIf="haveChildren else noChildren">
+			<p align="right" class="btn-group">
+				<button class="btn btn-info" (click)="AddAll()">Add all first level children</button>
+				<button class="btn btn-warning" (click)="AddAll()">Add all children</button>
+			</p>
+			<ul class="list-group" >
+				<ng-container *ngFor="let c of firstLevelChildren">
+					<li class="list-group-item d-flex justify-content-between align-items-center">
+						{{c['name']}}, {{c['ontologyId']}}
+						<div class="btn-group">
+							<button class="btn btn-success"(click)="AddToSearch(c['ontologyId'])"> Add </button>
+						</div>
+					</li>
+				</ng-container>
+			</ul>   
+		</div>
+		<ng-template #noChildren> There is no First Level Children of this term! </ng-template>
+    </ng-container>
 	</div>
+
 
   <div *ngIf="isDisease" class="card body">
 		<mat-list>
@@ -130,4 +150,4 @@ can be found in the LICENSE file at http://angular.io/license
 <div *ngIf="this.checkIfResult()"> Error Message: Cannot find results for {{input_term['detail']}}</div>
 
 
--->
+--> 
