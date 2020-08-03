@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { Component, Input, Output, EventEmitter, Inject } from "@angular/core";
 import { ApiService } from "./api.service";
 import { MessageService } from "../message.service";
 import { HPOTerm, Details, Relations, RelationTerm } from "../classes/HPOTerm";
 import { MatListModule } from "@angular/material/list";
 
 import { ModalService } from '../modal';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatDialogModule} from '@angular/material/dialog';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
 
@@ -34,6 +35,8 @@ export class ApiComponent {
   assogenes: []
   assoMapTerms: []
 
+  dbDisease: []
+
   //result of query search
   term_result: any[];
   gene_result: any[];
@@ -44,6 +47,7 @@ export class ApiComponent {
 
   //result of disease search
   catLabels: string[];
+  diseaseObject:any 
 
   //toggles
   haveChildren = true;
@@ -67,8 +71,18 @@ export class ApiComponent {
   
   showContent = true
   showMapTerms = false
-  constructor(private apiService: ApiService, private modalService: ModalService) {}
+  constructor(private apiService: ApiService, private modalService: ModalService, public dialog: MatDialog) {}
 
+  openDialog(result:any): void {
+    const dialogRef = this.dialog.open(Modal, {
+      width: '1000px',
+      data: result
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
   //modal
   openModal(id: string) {
     this.modalService.open(id);
@@ -124,12 +138,21 @@ export class ApiComponent {
   }
 
   findTermMap(term:string) {
-    for (var t in this.resultObject["disease"]) {
+    for (var t of this.resultObject["catTermsMap"]) {      
       if (t['catLabel'] == term) {
         this.assoMapTerms = t['terms']
-        this.showMapTerms = !this.showMapTerms
+        
       }
     }
+  }
+
+  finddbDisease(term:string) {
+    for (var t of this.resultObject["genes"]) {      
+      if (t['entrezGeneId'] == term) {
+        this.dbDisease = t['dbDiseases']
+      }
+    }
+    this.openDialog(this.dbDisease)
   }
   extractDetailObject() {
     this.althpoid = this.resultObject["details"]["altTermIds"];
@@ -226,3 +249,19 @@ Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 */
+
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'modal.html',
+})
+export class Modal {
+
+  constructor(
+    public dialogRef: MatDialogRef<Modal>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}

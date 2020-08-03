@@ -18,7 +18,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpClientModule } from "@angular/common/http";
 
-import { ApiComponent } from "./HPOapi/api.component";
+import { ApiComponent, Modal } from "./HPOapi/api.component";
 import { ApiService } from "./HPOapi/api.service";
 import { SearchService } from "./search.service";
 
@@ -64,7 +64,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     PatientsList,
     graphComponent,
     InputComponent,
-    MainComponent
+    MainComponent,
+    Modal
   ],
   bootstrap: [MainComponent],
   providers: [MessageService, ApiService, SearchService, DataService]

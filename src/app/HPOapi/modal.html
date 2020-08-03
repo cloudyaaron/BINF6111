@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Disease </h1>
+<div mat-dialog-content>
+  <ul class="list-group">
+				<ng-container *ngFor="let t of data">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+						{{t['diseaseId']}}, {{t['diseaseName']}} 
+            </li>
+				</ng-container>
+			</ul>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+  
+</div>

@@ -26,11 +26,10 @@
          <span *ngFor="let id of althpoid"> {{id}}<br> </span>
        </mat-list-item>
        <mat-list-item>Definition : {{definition}}</mat-list-item>
-           </mat-list>
+    </mat-list>
 	        <button class="btn btn-primary"(click)="openModal('term-modal')"> More Details </button>
           <button class="btn btn-primary"(click)="assoGeneSearch(input_term['detail'])"> Associate Gene Search </button>
           <button class="btn btn-primary"(click)="assoDiseaseSearch(input_term['detail'])"> Associate Disease Search </button>
-
 	</div>
 
   <div *ngIf="isDisease" class="card body">
@@ -52,17 +51,16 @@
             </li>
 				</ng-container>
 			</ul>
+	</div>
 
-      <ul *ngIf="showMapTerms" class="list-group" >
-				<ng-container *ngFor="let t of assoMapTerms">
+   <ul class="list-group" >
+				<ng-container *ngFor="let t of this.assoMapTerms">
             <li class="list-group-item d-flex justify-content-between align-items-center">
 						{{t['ontologyId']}}, {{t['name']}} 
 							<button class="btn btn-success"(click)="AddToSearch(t['ontologyId'])"> Add </button>
             </li>
 				</ng-container>
 			</ul>
-    
-	</div>
 
   <div *ngIf="isGene" class="card body">
 		<mat-list>
@@ -72,7 +70,6 @@
        </mat-list-item>
        
   <br>
-    
 			<button class="btn btn-success"(click)="toggleShowTerms()"> Associated Ontologies </button>
 			<ul class="list-group" *ngIf="showAssoTerms">
 				<ng-container *ngFor="let t of assoterms">
@@ -97,7 +94,7 @@
 						{{c['entrezGeneId']}}, {{c['entrezGeneSymbol']}}
 						<div class="btn-group">
 							<button class="btn btn-success"(click)="AddToSearch(c['entrezGeneId'].toString())"> Add </button>
-              <button class="btn btn-success"> More </button>
+              <button class="btn btn-success" (click)="finddbDisease(c['entrezGeneId'])"> More </button>
 						</div>
 					</li>
 				</ng-container>
