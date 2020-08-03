@@ -147,9 +147,9 @@ export class ApiComponent {
   }
 
   finddbDisease(term:string) {
-    for (var t of this.resultObject["genes"]) {      
+    for (var t of this.resultObject["genes"]) {    
       if (t['entrezGeneId'] == term) {
-        this.dbDisease = t['dbDiseases']
+        this.dbDisease = t
       }
     }
     this.openDialog(this.dbDisease)
