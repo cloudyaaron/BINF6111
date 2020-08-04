@@ -112,10 +112,10 @@ export class graphComponent implements OnInit {
     this.selectType = event.target.value;
     if (this.selectType == "normal") {
       this.showTreeChart('orthogonal');
-
+      this.selectType='tree';
     } else if (this.selectType == "circle") {
       this.showTreeChart("radial");
-
+      this.selectType='tree';
     }
   }
 
