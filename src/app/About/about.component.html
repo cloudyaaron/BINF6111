@@ -39,6 +39,9 @@ Start your search by entering a HPO ID or any word of interest in a search bar. 
 <p> For each term in the search list, the name, other ontology IDs and description will be displayed. A list of the children terms can also be displayed by clicking on "Show first level children". Each of these children terms can be appended to the search list. The search results will then be updated in real time. </p>
 <img src="https://cdn.jsdelivr.net/gh/cloudyaaron/BINF6111@kavitha/src/app/About/images/hpoSearch.PNG" height="300" weight="200" align='center'>
 <br><br>
+<p> Below is an example of searching multiple terms to the API. The result for HP:0000118 is displayed and HP:0000707 is hidden. It can be displayed "Search result of HP:0000707".  </p>
+<img src="https://cdn.jsdelivr.net/gh/cloudyaaron/BINF6111@kavitha/src/app/About/images/apiSearchMultiple.PNG" height="300" weight="200">
+<br><br>
 <h4> Searching diseases and genes </h4>
 <p> Natural language searches will return HPO terms, diseases and/or genes that are related to the query. These searches are most informative with the API activated. </p>
 <p> For example, typing "bone" in the search box will give a list of suggestions of HPO terms and/or diseases that are related to bone. The suggestions will depend on what options have been selected for the search. </p>
@@ -47,11 +50,36 @@ Start your search by entering a HPO ID or any word of interest in a search bar. 
 <p> For gene searches, a list of associated phenotype ontologies with the query gene can be displayed. From here, each phenotype onotology from this list can be queried. </p>
 <img src="https://cdn.jsdelivr.net/gh/cloudyaaron/BINF6111@kavitha/src/app/About/images/geneSearch.PNG" height="300" weight="200">
 <br><br>
+<p> For disease searches, a list of words associated with the disease will be displayed. Clicking on "Unfold" will display the phenotypes. </p>
+<img src="https://cdn.jsdelivr.net/gh/cloudyaaron/BINF6111@kavitha/src/app/About/images/diseaseSearch.PNG" height="300" weight="200">
+<br><br>
 <br><br>
 <h3> Graphs </h3>
 <p> There are a number of graph representations that can be viewed. Click on the drop down menu to explore the graphs. </p>
-<p> The bar graphs shows the number of patients tagged with each HPO term in the data set. Each bar can be hovered over to view the HPO term and the number of patients tagged with it. Clicking on a HPO term in the bar search will search that term. The pie chart shows the gender distribution of the patients in the data set. <br><br>
-The sunburst graph is a hierarchical structure showing all the HPO terms and their childrens. Hovering over each section will display the HPO ID, name and number of patients tagged with it. Clicking on a section will zoom in and display the childrens of that section. The tree graph can be displayed in two representations: normal (linear) or circular. Clicking on each node will split that point into multiple nodes of children terms. Clicking backwards on nodes will collapse its children terms. </p>
+<p> The bar graphs shows the number of patients tagged with each HPO term in the data set. Each bar can be hovered over to view the HPO term and the number of patients tagged with it. Clicking on a HPO term in the bar graph will search that term. In the example, the most frequent HPO term HP:0002718 has been selected.  </p>
+<div class="row">
+	<div class="column" style="width: 50%; padding:20px">
+    <img src="https://cdn.jsdelivr.net/gh/cloudyaaron/BINF6111@kavitha/src/app/About/images/barchart1.PNG" height="300" weight="200">
+  </div>
+	<div class="column" style="width: 50%; padding:20px">
+	<img src="https://cdn.jsdelivr.net/gh/cloudyaaron/BINF6111@kavitha/src/app/About/images/barchart2.PNG" height="300" weight="200">
+  </div>
+</div>
+<br><br>
+<p> The pie chart will update in real time to display the gender distribution of the patients in the search result. For the search result above of 11 results, there are 5 females, 5 males and 1 unknown. </p>
+<img src="https://cdn.jsdelivr.net/gh/cloudyaaron/BINF6111@kavitha/src/app/About/images/piechart.PNG" height="300" weight="200">
+<br><br>
+<p>The sunburst graph is a hierarchical structure showing all the HPO terms and their childrens. Hovering over each section will display the HPO ID, name and number of patients tagged with it. Clicking on a section will zoom in and display the childrens of that section.</p>
+<br><br>
+<p> The tree graph can be displayed in two representations: linear or circular. Clicking on each node will split that point into multiple nodes of children terms. Clicking backwards on nodes will collapse its children terms. </p>
+<div class="row">
+	<div class="column" style="width: 50%; padding:20px">
+    <img src="https://cdn.jsdelivr.net/gh/cloudyaaron/BINF6111@kavitha/src/app/About/images/linearTree.PNG" height="300" weight="200">
+  </div>
+	<div class="column" style="width: 50%; padding:20px">
+	<img src="https://cdn.jsdelivr.net/gh/cloudyaaron/BINF6111@kavitha/src/app/About/images/circularTree.PNG" height="300" weight="200">
+  </div>
+</div>
  
 
 
