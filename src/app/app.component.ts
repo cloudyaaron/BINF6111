@@ -472,7 +472,7 @@ export class AppComponent {
             });
           }
         }
-        if (temp_diseases.length == 0 && temp_genes.length == 0 &&  data["termsTotalCount"] == 0) {
+        if (ttemp_diseases.length == 0 && temp_genes.length == 0 &&  data["termsTotalCount"] == 0) {
           // There were no successful terms returned from the API natural search see if anything exists in non-standard features
           // split the query based on spaces
           // use regex to see if there exists any similar non-standard features
