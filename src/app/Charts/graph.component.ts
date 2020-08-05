@@ -254,7 +254,7 @@ export class graphComponent implements OnInit {
         },
         nodeClick: "rootToNode",
         itemStyle: {
-          color: "#ddd",
+          color: "#F54F4A",
           borderWidth: 2
         }
       }
